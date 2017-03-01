@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.3.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+
+    <!--spring\u9359\uE219\u4E92\u954A\uE044\u59E9\u94E1\u7ED8\u58C2\u93BB\u75C8ase-pack\u6D93\u5B2E\u6E83\u93B4\u682C\u20AC\u546D\u74D9\u9356\u546C\u7B05\u95F1\u3222\u6B91java\u93C2\u56E6\u6B22\u951B?
+    	\u6FE1\u509B\u7049\u9553\uE0A3\u5F3F\u9352\u7248\u6E41@Component @Controller@Service\u7EDB\u590E\u7E56\u6D5C\u6D99\u655E\u7459\uFF47\u6B91\u7EEB\u4F19\u7D1D\u9352\u6B10\u59B8\u6769\u6B0E\u7C3A\u7EEB\u7ED8\u655E\u9350\u5C7C\u8D1Fbean-->
+    <context:component-scan base-package="com.yoparty">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation"
+                                expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+    </context:component-scan>
+
+    <mvc:annotation-driven/>
+    <mvc:default-servlet-handler/>
+
+    <!--<mvc:interceptors>  -->
+    <!--&lt;!&ndash; \u6D63\u8DE8\u6564bean\u7039\u6C22\u7B9F\u6D93\u20AC\u6D93\u72EAnterceptor\u951B\u5C80\u6D3F\u93BA\u30E5\u757E\u6D94\u590A\u6E6Amvc:interceptors\u9559\u901B\u7B05\u95F1\u3222\u6B91Interceptor\u704F\u55D8\u5AE4\u93B4\uE045\u588D\u94FE\u590C\u6B91\u7487\u950B\u7730 &ndash;&gt;  -->
+    <!--&lt;!&ndash; <bean class="com.host.app.web.interceptor.AllInterceptor"/>   &ndash;&gt;-->
+    <!--&lt;!&ndash; \u7039\u6C22\u7B9F\u9366\u2569vc:interceptor\u6D93\u5B2E\u6E83\u9544\u52EE\u3003\u7EC0\u70D8\u69F8\u7035\u572D\u58D2\u7039\u6C31\u6B91\u7487\u950B\u7730\u9553\u5D88\u7E58\u741B\u5C7E\u5AE4\u93B4\uE046\u6B91 &ndash;&gt;-->
+    <!--<mvc:interceptor>-->
+    <!--<mvc:mapping path="/login/*"/> &lt;!&ndash; \u7EE0\uFF04\u608A\u953B\u6A3C\u6A71\u8930\u66DF\u5AE4\u93B4?&ndash;&gt;  -->
+    <!--<mvc:exclude-mapping path="/login/auth"/>-->
+    <!--<mvc:exclude-mapping path="/login/out"/>-->
+    <!--<bean class="com.yoparty.interceptor.AdminInterceptor"></bean>   -->
+    <!--</mvc:interceptor>-->
+    <!--</mvc:interceptors>-->
+
+    <!-- \u7035\u5F52\u6DA6\u9550\u4F7D\u796B\u5A67\u612D\u6783\u6D60\u5241\u6B91\u7481\u5757\u68F6 -->
+    <!-- <mvc:resources mapping="/img/**" location="/img/" cache-period="31556926"/>
+    <mvc:resources mapping="/js/**" location="/js/" cache-period="31556926"/>
+    <mvc:resources mapping="/css/**" location="/css/" cache-period="31556926"/>  -->
+
+
+    <!-- \u95B0\u5C96\u7586jsp\u93C2\u56E6\u6B22\u9544\u52EB\u58A0\u935A\u5EA3\u7D11 \u94AC\u6ED0\u7EBA\u94AC\u6FC5\u552C\u741B\u3127\u6B91\u93C4\uE21E\u300D\u9429\uE1BF\uE195\u7039\u6C31\u6B91Resource\u9429\uE1BC\u7D8D -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+</beans>
