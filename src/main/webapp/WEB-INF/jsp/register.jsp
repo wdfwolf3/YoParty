@@ -1,17 +1,24 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
+<%@ page language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <style type="text/css">
-        .error {
-            color: #fe2617;
+
+        .article {
+            padding-bottom: 1em;
         }
 
         .item {
             clear: both;
             margin: 0 0 15px;
             zoom: 1;
+        }
+
+        .aside {
+            color: #666;
+            overflow: hidden;
+            zoom: 1
         }
 
         .basic-input {
@@ -24,6 +31,10 @@
             -webkit-border-radius: 3px;
             border-radius: 3px;
             border: 1px solid #c9c9c9
+        }
+
+        .sidenav {
+            margin-top: 1em
         }
 
         .basic-input.small {
@@ -41,12 +52,6 @@
         .item {
             clear: both;
             margin: 15px 0
-        }
-
-        .tips
-        .validate-error {
-            display: none;
-            color: #fe2617
         }
 
         .btn-submit {
@@ -92,41 +97,63 @@
     ""===i||"邮箱/手机号/用户名"===i?(displayError(l,"请输入正确的邮箱/手机号/用户名"),r=1):clearError(l)}
     return n&&(""===n.value?(displayError(n,"请输入密码"),r=1):n&&clearError(n)),!r}
 
+
     </script>
 
-    <title>注册</title>
+    <title>欢迎加入友派</title>
 </head>
 <body>
-<form id="formid" name="myform" method='post' action="/register">
-    <div class="item">
-        <label>帐号</label>
-        <input id="username" name="form_username" type="text" class="basic-input"
-               maxlength="60" value="邮箱/手机号/用户名" tabindex="1"/>
+<div class="wrapper">
+
+    <h1>
+        欢迎加入友派
+    </h1>
+
+    <div class="article">
+        <form id="formid" name="myform" method='post' action="/register">
+            <div class="item">
+                <label>帐号</label>
+                <input id="username" name="form_username" type="text" class="basic-input"
+                       maxlength="60" value="邮箱/手机号/用户名" tabindex="1"/>
+            </div>
+            <div class="item">
+                <label>密码:</label>
+                <input id="password" name="form_password" type="password" class="basic-input" maxlength="20"
+                       tabindex="2"/>
+            </div>
+            <div class="item">
+                <label>确认密码:</label>
+                <input id="password1" name="form_password" type="password" class="basic-input" maxlength="20"
+                       tabindex="3"/>
+            </div>
+            <div class="item">
+                <label>手机号码:</label>
+                <input id="phone" name="form_phone" type="text" class="basic-input" maxlength="11" tabindex="4"/>
+            </div>
+            <div class="item captcha-item">
+                <label>验证码</label>
+                <input id="code" name="code" type="text" class="basic-input small" maxlength="10" tabindex="5"/>
+                <input id="request-phone-code-btn" type="submit" value="获取验证码"/>
+                <span id="tips-error" class="tips"><em></em></span>
+                <span id="tips-info" class="tips"></span>
+                <span class="validate-error" id="frm_error"></span>
+            </div>
+            <div class="item-submit">
+                <label>&nbsp;</label>
+                <input type="submit" name="register" value="注册" id="button" class="btn-submit disabled" tabindex="6"/>
+            </div>
+        </form>
     </div>
-    <div class="item">
-        <label>密码:</label>
-        <input id="password" name="form_password" type="password" class="basic-input" maxlength="20" tabindex="2"/>
+    <div class="aside">
+
+        <ul class="sidenav">
+            <li>&gt;&nbsp;已经拥有豆瓣帐号? <a rel="nofollow" href="/login">直接登录</a></li>
+            <li>&gt;&nbsp;<a href="https://www.douban.com/mobile/">点击下载豆瓣移动应用</a></li>
+
+        </ul>
+
     </div>
-    <div class="item">
-        <label>确认密码:</label>
-        <input id="password1" name="form_password" type="password" class="basic-input" maxlength="20" tabindex="3"/>
-    </div>
-    <div class="item">
-        <label>手机号码:</label>
-        <input id="phone" name="form_phone" type="text" class="basic-input" maxlength="11" tabindex="4"/>
-    </div>
-    <div class="item captcha-item">
-        <label>验证码</label>
-        <input id="code" name="code" type="text" class="basic-input small" maxlength="10" tabindex="5"/>
-        <input id="request-phone-code-btn" type="submit" value="获取验证码"/>
-        <span id="tips-error" class="tips"><em></em></span>
-        <span id="tips-info" class="tips"></span>
-        <span class="validate-error" id="frm_error"></span>
-    </div>
-    <div class="item-submit">
-        <label>&nbsp;</label>
-        <input type="submit" name="register" value="注册" id="button" class="btn-submit disabled" tabindex="6"/>
-    </div>
-</form>
+</div>
+
 </body>
 </html>

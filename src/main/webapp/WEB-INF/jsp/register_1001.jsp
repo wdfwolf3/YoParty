@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" %>
+<%@ page language="java" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,12 +43,6 @@
             margin: 15px 0
         }
 
-        .tips
-        .validate-error {
-            display: none;
-            color: #fe2617
-        }
-
         .btn-submit {
             cursor: pointer;
             font-size: 14px;
@@ -91,6 +85,7 @@
     {var i=trim(l.value);
     ""===i||"邮箱/手机号/用户名"===i?(displayError(l,"请输入正确的邮箱/手机号/用户名"),r=1):clearError(l)}
     return n&&(""===n.value?(displayError(n,"请输入密码"),r=1):n&&clearError(n)),!r}
+
 
     </script>
 

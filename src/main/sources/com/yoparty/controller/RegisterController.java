@@ -28,7 +28,7 @@ public class RegisterController {
             System.out.println(error);
             return "register_" + error;
         } else
-            return "register";
+            return "home";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -37,7 +37,7 @@ public class RegisterController {
         //查询用户名是否存在
         boolean isExist = false;
         if (isExist)
-            return "redirect:register？error=1001";
+            return "redirect:register?error=1001";
         else {
             //存数据库
             String s = request.getParameter("form_username");
@@ -51,7 +51,7 @@ public class RegisterController {
 //	@RequestMapping(value ="/register",method = RequestMethod.POST)
 //	public String registerPost(HttpServletRequest req, HttpServletResponse resp) {
 //		//利用Spring生成UserService对象,通过mybatis和mysql交互
-//		cxt = new ClassPathXmlApplicationContext("Spring-config.xml");
+//		cxt = new ClassPathXmlApplicationContext("application.xml");
 //	    UserService userService = (UserService) cxt.getBean("userService");
 //	    UserExample userExample = new UserExample();
 //	    Criteria criteria = userExample.createCriteria();

@@ -11,15 +11,11 @@
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 
-    <!--spring\u9359\uE219\u4E92\u954A\uE044\u59E9\u94E1\u7ED8\u58C2\u93BB\u75C8ase-pack\u6D93\u5B2E\u6E83\u93B4\u682C\u20AC\u546D\u74D9\u9356\u546C\u7B05\u95F1\u3222\u6B91java\u93C2\u56E6\u6B22\u951B?
-    	\u6FE1\u509B\u7049\u9553\uE0A3\u5F3F\u9352\u7248\u6E41@Component @Controller@Service\u7EDB\u590E\u7E56\u6D5C\u6D99\u655E\u7459\uFF47\u6B91\u7EEB\u4F19\u7D1D\u9352\u6B10\u59B8\u6769\u6B0E\u7C3A\u7EEB\u7ED8\u655E\u9350\u5C7C\u8D1Fbean-->
-    <context:component-scan base-package="com.yoparty">
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
-        <context:include-filter type="annotation"
-                                expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+    <mvc:annotation-driven/>
+
+    <context:component-scan base-package="com.yoparty.controller">
     </context:component-scan>
 
-    <mvc:annotation-driven/>
     <mvc:default-servlet-handler/>
 
     <!--<mvc:interceptors>  -->
@@ -34,16 +30,15 @@
     <!--</mvc:interceptor>-->
     <!--</mvc:interceptors>-->
 
-    <!-- \u7035\u5F52\u6DA6\u9550\u4F7D\u796B\u5A67\u612D\u6783\u6D60\u5241\u6B91\u7481\u5757\u68F6 -->
-    <!-- <mvc:resources mapping="/img/**" location="/img/" cache-period="31556926"/>
-    <mvc:resources mapping="/js/**" location="/js/" cache-period="31556926"/>
-    <mvc:resources mapping="/css/**" location="/css/" cache-period="31556926"/>  -->
+    <mvc:resources mapping="/css/**" location="/WEB-INF/css/" cache-period=""/>
+    <mvc:resources mapping="/js/**" location="/WEB-INF/js/" cache-period=""/>
+    <mvc:resources mapping="/images/**" location="/WEB-INF/images/" cache-period=""/>
 
-
-    <!-- \u95B0\u5C96\u7586jsp\u93C2\u56E6\u6B22\u9544\u52EB\u58A0\u935A\u5EA3\u7D11 \u94AC\u6ED0\u7EBA\u94AC\u6FC5\u552C\u741B\u3127\u6B91\u93C4\uE21E\u300D\u9429\uE1BF\uE195\u7039\u6C31\u6B91Resource\u9429\uE1BC\u7D8D -->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
     </bean>
 
 </beans>
