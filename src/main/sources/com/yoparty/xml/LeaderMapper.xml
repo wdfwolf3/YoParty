@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.yoparty.mapper.LeaderMapper" >
+  <resultMap id="BaseResultMap" type="com.yoparty.dao.Leader" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="BIT" />
+    <result column="location" property="location" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="CHAR" />
+    <result column="wechat" property="wechat" jdbcType="VARCHAR" />
+    <result column="qrcode" property="qrcode" jdbcType="VARCHAR" />
+    <result column="grade" property="grade" jdbcType="INTEGER" />
+    <result column="activity_num" property="activityNum" jdbcType="SMALLINT" />
+    <result column="people_num" property="peopleNum" jdbcType="SMALLINT" />
+    <result column="feature" property="feature" jdbcType="VARCHAR" />
+    <result column="route" property="route" jdbcType="VARCHAR" />
+    <result column="hobby" property="hobby" jdbcType="VARCHAR" />
+    <result column="publish" property="publish" jdbcType="BIT" />
+    <result column="manage" property="manage" jdbcType="BIT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, user_id, nickname, sex, location, telephone, wechat, qrcode, grade, activity_num, 
+    people_num, feature, route, hobby, publish, manage
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.dao.LeaderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from leader
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from leader
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from leader
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.yoparty.dao.LeaderExample" >
+    delete from leader
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.yoparty.dao.Leader" >
+    insert into leader (id, user_id, nickname, 
+      sex, location, telephone, 
+      wechat, qrcode, grade, 
+      activity_num, people_num, feature, 
+      route, hobby, publish, 
+      manage)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{nickname,jdbcType=VARCHAR}, 
+      #{sex,jdbcType=BIT}, #{location,jdbcType=VARCHAR}, #{telephone,jdbcType=CHAR}, 
+      #{wechat,jdbcType=VARCHAR}, #{qrcode,jdbcType=VARCHAR}, #{grade,jdbcType=INTEGER}, 
+      #{activityNum,jdbcType=SMALLINT}, #{peopleNum,jdbcType=SMALLINT}, #{feature,jdbcType=VARCHAR}, 
+      #{route,jdbcType=VARCHAR}, #{hobby,jdbcType=VARCHAR}, #{publish,jdbcType=BIT}, 
+      #{manage,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.yoparty.dao.Leader" >
+    insert into leader
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="nickname != null" >
+        nickname,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="location != null" >
+        location,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="wechat != null" >
+        wechat,
+      </if>
+      <if test="qrcode != null" >
+        qrcode,
+      </if>
+      <if test="grade != null" >
+        grade,
+      </if>
+      <if test="activityNum != null" >
+        activity_num,
+      </if>
+      <if test="peopleNum != null" >
+        people_num,
+      </if>
+      <if test="feature != null" >
+        feature,
+      </if>
+      <if test="route != null" >
+        route,
+      </if>
+      <if test="hobby != null" >
+        hobby,
+      </if>
+      <if test="publish != null" >
+        publish,
+      </if>
+      <if test="manage != null" >
+        manage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="nickname != null" >
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=BIT},
+      </if>
+      <if test="location != null" >
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=CHAR},
+      </if>
+      <if test="wechat != null" >
+        #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null" >
+        #{qrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="activityNum != null" >
+        #{activityNum,jdbcType=SMALLINT},
+      </if>
+      <if test="peopleNum != null" >
+        #{peopleNum,jdbcType=SMALLINT},
+      </if>
+      <if test="feature != null" >
+        #{feature,jdbcType=VARCHAR},
+      </if>
+      <if test="route != null" >
+        #{route,jdbcType=VARCHAR},
+      </if>
+      <if test="hobby != null" >
+        #{hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="publish != null" >
+        #{publish,jdbcType=BIT},
+      </if>
+      <if test="manage != null" >
+        #{manage,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.yoparty.dao.LeaderExample" resultType="java.lang.Integer" >
+    select count(*) from leader
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update leader
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.nickname != null" >
+        nickname = #{record.nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sex != null" >
+        sex = #{record.sex,jdbcType=BIT},
+      </if>
+      <if test="record.location != null" >
+        location = #{record.location,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telephone != null" >
+        telephone = #{record.telephone,jdbcType=CHAR},
+      </if>
+      <if test="record.wechat != null" >
+        wechat = #{record.wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qrcode != null" >
+        qrcode = #{record.qrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.grade != null" >
+        grade = #{record.grade,jdbcType=INTEGER},
+      </if>
+      <if test="record.activityNum != null" >
+        activity_num = #{record.activityNum,jdbcType=SMALLINT},
+      </if>
+      <if test="record.peopleNum != null" >
+        people_num = #{record.peopleNum,jdbcType=SMALLINT},
+      </if>
+      <if test="record.feature != null" >
+        feature = #{record.feature,jdbcType=VARCHAR},
+      </if>
+      <if test="record.route != null" >
+        route = #{record.route,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hobby != null" >
+        hobby = #{record.hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="record.publish != null" >
+        publish = #{record.publish,jdbcType=BIT},
+      </if>
+      <if test="record.manage != null" >
+        manage = #{record.manage,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update leader
+    set id = #{record.id,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      nickname = #{record.nickname,jdbcType=VARCHAR},
+      sex = #{record.sex,jdbcType=BIT},
+      location = #{record.location,jdbcType=VARCHAR},
+      telephone = #{record.telephone,jdbcType=CHAR},
+      wechat = #{record.wechat,jdbcType=VARCHAR},
+      qrcode = #{record.qrcode,jdbcType=VARCHAR},
+      grade = #{record.grade,jdbcType=INTEGER},
+      activity_num = #{record.activityNum,jdbcType=SMALLINT},
+      people_num = #{record.peopleNum,jdbcType=SMALLINT},
+      feature = #{record.feature,jdbcType=VARCHAR},
+      route = #{record.route,jdbcType=VARCHAR},
+      hobby = #{record.hobby,jdbcType=VARCHAR},
+      publish = #{record.publish,jdbcType=BIT},
+      manage = #{record.manage,jdbcType=BIT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.yoparty.dao.Leader" >
+    update leader
+    <set >
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="nickname != null" >
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=BIT},
+      </if>
+      <if test="location != null" >
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=CHAR},
+      </if>
+      <if test="wechat != null" >
+        wechat = #{wechat,jdbcType=VARCHAR},
+      </if>
+      <if test="qrcode != null" >
+        qrcode = #{qrcode,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        grade = #{grade,jdbcType=INTEGER},
+      </if>
+      <if test="activityNum != null" >
+        activity_num = #{activityNum,jdbcType=SMALLINT},
+      </if>
+      <if test="peopleNum != null" >
+        people_num = #{peopleNum,jdbcType=SMALLINT},
+      </if>
+      <if test="feature != null" >
+        feature = #{feature,jdbcType=VARCHAR},
+      </if>
+      <if test="route != null" >
+        route = #{route,jdbcType=VARCHAR},
+      </if>
+      <if test="hobby != null" >
+        hobby = #{hobby,jdbcType=VARCHAR},
+      </if>
+      <if test="publish != null" >
+        publish = #{publish,jdbcType=BIT},
+      </if>
+      <if test="manage != null" >
+        manage = #{manage,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.yoparty.dao.Leader" >
+    update leader
+    set user_id = #{userId,jdbcType=INTEGER},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=BIT},
+      location = #{location,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=CHAR},
+      wechat = #{wechat,jdbcType=VARCHAR},
+      qrcode = #{qrcode,jdbcType=VARCHAR},
+      grade = #{grade,jdbcType=INTEGER},
+      activity_num = #{activityNum,jdbcType=SMALLINT},
+      people_num = #{peopleNum,jdbcType=SMALLINT},
+      feature = #{feature,jdbcType=VARCHAR},
+      route = #{route,jdbcType=VARCHAR},
+      hobby = #{hobby,jdbcType=VARCHAR},
+      publish = #{publish,jdbcType=BIT},
+      manage = #{manage,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

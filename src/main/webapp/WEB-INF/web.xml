@@ -18,6 +18,14 @@
     </context-param>
 
     <!--<filter>-->
+        <!--<filter-name>springSecurityFilterChain</filter-name>-->
+        <!--<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>springSecurityFilterChain</filter-name>-->
+        <!--<url-pattern>/*</url-pattern>-->
+    <!--</filter-mapping>-->
+    <!--<filter>-->
         <!--<filter-name>characterEncodingFilter</filter-name>-->
         <!--<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>-->
         <!--<init-param id="filter_parameter">-->
@@ -39,17 +47,17 @@
     </listener>
 
     <servlet>
-        <servlet-name>springMVC-servlet</servlet-name>
+        <servlet-name>SpringMVC</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <!--<jsp-file></jsp-file>-->
-        <init-param>
-            <param-name>servletConfigLocation</param-name>
-            <param-value>/WEB-INF/SpringMVC-servlet.xml</param-value>
-        </init-param>
+        <!--<init-param>-->
+            <!--<param-name>servletConfigLocation</param-name>-->
+            <!--<param-value>/WEB-INF/SpringMVC-security.xml</param-value>-->
+        <!--</init-param>-->
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>springMVC-servlet</servlet-name>
+        <servlet-name>SpringMVC</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 

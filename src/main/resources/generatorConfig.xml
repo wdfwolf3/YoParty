@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+    <!-- !!!! Driver Class Path !!!! -->
+    <classPathEntry location="D:\\homework\\YouPai\\WebContent\\WEB-INF\\lib\\mysql-connector-java-5.1.40-bin.jar"/>
+
+    <context id="context" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!-- !!!! Database Configurations !!!! -->
+        <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/yoparty"
+                        driverClass="com.mysql.jdbc.Driver"
+                        password="1234"
+                        userId="root" />
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- !!!! Model Configurations !!!! -->
+        <javaModelGenerator targetPackage="com.yoparty.dao" targetProject="YoParty/src/main/">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- !!!! Mapper XML Configurations !!!! -->
+        <sqlMapGenerator targetPackage="com.yoparty.xml" targetProject="YoParty/src/main/">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- !!!! Mapper Interface Configurations !!!! -->
+        <javaClientGenerator targetPackage="com.yoparty.mapper" targetProject="YoParty/src/main/" type="XMLMAPPER">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+        <!-- !!!! Table Configurations !!!! -->
+        <table tableName="activity">
+        </table>
+        <table tableName="user">
+        </table>
+        <table tableName="leader">
+        </table>
+        <table tableName="user_partner">
+        </table>
+        <table tableName="fullcut">
+        </table>
+        <table tableName="leader_activity">
+        </table>
+        <table tableName="partner">
+        </table>
+        <table tableName="signup">
+        </table>
+    </context>
+</generatorConfiguration>

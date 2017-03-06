@@ -14,16 +14,8 @@ import java.io.IOException;
 public class RegisterController {
     private static ApplicationContext cxt;
 
-//	@RequestMapping(value = "/register", method = RequestMethod.GET)
-//    public String registerGet(){
-//	    return "register";
-//    }
-
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String registerError(@RequestParam(value = "error", required = false) Integer error) throws IOException {
-/*		ImageCode imageCode = new ImageCode();
-        String code = imageCode.generateImage();              //code 图片验证码数字
-*/
         if (null != error) {
             System.out.println(error);
             return "register_" + error;
