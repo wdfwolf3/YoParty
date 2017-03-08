@@ -44,7 +44,7 @@ public class RegisterController {
 //	public String registerPost(HttpServletRequest req, HttpServletResponse resp) {
 //		//利用Spring生成UserService对象,通过mybatis和mysql交互
 //		cxt = new ClassPathXmlApplicationContext("application.xml");
-//	    UserService userService = (UserService) cxt.getBean("userService");
+//	    UserServiceImpl userService = (UserServiceImpl) cxt.getBean("userService");
 //	    UserExample userExample = new UserExample();
 //	    Criteria criteria = userExample.createCriteria();
 //
