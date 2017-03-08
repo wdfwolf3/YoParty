@@ -3,12 +3,12 @@
         "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-    <icon>
-        <small-icon>/WEB-INF/images/timg.jpg</small-icon>
-        <large-icon>/WEB-INF/images/timg.jpg</large-icon>
-    </icon>
-    <display-name>Webapp name</display-name>
-    <description>description</description>
+    <!--<icon>-->
+        <!--<small-icon>/WEB-INF/images/timg.jpg</small-icon>-->
+        <!--<large-icon>/WEB-INF/images/timg.jpg</large-icon>-->
+    <!--</icon>-->
+    <!--<display-name>Webapp name</display-name>-->
+    <!--<description>description</description>-->
 
     <!--上下文参数：声明应用范围内的初始化参数。在servlet里面可以通过getServletContext().getInitParameter("context/param")得到。-->
     <context-param>
@@ -17,6 +17,7 @@
         <description>description</description>
     </context-param>
 
+    <!--&lt;!&ndash;声明spring security&ndash;&gt;-->
     <!--<filter>-->
         <!--<filter-name>springSecurityFilterChain</filter-name>-->
         <!--<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
@@ -25,6 +26,7 @@
         <!--<filter-name>springSecurityFilterChain</filter-name>-->
         <!--<url-pattern>/*</url-pattern>-->
     <!--</filter-mapping>-->
+
     <!--<filter>-->
         <!--<filter-name>characterEncodingFilter</filter-name>-->
         <!--<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>-->

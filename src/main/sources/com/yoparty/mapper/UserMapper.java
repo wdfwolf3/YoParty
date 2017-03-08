@@ -2,8 +2,9 @@ package com.yoparty.mapper;
 
 import com.yoparty.dao.User;
 import com.yoparty.dao.UserExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface UserMapper {
     int countByExample(UserExample example);
