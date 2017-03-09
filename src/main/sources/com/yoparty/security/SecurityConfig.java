@@ -1,10 +1,12 @@
 package com.yoparty.security;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 /**
  * Created by wdfwolf3 on 2017/3/6.
@@ -12,7 +14,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
-    private String SelectSql = "select name,password,enable from user where name=";
+    @Bean
+    protected UserDetailsService userDetailsService(){
+        return new UserSecurityService();
+    }
 
     /**
      * 1.对特定的请求拦截,其余请求全部允许，Match支持Ant通配符"/**",regexMatchers("")支持正则
@@ -34,14 +39,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
      * @param httpSecurity
      * @throws Exception
      */
+
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception{
-        httpSecurity.formLogin()
+        httpSecurity.formLogin().loginPage("/login/security").loginProcessingUrl("/lo").successHandler(new UrlAuthenticationSuccessHandler())
                 .and()
                 .authorizeRequests()
-                .antMatchers("/login").hasAuthority("ROLE_USER")
-                .antMatchers("/register").authenticated()
+//                .antMatchers("/login").authenticated()
+                .antMatchers("/home/**").hasAuthority("ROLE_USER")
+                .antMatchers("/data/**").authenticated()
                 .anyRequest().permitAll()
+                .and()
+                .logout().logoutSuccessUrl("/")
                 .and()
                 .csrf().disable();
     }
@@ -54,6 +63,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 //        auth.jdbcAuthentication().dataSource(dataSource).usersByUsernameQuery("")
 //                .authoritiesByUsernameQuery("")
 //                .passwordEncoder(new StandardPasswordEncoder(""));
-        auth.userDetailsService(new UserSecurityService());
+        auth.userDetailsService(userDetailsService());
     }
 }
