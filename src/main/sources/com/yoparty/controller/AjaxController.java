@@ -21,7 +21,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("hello")
-public class HelloController {
+public class AjaxController {
     @RequestMapping(value = "hello")
     public String jaaj(){
         return "ajax";

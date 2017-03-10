@@ -42,15 +42,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception{
-        httpSecurity.formLogin().loginPage("/login/security").loginProcessingUrl("/lo").successHandler(new UrlAuthenticationSuccessHandler())
+        httpSecurity.formLogin().loginPage("/yoparty/login").loginProcessingUrl("/validate").successHandler(new UrlAuthenticationSuccessHandler())
                 .and()
                 .authorizeRequests()
-//                .antMatchers("/login").authenticated()
+                .antMatchers("/login").authenticated()
                 .antMatchers("/home/**").hasAuthority("ROLE_USER")
                 .antMatchers("/data/**").authenticated()
                 .anyRequest().permitAll()
                 .and()
                 .logout().logoutSuccessUrl("/")
+                .and()
+                .rememberMe()
+                .tokenValiditySeconds(2419200)
+                .key("YoPartyKey")
                 .and()
                 .csrf().disable();
     }
@@ -63,6 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 //        auth.jdbcAuthentication().dataSource(dataSource).usersByUsernameQuery("")
 //                .authoritiesByUsernameQuery("")
 //                .passwordEncoder(new StandardPasswordEncoder(""));
+        //This is config-file.When we use UserSecurityService,it must be announced as bean.
         auth.userDetailsService(userDetailsService());
     }
 }

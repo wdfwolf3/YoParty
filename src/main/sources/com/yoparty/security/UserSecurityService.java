@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * customized validate function
+ *
  * Created by wdfwolf3 on 2017/3/6.
  */
 @Service
@@ -21,13 +23,17 @@ public class UserSecurityService implements UserDetailsService {
     @Autowired
     private UserMapper userMapper;
 
+//    @Autowired
+//    private RoleMapper roleMapper;
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException{
-//        cxt = new ClassPathXmlApplicationContext("classpath*:/WEB-INF/application.xml");
-//        cxt = new FileSystemXmlApplicationContext("src/main/webapp/WEB-INF/application");
+        User user = userMapper.selectByName(username);
         List<GrantedAuthority> authsList = new ArrayList<GrantedAuthority>();
         authsList.add(new SimpleGrantedAuthority("ROLE_"));
-        User user = userMapper.selectByName(username);
+//        for(Role role : user.getRoles()){
+//            authsList.add(new SimpleGrantedAuthority((role.getName())));
+//        }
         if(user!=null){
             return new org.springframework.security.core.userdetails.User(user.getName(),user.getPassword(),authsList);
         }else{

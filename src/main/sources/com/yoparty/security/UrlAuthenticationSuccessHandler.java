@@ -1,8 +1,6 @@
 package com.yoparty.security;
 
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.savedrequest.DefaultSavedRequest;
 import org.springframework.stereotype.Component;
@@ -12,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
+ * handler function after Authentication-Success
+ *
  * Created by wdfwolf3 on 2017/3/9.
  */
 @Component
@@ -22,11 +22,14 @@ public class UrlAuthenticationSuccessHandler implements AuthenticationSuccessHan
                                       Authentication authentication) throws IOException {
         Object savedRequestObject = request.getSession().getAttribute("SPRING_SECURITY_SAVED_REQUEST");
         if(savedRequestObject!=null){
+            //get the url before register
             String url = ((DefaultSavedRequest) savedRequestObject).getServletPath();
-            User authUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            System.out.println(url);
-            System.out.println(authUser.getUsername()+authUser.getAuthorities());
-//            response.sendRedirect(url);
+            //redirect to the page we want before register
+            if("/login".equals(url)){
+                response.sendRedirect("/");
+            }else{
+                response.sendRedirect(url);
+            }
         }else{
             response.sendRedirect("/");
         }
