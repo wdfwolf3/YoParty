@@ -1,7 +1,7 @@
 package com.yoparty.service;
 
-import com.yoparty.dao.User;
-import com.yoparty.dao.UserExample;
+import com.yoparty.bean.User;
+import com.yoparty.bean.UserExample;
 import com.yoparty.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

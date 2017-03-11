@@ -1,4 +1,4 @@
-package com.yoparty.dao;
+package com.yoparty.bean;
 
 public class Partner {
     private Integer id;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yoparty.mapper.LeaderActivityMapper" >
-  <resultMap id="BaseResultMap" type="com.yoparty.dao.LeaderActivity" >
+  <resultMap id="BaseResultMap" type="com.yoparty.bean.LeaderActivity" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="leader_id" property="leaderId" jdbcType="INTEGER" />
     <result column="activity_id" property="activityId" jdbcType="INTEGER" />
@@ -68,7 +68,7 @@
   <sql id="Base_Column_List" >
     id, leader_id, activity_id, isMasterLeader
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.dao.LeaderActivityExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.bean.LeaderActivityExample" >
     select
     <if test="distinct" >
       distinct
@@ -92,19 +92,19 @@
     delete from leader_activity
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yoparty.dao.LeaderActivityExample" >
+  <delete id="deleteByExample" parameterType="com.yoparty.bean.LeaderActivityExample" >
     delete from leader_activity
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yoparty.dao.LeaderActivity" >
+  <insert id="insert" parameterType="com.yoparty.bean.LeaderActivity" >
     insert into leader_activity (id, leader_id, activity_id, 
       isMasterLeader)
     values (#{id,jdbcType=INTEGER}, #{leaderId,jdbcType=INTEGER}, #{activityId,jdbcType=INTEGER}, 
       #{ismasterleader,jdbcType=BIT})
   </insert>
-  <insert id="insertSelective" parameterType="com.yoparty.dao.LeaderActivity" >
+  <insert id="insertSelective" parameterType="com.yoparty.bean.LeaderActivity" >
     insert into leader_activity
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -135,7 +135,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yoparty.dao.LeaderActivityExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.yoparty.bean.LeaderActivityExample" resultType="java.lang.Integer" >
     select count(*) from leader_activity
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -171,7 +171,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yoparty.dao.LeaderActivity" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.yoparty.bean.LeaderActivity" >
     update leader_activity
     <set >
       <if test="leaderId != null" >
@@ -186,7 +186,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yoparty.dao.LeaderActivity" >
+  <update id="updateByPrimaryKey" parameterType="com.yoparty.bean.LeaderActivity" >
     update leader_activity
     set leader_id = #{leaderId,jdbcType=INTEGER},
       activity_id = #{activityId,jdbcType=INTEGER},

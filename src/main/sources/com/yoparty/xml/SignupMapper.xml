@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yoparty.mapper.SignupMapper" >
-  <resultMap id="BaseResultMap" type="com.yoparty.dao.Signup" >
+  <resultMap id="BaseResultMap" type="com.yoparty.bean.Signup" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="activity_id" property="activityId" jdbcType="INTEGER" />
     <result column="is_user" property="isUser" jdbcType="BIT" />
@@ -11,7 +11,7 @@
     <result column="statue" property="statue" jdbcType="TINYINT" />
     <result column="insurance" property="insurance" jdbcType="BIT" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.yoparty.dao.Signup" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.yoparty.bean.Signup" extends="BaseResultMap" >
     <result column="message" property="message" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -78,7 +78,7 @@
   <sql id="Blob_Column_List" >
     message
   </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.yoparty.dao.SignupExample" >
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.yoparty.bean.SignupExample" >
     select
     <if test="distinct" >
       distinct
@@ -94,7 +94,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.dao.SignupExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.bean.SignupExample" >
     select
     <if test="distinct" >
       distinct
@@ -120,13 +120,13 @@
     delete from signup
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yoparty.dao.SignupExample" >
+  <delete id="deleteByExample" parameterType="com.yoparty.bean.SignupExample" >
     delete from signup
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yoparty.dao.Signup" >
+  <insert id="insert" parameterType="com.yoparty.bean.Signup" >
     insert into signup (id, activity_id, is_user, 
       user_id, partner_id, location, 
       statue, insurance, message
@@ -136,7 +136,7 @@
       #{statue,jdbcType=TINYINT}, #{insurance,jdbcType=BIT}, #{message,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yoparty.dao.Signup" >
+  <insert id="insertSelective" parameterType="com.yoparty.bean.Signup" >
     insert into signup
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -197,7 +197,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yoparty.dao.SignupExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.yoparty.bean.SignupExample" resultType="java.lang.Integer" >
     select count(*) from signup
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -267,7 +267,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yoparty.dao.Signup" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.yoparty.bean.Signup" >
     update signup
     <set >
       <if test="activityId != null" >
@@ -297,7 +297,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yoparty.dao.Signup" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yoparty.bean.Signup" >
     update signup
     set activity_id = #{activityId,jdbcType=INTEGER},
       is_user = #{isUser,jdbcType=BIT},
@@ -309,7 +309,7 @@
       message = #{message,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yoparty.dao.Signup" >
+  <update id="updateByPrimaryKey" parameterType="com.yoparty.bean.Signup" >
     update signup
     set activity_id = #{activityId,jdbcType=INTEGER},
       is_user = #{isUser,jdbcType=BIT},

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yoparty.mapper.UserMapper" >
-  <resultMap id="BaseResultMap" type="com.yoparty.dao.User" >
+  <resultMap id="BaseResultMap" type="com.yoparty.bean.User" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
@@ -80,7 +80,7 @@
     id, name, password, phone, realname, petname, birthday, sex, location_pro, location_city, 
     hometown_pro, hometown_city, email, avatar, authority
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.dao.UserExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.bean.UserExample" >
     select
     <if test="distinct" >
       distinct
@@ -104,13 +104,13 @@
     delete from user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yoparty.dao.UserExample" >
+  <delete id="deleteByExample" parameterType="com.yoparty.bean.UserExample" >
     delete from user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yoparty.dao.User" >
+  <insert id="insert" parameterType="com.yoparty.bean.User" >
     insert into user (id, name, password, 
       phone, realname, petname, 
       birthday, sex, location_pro, 
@@ -124,7 +124,7 @@
       #{email,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, #{authority,jdbcType=TINYINT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yoparty.dao.User" >
+  <insert id="insertSelective" parameterType="com.yoparty.bean.User" >
     insert into user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -221,7 +221,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yoparty.dao.UserExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.yoparty.bean.UserExample" resultType="java.lang.Integer" >
     select count(*) from user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -301,7 +301,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yoparty.dao.User" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.yoparty.bean.User" >
     update user
     <set >
       <if test="name != null" >
@@ -349,7 +349,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yoparty.dao.User" >
+  <update id="updateByPrimaryKey" parameterType="com.yoparty.bean.User" >
     update user
     set name = #{name,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},

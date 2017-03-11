@@ -1,7 +1,7 @@
 package com.yoparty.mapper;
 
-import com.yoparty.dao.Leader;
-import com.yoparty.dao.LeaderExample;
+import com.yoparty.bean.Leader;
+import com.yoparty.bean.LeaderExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

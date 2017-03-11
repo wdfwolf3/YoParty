@@ -1,4 +1,4 @@
-package com.yoparty.dao;
+package com.yoparty.bean;
 
 import java.util.ArrayList;
 import java.util.List;

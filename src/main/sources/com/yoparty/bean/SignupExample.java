@@ -1,16 +1,16 @@
-package com.yoparty.dao;
+package com.yoparty.bean;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserPartnerExample {
+public class SignupExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public UserPartnerExample() {
+    public SignupExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -164,6 +164,126 @@ public class UserPartnerExample {
             return (Criteria) this;
         }
 
+        public Criteria andActivityIdIsNull() {
+            addCriterion("activity_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andActivityIdIsNotNull() {
+            addCriterion("activity_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andActivityIdEqualTo(Integer value) {
+            addCriterion("activity_id =", value, "activityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andActivityIdNotEqualTo(Integer value) {
+            addCriterion("activity_id <>", value, "activityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andActivityIdGreaterThan(Integer value) {
+            addCriterion("activity_id >", value, "activityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andActivityIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("activity_id >=", value, "activityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andActivityIdLessThan(Integer value) {
+            addCriterion("activity_id <", value, "activityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andActivityIdLessThanOrEqualTo(Integer value) {
+            addCriterion("activity_id <=", value, "activityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andActivityIdIn(List<Integer> values) {
+            addCriterion("activity_id in", values, "activityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andActivityIdNotIn(List<Integer> values) {
+            addCriterion("activity_id not in", values, "activityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andActivityIdBetween(Integer value1, Integer value2) {
+            addCriterion("activity_id between", value1, value2, "activityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andActivityIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("activity_id not between", value1, value2, "activityId");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsUserIsNull() {
+            addCriterion("is_user is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsUserIsNotNull() {
+            addCriterion("is_user is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsUserEqualTo(Boolean value) {
+            addCriterion("is_user =", value, "isUser");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsUserNotEqualTo(Boolean value) {
+            addCriterion("is_user <>", value, "isUser");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsUserGreaterThan(Boolean value) {
+            addCriterion("is_user >", value, "isUser");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsUserGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("is_user >=", value, "isUser");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsUserLessThan(Boolean value) {
+            addCriterion("is_user <", value, "isUser");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsUserLessThanOrEqualTo(Boolean value) {
+            addCriterion("is_user <=", value, "isUser");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsUserIn(List<Boolean> values) {
+            addCriterion("is_user in", values, "isUser");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsUserNotIn(List<Boolean> values) {
+            addCriterion("is_user not in", values, "isUser");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsUserBetween(Boolean value1, Boolean value2) {
+            addCriterion("is_user between", value1, value2, "isUser");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsUserNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("is_user not between", value1, value2, "isUser");
+            return (Criteria) this;
+        }
+
         public Criteria andUserIdIsNull() {
             addCriterion("user_id is null");
             return (Criteria) this;
@@ -281,6 +401,196 @@ public class UserPartnerExample {
 
         public Criteria andPartnerIdNotBetween(Integer value1, Integer value2) {
             addCriterion("partner_id not between", value1, value2, "partnerId");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationIsNull() {
+            addCriterion("location is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationIsNotNull() {
+            addCriterion("location is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationEqualTo(String value) {
+            addCriterion("location =", value, "location");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationNotEqualTo(String value) {
+            addCriterion("location <>", value, "location");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationGreaterThan(String value) {
+            addCriterion("location >", value, "location");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationGreaterThanOrEqualTo(String value) {
+            addCriterion("location >=", value, "location");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationLessThan(String value) {
+            addCriterion("location <", value, "location");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationLessThanOrEqualTo(String value) {
+            addCriterion("location <=", value, "location");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationLike(String value) {
+            addCriterion("location like", value, "location");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationNotLike(String value) {
+            addCriterion("location not like", value, "location");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationIn(List<String> values) {
+            addCriterion("location in", values, "location");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationNotIn(List<String> values) {
+            addCriterion("location not in", values, "location");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationBetween(String value1, String value2) {
+            addCriterion("location between", value1, value2, "location");
+            return (Criteria) this;
+        }
+
+        public Criteria andLocationNotBetween(String value1, String value2) {
+            addCriterion("location not between", value1, value2, "location");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatueIsNull() {
+            addCriterion("statue is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatueIsNotNull() {
+            addCriterion("statue is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatueEqualTo(Byte value) {
+            addCriterion("statue =", value, "statue");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatueNotEqualTo(Byte value) {
+            addCriterion("statue <>", value, "statue");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatueGreaterThan(Byte value) {
+            addCriterion("statue >", value, "statue");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatueGreaterThanOrEqualTo(Byte value) {
+            addCriterion("statue >=", value, "statue");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatueLessThan(Byte value) {
+            addCriterion("statue <", value, "statue");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatueLessThanOrEqualTo(Byte value) {
+            addCriterion("statue <=", value, "statue");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatueIn(List<Byte> values) {
+            addCriterion("statue in", values, "statue");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatueNotIn(List<Byte> values) {
+            addCriterion("statue not in", values, "statue");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatueBetween(Byte value1, Byte value2) {
+            addCriterion("statue between", value1, value2, "statue");
+            return (Criteria) this;
+        }
+
+        public Criteria andStatueNotBetween(Byte value1, Byte value2) {
+            addCriterion("statue not between", value1, value2, "statue");
+            return (Criteria) this;
+        }
+
+        public Criteria andInsuranceIsNull() {
+            addCriterion("insurance is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInsuranceIsNotNull() {
+            addCriterion("insurance is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andInsuranceEqualTo(Boolean value) {
+            addCriterion("insurance =", value, "insurance");
+            return (Criteria) this;
+        }
+
+        public Criteria andInsuranceNotEqualTo(Boolean value) {
+            addCriterion("insurance <>", value, "insurance");
+            return (Criteria) this;
+        }
+
+        public Criteria andInsuranceGreaterThan(Boolean value) {
+            addCriterion("insurance >", value, "insurance");
+            return (Criteria) this;
+        }
+
+        public Criteria andInsuranceGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("insurance >=", value, "insurance");
+            return (Criteria) this;
+        }
+
+        public Criteria andInsuranceLessThan(Boolean value) {
+            addCriterion("insurance <", value, "insurance");
+            return (Criteria) this;
+        }
+
+        public Criteria andInsuranceLessThanOrEqualTo(Boolean value) {
+            addCriterion("insurance <=", value, "insurance");
+            return (Criteria) this;
+        }
+
+        public Criteria andInsuranceIn(List<Boolean> values) {
+            addCriterion("insurance in", values, "insurance");
+            return (Criteria) this;
+        }
+
+        public Criteria andInsuranceNotIn(List<Boolean> values) {
+            addCriterion("insurance not in", values, "insurance");
+            return (Criteria) this;
+        }
+
+        public Criteria andInsuranceBetween(Boolean value1, Boolean value2) {
+            addCriterion("insurance between", value1, value2, "insurance");
+            return (Criteria) this;
+        }
+
+        public Criteria andInsuranceNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("insurance not between", value1, value2, "insurance");
             return (Criteria) this;
         }
     }

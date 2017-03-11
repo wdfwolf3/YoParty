@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--suppress ALL -->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
@@ -37,5 +38,24 @@
     <!--<property name="sqlSessionFactory" ref="sqlSessionFactory" />-->
     <!--</bean>-->
 
+    <bean id="freemarkerConfig"
+          class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/WEB-INF/ftl/" />
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="template_update_delay">0</prop><!--刷新模板的周期，单位为秒 -->
+                <prop key="default_encoding">UTF-8</prop><!--模板的编码格式 -->
+                <prop key="locale">UTF-8</prop><!-- 本地化设置 -->
+                <prop key="number_format">0.##########</prop>
+                <prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
+                <prop key="boolean_format">true,false</prop>
+                <prop key="whitespace_stripping">true</prop>
+                <prop key="tag_syntax">auto_detect</prop>
+                <prop key="url_escaping_charset">UTF-8</prop>
+                <prop key="classic_compatible">true</prop>
+                <prop key="template_exception_handler">ignore</prop>
+            </props>
+        </property>
+    </bean>
 </beans>
   	

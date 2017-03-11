@@ -1,7 +1,7 @@
 package com.yoparty.mapper;
 
-import com.yoparty.dao.Signup;
-import com.yoparty.dao.SignupExample;
+import com.yoparty.bean.Signup;
+import com.yoparty.bean.SignupExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

@@ -1,10 +1,8 @@
 package com.yoparty.controller;
 
-import com.yoparty.dao.Activity;
-import com.yoparty.dao.Signup;
-import com.yoparty.dao.SignupExample;
-import com.yoparty.dao.User;
-import com.yoparty.mapper.ActivityMapper;
+import com.yoparty.bean.Signup;
+import com.yoparty.bean.SignupExample;
+import com.yoparty.bean.User;
 import com.yoparty.mapper.SignupMapper;
 import com.yoparty.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
 import java.util.List;

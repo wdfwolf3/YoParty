@@ -1,7 +1,7 @@
 package com.yoparty.mapper;
 
-import com.yoparty.dao.Fullcut;
-import com.yoparty.dao.FullcutExample;
+import com.yoparty.bean.Fullcut;
+import com.yoparty.bean.FullcutExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

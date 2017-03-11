@@ -1,8 +1,8 @@
 package com.yoparty.mapper;
 
-import com.yoparty.dao.Activity;
-import com.yoparty.dao.ActivityExample;
-import com.yoparty.dao.ActivityWithBLOBs;
+import com.yoparty.bean.Activity;
+import com.yoparty.bean.ActivityExample;
+import com.yoparty.bean.ActivityWithBLOBs;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

@@ -1,7 +1,7 @@
 package com.yoparty.mapper;
 
-import com.yoparty.dao.UserPartner;
-import com.yoparty.dao.UserPartnerExample;
+import com.yoparty.bean.UserPartner;
+import com.yoparty.bean.UserPartnerExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

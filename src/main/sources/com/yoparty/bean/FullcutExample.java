@@ -1,16 +1,16 @@
-package com.yoparty.dao;
+package com.yoparty.bean;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class LeaderActivityExample {
+public class FullcutExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public LeaderActivityExample() {
+    public FullcutExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -164,183 +164,243 @@ public class LeaderActivityExample {
             return (Criteria) this;
         }
 
-        public Criteria andLeaderIdIsNull() {
-            addCriterion("leader_id is null");
+        public Criteria andUserIdIsNull() {
+            addCriterion("user_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andLeaderIdIsNotNull() {
-            addCriterion("leader_id is not null");
+        public Criteria andUserIdIsNotNull() {
+            addCriterion("user_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLeaderIdEqualTo(Integer value) {
-            addCriterion("leader_id =", value, "leaderId");
+        public Criteria andUserIdEqualTo(Integer value) {
+            addCriterion("user_id =", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andLeaderIdNotEqualTo(Integer value) {
-            addCriterion("leader_id <>", value, "leaderId");
+        public Criteria andUserIdNotEqualTo(Integer value) {
+            addCriterion("user_id <>", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andLeaderIdGreaterThan(Integer value) {
-            addCriterion("leader_id >", value, "leaderId");
+        public Criteria andUserIdGreaterThan(Integer value) {
+            addCriterion("user_id >", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andLeaderIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("leader_id >=", value, "leaderId");
+        public Criteria andUserIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("user_id >=", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andLeaderIdLessThan(Integer value) {
-            addCriterion("leader_id <", value, "leaderId");
+        public Criteria andUserIdLessThan(Integer value) {
+            addCriterion("user_id <", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andLeaderIdLessThanOrEqualTo(Integer value) {
-            addCriterion("leader_id <=", value, "leaderId");
+        public Criteria andUserIdLessThanOrEqualTo(Integer value) {
+            addCriterion("user_id <=", value, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andLeaderIdIn(List<Integer> values) {
-            addCriterion("leader_id in", values, "leaderId");
+        public Criteria andUserIdIn(List<Integer> values) {
+            addCriterion("user_id in", values, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andLeaderIdNotIn(List<Integer> values) {
-            addCriterion("leader_id not in", values, "leaderId");
+        public Criteria andUserIdNotIn(List<Integer> values) {
+            addCriterion("user_id not in", values, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andLeaderIdBetween(Integer value1, Integer value2) {
-            addCriterion("leader_id between", value1, value2, "leaderId");
+        public Criteria andUserIdBetween(Integer value1, Integer value2) {
+            addCriterion("user_id between", value1, value2, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andLeaderIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("leader_id not between", value1, value2, "leaderId");
+        public Criteria andUserIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("user_id not between", value1, value2, "userId");
             return (Criteria) this;
         }
 
-        public Criteria andActivityIdIsNull() {
-            addCriterion("activity_id is null");
+        public Criteria andType1IsNull() {
+            addCriterion("type1 is null");
             return (Criteria) this;
         }
 
-        public Criteria andActivityIdIsNotNull() {
-            addCriterion("activity_id is not null");
+        public Criteria andType1IsNotNull() {
+            addCriterion("type1 is not null");
             return (Criteria) this;
         }
 
-        public Criteria andActivityIdEqualTo(Integer value) {
-            addCriterion("activity_id =", value, "activityId");
+        public Criteria andType1EqualTo(Byte value) {
+            addCriterion("type1 =", value, "type1");
             return (Criteria) this;
         }
 
-        public Criteria andActivityIdNotEqualTo(Integer value) {
-            addCriterion("activity_id <>", value, "activityId");
+        public Criteria andType1NotEqualTo(Byte value) {
+            addCriterion("type1 <>", value, "type1");
             return (Criteria) this;
         }
 
-        public Criteria andActivityIdGreaterThan(Integer value) {
-            addCriterion("activity_id >", value, "activityId");
+        public Criteria andType1GreaterThan(Byte value) {
+            addCriterion("type1 >", value, "type1");
             return (Criteria) this;
         }
 
-        public Criteria andActivityIdGreaterThanOrEqualTo(Integer value) {
-            addCriterion("activity_id >=", value, "activityId");
+        public Criteria andType1GreaterThanOrEqualTo(Byte value) {
+            addCriterion("type1 >=", value, "type1");
             return (Criteria) this;
         }
 
-        public Criteria andActivityIdLessThan(Integer value) {
-            addCriterion("activity_id <", value, "activityId");
+        public Criteria andType1LessThan(Byte value) {
+            addCriterion("type1 <", value, "type1");
             return (Criteria) this;
         }
 
-        public Criteria andActivityIdLessThanOrEqualTo(Integer value) {
-            addCriterion("activity_id <=", value, "activityId");
+        public Criteria andType1LessThanOrEqualTo(Byte value) {
+            addCriterion("type1 <=", value, "type1");
             return (Criteria) this;
         }
 
-        public Criteria andActivityIdIn(List<Integer> values) {
-            addCriterion("activity_id in", values, "activityId");
+        public Criteria andType1In(List<Byte> values) {
+            addCriterion("type1 in", values, "type1");
             return (Criteria) this;
         }
 
-        public Criteria andActivityIdNotIn(List<Integer> values) {
-            addCriterion("activity_id not in", values, "activityId");
+        public Criteria andType1NotIn(List<Byte> values) {
+            addCriterion("type1 not in", values, "type1");
             return (Criteria) this;
         }
 
-        public Criteria andActivityIdBetween(Integer value1, Integer value2) {
-            addCriterion("activity_id between", value1, value2, "activityId");
+        public Criteria andType1Between(Byte value1, Byte value2) {
+            addCriterion("type1 between", value1, value2, "type1");
             return (Criteria) this;
         }
 
-        public Criteria andActivityIdNotBetween(Integer value1, Integer value2) {
-            addCriterion("activity_id not between", value1, value2, "activityId");
+        public Criteria andType1NotBetween(Byte value1, Byte value2) {
+            addCriterion("type1 not between", value1, value2, "type1");
             return (Criteria) this;
         }
 
-        public Criteria andIsmasterleaderIsNull() {
-            addCriterion("isMasterLeader is null");
+        public Criteria andType2IsNull() {
+            addCriterion("type2 is null");
             return (Criteria) this;
         }
 
-        public Criteria andIsmasterleaderIsNotNull() {
-            addCriterion("isMasterLeader is not null");
+        public Criteria andType2IsNotNull() {
+            addCriterion("type2 is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIsmasterleaderEqualTo(Boolean value) {
-            addCriterion("isMasterLeader =", value, "ismasterleader");
+        public Criteria andType2EqualTo(Byte value) {
+            addCriterion("type2 =", value, "type2");
             return (Criteria) this;
         }
 
-        public Criteria andIsmasterleaderNotEqualTo(Boolean value) {
-            addCriterion("isMasterLeader <>", value, "ismasterleader");
+        public Criteria andType2NotEqualTo(Byte value) {
+            addCriterion("type2 <>", value, "type2");
             return (Criteria) this;
         }
 
-        public Criteria andIsmasterleaderGreaterThan(Boolean value) {
-            addCriterion("isMasterLeader >", value, "ismasterleader");
+        public Criteria andType2GreaterThan(Byte value) {
+            addCriterion("type2 >", value, "type2");
             return (Criteria) this;
         }
 
-        public Criteria andIsmasterleaderGreaterThanOrEqualTo(Boolean value) {
-            addCriterion("isMasterLeader >=", value, "ismasterleader");
+        public Criteria andType2GreaterThanOrEqualTo(Byte value) {
+            addCriterion("type2 >=", value, "type2");
             return (Criteria) this;
         }
 
-        public Criteria andIsmasterleaderLessThan(Boolean value) {
-            addCriterion("isMasterLeader <", value, "ismasterleader");
+        public Criteria andType2LessThan(Byte value) {
+            addCriterion("type2 <", value, "type2");
             return (Criteria) this;
         }
 
-        public Criteria andIsmasterleaderLessThanOrEqualTo(Boolean value) {
-            addCriterion("isMasterLeader <=", value, "ismasterleader");
+        public Criteria andType2LessThanOrEqualTo(Byte value) {
+            addCriterion("type2 <=", value, "type2");
             return (Criteria) this;
         }
 
-        public Criteria andIsmasterleaderIn(List<Boolean> values) {
-            addCriterion("isMasterLeader in", values, "ismasterleader");
+        public Criteria andType2In(List<Byte> values) {
+            addCriterion("type2 in", values, "type2");
             return (Criteria) this;
         }
 
-        public Criteria andIsmasterleaderNotIn(List<Boolean> values) {
-            addCriterion("isMasterLeader not in", values, "ismasterleader");
+        public Criteria andType2NotIn(List<Byte> values) {
+            addCriterion("type2 not in", values, "type2");
             return (Criteria) this;
         }
 
-        public Criteria andIsmasterleaderBetween(Boolean value1, Boolean value2) {
-            addCriterion("isMasterLeader between", value1, value2, "ismasterleader");
+        public Criteria andType2Between(Byte value1, Byte value2) {
+            addCriterion("type2 between", value1, value2, "type2");
             return (Criteria) this;
         }
 
-        public Criteria andIsmasterleaderNotBetween(Boolean value1, Boolean value2) {
-            addCriterion("isMasterLeader not between", value1, value2, "ismasterleader");
+        public Criteria andType2NotBetween(Byte value1, Byte value2) {
+            addCriterion("type2 not between", value1, value2, "type2");
+            return (Criteria) this;
+        }
+
+        public Criteria andType3IsNull() {
+            addCriterion("type3 is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andType3IsNotNull() {
+            addCriterion("type3 is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andType3EqualTo(Byte value) {
+            addCriterion("type3 =", value, "type3");
+            return (Criteria) this;
+        }
+
+        public Criteria andType3NotEqualTo(Byte value) {
+            addCriterion("type3 <>", value, "type3");
+            return (Criteria) this;
+        }
+
+        public Criteria andType3GreaterThan(Byte value) {
+            addCriterion("type3 >", value, "type3");
+            return (Criteria) this;
+        }
+
+        public Criteria andType3GreaterThanOrEqualTo(Byte value) {
+            addCriterion("type3 >=", value, "type3");
+            return (Criteria) this;
+        }
+
+        public Criteria andType3LessThan(Byte value) {
+            addCriterion("type3 <", value, "type3");
+            return (Criteria) this;
+        }
+
+        public Criteria andType3LessThanOrEqualTo(Byte value) {
+            addCriterion("type3 <=", value, "type3");
+            return (Criteria) this;
+        }
+
+        public Criteria andType3In(List<Byte> values) {
+            addCriterion("type3 in", values, "type3");
+            return (Criteria) this;
+        }
+
+        public Criteria andType3NotIn(List<Byte> values) {
+            addCriterion("type3 not in", values, "type3");
+            return (Criteria) this;
+        }
+
+        public Criteria andType3Between(Byte value1, Byte value2) {
+            addCriterion("type3 between", value1, value2, "type3");
+            return (Criteria) this;
+        }
+
+        public Criteria andType3NotBetween(Byte value1, Byte value2) {
+            addCriterion("type3 not between", value1, value2, "type3");
             return (Criteria) this;
         }
     }

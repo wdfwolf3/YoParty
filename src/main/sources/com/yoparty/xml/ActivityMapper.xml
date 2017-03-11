@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yoparty.mapper.ActivityMapper" >
-  <resultMap id="BaseResultMap" type="com.yoparty.dao.Activity" >
+  <resultMap id="BaseResultMap" type="com.yoparty.bean.Activity" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="departure_date" property="departureDate" jdbcType="DATE" />
@@ -21,7 +21,7 @@
     <result column="completed" property="completed" jdbcType="BIT" />
     <result column="verify" property="verify" jdbcType="BIT" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.yoparty.dao.ActivityWithBLOBs" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.yoparty.bean.ActivityWithBLOBs" extends="BaseResultMap" >
     <result column="introduce" property="introduce" jdbcType="LONGVARCHAR" />
     <result column="trip" property="trip" jdbcType="LONGVARCHAR" />
     <result column="expenses" property="expenses" jdbcType="LONGVARCHAR" />
@@ -92,7 +92,7 @@
   <sql id="Blob_Column_List" >
     introduce, trip, expenses, attention
   </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.yoparty.dao.ActivityExample" >
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.yoparty.bean.ActivityExample" >
     select
     <if test="distinct" >
       distinct
@@ -108,7 +108,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.dao.ActivityExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.bean.ActivityExample" >
     select
     <if test="distinct" >
       distinct
@@ -134,13 +134,13 @@
     delete from activity
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yoparty.dao.ActivityExample" >
+  <delete id="deleteByExample" parameterType="com.yoparty.bean.ActivityExample" >
     delete from activity
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yoparty.dao.ActivityWithBLOBs" >
+  <insert id="insert" parameterType="com.yoparty.bean.ActivityWithBLOBs" >
     insert into activity (id, name, departure_date, 
       return_date, submit_date, leader_id, 
       type_1, type_2, type_3, 
@@ -158,7 +158,7 @@
       #{introduce,jdbcType=LONGVARCHAR}, #{trip,jdbcType=LONGVARCHAR}, #{expenses,jdbcType=LONGVARCHAR}, 
       #{attention,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yoparty.dao.ActivityWithBLOBs" >
+  <insert id="insertSelective" parameterType="com.yoparty.bean.ActivityWithBLOBs" >
     insert into activity
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -297,7 +297,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yoparty.dao.ActivityExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.yoparty.bean.ActivityExample" resultType="java.lang.Integer" >
     select count(*) from activity
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -429,7 +429,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yoparty.dao.ActivityWithBLOBs" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.yoparty.bean.ActivityWithBLOBs" >
     update activity
     <set >
       <if test="name != null" >
@@ -498,7 +498,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yoparty.dao.ActivityWithBLOBs" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yoparty.bean.ActivityWithBLOBs" >
     update activity
     set name = #{name,jdbcType=VARCHAR},
       departure_date = #{departureDate,jdbcType=DATE},
@@ -523,7 +523,7 @@
       attention = #{attention,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yoparty.dao.Activity" >
+  <update id="updateByPrimaryKey" parameterType="com.yoparty.bean.Activity" >
     update activity
     set name = #{name,jdbcType=VARCHAR},
       departure_date = #{departureDate,jdbcType=DATE},

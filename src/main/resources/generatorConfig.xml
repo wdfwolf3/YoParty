@@ -24,7 +24,7 @@
         </javaTypeResolver>
 
         <!-- !!!! Model Configurations !!!! -->
-        <javaModelGenerator targetPackage="com.yoparty.dao" targetProject="YoParty/src/main/">
+        <javaModelGenerator targetPackage="com.yoparty.bean" targetProject="YoParty/src/main/">
             <property name="enableSubPackages" value="false"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
