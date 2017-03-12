@@ -1,8 +1,10 @@
 package com.yoparty.controller;
 
+import com.yoparty.bean.Activity;
 import com.yoparty.bean.Signup;
 import com.yoparty.bean.SignupExample;
 import com.yoparty.bean.User;
+import com.yoparty.mapper.ActivityMapper;
 import com.yoparty.mapper.SignupMapper;
 import com.yoparty.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,9 @@ public class HomeController {
     @Autowired
     private SignupMapper signupMapper;
 
+    @Autowired
+    private ActivityMapper activityMapper;
+
     @RequestMapping(value = "/{name}", method = RequestMethod.GET)
     public String personalPage(@PathVariable("name") String name, Model model) {
         System.out.println(name);
@@ -35,26 +40,36 @@ public class HomeController {
         SignupExample signupExample = new SignupExample();
         signupExample.createCriteria().andUserIdEqualTo(user.getId());
         List<Signup> signupList = signupMapper.selectByExample(signupExample);
-        List<Signup> signupListStatue1 = new ArrayList<Signup>();
-        List<Signup> signupListStatue2 = new ArrayList<Signup>();
-        List<Signup> signupListStatue3 = new ArrayList<Signup>();
-        List<Signup> signupListStatue4 = new ArrayList<Signup>();
-        for(Signup signup : signupList){
-            if(signup.getStatue()==1){
-                signupListStatue1.add(signup);
-            }else if (signup.getStatue() == 2){
-                signupListStatue2.add(signup);
-            }else if (signup.getStatue() == 3){
-                signupListStatue3.add(signup);
-            }else{
-                signupListStatue4.add(signup);
-            }
+        List<Activity> activityList = new ArrayList<Activity>();
+        for (Signup signup : signupList){
+            activityList.add(activityMapper.selectByPrimaryKey(signup.getActivityId()));
         }
         model.addAttribute("signupList", signupList);
-        model.addAttribute("signupListStatue1", signupListStatue1);
-        model.addAttribute("signupListStatue1", signupListStatue2);
-        model.addAttribute("signupListStatue1", signupListStatue3);
-        model.addAttribute("signupListStatue1", signupListStatue4);
+        model.addAttribute("activityList", activityList);
+
+        //取不同状态的活动序列
+//        signupExample.createCriteria().andUserIdEqualTo(user.getId()).andStatueEqualTo();
+
+
+//        List<Signup> signupListStatue1 = new ArrayList<Signup>();
+//        List<Signup> signupListStatue2 = new ArrayList<Signup>();
+//        List<Signup> signupListStatue3 = new ArrayList<Signup>();
+//        List<Signup> signupListStatue4 = new ArrayList<Signup>();
+//        for(Signup signup : signupList){
+//            if(signup.getStatue()==1){
+//                signupListStatue1.add(signup);
+//            }else if (signup.getStatue() == 2){
+//                signupListStatue2.add(signup);
+//            }else if (signup.getStatue() == 3){
+//                signupListStatue3.add(signup);
+//            }else{
+//                signupListStatue4.add(signup);
+//            }
+//        }
+//        model.addAttribute("signupListStatue1", signupListStatue1);
+//        model.addAttribute("signupListStatue1", signupListStatue2);
+//        model.addAttribute("signupListStatue1", signupListStatue3);
+//        model.addAttribute("signupListStatue1", signupListStatue4);
         return "home";
     }
 }

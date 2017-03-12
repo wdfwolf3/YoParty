@@ -40,21 +40,14 @@
         </javaClientGenerator>
 
         <!-- !!!! Table Configurations !!!! -->
-        <table tableName="activity">
-        </table>
-        <table tableName="user">
-        </table>
-        <table tableName="leader">
-        </table>
-        <table tableName="user_partner">
-        </table>
-        <table tableName="fullcut">
-        </table>
-        <table tableName="leader_activity">
-        </table>
-        <table tableName="partner">
-        </table>
-        <table tableName="signup">
-        </table>
+        <!--<table tableName="activity"> </table>-->
+        <!--<table tableName="user"> </table>-->
+        <!--<table tableName="leader"> </table>-->
+        <!--<table tableName="user_partner"> </table>-->
+        <!--<table tableName="fullcut"> </table>-->
+        <!--<table tableName="leader_activity"> </table>-->
+        <!--<table tableName="partner"> </table>-->
+        <!--<table tableName="signup"> </table>-->
+        <table tableName="role"> </table>
     </context>
 </generatorConfiguration>

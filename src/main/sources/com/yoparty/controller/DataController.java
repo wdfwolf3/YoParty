@@ -1,6 +1,7 @@
 package com.yoparty.controller;
 
 import com.yoparty.bean.User;
+import com.yoparty.mapper.PartnerMapper;
 import com.yoparty.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created by wdfwolf3 on 2017/3/8.
@@ -18,16 +21,42 @@ public class DataController {
     @Autowired
     private UserMapper userMapper;
 
-    @RequestMapping(value = "/{name}", method = RequestMethod.GET)
-    public String getData(@PathVariable("name") String name, Model model){
-        User user = userMapper.selectByName(name);
-        model.addAttribute("user", user);
-        return "data";
+    @Autowired
+    private PartnerMapper partnerMapper;
+
+    @RequestMapping(value = "/{name}/{type}", method = RequestMethod.GET)
+    public String getData(@PathVariable("name") String name, @PathVariable("type") String type, Model model) {
+        if ("basic".equals(type) || "security".equals(type)) {
+            User user = userMapper.selectByName(name);
+            model.addAttribute("user", user);
+            return "data";
+        } else if ("partner".equals(type)) {
+//            List<Partner> partnerList = partnerMapper.selectByUserName(name);
+//            model.addAttribute("partner", partnerList);
+            return "data";
+        }
+        //抛出404，访问页面不存在
+        return "";
     }
 
-    @RequestMapping(value = "/{name}" ,method = RequestMethod.POST)
-    public String postData(@PathVariable("name") String name){
+    @RequestMapping(value = "/{name}/{type}", method = RequestMethod.POST)
+    public String postData(@PathVariable("name") String name, @PathVariable("type") String type,
+                           HttpServletRequest httpServletRequest, Model model) {
+        if ("basic".equals(type) || "security".equals(type)) {
+            User user = userMapper.selectByName(name);
+            //update user information
 
-        return "redirect:/data/"+name;
+            model.addAttribute("user", user);
+            return "data";
+        } else if ("partner".equals(type)) {
+//            List<Partner> partnerList = ;
+//            for (Partner partner : partnerList){
+            //update user information
+            //            model.addAttribute("partner", partnerList);
+            return "data";
+        }
+        //抛出404，访问页面不存在
+        return"data";
     }
 }
+
