@@ -1081,66 +1081,6 @@ public class UserExample {
             addCriterion("avatar not between", value1, value2, "avatar");
             return (Criteria) this;
         }
-
-        public Criteria andAuthorityIsNull() {
-            addCriterion("authority is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorityIsNotNull() {
-            addCriterion("authority is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorityEqualTo(Byte value) {
-            addCriterion("authority =", value, "authority");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorityNotEqualTo(Byte value) {
-            addCriterion("authority <>", value, "authority");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorityGreaterThan(Byte value) {
-            addCriterion("authority >", value, "authority");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorityGreaterThanOrEqualTo(Byte value) {
-            addCriterion("authority >=", value, "authority");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorityLessThan(Byte value) {
-            addCriterion("authority <", value, "authority");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorityLessThanOrEqualTo(Byte value) {
-            addCriterion("authority <=", value, "authority");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorityIn(List<Byte> values) {
-            addCriterion("authority in", values, "authority");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorityNotIn(List<Byte> values) {
-            addCriterion("authority not in", values, "authority");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorityBetween(Byte value1, Byte value2) {
-            addCriterion("authority between", value1, value2, "authority");
-            return (Criteria) this;
-        }
-
-        public Criteria andAuthorityNotBetween(Byte value1, Byte value2) {
-            addCriterion("authority not between", value1, value2, "authority");
-            return (Criteria) this;
-        }
     }
 
     public static class Criteria extends GeneratedCriteria {

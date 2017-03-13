@@ -11,6 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class SignupController {
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String getSignup(){
-
+        return "";
     }
 }

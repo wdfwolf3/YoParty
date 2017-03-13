@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yoparty.mapper.PartnerMapper" >
-  <resultMap id="BaseResultMap" type="com.yoparty.bean.Partner" >
+<mapper namespace="com.yoparty.mapper.SignupUserPartnerMapper" >
+  <resultMap id="BaseResultMap" type="com.yoparty.bean.SignupUserPartner" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="real_name" property="realName" jdbcType="VARCHAR" />
-    <result column="pet_name" property="petName" jdbcType="VARCHAR" />
-    <result column="identity_type" property="identityType" jdbcType="TINYINT" />
-    <result column="identity_num" property="identityNum" jdbcType="VARCHAR" />
-    <result column="sex" property="sex" jdbcType="BIT" />
-    <result column="telephone" property="telephone" jdbcType="CHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="partner_id" property="partnerId" jdbcType="INTEGER" />
+    <result column="activity_id" property="activityId" jdbcType="INTEGER" />
+    <result column="location" property="location" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,15 +67,15 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, real_name, pet_name, identity_type, identity_num, sex, telephone
+    id, user_id, partner_id, activity_id, location
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.bean.PartnerExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.bean.SignupUserPartnerExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from partner
+    from signup_user_partner
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -88,105 +86,85 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from partner
+    from signup_user_partner
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from partner
+    delete from signup_user_partner
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yoparty.bean.PartnerExample" >
-    delete from partner
+  <delete id="deleteByExample" parameterType="com.yoparty.bean.SignupUserPartnerExample" >
+    delete from signup_user_partner
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yoparty.bean.Partner" >
-    insert into partner (id, real_name, pet_name, 
-      identity_type, identity_num, sex, 
-      telephone)
-    values (#{id,jdbcType=INTEGER}, #{realName,jdbcType=VARCHAR}, #{petName,jdbcType=VARCHAR}, 
-      #{identityType,jdbcType=TINYINT}, #{identityNum,jdbcType=VARCHAR}, #{sex,jdbcType=BIT}, 
-      #{telephone,jdbcType=CHAR})
+  <insert id="insert" parameterType="com.yoparty.bean.SignupUserPartner" >
+    insert into signup_user_partner (id, user_id, partner_id, 
+      activity_id, location)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{partnerId,jdbcType=INTEGER}, 
+      #{activityId,jdbcType=INTEGER}, #{location,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yoparty.bean.Partner" >
-    insert into partner
+  <insert id="insertSelective" parameterType="com.yoparty.bean.SignupUserPartner" >
+    insert into signup_user_partner
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
-      <if test="realName != null" >
-        real_name,
+      <if test="userId != null" >
+        user_id,
       </if>
-      <if test="petName != null" >
-        pet_name,
+      <if test="partnerId != null" >
+        partner_id,
       </if>
-      <if test="identityType != null" >
-        identity_type,
+      <if test="activityId != null" >
+        activity_id,
       </if>
-      <if test="identityNum != null" >
-        identity_num,
-      </if>
-      <if test="sex != null" >
-        sex,
-      </if>
-      <if test="telephone != null" >
-        telephone,
+      <if test="location != null" >
+        location,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="realName != null" >
-        #{realName,jdbcType=VARCHAR},
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
       </if>
-      <if test="petName != null" >
-        #{petName,jdbcType=VARCHAR},
+      <if test="partnerId != null" >
+        #{partnerId,jdbcType=INTEGER},
       </if>
-      <if test="identityType != null" >
-        #{identityType,jdbcType=TINYINT},
+      <if test="activityId != null" >
+        #{activityId,jdbcType=INTEGER},
       </if>
-      <if test="identityNum != null" >
-        #{identityNum,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null" >
-        #{sex,jdbcType=BIT},
-      </if>
-      <if test="telephone != null" >
-        #{telephone,jdbcType=CHAR},
+      <if test="location != null" >
+        #{location,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yoparty.bean.PartnerExample" resultType="java.lang.Integer" >
-    select count(*) from partner
+  <select id="countByExample" parameterType="com.yoparty.bean.SignupUserPartnerExample" resultType="java.lang.Integer" >
+    select count(*) from signup_user_partner
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update partner
+    update signup_user_partner
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.realName != null" >
-        real_name = #{record.realName,jdbcType=VARCHAR},
+      <if test="record.userId != null" >
+        user_id = #{record.userId,jdbcType=INTEGER},
       </if>
-      <if test="record.petName != null" >
-        pet_name = #{record.petName,jdbcType=VARCHAR},
+      <if test="record.partnerId != null" >
+        partner_id = #{record.partnerId,jdbcType=INTEGER},
       </if>
-      <if test="record.identityType != null" >
-        identity_type = #{record.identityType,jdbcType=TINYINT},
+      <if test="record.activityId != null" >
+        activity_id = #{record.activityId,jdbcType=INTEGER},
       </if>
-      <if test="record.identityNum != null" >
-        identity_num = #{record.identityNum,jdbcType=VARCHAR},
-      </if>
-      <if test="record.sex != null" >
-        sex = #{record.sex,jdbcType=BIT},
-      </if>
-      <if test="record.telephone != null" >
-        telephone = #{record.telephone,jdbcType=CHAR},
+      <if test="record.location != null" >
+        location = #{record.location,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -194,50 +172,40 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update partner
+    update signup_user_partner
     set id = #{record.id,jdbcType=INTEGER},
-      real_name = #{record.realName,jdbcType=VARCHAR},
-      pet_name = #{record.petName,jdbcType=VARCHAR},
-      identity_type = #{record.identityType,jdbcType=TINYINT},
-      identity_num = #{record.identityNum,jdbcType=VARCHAR},
-      sex = #{record.sex,jdbcType=BIT},
-      telephone = #{record.telephone,jdbcType=CHAR}
+      user_id = #{record.userId,jdbcType=INTEGER},
+      partner_id = #{record.partnerId,jdbcType=INTEGER},
+      activity_id = #{record.activityId,jdbcType=INTEGER},
+      location = #{record.location,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yoparty.bean.Partner" >
-    update partner
+  <update id="updateByPrimaryKeySelective" parameterType="com.yoparty.bean.SignupUserPartner" >
+    update signup_user_partner
     <set >
-      <if test="realName != null" >
-        real_name = #{realName,jdbcType=VARCHAR},
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
       </if>
-      <if test="petName != null" >
-        pet_name = #{petName,jdbcType=VARCHAR},
+      <if test="partnerId != null" >
+        partner_id = #{partnerId,jdbcType=INTEGER},
       </if>
-      <if test="identityType != null" >
-        identity_type = #{identityType,jdbcType=TINYINT},
+      <if test="activityId != null" >
+        activity_id = #{activityId,jdbcType=INTEGER},
       </if>
-      <if test="identityNum != null" >
-        identity_num = #{identityNum,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null" >
-        sex = #{sex,jdbcType=BIT},
-      </if>
-      <if test="telephone != null" >
-        telephone = #{telephone,jdbcType=CHAR},
+      <if test="location != null" >
+        location = #{location,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yoparty.bean.Partner" >
-    update partner
-    set real_name = #{realName,jdbcType=VARCHAR},
-      pet_name = #{petName,jdbcType=VARCHAR},
-      identity_type = #{identityType,jdbcType=TINYINT},
-      identity_num = #{identityNum,jdbcType=VARCHAR},
-      sex = #{sex,jdbcType=BIT},
-      telephone = #{telephone,jdbcType=CHAR}
+  <update id="updateByPrimaryKey" parameterType="com.yoparty.bean.SignupUserPartner" >
+    update signup_user_partner
+    set user_id = #{userId,jdbcType=INTEGER},
+      partner_id = #{partnerId,jdbcType=INTEGER},
+      activity_id = #{activityId,jdbcType=INTEGER},
+      location = #{location,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -39,15 +39,17 @@
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
-        <!-- !!!! Table Configurations !!!! -->
-        <!--<table tableName="activity"> </table>-->
-        <!--<table tableName="user"> </table>-->
-        <!--<table tableName="leader"> </table>-->
-        <!--<table tableName="user_partner"> </table>-->
-        <!--<table tableName="fullcut"> </table>-->
-        <!--<table tableName="leader_activity"> </table>-->
-        <!--<table tableName="partner"> </table>-->
-        <!--<table tableName="signup"> </table>-->
+         <!--!!!! Table Configurations !!!! -->
+        <table tableName="activity"> </table>
+        <table tableName="user"> </table>
+        <table tableName="leader"> </table>
+        <table tableName="user_partner"> </table>
+        <table tableName="fullcut"> </table>
+        <table tableName="leader_activity"> </table>
+        <table tableName="partner"> </table>
+        <table tableName="signup_user"> </table>
         <table tableName="role"> </table>
+        <table tableName="signup_user_partner"> </table>
+        <table tableName="template"> </table>
     </context>
 </generatorConfiguration>

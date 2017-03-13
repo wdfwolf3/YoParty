@@ -1,5 +1,12 @@
 1.个人主页展示多少条活动
-2.服务器性能（内存，硬盘，cpu）
 3.数据库参数（同上）
 2.服务器性能（内存，硬盘，cpu）
-3.数据库参数（同
+4.订单号规则下单渠道1位+支付渠道1位+业务类型1位+时间信息4位+下单时间的Unix时间戳后8位（加上随机码随机后的数字）+用户user id后4位
+5.后台相关 //
+          User selectByName(String name);<!---->
+                                           <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String">
+                                               select
+                                               <include refid="Base_Column_List"/>
+                                               from user
+                                               where name = #{name}
+                                           </select>

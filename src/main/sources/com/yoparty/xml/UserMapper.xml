@@ -16,7 +16,6 @@
     <result column="hometown_city" property="hometownCity" jdbcType="VARCHAR" />
     <result column="email" property="email" jdbcType="VARCHAR" />
     <result column="avatar" property="avatar" jdbcType="VARCHAR" />
-    <result column="authority" property="authority" jdbcType="TINYINT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -78,7 +77,7 @@
   </sql>
   <sql id="Base_Column_List" >
     id, name, password, phone, realname, petname, birthday, sex, location_pro, location_city, 
-    hometown_pro, hometown_city, email, avatar, authority
+    hometown_pro, hometown_city, email, avatar
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.bean.UserExample" >
     select
@@ -115,14 +114,12 @@
       phone, realname, petname, 
       birthday, sex, location_pro, 
       location_city, hometown_pro, hometown_city, 
-      email, avatar, authority
-      )
+      email, avatar)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{phone,jdbcType=CHAR}, #{realname,jdbcType=VARCHAR}, #{petname,jdbcType=VARCHAR}, 
       #{birthday,jdbcType=DATE}, #{sex,jdbcType=BIT}, #{locationPro,jdbcType=VARCHAR}, 
       #{locationCity,jdbcType=VARCHAR}, #{hometownPro,jdbcType=VARCHAR}, #{hometownCity,jdbcType=VARCHAR}, 
-      #{email,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, #{authority,jdbcType=TINYINT}
-      )
+      #{email,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yoparty.bean.User" >
     insert into user
@@ -169,9 +166,6 @@
       <if test="avatar != null" >
         avatar,
       </if>
-      <if test="authority != null" >
-        authority,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -215,9 +209,6 @@
       </if>
       <if test="avatar != null" >
         #{avatar,jdbcType=VARCHAR},
-      </if>
-      <if test="authority != null" >
-        #{authority,jdbcType=TINYINT},
       </if>
     </trim>
   </insert>
@@ -272,9 +263,6 @@
       <if test="record.avatar != null" >
         avatar = #{record.avatar,jdbcType=VARCHAR},
       </if>
-      <if test="record.authority != null" >
-        authority = #{record.authority,jdbcType=TINYINT},
-      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -295,8 +283,7 @@
       hometown_pro = #{record.hometownPro,jdbcType=VARCHAR},
       hometown_city = #{record.hometownCity,jdbcType=VARCHAR},
       email = #{record.email,jdbcType=VARCHAR},
-      avatar = #{record.avatar,jdbcType=VARCHAR},
-      authority = #{record.authority,jdbcType=TINYINT}
+      avatar = #{record.avatar,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -343,9 +330,6 @@
       <if test="avatar != null" >
         avatar = #{avatar,jdbcType=VARCHAR},
       </if>
-      <if test="authority != null" >
-        authority = #{authority,jdbcType=TINYINT},
-      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -363,15 +347,15 @@
       hometown_pro = #{hometownPro,jdbcType=VARCHAR},
       hometown_city = #{hometownCity,jdbcType=VARCHAR},
       email = #{email,jdbcType=VARCHAR},
-      avatar = #{avatar,jdbcType=VARCHAR},
-      authority = #{authority,jdbcType=TINYINT}
+      avatar = #{avatar,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-  <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
-    select
-    <include refid="Base_Column_List" />
-    from user
-    where name = #{name}
-  </select>
+    <!---->
+    <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+        where name = #{name}
+    </select>
 </mapper>

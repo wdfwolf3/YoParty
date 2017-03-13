@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yoparty.mapper.SignupMapper" >
-  <resultMap id="BaseResultMap" type="com.yoparty.bean.Signup" >
+<mapper namespace="com.yoparty.mapper.SignupUserMapper" >
+  <resultMap id="BaseResultMap" type="com.yoparty.bean.SignupUser" >
     <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="order_number" property="orderNumber" jdbcType="CHAR" />
+    <result column="order_data" property="orderData" jdbcType="DATE" />
     <result column="activity_id" property="activityId" jdbcType="INTEGER" />
-    <result column="is_user" property="isUser" jdbcType="BIT" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="partner_id" property="partnerId" jdbcType="INTEGER" />
     <result column="location" property="location" jdbcType="VARCHAR" />
+    <result column="signup_number" property="signupNumber" jdbcType="INTEGER" />
     <result column="statue" property="statue" jdbcType="TINYINT" />
+    <result column="pay_type" property="payType" jdbcType="TINYINT" />
+    <result column="fullcut" property="fullcut" jdbcType="TINYINT" />
     <result column="insurance" property="insurance" jdbcType="BIT" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.yoparty.bean.Signup" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="com.yoparty.bean.SignupUser" extends="BaseResultMap" >
     <result column="message" property="message" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -73,12 +76,13 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, activity_id, is_user, user_id, partner_id, location, statue, insurance
+    id, order_number, order_data, activity_id, user_id, location, signup_number, statue, 
+    pay_type, fullcut, insurance
   </sql>
   <sql id="Blob_Column_List" >
     message
   </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.yoparty.bean.SignupExample" >
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.yoparty.bean.SignupUserExample" >
     select
     <if test="distinct" >
       distinct
@@ -86,7 +90,7 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from signup
+    from signup_user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -94,13 +98,13 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.bean.SignupExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.bean.SignupUserExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from signup
+    from signup_user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -113,52 +117,63 @@
     <include refid="Base_Column_List" />
     ,
     <include refid="Blob_Column_List" />
-    from signup
+    from signup_user
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from signup
+    delete from signup_user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yoparty.bean.SignupExample" >
-    delete from signup
+  <delete id="deleteByExample" parameterType="com.yoparty.bean.SignupUserExample" >
+    delete from signup_user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.yoparty.bean.Signup" >
-    insert into signup (id, activity_id, is_user, 
-      user_id, partner_id, location, 
-      statue, insurance, message
+  <insert id="insert" parameterType="com.yoparty.bean.SignupUser" >
+    insert into signup_user (id, order_number, order_data, 
+      activity_id, user_id, location, 
+      signup_number, statue, pay_type, 
+      fullcut, insurance, message
       )
-    values (#{id,jdbcType=INTEGER}, #{activityId,jdbcType=INTEGER}, #{isUser,jdbcType=BIT}, 
-      #{userId,jdbcType=INTEGER}, #{partnerId,jdbcType=INTEGER}, #{location,jdbcType=VARCHAR}, 
-      #{statue,jdbcType=TINYINT}, #{insurance,jdbcType=BIT}, #{message,jdbcType=LONGVARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{orderNumber,jdbcType=CHAR}, #{orderData,jdbcType=DATE}, 
+      #{activityId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{location,jdbcType=VARCHAR}, 
+      #{signupNumber,jdbcType=INTEGER}, #{statue,jdbcType=TINYINT}, #{payType,jdbcType=TINYINT}, 
+      #{fullcut,jdbcType=TINYINT}, #{insurance,jdbcType=BIT}, #{message,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.yoparty.bean.Signup" >
-    insert into signup
+  <insert id="insertSelective" parameterType="com.yoparty.bean.SignupUser" >
+    insert into signup_user
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
       </if>
+      <if test="orderNumber != null" >
+        order_number,
+      </if>
+      <if test="orderData != null" >
+        order_data,
+      </if>
       <if test="activityId != null" >
         activity_id,
-      </if>
-      <if test="isUser != null" >
-        is_user,
       </if>
       <if test="userId != null" >
         user_id,
       </if>
-      <if test="partnerId != null" >
-        partner_id,
-      </if>
       <if test="location != null" >
         location,
       </if>
+      <if test="signupNumber != null" >
+        signup_number,
+      </if>
       <if test="statue != null" >
         statue,
+      </if>
+      <if test="payType != null" >
+        pay_type,
+      </if>
+      <if test="fullcut != null" >
+        fullcut,
       </if>
       <if test="insurance != null" >
         insurance,
@@ -171,23 +186,32 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
+      <if test="orderNumber != null" >
+        #{orderNumber,jdbcType=CHAR},
+      </if>
+      <if test="orderData != null" >
+        #{orderData,jdbcType=DATE},
+      </if>
       <if test="activityId != null" >
         #{activityId,jdbcType=INTEGER},
-      </if>
-      <if test="isUser != null" >
-        #{isUser,jdbcType=BIT},
       </if>
       <if test="userId != null" >
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="partnerId != null" >
-        #{partnerId,jdbcType=INTEGER},
-      </if>
       <if test="location != null" >
         #{location,jdbcType=VARCHAR},
       </if>
+      <if test="signupNumber != null" >
+        #{signupNumber,jdbcType=INTEGER},
+      </if>
       <if test="statue != null" >
         #{statue,jdbcType=TINYINT},
+      </if>
+      <if test="payType != null" >
+        #{payType,jdbcType=TINYINT},
+      </if>
+      <if test="fullcut != null" >
+        #{fullcut,jdbcType=TINYINT},
       </if>
       <if test="insurance != null" >
         #{insurance,jdbcType=BIT},
@@ -197,35 +221,44 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.yoparty.bean.SignupExample" resultType="java.lang.Integer" >
-    select count(*) from signup
+  <select id="countByExample" parameterType="com.yoparty.bean.SignupUserExample" resultType="java.lang.Integer" >
+    select count(*) from signup_user
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update signup
+    update signup_user
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
       </if>
+      <if test="record.orderNumber != null" >
+        order_number = #{record.orderNumber,jdbcType=CHAR},
+      </if>
+      <if test="record.orderData != null" >
+        order_data = #{record.orderData,jdbcType=DATE},
+      </if>
       <if test="record.activityId != null" >
         activity_id = #{record.activityId,jdbcType=INTEGER},
-      </if>
-      <if test="record.isUser != null" >
-        is_user = #{record.isUser,jdbcType=BIT},
       </if>
       <if test="record.userId != null" >
         user_id = #{record.userId,jdbcType=INTEGER},
       </if>
-      <if test="record.partnerId != null" >
-        partner_id = #{record.partnerId,jdbcType=INTEGER},
-      </if>
       <if test="record.location != null" >
         location = #{record.location,jdbcType=VARCHAR},
       </if>
+      <if test="record.signupNumber != null" >
+        signup_number = #{record.signupNumber,jdbcType=INTEGER},
+      </if>
       <if test="record.statue != null" >
         statue = #{record.statue,jdbcType=TINYINT},
+      </if>
+      <if test="record.payType != null" >
+        pay_type = #{record.payType,jdbcType=TINYINT},
+      </if>
+      <if test="record.fullcut != null" >
+        fullcut = #{record.fullcut,jdbcType=TINYINT},
       </if>
       <if test="record.insurance != null" >
         insurance = #{record.insurance,jdbcType=BIT},
@@ -239,14 +272,17 @@
     </if>
   </update>
   <update id="updateByExampleWithBLOBs" parameterType="map" >
-    update signup
+    update signup_user
     set id = #{record.id,jdbcType=INTEGER},
+      order_number = #{record.orderNumber,jdbcType=CHAR},
+      order_data = #{record.orderData,jdbcType=DATE},
       activity_id = #{record.activityId,jdbcType=INTEGER},
-      is_user = #{record.isUser,jdbcType=BIT},
       user_id = #{record.userId,jdbcType=INTEGER},
-      partner_id = #{record.partnerId,jdbcType=INTEGER},
       location = #{record.location,jdbcType=VARCHAR},
+      signup_number = #{record.signupNumber,jdbcType=INTEGER},
       statue = #{record.statue,jdbcType=TINYINT},
+      pay_type = #{record.payType,jdbcType=TINYINT},
+      fullcut = #{record.fullcut,jdbcType=TINYINT},
       insurance = #{record.insurance,jdbcType=BIT},
       message = #{record.message,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
@@ -254,39 +290,51 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update signup
+    update signup_user
     set id = #{record.id,jdbcType=INTEGER},
+      order_number = #{record.orderNumber,jdbcType=CHAR},
+      order_data = #{record.orderData,jdbcType=DATE},
       activity_id = #{record.activityId,jdbcType=INTEGER},
-      is_user = #{record.isUser,jdbcType=BIT},
       user_id = #{record.userId,jdbcType=INTEGER},
-      partner_id = #{record.partnerId,jdbcType=INTEGER},
       location = #{record.location,jdbcType=VARCHAR},
+      signup_number = #{record.signupNumber,jdbcType=INTEGER},
       statue = #{record.statue,jdbcType=TINYINT},
+      pay_type = #{record.payType,jdbcType=TINYINT},
+      fullcut = #{record.fullcut,jdbcType=TINYINT},
       insurance = #{record.insurance,jdbcType=BIT}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yoparty.bean.Signup" >
-    update signup
+  <update id="updateByPrimaryKeySelective" parameterType="com.yoparty.bean.SignupUser" >
+    update signup_user
     <set >
+      <if test="orderNumber != null" >
+        order_number = #{orderNumber,jdbcType=CHAR},
+      </if>
+      <if test="orderData != null" >
+        order_data = #{orderData,jdbcType=DATE},
+      </if>
       <if test="activityId != null" >
         activity_id = #{activityId,jdbcType=INTEGER},
-      </if>
-      <if test="isUser != null" >
-        is_user = #{isUser,jdbcType=BIT},
       </if>
       <if test="userId != null" >
         user_id = #{userId,jdbcType=INTEGER},
       </if>
-      <if test="partnerId != null" >
-        partner_id = #{partnerId,jdbcType=INTEGER},
-      </if>
       <if test="location != null" >
         location = #{location,jdbcType=VARCHAR},
       </if>
+      <if test="signupNumber != null" >
+        signup_number = #{signupNumber,jdbcType=INTEGER},
+      </if>
       <if test="statue != null" >
         statue = #{statue,jdbcType=TINYINT},
+      </if>
+      <if test="payType != null" >
+        pay_type = #{payType,jdbcType=TINYINT},
+      </if>
+      <if test="fullcut != null" >
+        fullcut = #{fullcut,jdbcType=TINYINT},
       </if>
       <if test="insurance != null" >
         insurance = #{insurance,jdbcType=BIT},
@@ -297,26 +345,32 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yoparty.bean.Signup" >
-    update signup
-    set activity_id = #{activityId,jdbcType=INTEGER},
-      is_user = #{isUser,jdbcType=BIT},
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yoparty.bean.SignupUser" >
+    update signup_user
+    set order_number = #{orderNumber,jdbcType=CHAR},
+      order_data = #{orderData,jdbcType=DATE},
+      activity_id = #{activityId,jdbcType=INTEGER},
       user_id = #{userId,jdbcType=INTEGER},
-      partner_id = #{partnerId,jdbcType=INTEGER},
       location = #{location,jdbcType=VARCHAR},
+      signup_number = #{signupNumber,jdbcType=INTEGER},
       statue = #{statue,jdbcType=TINYINT},
+      pay_type = #{payType,jdbcType=TINYINT},
+      fullcut = #{fullcut,jdbcType=TINYINT},
       insurance = #{insurance,jdbcType=BIT},
       message = #{message,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yoparty.bean.Signup" >
-    update signup
-    set activity_id = #{activityId,jdbcType=INTEGER},
-      is_user = #{isUser,jdbcType=BIT},
+  <update id="updateByPrimaryKey" parameterType="com.yoparty.bean.SignupUser" >
+    update signup_user
+    set order_number = #{orderNumber,jdbcType=CHAR},
+      order_data = #{orderData,jdbcType=DATE},
+      activity_id = #{activityId,jdbcType=INTEGER},
       user_id = #{userId,jdbcType=INTEGER},
-      partner_id = #{partnerId,jdbcType=INTEGER},
       location = #{location,jdbcType=VARCHAR},
+      signup_number = #{signupNumber,jdbcType=INTEGER},
       statue = #{statue,jdbcType=TINYINT},
+      pay_type = #{payType,jdbcType=TINYINT},
+      fullcut = #{fullcut,jdbcType=TINYINT},
       insurance = #{insurance,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>

@@ -2,7 +2,7 @@ package com.yoparty.bean;
 
 import java.util.Date;
 
-public class User{
+public class User {
     private Integer id;
 
     private String name;
@@ -30,8 +30,6 @@ public class User{
     private String email;
 
     private String avatar;
-
-    private Byte authority;
 
     public Integer getId() {
         return id;
@@ -143,13 +141,5 @@ public class User{
 
     public void setAvatar(String avatar) {
         this.avatar = avatar == null ? null : avatar.trim();
-    }
-
-    public Byte getAuthority() {
-        return authority;
-    }
-
-    public void setAuthority(Byte authority) {
-        this.authority = authority;
     }
 }

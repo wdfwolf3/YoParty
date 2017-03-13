@@ -1,12 +1,5 @@
 package com.yoparty.controller;
 
-import com.yoparty.bean.Activity;
-import com.yoparty.bean.Signup;
-import com.yoparty.bean.SignupExample;
-import com.yoparty.bean.User;
-import com.yoparty.mapper.ActivityMapper;
-import com.yoparty.mapper.SignupMapper;
-import com.yoparty.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,8 +37,13 @@ public class HomeController {
         for (Signup signup : signupList){
             activityList.add(activityMapper.selectByPrimaryKey(signup.getActivityId()));
         }
+        List<Object> list = new ArrayList<Object>();
+        list.add(signupList);
+        list.add(activityList);
+        model.addAttribute("list", list);
         model.addAttribute("signupList", signupList);
         model.addAttribute("activityList", activityList);
+        //用户头像图片
 
         //取不同状态的活动序列
 //        signupExample.createCriteria().andUserIdEqualTo(user.getId()).andStatueEqualTo();

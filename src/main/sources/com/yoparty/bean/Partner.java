@@ -3,7 +3,9 @@ package com.yoparty.bean;
 public class Partner {
     private Integer id;
 
-    private String name;
+    private String realName;
+
+    private String petName;
 
     private Byte identityType;
 
@@ -21,12 +23,20 @@ public class Partner {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getRealName() {
+        return realName;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setRealName(String realName) {
+        this.realName = realName == null ? null : realName.trim();
+    }
+
+    public String getPetName() {
+        return petName;
+    }
+
+    public void setPetName(String petName) {
+        this.petName = petName == null ? null : petName.trim();
     }
 
     public Byte getIdentityType() {
