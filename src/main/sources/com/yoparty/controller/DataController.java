@@ -1,5 +1,8 @@
 package com.yoparty.controller;
 
+import com.yoparty.bean.User;
+import com.yoparty.mapper.PartnerMapper;
+import com.yoparty.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

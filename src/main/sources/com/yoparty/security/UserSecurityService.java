@@ -1,5 +1,7 @@
 package com.yoparty.security;
 
+import com.yoparty.bean.User;
+import com.yoparty.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

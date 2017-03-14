@@ -1,5 +1,7 @@
 package com.yoparty.controller;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +18,7 @@ public class RegisterController {
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String registerError(@RequestParam(value = "error", required = false) Integer error) throws IOException {
+        Logger logger = LogManager.getLogger(RegisterController.class.getName());
         if (null != error) {
             System.out.println(error);
             return "register_" + error;

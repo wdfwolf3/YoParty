@@ -1,5 +1,12 @@
 package com.yoparty.controller;
 
+import com.yoparty.bean.Activity;
+import com.yoparty.bean.SignupUser;
+import com.yoparty.bean.SignupUserExample;
+import com.yoparty.bean.User;
+import com.yoparty.mapper.ActivityMapper;
+import com.yoparty.mapper.SignupUserMapper;
+import com.yoparty.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +27,7 @@ public class HomeController {
     private UserMapper userMapper;
 
     @Autowired
-    private SignupMapper signupMapper;
+    private SignupUserMapper signupMapper;
 
     @Autowired
     private ActivityMapper activityMapper;
@@ -30,11 +37,11 @@ public class HomeController {
         System.out.println(name);
         User user = userMapper.selectByName(name);
         model.addAttribute("user", user);
-        SignupExample signupExample = new SignupExample();
+        SignupUserExample signupExample = new SignupUserExample();
         signupExample.createCriteria().andUserIdEqualTo(user.getId());
-        List<Signup> signupList = signupMapper.selectByExample(signupExample);
+        List<SignupUser> signupList = signupMapper.selectByExample(signupExample);
         List<Activity> activityList = new ArrayList<Activity>();
-        for (Signup signup : signupList){
+        for (SignupUser signup : signupList){
             activityList.add(activityMapper.selectByPrimaryKey(signup.getActivityId()));
         }
         List<Object> list = new ArrayList<Object>();
