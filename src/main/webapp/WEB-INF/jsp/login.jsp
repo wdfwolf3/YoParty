@@ -53,7 +53,7 @@ function trim(e){return e.replace(/^(\s|\u00A0)+/,"").replace(/(\s|\u00A0)+$/,""
     </div>
     <ul id="side-nav" class="aside">
         <li>&gt;&nbsp;还没有友派帐号？<a rel="nofollow" href="">立即注册</a></li>
-        <li>&gt;&nbsp;<a href="">点击下载友派移动应用</a></li>
+        <li>&gt;&nbsp;<a href="/test">点击下载友派移动应用</a></li>
     </ul>
 </div>
 </body>
