@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--suppress ALL -->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
@@ -11,25 +10,17 @@
         http://www.springframework.org/schema/context/spring-context-4.3.xsd
         http://www.springframework.org/schema/mvc
         http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
+
     <mvc:annotation-driven/>
 
-    <context:component-scan base-package="com.yoparty.controller">
-    </context:component-scan>
+    <context:component-scan base-package="com.yoparty.controller" />
 
-    <mvc:default-servlet-handler/>
+    <!--会在Spring MVC上下文中定义一个org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler，
+    它会像一个检查员，对进入DispatcherServlet的URL进行筛查，如果发现是静态资源的请求，就将该请求转由Web应用服务器默认的Servlet处理，
+    如果不是静态资源的请求，才由DispatcherServlet继续处理。-->
+    <!--<mvc:default-servlet-handler/>-->
 
-    <!--<mvc:interceptors>  -->
-    <!--&lt;!&ndash; \u6D63\u8DE8\u6564bean\u7039\u6C22\u7B9F\u6D93\u20AC\u6D93\u72EAnterceptor\u951B\u5C80\u6D3F\u93BA\u30E5\u757E\u6D94\u590A\u6E6Amvc:interceptors\u9559\u901B\u7B05\u95F1\u3222\u6B91Interceptor\u704F\u55D8\u5AE4\u93B4\uE045\u588D\u94FE\u590C\u6B91\u7487\u950B\u7730 &ndash;&gt;  -->
-    <!--&lt;!&ndash; <bean class="com.host.app.web.interceptor.AllInterceptor"/>   &ndash;&gt;-->
-    <!--&lt;!&ndash; \u7039\u6C22\u7B9F\u9366\u2569vc:interceptor\u6D93\u5B2E\u6E83\u9544\u52EE\u3003\u7EC0\u70D8\u69F8\u7035\u572D\u58D2\u7039\u6C31\u6B91\u7487\u950B\u7730\u9553\u5D88\u7E58\u741B\u5C7E\u5AE4\u93B4\uE046\u6B91 &ndash;&gt;-->
-    <!--<mvc:interceptor>-->
-    <!--<mvc:mapping path="/login/*"/> &lt;!&ndash; \u7EE0\uFF04\u608A\u953B\u6A3C\u6A71\u8930\u66DF\u5AE4\u93B4?&ndash;&gt;  -->
-    <!--<mvc:exclude-mapping path="/login/auth"/>-->
-    <!--<mvc:exclude-mapping path="/login/out"/>-->
-    <!--<bean class="com.yoparty.interceptor.AdminInterceptor"></bean>   -->
-    <!--</mvc:interceptor>-->
-    <!--</mvc:interceptors>-->
-
+    <!--springmvc的处理静态资源方法-->
     <mvc:resources mapping="/css/**" location="/WEB-INF/css/" cache-period=""/>
     <mvc:resources mapping="/js/**" location="/WEB-INF/js/" cache-period=""/>
     <mvc:resources mapping="/images/**" location="/WEB-INF/images/" cache-period=""/>

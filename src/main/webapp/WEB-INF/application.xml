@@ -13,11 +13,8 @@
 
     <!--<bean class="com.yoparty.security.SecurityConfig"/>-->
     <!--<import resource="classpath:xxx.xml" />-->
-    <!--<context:annotation-security/>-->
     <context:component-scan base-package="com.yoparty"/>
 
-
-    <!-- 所有 flow的定义文件它的位置在这里进行配置， flow-builder-services 用于配置 flow 的特性 -->
     <flow:flow-registry id="flowRegistry" base-path="WEB-INF/flows">
         <flow:flow-location-pattern value="/**/*-flow.xml" />
     </flow:flow-registry>
@@ -45,10 +42,11 @@
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- 扫描me.gacl.dao这个包以及它的子包下的所有映射接口类 -->
         <property name="basePackage" value="com.yoparty.mapper" />
-        <!--&lt;!&ndash;当使用1个以上的datasource时需要具体指定factory&ndash;&gt;-->
+        <!-- 当使用1个以上的datasource时需要具体指定factory -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
 
+    <!--手动声明每一个bean-->
     <!--<bean id="UserMapper" class="org.mybatis.spring.mapper.MapperFactoryBean" >-->
     <!--<property name="mapperInterface" value="com.yoparty.mapper.UserMapper" />-->
     <!--<property name="sqlSessionFactory" ref="sqlSessionFactory" />-->
