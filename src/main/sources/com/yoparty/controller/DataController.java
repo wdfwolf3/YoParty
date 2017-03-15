@@ -1,6 +1,7 @@
 package com.yoparty.controller;
 
 import com.yoparty.bean.User;
+import com.yoparty.exception.UserNotFoundException;
 import com.yoparty.mapper.PartnerMapper;
 import com.yoparty.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class DataController {
             return "data";
         }
         //抛出404，访问页面不存在
-        return "";
+        throw new UserNotFoundException();
     }
 
     @RequestMapping(value = "/{name}/{type}", method = RequestMethod.POST)
