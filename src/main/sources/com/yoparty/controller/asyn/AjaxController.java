@@ -1,4 +1,4 @@
-package com.yoparty.controller;
+package com.yoparty.controller.asyn;
 
 import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Controller;
@@ -27,6 +27,10 @@ public class AjaxController {
         return "ajax";
     }
 
+    @RequestMapping(value = "json", method = RequestMethod.GET)
+    public String getJso(){
+        return "json";
+    }
 
     /**
      * ajax请求不需要返回页面，只需要得到response中的数据即可，所以方法签名为void即可
