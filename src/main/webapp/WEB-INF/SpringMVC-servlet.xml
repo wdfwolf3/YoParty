@@ -25,27 +25,27 @@
     <mvc:resources mapping="/js/**" location="/WEB-INF/js/" cache-period=""/>
     <mvc:resources mapping="/images/**" location="/WEB-INF/images/" cache-period=""/>
 
-    <!--Ordinary view resolver. This is for jsp.-->
-    <bean id="viewResolver"
-          class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/jsp/"/>
-        <property name="suffix" value=".jsp"/>
-        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
-    </bean>
-
-
-    <!-- 针对freemarker的视图配置 -->
+    <!--&lt;!&ndash;Ordinary view resolver. This is for jsp.&ndash;&gt;-->
     <!--<bean id="viewResolver"-->
-          <!--class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">-->
-        <!--<property name="cache" value="true" />-->
-        <!--<property name="prefix" value="" />-->
-        <!--<property name="suffix" value=".ftl" />-->
-        <!--<property name="contentType" value="text/html;charset=UTF-8"/>-->
-        <!--<property name="requestContextAttribute" value="request" />-->
-        <!--<property name="exposeSpringMacroHelpers" value="true" />-->
-        <!--<property name="exposeRequestAttributes" value="true" />-->
-        <!--<property name="exposeSessionAttributes" value="true" />-->
+          <!--class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+        <!--<property name="prefix" value="/WEB-INF/jsp/"/>-->
+        <!--<property name="suffix" value=".jsp"/>-->
+        <!--<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />-->
     <!--</bean>-->
+
+
+     <!--针对freemarker的视图配置-->
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="cache" value="true" />
+        <property name="prefix" value="" />
+        <property name="suffix" value=".ftl" />
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+        <property name="requestContextAttribute" value="request" />
+        <property name="exposeSpringMacroHelpers" value="true" />
+        <property name="exposeRequestAttributes" value="true" />
+        <property name="exposeSessionAttributes" value="true" />
+    </bean>
 
     <!-- View resolvers can also be configured with ResourceBundles or XML files.
         If you need different view resolving based on Locale, you have to use the

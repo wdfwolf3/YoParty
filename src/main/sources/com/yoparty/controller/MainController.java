@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class MainController {
-    @RequestMapping(value = {"/main","/"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/home","/"}, method = RequestMethod.GET)
     public String getMain(Model model){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 //        User user = (User) auth.getPrincipal();
@@ -22,7 +22,7 @@ public class MainController {
         }else{
             model.addAttribute("isRegister", false);
         }
-        return "main";
+        return "home";
     }
 
 //    @RequestMapping(value = "/main", method = RequestMethod.POST)

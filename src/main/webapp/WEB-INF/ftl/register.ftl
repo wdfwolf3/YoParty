@@ -25,22 +25,21 @@
     maximum-scale - 允许用户缩放到的最大比例
     user-scalable - 用户是否可以手动缩放
      -->
-    <link rel="stylesheet" href="/yo-party-net/notebook/notebook_files/font.css" type="text/css">
-    <link rel="stylesheet" href="/yo-party-net/notebook/notebook_files/app.v1.css" type="text/css">
-    <link rel="stylesheet" href="/yo-party-net/css/yoparty.css" type="text/css">
+    <link rel="stylesheet" href="/yo-party-net/css/notebook/notebook_files/font.css" type="text/css">
+    <link rel="stylesheet" href="/yo-party-net/css/notebook/notebook_files/app.v1.css" type="text/css">
     <!-- base start 重要部分不可删改-->
-    <script type="text/javascript" src="/yo-party-net/notebook/notebook_files/app.v1.js"></script>
-    <script type="text/javascript" src="/yo-party-net/notebook/notebook_files/app.plugin.js"></script>
+    <script type="text/javascript" src="/yo-party-net/js/notebook/notebook_files/app.v1.js"></script>
+    <script type="text/javascript" src="/yo-party-net/js/notebook/notebook_files/app.plugin.js"></script>
     <script type="text/javascript" src="/yo-party-net/js/jquery/jquery.form.js"></script>
     <script type="text/javascript" src="/yo-party-net/js/jquery/jquery-validation/jquery.validate.min.js"></script>
     <script type="text/javascript" src="/yo-party-net/js/jquery/jquery-validation/messages_cn.js"></script>
     <script type="text/javascript" src="/yo-party-net/js/layer-v1.9.2/layer/layer.js"></script>
-    <script type="text/javascript" src="/yo-party-net/common/common.js"></script>
+    <script type="text/javascript" src="/yo-party-net/js/common/common.js"></script>
     <script type="text/javascript" src="/yo-party-net/js/jquery/underscore.js"></script>
-    <script type="text/javascript" src="/yo-party-net/common/lyGrid.js"></script>
-    <!--[if lt IE 9]> <script src="/yo-party-net/js/jquery/ie/html5shiv.js"></script> <script src="/yo-party-net/js/jquery/ie/respond.min.js"></script><![endif]-->
-    <link href="/yo-party-net/js/date/bootstrap.min.css" rel="stylesheet">
-    <link href="/yo-party-net/js/date/font-awesome.min.css" rel="stylesheet">
+    <script type="text/javascript" src="/yo-party-net/js/common/lyGrid.js"></script>
+    <!--[if lt IE 9] <script src="/yo-party-net/js/jquery/ie/html5shiv.js"></script> <script src="/yo-party-net/js/jquery/ie/respond.min.js"></script><![endif]-->
+    <link href="/yo-party-net/css/date/bootstrap.min.css" rel="stylesheet">
+    <link href="/yo-party-net/css/date/font-awesome.min.css" rel="stylesheet">
 
 
     <script type="text/javascript" src="/yo-party-net/js/My97DatePicker/WdatePicker.js"></script>
@@ -229,7 +228,7 @@
 
 <script src="/yo-party-net/js/jquery/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="/yo-party-net/js/layer-v1.9.2/layer/layer.js"></script>
-<script src="/yo-party-net/common/common.js"></script>
+<script src="/yo-party-net/js/common/common.js"></script>
 <script src="/yo-party-net/js/common/header.js"></script>
 <script>
     var rootPath = "/yo-party-net";
@@ -259,7 +258,7 @@
                 <a href="/yo-party-net/login.shtml">登录</a>
             </li>
             <li>
-                <a href="/yo-party-net/register/register.shtml">注册</a>
+                <a href="/yo-party-net/register.shtml">注册</a>
             </li>
         </ul>
 
@@ -401,6 +400,6 @@
 
 </script>
 <script type="text/javascript"
-        src="/yo-party-net/notebook/notebook_files/bootstrap-filestyle.min.js"></script>
+        src="/yo-party-net/js/notebook/notebook_files/bootstrap-filestyle.min.js"></script>
 </body>
 </html>

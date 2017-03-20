@@ -16,14 +16,14 @@ import java.io.IOException;
 public class RegisterController {
     private static ApplicationContext cxt;
 
-    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    @RequestMapping(value = "/register/register", method = RequestMethod.GET)
     public String registerError(@RequestParam(value = "error", required = false) Integer error) throws IOException {
         Logger logger = LogManager.getLogger(RegisterController.class.getName());
         if (null != error) {
             System.out.println(error);
             return "register_" + error;
         } else
-            return "home";
+            return "register";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
