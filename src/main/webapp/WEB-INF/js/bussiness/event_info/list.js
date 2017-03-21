@@ -49,7 +49,7 @@ $(function () {
             $showType.html('<span class="p" >按领队搜索</span>');
             $showType.attr("type", 1);
             $searchKeyword.val("");
-            $searchKeyword.attr('placeholder', '请输入领队名');
+            $searchKeyword.attr('placeholder', '请输入领队名称');
 
             $hidenType.html('<p>按活动搜索</p>');
             $hidenType.attr("type", 0);
@@ -70,10 +70,10 @@ $(function () {
     });
     //绑定搜索按钮点击事件  大搜索框
     $('#submit-btn').click(function () {
-        // 将筛选条�?  重置  全部
+        // 将筛选条件  重置  全部
         $('.navmenu a').removeClass("selected");
         $("[href='#']").attr('class', "selected");
-        // 获取查询条件,注意对pageNow赋�?�为1
+        // 获取查询条件,注意对pageNow赋值为1
         currPage = 1;
         var searchParams = serchParams();
         searchParams['pageNow'] = currPage;
@@ -96,7 +96,8 @@ $(function () {
         // 调用loadmore方法
         loadMore(searchParams);
     });
-    ///绑定点击事件  排序
+
+    //绑定点击事件  排序
     $('.orderHd a').click(function () {
         //选中样式改变
         $(this).parent().find('a.selected').removeClass('selected');
@@ -161,7 +162,7 @@ $(function () {
                     '</div>' +
                     '<div class="row3 fll">' +
                     '<li class="i pad">出发地:<span>' + CommnUtil.notEmpty(oProduct.start_city) + '</span></li>' +
-                    '<li class="i ect">目的地:<span>' + CommnUtil.notEmpty(oProduct.end_city) + '</span></li>' +
+                    '<li class="i ect">目地的:<span>' + CommnUtil.notEmpty(oProduct.end_city) + '</span></li>' +
                     '</div>' +
                     '</ul>' +
                     '<div class="di-r flr">' +

@@ -202,7 +202,7 @@ input,textarea,select {font-family:inherit;font-size:inherit;font-weight:inherit
 .time {zoom:1;font-size:14px;color:#595757;font-family:'microsoft yahei';clear:both}
 .time .remaining {float:left;width:300px;color:#f97700;}
 .time .timer {color:red;display:inline-block;}
-/****鍙充晶棰嗛槦***position:absolute;right:30px;*/.ap-rside-box {position:absolute;z-index:10;width:265px;border:1px solid #ececec;margin-left:5px;background-color:#f7f7f7;overflow:hidden;}
+/****右侧领队***position:absolute;right:30px;*/.ap-rside-box {position:absolute;z-index:10;width:265px;border:1px solid #ececec;margin-left:5px;background-color:#f7f7f7;overflow:hidden;}
 .leader {padding:25px 40px;overflow:hidden;}
 .leader h5,.vice_leader h5 {float:left;display:inline-block;color:#7f7f7f;font-size:14px;font-family:'Microsoft Yahei';}
 .leader .pic_info {margin-top:15px;}
@@ -210,11 +210,11 @@ input,textarea,select {font-family:inherit;font-size:inherit;font-weight:inherit
 .leader .pic_info .i {float:left;width:105px;margin-left:18px;}
 .pic_info .c p {margin-top:5px;font-size:12px;color:#808080;font-family:'microsoft yahei';}
 p.na a {color:#f97700;}
-/****鍓闃�***/
+/****副领队***/
 .vice_leader {padding:20px 40px;min-height:105px;overflow:hidden;}
 .vice_leader .c p {margin-top:5px;font-size:12px;color:#808080;font-family:'microsoft yahei';}
 .vice_leader .c p span {display:inline-block;margin-left:20px;}
-/****绾�*****/.ap-rside-box .lines {padding:0 40px;}
+/****线*****/.ap-rside-box .lines {padding:0 40px;}
 /**************/
 .mobile-rintro{display:none;}
 .hd-detail {margin-top:50px;}
@@ -229,7 +229,7 @@ p.na a {color:#f97700;}
 
 
 
-/******************************************************************************鎶ュ悕椤甸潰**************************************************/.signupPage {width:990px;margin:0px auto 20px auto;}
+/******************************************************************************报名页面**************************************************/.signupPage {width:990px;margin:0px auto 20px auto;}
 .mainbox {overflow:hidden;}
 .mainbox .content {margin:0 15px 30px;overflow:hidden;}
 /*.mainbox .content {border:1px solid #dcdcdc;margin:30px 15px;overflow:hidden;}
@@ -250,7 +250,7 @@ p.na a {color:#f97700;}
 .hdDetail dt {color:red;display:inline-block;width:42%;text-align:right;}
 .hdDetail dd {display:inline-block;}
 .horiwrap span {display:inline-block;margin-right:20px;}
-/**********************鏂板灏忎紮浼�*******************************/.hdCompany .selected {background-image:url(../images/rectangle.png);}
+/**********************新增小伙伴*******************************/.hdCompany .selected {background-image:url(../images/rectangle.png);}
 .hdCompany .notselected {
     background: url(../images/rectangle-alpha.png) no-repeat;background-size: 100%;
 }
@@ -268,7 +268,7 @@ p.na a {color:#f97700;}
 .addBtn button {display:inline-block;width:130px;height:30px;line-height:20px;background-color:#f97700;color:#fff;font-size:14px;text-align:center;font-family:"Microsoft Yahei",Arial,sans-serif;letter-spacing:5px;cursor:pointer;border:1px solid #f97700;border-radius:5px;}
 .addBtn button#addBtn {background-color: #5bc0de;border-color: #46b8da;}
 .addBtn button#managerBtn{margin-left:695px;background-color: #5cb85c;border-color: #4cae4c;}
-/*************************浜哄憳閫夋嫨********************************/.hdHandle {text-align:center;font-size:14px;font-family:"Microsoft Yahei",Arial,sans-serif}
+/*************************人员选择********************************/.hdHandle {text-align:center;font-size:14px;font-family:"Microsoft Yahei",Arial,sans-serif}
 .hdHandle h5 {text-align:left;}
 .personChoice {line-height:30px;}
 .personChoice table {width:960px;text-align:center;font-size:14px;}
@@ -276,7 +276,7 @@ p.na a {color:#f97700;}
 .personChoice table select {width:100px;}
 .personChoice table .personDelete {text-align:center;display:inline-block;height:20px;line-height:20px;letter-spacing:2px;}
 .personChoice table .personDelete:hover {color:#f97700;cursor:pointer;}
-/***************璁㈠崟璇︽儏*********/.hdOrder {text-align:center;font-size:14px;font-family:"Microsoft Yahei",Arial,sans-serif}
+/***************订单详情*********/.hdOrder {text-align:center;font-size:14px;font-family:"Microsoft Yahei",Arial,sans-serif}
 .hdOrder h5 {text-align:left;}
 .orderDetail {line-height:30px;}
 .orderDetail table {width:960px;text-align:center;font-size:14px;}
@@ -284,7 +284,7 @@ p.na a {color:#f97700;}
 .orderDetail table .hdName {text-align:left;width:400px;text-align:left;}
 .mobile_ed{display: none}
 .pc_ed{display: block;}
-/*****************棰嗛槦鐨勮瘽***************/.message {text-align:center;font-size:14px;font-family:"Microsoft Yahei",Arial,sans-serif;border-top:2px dotted blue;border-bottom:2px dotted blue;}
+/*****************领队的话***************/.message {text-align:center;font-size:14px;font-family:"Microsoft Yahei",Arial,sans-serif;border-top:2px dotted blue;border-bottom:2px dotted blue;}
 .message div {float:left;width:570px;height:50px;line-height:50px;}
 .message div dt {float:left;}
 .message div dd {float:left;}
@@ -295,7 +295,7 @@ p.na a {color:#f97700;}
 .attention {margin-top:20px;max-width:870px;text-align:left;font-size:14px;font-family:"Microsoft Yahei",Arial,sans-serif;}
 .attention dt {width:70px;}
 .attention dd {margin-left:72px;}
-/*********************鎻愪氦鎸夐挳鍜屾€昏**************************/.countMoney div {width:100%;}
+/*********************提交按钮和总计**************************/.countMoney div {width:100%;}
 .countMoney .sum dl {float:right;}
 .countMoney .submit {margin-top:20px;}
 .countMoney .submit button#prevStep {display:inline-block;float:left;}
@@ -309,7 +309,7 @@ p.na a {color:#f97700;}
 .line-lg {margin-top:15px;margin-bottom:15px;}
 .line-dashed {border-style:dashed;background:transparent;}
 .pull-in {margin-left:-15px;margin-right:-15px;}
-/*********************鐢ㄦ埛鐧诲綍**************************/.loginContainer {margin:0px 0px 3px 0px;padding:0;width:1265px;height:500px;position:relative;background-size:100% auto;background:url("../images/loginBg5.png") no-repeat center center;}
+/*********************用户登录**************************/.loginContainer {margin:0px 0px 3px 0px;padding:0;width:1265px;height:500px;position:relative;background-size:100% auto;background:url("../images/loginBg5.png") no-repeat center center;}
 
 .login-box-wrap {position:absolute;top:85px;right:60px;width:350px;}
 .login-box-warp .login-box {background-color:rgba(255,255,255,.9);}
@@ -327,7 +327,7 @@ p.na a {color:#f97700;}
 .login-links {margin-top:25px;overflow:hidden;text-align:right;font-size:12px;}
 .login-links a {margin-right:10px;}
 .login-links a:hover {color:red;}
-/*********************鐢ㄦ埛娉ㄥ唽**************************/
+/*********************用户注册**************************/
 .register-main{width:800px;border-right: 1px solid black;padding: 20px;}
 .register-left{width:500px;margin:30px 20px 0px 120px}
 /*.register-main {width:990px;margin:0 auto;border:2px solid #d7d7d7;background:#ffffff;padding:0 0 50px;}*/
@@ -342,7 +342,7 @@ p.na a {color:#f97700;}
 .register-list .formList .plus_c {width:210px;height:26px;line-height:26px;padding:0px 10px 0px 33px;color:#a8a8a8;margin-top:6px;}
 .formList .btnStyle {width:240px;height:44px;background:#c00;border:none;color:#fff;font-size:18px;cursor:pointer;font-family:MicroSoft YaHei;}
 .formList .yzmBtn {float:left;width:150px;height:36px;border:1px solid #cccccc;background:#f4f4f4;margin-left:10px;font-family:MicroSoft YaHei;cursor:pointer;}
-/*********************涓汉缂栬緫椤甸潰**************************/.personal-edit-wrap {width:100%;background:#efefef;min-height:500px;font-size:14px;padding-top:60px;padding-bottom:60px;}
+/*********************个人编辑页面**************************/.personal-edit-wrap {width:100%;background:#efefef;min-height:500px;font-size:14px;padding-top:60px;padding-bottom:60px;}
 .personal-edit {width:990px;border:2px solid #d7d7d7;background:#ffffff;text-align:left;margin:0 auto;}
 .personal-edit .edit-lside {float:left;width:140px;line-height:20px;border-right:2px solid #d7d7d7;min-height:600px;background:#efefef;}
 .lside-img {margin:10px 20px 30px 20px;}
@@ -386,7 +386,7 @@ p.na a {color:#f97700;}
 .companysInfo-detail .personChoice table .tableTitle {color:#000000;height:30px;}
 .companysInfo-detail .personChoice table .tableInfo a {display:inline-block;width:50%;cursor:pointer;height:30px;}
 .companysInfo-detail  a:hover {color:red;}
-/********涓汉涓婚〉*********/
+/********个人主页*********/
 .hfbody {width:100%;min-height:60%;text-align:center;}
 .hfItem {display:block;width:930px;height:80px;border:1px solid #dcdcdc;padding:10px;margin:20px auto;background:#fcf8f4;}
 .hfItem dt,.hfItem dd {float:left;}
@@ -430,7 +430,7 @@ p.na a {color:#f97700;}
 .billDetail table.tableInfo  tr td:nth-child(6) {width:80px;}
 .billDetail table.tableInfo  tr td:nth-child(7) {width:180px;}
 .myPagePlug {margin:20px auto 50px auto;width:960px;}
-/*****************棰嗛槦璇︽儏***************/.lp-body {}
+/*****************领队详情***************/.lp-body {}
 .lp-page {width:950px;margin:20px auto;}
 .lp-lside {margin-bottom:20px}
 .lp-lintro {border:1px dotted #b1b1b1;}
@@ -462,7 +462,7 @@ ul.di-l li.i.pad{display: block;}
 
 }
 @media screen and (max-width:1180px){
-    /*娲诲姩璇︽儏*/
+    /*活动详情*/
     .ap-body{width:900px;margin:0 auto 20px auto}
     .ap-rside{float:none}
     .activityprofile{width:900px}
@@ -480,7 +480,7 @@ ul.di-l li.i.pad{display: block;}
     div#footer div div.section div div{width:100%}
     div#footer div div.footnote{width:100%}
     .searchBox{width:100%;min-width: 0;}
-    /**娲诲姩鍒楄〃**/
+    /**活动列表**/
     .wrapper{width:100%}
 
 
@@ -508,7 +508,7 @@ ul.di-l li.i.pad{display: block;}
     div.di ul.di-l li.i{width: 50%}
 }
 @media screen and (max-width:952px){
-    /**涓汉鐣岄潰**/
+    /**个人界面**/
     .userInfo-title{display: none}
     .hfItem{width: 96%;padding: 2% ;border-right-width: 0;border-left-width: 0}
     .hfItem dd .dn-u{width:100%}
@@ -533,7 +533,7 @@ ul.di-l li.i.pad{display: block;}
 
 @media screen and (max-width:900px){
 
-    /*娲诲姩璇︽儏*/
+    /*活动详情*/
     .ap-title h2{font-size: 1em;line-height: 1.5em}
     .ap-body{width:100%}
     .activityprofile{width:100%}
@@ -546,7 +546,7 @@ ul.di-l li.i.pad{display: block;}
     .ap-rside-box{display:none}
     div#footer div{width:100%}
     div#event_detail_1 img{width: 100%;height: auto;}
-    /*鐧诲綍椤甸潰*/
+    /*登录页面*/
     .login-box {width: 80%;padding:20px 10%;}
     .login-box-wrap {position: absolute;top: 79.5px;right: 5%;width: 90%;}
     .login-title{font-size: 1em;}
@@ -564,7 +564,7 @@ ul.di-l li.i.pad{display: block;}
     .col-sm-9{margin:1em 0!important;}
     .form-group{margin: 0!important;padding-left: 0!important;padding-right:0!important;}
     .form-control{font-size: 1.2em !important;}
-    /**鎶ュ悕椤甸潰**/
+    /**报名页面**/
 
     .mainbox .content{margin: 0 0 30px;}
     .signupPage{width: 450px}
@@ -603,7 +603,7 @@ ul.di-l li.i.pad{display: block;}
     .countMoney .sum dt{width: 50%;text-align: right;}
     .countMoney .sum dd{width: 50%;text-align: left;}
     .countMoney .submit {text-align: center;}
-    /**娲诲姩鍒楄〃**/
+    /**活动列表**/
     ul.di-l li.i.pad{display: none}
     ul.di-l li.i.phone{display: block}
     .hdItem dl dt {width: 20%;}
@@ -617,7 +617,7 @@ ul.di-l li.i.pad{display: block;}
 
 @media screen and (max-width:885px){
 
-    /**娲诲姩鍒楄〃**/
+    /**活动列表**/
     .searchArea{width: 100%}
     .s_place{display: none;}
     .search_bar { width: 94%; margin-left: 3%;}
@@ -665,7 +665,7 @@ ul.di-l li.i.pad{display: block;}
     div#header div ul.login{
         right:0;}
     div#header div ul.info li#imleader{display: none;}
-    /*娲诲姩璇︽儏*/
+    /*活动详情*/
     .ap-rintro{display:none}
     .hd-detail{margin-top:1em}
     .mobile-rintro{display:block}
@@ -677,7 +677,7 @@ ul.di-l li.i.pad{display: block;}
     /*div#footer{display: none}*/
     div#content_detail{margin-bottom: 10%;width: 100%;}
     .register-left{width:100%;margin: 3.75% auto;}
-    /**鎶ュ悕椤甸潰**/
+    /**报名页面**/
     .signupPage{width:100%}
     .addBtn button{width:40%}
     .addBtn button#managerBtn{margin-left:18%;}

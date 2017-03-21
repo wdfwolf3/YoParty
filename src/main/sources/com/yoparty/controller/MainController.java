@@ -13,20 +13,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class MainController {
-    @RequestMapping(value = {"/home","/"}, method = RequestMethod.GET)
-    public String getMain(Model model){
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//    @RequestMapping(value = {"/home","/"}, method = RequestMethod.GET)
+//    public String getMain(Model model){
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 //        User user = (User) auth.getPrincipal();
-        if(auth instanceof AnonymousAuthenticationToken){
-            model.addAttribute("isRegister", true);
-        }else{
-            model.addAttribute("isRegister", false);
-        }
+//        if(auth instanceof AnonymousAuthenticationToken){
+//            model.addAttribute("isRegister", true);
+//        }else{
+//            model.addAttribute("isRegister", false);
+//        }
+//        return "home";
+//    }
+
+    @RequestMapping(value = {"/home", "/"}, method = RequestMethod.GET)
+    public String homePage(){
         return "home";
     }
-
-//    @RequestMapping(value = "/main", method = RequestMethod.POST)
-//    public String main1(){
-//        return "main";
-//    }
 }

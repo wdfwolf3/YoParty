@@ -1,5 +1,5 @@
 /**
- * js琛ㄦ牸鍒嗛〉宸ュ叿缁勪欢
+ * js表格分页工具组件
  *
  * @author yoparty
  * @date 2015-03-27
@@ -11,37 +11,37 @@
     lyGrid = (function(params,callback) {
         var confs = {
             l_column : [],
-            dymCol : false,//鏄惁鏄剧ず鍔ㄦ€佸垪
-            pagId : 'paging', // 鍔犺浇琛ㄦ牸瀛樻斁浣嶇疆鐨処D
-            width : '100%', // 琛ㄦ牸楂樺害
-            height : '100%', // 琛ㄦ牸瀹藉害
-            theadHeight : '28px', // 琛ㄦ牸鐨則head楂樺害
-            tbodyHeight : '27px',// 琛ㄦ牸body鐨勬瘡涓€琛岄珮搴�
-            jsonUrl : '', // 璁块棶鍚庡彴鍦板潃
-            isFixed : false,//鏄惁鍥哄畾琛ㄥご
-            usePage : true,// 鏄惁鍒嗛〉
-            serNumber : false,// 鏄惁鏄剧ず搴忓彿
-            local:false,//鏄惁鏈湴鍒嗛〉,鍗宠繑鍥炴墍鏈夋暟鎹�,璁╁墠绔垎椤�
-            localData:[],//鏈湴鏁版嵁闆�
-            records : 'records',// 鍒嗛〉鏁版嵁
-            pageNow : 'pageNow',// 褰撳墠椤电爜 鎴� 褰撳墠绗嚑椤�
-            totalPages : 'pageCount',// 鎬婚〉鏁�
-            totalRecords : 'rowCount',// 鎬昏褰曟暟
-            pagecode : '10',// 鍒嗛〉鏃讹紝鏈€澶氭樉绀哄嚑涓〉鐮�
-            async : false, // 榛樿涓哄悓姝�
-            data : '', // 鍙戦€佺粰鍚庡彴鐨勬暟鎹� 鏄痡son鏁版嵁 渚嬪{nama:"a",age:"100"}....
-            pageSize : 10, // 姣忛〉鏄剧ず澶氬皯鏉℃暟鎹�
-            checkbox : false,// 鏄惁鏄剧ず澶嶉€夋
-            checkValue : 'id', // 褰揷heckbox涓簍rue鏃讹紝闇€瑕佽缃瓨鏀綾heckbox鐨勫€煎瓧娈� 榛樿瀛樻斁瀛楁id鐨勫€�
+            dymCol : false,//是否显示动态列
+            pagId : 'paging', // 加载表格存放位置的ID
+            width : '100%', // 表格高度
+            height : '100%', // 表格宽度
+            theadHeight : '28px', // 表格的thead高度
+            tbodyHeight : '27px',// 表格body的每一行高度
+            jsonUrl : '', // 访问后台地址
+            isFixed : false,//是否固定表头
+            usePage : true,// 是否分页
+            serNumber : false,// 是否显示序号
+            local:false,//是否本地分页,即返回所有数据,让前端分页
+            localData:[],//本地数据集
+            records : 'records',// 分页数据
+            pageNow : 'pageNow',// 当前页码 或 当前第几页
+            totalPages : 'pageCount',// 总页数
+            totalRecords : 'rowCount',// 总记录数
+            pagecode : '10',// 分页时，最多显示几个页码
+            async : false, // 默认为同步
+            data : '', // 发送给后台的数据 是json数据 例如{nama:"a",age:"100"}....
+            pageSize : 10, // 每页显示多少条数据
+            checkbox : false,// 是否显示复选框
+            checkValue : 'id', // 当checkbox为true时，需要设置存放checkbox的值字段 默认存放字段id的值
             treeGrid : {
-                type: 1, //1 琛ㄧず鍚庡彴宸茬粡澶勭悊濂界埗绫诲甫children闆嗗悎 2 琛ㄧず娌℃湁澶勭悊,鐢卞墠绔鐞嗘爲褰㈠紡
-                tree : false,// 鏄惁鏄剧ず鏍�
-                hide : false,//榛樿灞曞紑
-                name : 'name',// 浠ュ摢涓瓧娈� 鐨勬爲褰㈠紡 濡傛灉鏄涓� name,key
+                type: 1, //1 表示后台已经处理好父类带children集合 2 表示没有处理,由前端处理树形式
+                tree : false,// 是否显示树
+                hide : false,//默认展开
+                name : 'name',// 以哪个字段 的树形式 如果是多个 name,key
                 id: "id",
                 pid: "pid"
             },
-            // 鏍戝舰寮� {tree : false,//鏄惁鏄剧ず鏍� name : 'name'}//浠ュ摢涓瓧娈� 鐨勬爲褰㈠紡
+            // 树形式 {tree : false,//是否显示树 name : 'name'}//以哪个字段 的树形式
         };
         var l_col = {
             colkey : null,
@@ -54,7 +54,7 @@
             hide : false,
             isSort:false,
             renderData : null
-            // 娓叉煋鏁版嵁function( rowindex ,data, rowdata, colkey)
+            // 渲染数据function( rowindex ,data, rowdata, colkey)
         };
         var conf = $.extend(confs, params);
         var l_tree = conf.treeGrid;
@@ -74,7 +74,7 @@
             createHtml();
             //fixhead();
             if(callback)
-                callback(column,currentData);//鍥炶皟鍑芥暟 column 瀛楁鍚�,褰撳墠鐣岄潰鐨勬暟鎹� currentData
+                callback(column,currentData);//回调函数 column 字段名,当前界面的数据 currentData
         };
         var extend = function(o, n, override) {
             for ( var p in n)
@@ -104,7 +104,7 @@
                         json = data;
                     },
                     error : function(msg) {
-                        alert("绯荤粺鏆傛棤鏁版嵁锛�");
+                        alert("系统暂无数据！");
                         json = '';
                     }
                 });
@@ -122,22 +122,22 @@
             var id = conf.pagId;
             divid = typeof (id) == "string" ? document.getElementById(id) : id;
             if (divid == "" || divid == undefined || divid == null) {
-                //console.error("鎵句笉鍒� id= " + id + " 閫夋嫨鍣紒");
+                //console.error("找不到 id= " + id + " 选择器！");
                 return;
             }
 
             divid.innerHTML = '';
-            if(conf.isFixed){//涓嶅浐瀹氳〃澶�
+            if(conf.isFixed){//不固定表头
                 cHeadTable(divid);
             }
             cBodyTh(divid);
             cBodytb(divid, returnData);
-            if (conf.usePage) {// 鏄惁鍒嗛〉
+            if (conf.usePage) {// 是否分页
                 fenyeDiv(divid, returnData);
             }
         };
 
-        //濡傛灉鏄湰鍦板垎椤�,鎺掑簭鏃�,,瑕佸鍑轰竴涓猨s鎻掍欢underscore.js
+        //如果是本地分页,排序时,,要导出一个js插件underscore.js
         var replayData = function(o,key,sort){
             if(o){
                 if(!(returnData!=''&&returnData.records.length>0)){
@@ -156,15 +156,15 @@
             var id = conf.pagId;
             divid = typeof (id) == "string" ? document.getElementById(id) : id;
             cBodytb(divid, returnData);
-            if (conf.usePage) {// 鏄惁鍒嗛〉
+            if (conf.usePage) {// 是否分页
                 fenyeDiv(divid, returnData);
             }
         }
 
         var cHeadTable = function(divid) {
-            var table = document.createElement("table");// 1.鍒涘缓涓€涓猼able琛�
-            table.id = "table_head";// 2.璁剧疆id灞炴€�
-            table.className = "pp-list.ftl table table-striped table-bordered";
+            var table = document.createElement("table");// 1.创建一个table表
+            table.id = "table_head";// 2.设置id属性
+            table.className = "pp-list table table-striped table-bordered";
             table.setAttribute("style", "margin-bottom: 0px;");
             divid.appendChild(table);
             var thead = document.createElement('thead');
@@ -189,7 +189,7 @@
             chkbox.type = "checkbox";
             chkbox.setAttribute("pagId", conf.pagId);
             chkbox.onclick = checkboxbind.bind();
-            cth.appendChild(chkbox); // 绗竴鍒楁坊鍔犲閫夋
+            cth.appendChild(chkbox); // 第一列添加复选框
             tr.appendChild(cth);
             $.each(column, function(i,o) {
                 if (!column[o].hide || column[o].hide == undefined) {
@@ -210,12 +210,12 @@
             var h = '';
             var xy = "hidden";
             if (conf.height == "100%") {
-                if (!conf.isFixed) {// //涓嶅浐瀹氳〃澶�
+                if (!conf.isFixed) {// //不固定表头
                     h= "auto";
                 }else{
                     xy = "auto";
                     h = $(window).height() - $("#table_head").offset().top - $('#table_head').find('th:last').eq(0).height();
-                    if (conf.usePage) {// 鏄惁鍒嗛〉
+                    if (conf.usePage) {// 是否分页
                         h -= 55;
                     }
                     h += "px";
@@ -226,16 +226,16 @@
             tdiv.setAttribute("style", 'overflow-y: ' + xy + '; height: ' + h + '; background: white;');
             tdiv.className = "t_table";
             divid.appendChild(tdiv);
-            var table2 = document.createElement("table");// 1.鍒涘缓涓€涓猼able琛�
+            var table2 = document.createElement("table");// 1.创建一个table表
 
             table2.id = "mytable";
-            table2.className = "pp-list.ftl table table-striped table-bordered";
+            table2.className = "pp-list table table-striped table-bordered";
             table2.setAttribute("style", "table-layout: fixed;margin-bottom: 0px;width:"+conf.width);
             tdiv.appendChild(table2);
-            var thead = document.createElement("thead");// 1.鍒涘缓涓€涓猼head
+            var thead = document.createElement("thead");// 1.创建一个thead
             table2.appendChild(thead);
 
-            if(!conf.isFixed){//涓嶅浐瀹氳〃澶�
+            if(!conf.isFixed){//不固定表头
                 var tr = document.createElement('tr');
                 tr.setAttribute("style", "line-height:" + conf.tbodyHeight + ";");
                 thead.appendChild(tr);
@@ -256,7 +256,7 @@
                 chkbox.type = "checkbox";
                 chkbox.setAttribute("pagId", conf.pagId);
                 chkbox.onclick = checkboxbind.bind();
-                cth.appendChild(chkbox); // 绗竴鍒楁坊鍔犲閫夋
+                cth.appendChild(chkbox); // 第一列添加复选框
                 tr.appendChild(cth);
                 $.each(column, function(o) {
                     var th = document.createElement('th');
@@ -277,7 +277,7 @@
                     tr.appendChild(th);
                 });
                 if(conf.dymCol){
-                    var ico = document.createElement("i");// 1.鍒涘缓涓€涓猧琛�
+                    var ico = document.createElement("i");// 1.创建一个i表
                     ico.className = "fa fa-thumb-tack";
                     ico.setAttribute("style", "float: right;margin-top: 3px;");
                     ico.onclick = dmycol.bind();
@@ -287,11 +287,11 @@
 
         };
 
-        var currentData;//褰撳墠椤垫暟鎹�
+        var currentData;//当前页数据
         var cBodytb = function(divId,jsonData){
             $('#'+divId.id+' table > tbody').remove() ;
             $('#'+divId.id+' div:eq(1)').remove() ;
-            var tbody = document.createElement("tbody");// 1.鍒涘缓涓€涓猼head
+            var tbody = document.createElement("tbody");// 1.创建一个thead
             divId.getElementsByTagName('table')[0].appendChild(tbody) ;
             var json = _getValueByName(jsonData, conf.records);
             var d = 0;
@@ -301,7 +301,7 @@
                 d = (pNow - 1) *conf.pageSize;
                 var e = pNow * conf.pageSize - 1;
             }
-            currentData = new Array();//褰撳墠椤垫暟鎹�
+            currentData = new Array();//当前页数据
             for(;d<e;d++){
                 var rowdata = json[d];
                 currentData.push(rowdata);
@@ -330,14 +330,14 @@
                     td_d.setAttribute("style", "text-align:center;width: 28px;display: " + cbk + ";");
                     var chkbox = document.createElement("INPUT");
                     chkbox.type = "checkbox";
-                    // ******** 鏍戠殑涓婁笅绉诲姩闇€瑕�
+                    // ******** 树的上下移动需要
                     chkbox.setAttribute("cid", _getValueByName(rowdata, l_tree.id));
                     chkbox.setAttribute("pid", _getValueByName(rowdata, l_tree.pid));
-                    // ******** 鏍戠殑涓婁笅绉诲姩闇€瑕�
+                    // ******** 树的上下移动需要
                     chkbox.setAttribute("_l_key", "checkbox");
                     chkbox.value = _getValueByName(rowdata, conf.checkValue);
                     chkbox.onclick = highlight.bind(this);
-                    td_d.appendChild(chkbox); // 绗竴鍒楁坊鍔犲閫夋
+                    td_d.appendChild(chkbox); // 第一列添加复选框
                     $.each(column, function(o) {
                         var td_o = tr.insertCell(-1);
                         td_o.className=column[o].tbodyClass;
@@ -393,7 +393,7 @@
                     if (l_tree.tree){
                         if(l_tree.type==1){
                             tee=tee+"-0";
-                            treeHtml(tbody, rowdata);// 鏍戝舰寮�
+                            treeHtml(tbody, rowdata);// 树形式
                         }else {
                             var obj = json[d];
                             delete json[d];
@@ -409,8 +409,8 @@
             var totalPages = _getValueByName(jsonData, conf.totalPages);
             var pageNow = _getValueByName(jsonData, conf.pageNow);
             if(conf.local){
-                totalRecords = jsonData.records.length;//鎬昏鏁�
-                totalPages = Math.ceil(totalRecords / conf.pageSize);//鎬婚〉鏁�
+                totalRecords = jsonData.records.length;//总行数
+                totalPages = Math.ceil(totalRecords / conf.pageSize);//总页数
             }
             var bdiv = document.createElement("div");
             bdiv.setAttribute("style", "vertical-align: middle;");
@@ -444,7 +444,7 @@
             var lia = document.createElement("a");
             lia.href = "javascript:void(0);";
             ulli.appendChild(lia);
-            lia.innerHTML = '鎬�&nbsp;' + totalRecords + '&nbsp;鏉�&nbsp;&nbsp;姣忛〉&nbsp;' + conf.pageSize + '&nbsp;鏉�&nbsp;&nbsp;鍏�&nbsp;' + totalPages + '&nbsp;椤�';
+            lia.innerHTML = '总&nbsp;' + totalRecords + '&nbsp;条&nbsp;&nbsp;每页&nbsp;' + conf.pageSize + '&nbsp;条&nbsp;&nbsp;共&nbsp;' + totalPages + '&nbsp;页';
 
 
             var btd_1 = document.createElement("td");
@@ -469,7 +469,7 @@
                 lia_2.onclick = pageBind.bind();
                 lia_2.id = "pagNum_" + (pageNow - 1);
                 lia_2.href = "javascript:void(0);";
-                lia_2.innerHTML = '鈫� prev';
+                lia_2.innerHTML = '← prev';
                 ulli_2.appendChild(lia_2);
             } else {
                 var ulli_2 = document.createElement("li");
@@ -477,7 +477,7 @@
                 divul_2.appendChild(ulli_2);
                 var lia_2 = document.createElement("a");
                 lia_2.href = "javascript:void(0);";
-                lia_2.innerHTML = '鈫� prev';
+                lia_2.innerHTML = '← prev';
                 ulli_2.appendChild(lia_2);
             }
             var pg = pagesIndex(conf.pagecode, pageNow, totalPages);
@@ -540,7 +540,7 @@
                 divul_2.appendChild(ulli_7);
                 var lia_7 = document.createElement("a");
                 lia_7.href = "javascript:void(0);";
-                lia_7.innerHTML = 'next 鈫� ';
+                lia_7.innerHTML = 'next → ';
                 ulli_7.appendChild(lia_7);
             } else {
                 var ulli_7 = document.createElement("li");
@@ -550,7 +550,7 @@
                 lia_7.onclick = pageBind.bind();
                 lia_7.href = "javascript:void(0);";
                 lia_7.id = "pagNum_" + (pageNow + 1);
-                lia_7.innerHTML = 'next 鈫� ';
+                lia_7.innerHTML = 'next → ';
                 ulli_7.appendChild(lia_7);
             }
             ;
@@ -594,14 +594,14 @@
                     td_d.setAttribute("style", "text-align:center;width: 28px;display: " + cbk + ";");
                     var chkbox = document.createElement("INPUT");
                     chkbox.type = "checkbox";
-                    // ******** 鏍戠殑涓婁笅绉诲姩闇€瑕�
+                    // ******** 树的上下移动需要
                     chkbox.setAttribute("cid", _getValueByName(jsonTree[jt], l_tree.id));
                     chkbox.setAttribute("pid", _getValueByName(jsonTree[jt], l_tree.pid));
-                    // ******** 鏍戠殑涓婁笅绉诲姩闇€瑕�
+                    // ******** 树的上下移动需要
                     chkbox.setAttribute("_l_key", "checkbox");
                     chkbox.value = _getValueByName(jsonTree[jt], conf.checkValue);
                     chkbox.onclick = highlight.bind(this);
-                    td_d.appendChild(chkbox); // 绗竴鍒楁坊鍔犲閫夋
+                    td_d.appendChild(chkbox); // 第一列添加复选框
                     $.each(column, function(o) {
                         if (!column[o].hide || column[o].hide == undefined) {
                             var td_o = tr.insertCell(-1);
@@ -697,14 +697,14 @@
                         td_d.setAttribute("style", "text-align:center;width: 28px;display: " + cbk + ";");
                         var chkbox = document.createElement("INPUT");
                         chkbox.type = "checkbox";
-                        // ******** 鏍戠殑涓婁笅绉诲姩闇€瑕�
+                        // ******** 树的上下移动需要
                         chkbox.setAttribute("cid", _getValueByName(jsonTree[jt], l_tree.id));
                         chkbox.setAttribute("pid", _getValueByName(jsonTree[jt], l_tree.pid));
-                        // ******** 鏍戠殑涓婁笅绉诲姩闇€瑕�
+                        // ******** 树的上下移动需要
                         chkbox.setAttribute("_l_key", "checkbox");
                         chkbox.value = _getValueByName(jsonTree[jt], conf.checkValue);
                         chkbox.onclick = highlight.bind(this);
-                        td_d.appendChild(chkbox); // 绗竴鍒楁坊鍔犲閫夋
+                        td_d.appendChild(chkbox); // 第一列添加复选框
                         $.each(column, function(o) {
                             if (!column[o].hide || column[o].hide == undefined) {
                                 var td_o = tr.insertCell(-1);
@@ -765,20 +765,20 @@
             tee=tee.substring(0,tee.lastIndexOf("-"));
             nb = parseInt(nb,10) - 20;;
         };
-        Array.prototype.sys_each = function(f) { // 鏁扮粍鐨勯亶鍘�
+        Array.prototype.sys_each = function(f) { // 数组的遍历
             for ( var i = 0; i < this.length; i++)
                 f(this[i], i, this);
         };
-        var lyGridUp = function(jsonUrl) { // 涓婄Щ鎵€閫夎
+        var lyGridUp = function(jsonUrl) { // 上移所选行
 
-            var upOne = function(tr) { // 涓婄Щ1琛�
+            var upOne = function(tr) { // 上移1行
                 if (tr.rowIndex > 0) {
                     var ctr = divid.children[0].children.mytable.rows[tr.rowIndex - 1];
                     swapTr(tr, ctr);
                     getChkBox(tr).checked = true;
                 }
             };
-            var arr = $A(divid.children[0].children.mytable.rows).reverse(); // 鍙嶉€�
+            var arr = $A(divid.children[0].children.mytable.rows).reverse(); // 反选
             if (arr.length > 0 && getChkBox(arr[arr.length - 1]).checked) {
                 for ( var i = arr.length - 1; i >= 0; i--) {
                     if (getChkBox(arr[i]).checked) {
@@ -793,11 +793,11 @@
                 var ck = getChkBox(tr);
                 if (ck.checked) {
                     var cd = ck.getAttribute("cid");
-                    $("input:checkbox[pid='" + cd + "']").attr('checked', 'true');// 璁╁瓙绫婚€変腑
+                    $("input:checkbox[pid='" + cd + "']").attr('checked', 'true');// 让子类选中
                     upOne(tr);
                 }
             });
-            var row = rowline();// 鏁扮粍瀵硅薄榛樿鏄瘂"rowNum":row,"rowId":cbox};
+            var row = rowline();// 数组对象默认是{"rowNum":row,"rowId":cbox};
             var data = [];
             $.each(row, function(i) {
                 data.push(conf.checkValue+"[" + i + "]=" + row[i].rowId);
@@ -810,7 +810,7 @@
                 dataType : 'json',
             });
         };
-        var lyGridDown = function(jsonUrl) { // 涓嬬Щ鎵€閫夎
+        var lyGridDown = function(jsonUrl) { // 下移所选行
 
             var downOne = function(tr) {
                 if (tr.rowIndex < divid.children[0].children.mytable.rows.length - 1) {
@@ -832,14 +832,14 @@
                 var ck = getChkBox(tr);
                 if (ck.checked) {
                     var cd = ck.getAttribute("cid");
-                    $("input:checkbox[pid='" + cd + "']").attr('checked', 'true');// 璁╁瓙绫婚€変腑
+                    $("input:checkbox[pid='" + cd + "']").attr('checked', 'true');// 让子类选中
                 }
             });
             arr.reverse().sys_each(function(tr) {
                 if (getChkBox(tr).checked)
                     downOne(tr);
             });
-            var row = rowline();// 鏁扮粍瀵硅薄榛樿鏄瘂"rowNum":row,"rowId":cbox};
+            var row = rowline();// 数组对象默认是{"rowNum":row,"rowId":cbox};
             var data = [];
             $.each(row, function(i) {
                 data.push(conf.checkValue+"[" + i + "]=" + row[i].rowId);
@@ -852,7 +852,7 @@
                 dataType : 'json',
             });
         };
-        var highlight = function() { // 璁剧疆琛岀殑鑳屾櫙鑹�
+        var highlight = function() { // 设置行的背景色
             var evt = arguments[0] || window.event;
             var chkbox = evt.srcElement || evt.target;
             var tr = chkbox.parentNode.parentNode;
@@ -870,7 +870,7 @@
             });
             return ret;
         };
-        var trClick = function() { // 璁剧疆琛岀殑鑳屾櫙鑹� 鍏煎鎬ч棶棰樺緢澶�
+        var trClick = function() { // 设置行的背景色 兼容性问题很大
             /*
              * var evt = arguments[0] || window.event; var tr = evt.srcElement ||
              * evt.currentTarget; var chkbox = getChkBox(tr);
@@ -878,7 +878,7 @@
              * }else{ chkbox.checked=true; setBgColor(tr); }
              */
         };
-        var checkboxbind = function() { // 鍏ㄩ€�/鍙嶉€�
+        var checkboxbind = function() { // 全选/反选
             var evt = arguments[0] || window.event;
             var chkbox = evt.srcElement || evt.target;
             var checkboxes = $("#"+chkbox.attributes.pagId.value+" input[_l_key='checkbox']");
@@ -898,7 +898,7 @@
             });
         };
 
-        var pageBind = function() { // 椤垫暟
+        var pageBind = function() { // 页数
             var evt = arguments[0] || window.event;
             var a = evt.srcElement || evt.target;
             var page = a.id.split('_')[1];
@@ -906,7 +906,7 @@
             if(conf.local){
                 returnData.pageNow=parseInt(page,10);
                 cBodytb(divid,returnData);
-                if (conf.usePage) {// 鏄惁鍒嗛〉
+                if (conf.usePage) {// 是否分页
                     fenyeDiv(divid, returnData);
                 }
             }else{
@@ -942,7 +942,7 @@
             else
                 replayData();
         }
-        var datatree = function() { // 椤垫暟
+        var datatree = function() { // 页数
             var evt = arguments[0] || window.event;
             var img = evt.srcElement || evt.target;
             var ttr = img.parentElement.parentElement.parentElement.getAttribute('d-tree');
@@ -955,33 +955,33 @@
             }
         };
 
-        var swapTr = function(tr1, tr2) { // 浜ゆ崲tr1鍜宼r2鐨勪綅缃�
+        var swapTr = function(tr1, tr2) { // 交换tr1和tr2的位置
             var target = (tr1.rowIndex < tr2.rowIndex) ? tr2.nextSibling : tr2;
             var tBody = tr1.parentNode;
             tBody.replaceChild(tr2, tr1);
             tBody.insertBefore(tr1, target);
         };
-        var getChkBox = function(tr) { // 浠巘r寰楀埌 checkbox瀵硅薄
+        var getChkBox = function(tr) { // 从tr得到 checkbox对象
             return tr.cells[1].firstChild;
 
         };
-        var restoreBgColor = function(tr) {// 涓嶅嬀閫夎缃儗鏅壊
+        var restoreBgColor = function(tr) {// 不勾选设置背景色
             for ( var i = 0; i < tr.childNodes.length; i++) {
                 tr.childNodes[i].style.backgroundColor = "";
             }
         };
-        var setBgColor = function(tr) { // 璁剧疆鑳屾櫙鑹�
+        var setBgColor = function(tr) { // 设置背景色
             for ( var i = 0; i < tr.childNodes.length; i++) {
                 tr.childNodes[i].style.backgroundColor = "#D4D4D4";
             }
         };
-        function $A(arrayLike) { // 鏁板€肩殑濉厖
+        function $A(arrayLike) { // 数值的填充
             for ( var i = 0, ret = []; i < arrayLike.length; i++)
                 ret.push(arrayLike[i]);
             return ret;
         }
         ;
-        Function.prototype.bind = function() { // 鏁版嵁鐨勭粦瀹�
+        Function.prototype.bind = function() { // 数据的绑定
             var __method = this, args = $A(arguments), object = args.shift();
             return function() {
                 return __method.apply(object, args.concat($A(arguments)));
@@ -1017,8 +1017,8 @@
             return cb.reverse();
         };
         /**
-         * 杩欐槸涓€涓垎椤靛伐鍏� 涓昏鐢ㄤ簬鏄剧ず椤电爜,寰楀埌杩斿洖鏉ョ殑 寮€濮嬮〉鐮佸拰缁撴潫椤电爜 pagecode 瑕佽幏寰楄褰曠殑寮€濮嬬储寮� 鍗� 寮€濮嬮〉鐮� pageNow
-         * 褰撳墠椤� pageCount 鎬婚〉鏁�
+         * 这是一个分页工具 主要用于显示页码,得到返回来的 开始页码和结束页码 pagecode 要获得记录的开始索引 即 开始页码 pageNow
+         * 当前页 pageCount 总页数
          *
          */
         var pagesIndex = function(pagecode, pageNow, pageCount) {
@@ -1056,7 +1056,7 @@
             return se;
         };
         /**
-         * 閲嶆柊鍔犺浇
+         * 重新加载
          */
         var loadData = function() {
             $.extend(conf, params);
@@ -1064,7 +1064,7 @@
         };
 
         /**
-         * 鏌ヨ鏃讹紝璁剧疆鍙傛暟鏌ヨ
+         * 查询时，设置参数查询
          */
         var setOptions = function(params) {
             var data;
@@ -1077,7 +1077,7 @@
             replayData();
         };
         /**
-         * 鑾峰彇閫変腑鐨勫€�
+         * 获取选中的值
          */
         var getSelectedCheckbox = function(pagId) {
             if(pagId==''||pagId==undefined){
@@ -1114,12 +1114,12 @@
             return column;
         };
         var exportData = function(url){
-            var form=$("<form>");//瀹氫箟涓€涓猣orm琛ㄥ崟
+            var form=$("<form>");//定义一个form表单
             form.attr("style","display:none");
             form.attr("target","");
             form.attr("method","post");
             form.attr("action",rootPath + url);
-            $("body").append(form);//灏嗚〃鍗曟斁缃湪web涓�
+            $("body").append(form);//将表单放置在web中
             var input1=$("<input>");
             input1.attr("type","hidden");
             input1.attr("name","exportData");
@@ -1136,7 +1136,7 @@
                 input1.attr("name",p);
                 form.append(input1);
             }
-            form.submit();//琛ㄥ崟鎻愪氦
+            form.submit();//表单提交
         };
         var getCurrentData = function(){
             return currentData;
@@ -1184,33 +1184,33 @@
         init();
 
         return {
-            setOptions : setOptions,//鑷畾涔夋潯浠舵煡璇�
-            loadData : loadData,//閲嶆柊鍔犺浇鏁版嵁
-            getSelectedCheckbox : getSelectedCheckbox,//鑾峰彇閫夋嫨鐨勮鐨凜heckbox鍊�
-            selectRow : selectRow,// 閫変腑琛屼簨浠�
+            setOptions : setOptions,//自定义条件查询
+            loadData : loadData,//重新加载数据
+            getSelectedCheckbox : getSelectedCheckbox,//获取选择的行的Checkbox值
+            selectRow : selectRow,// 选中行事件
             selectTreeRow : selectTreeRow,
-            lyGridUp : lyGridUp,//涓婄Щ
-            lyGridDown : lyGridDown,//涓嬬Щ
+            lyGridUp : lyGridUp,//上移
+            lyGridDown : lyGridDown,//下移
             rowline : rowline,
-            resultJSONData : jsonRequest,//杩斿洖鍒楄〃鐨勬墍鏈塲son鏁版嵁
-            exportData:exportData,//瀵煎嚭鏁版嵁
-            getColumn :getColumn,//鑾峰彇琛ㄥご
-            getCurrentData:getCurrentData//鑾峰彇琛ㄦ牸鐨勫綋鍓嶉〉json鏁版嵁
+            resultJSONData : jsonRequest,//返回列表的所有json数据
+            exportData:exportData,//导出数据
+            getColumn :getColumn,//获取表头
+            getCurrentData:getCurrentData//获取表格的当前页json数据
         };
     });
 })();
-// 鍒╃敤js璁╁ご閮ㄤ笌鍐呭瀵瑰簲鍒楀搴︿竴鑷淬€�
+// 利用js让头部与内容对应列宽度一致。
 var fixhead = function() {
-    // 鑾峰彇琛ㄦ牸鐨勫搴�
+    // 获取表格的宽度
     /*
      * $('#table_head').css('width',
      * $('.t_table').find('table:first').eq(0).width());
      */
-    for ( var i = 0; i <= $('.t_table .pp-list.ftl tr:last').find('td:last').index(); i++) {
-        $('.pp-list.ftl th').eq(i).css('width', ($('.t_table .pp-list.ftl tr:last').find('td').eq(i).width()) + 2);
+    for ( var i = 0; i <= $('.t_table .pp-list tr:last').find('td:last').index(); i++) {
+        $('.pp-list th').eq(i).css('width', ($('.t_table .pp-list tr:last').find('td').eq(i).width()) + 2);
     }
     /*
-     * //褰撴湁妯悜婊氬姩鏉℃椂锛岄渶瑕佹js锛屾椂鍐呭婊氬姩澶撮儴涔熻兘婊氬姩銆� //鏆傛椂涓嶅鐞嗘í鍚� $('.t_table').scroll(function() {
+     * //当有横向滚动条时，需要此js，时内容滚动头部也能滚动。 //暂时不处理横向 $('.t_table').scroll(function() {
      * $('#table_head').css('margin-left', -($('.t_table').scrollLeft())); });
      */
 };

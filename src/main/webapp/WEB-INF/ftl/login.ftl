@@ -101,8 +101,8 @@
 
 
                 <div class="login-links">
-                    <a href="" class="forget-pwd" target="_blank">忘记密码</a>
-                    <a href="" class="register" target="_blank">免费注册</a>
+                    <a href="/yo-party-net/findpassword" class="forget-pwd" target="_blank">忘记密码</a>
+                    <a href="/yo-party-net/register/register.shtml" class="register" target="_blank">免费注册</a>
                 </div>
             </div>
         </div>
@@ -155,7 +155,7 @@
             alert("请填写密码!")
             return;
         }
-        $("#loginForm").attr("action","/yo-party-net/login.shtml")
+        $("#loginForm").attr("action","/yo-party-net/validate")
         $("#loginForm").submit();
     }
     function to_top() {

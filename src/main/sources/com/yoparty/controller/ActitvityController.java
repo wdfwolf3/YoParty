@@ -60,7 +60,7 @@ public class ActitvityController {
 
     @RequestMapping(value = "eventDetail/{id}", method = RequestMethod.GET)
     public String getActivityDetail(@PathVariable int id){
-        return "";
+        return "detail";
     }
 //    @RequestMapping(value = "/activity/{name}", method = RequestMethod.GET)
 //    public String getActivity(Model model){

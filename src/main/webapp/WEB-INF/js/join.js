@@ -4,7 +4,7 @@ $(function () {
     var personContainer = $('.hdHandle .personChoice ');
     var personInfoArr = ['name', 'sex', 'phoneNumber', 'idCard', 'idcard_typ'];
     var insuranceFlag = true;
-    // 娣诲姞鍙備笌鏈娲诲姩鐨勪汉鍛�
+    // 添加参与本次活动的人员
     companys.on('click', 'div.addperson', function () {
         addPersonClickFn();
     });
@@ -14,19 +14,19 @@ $(function () {
     $("#managerBtn").click(function () {
         managePersonClickFn();
     });
-    // 澧炲姞鍙備笌浜�
+    // 增加参与人
     companys.on('click', 'div.person', function (event) {
         var self = this;
         signUpClickFn(event, self);
     });
-    // 鍔ㄦ€佺粦瀹氾紝鍒犻櫎鎸夐挳鍒犻櫎褰撳墠閫夋嫨鐨勪汉鍛�
+    // 动态绑定，删除按钮删除当前选择的人员
     personContainer.on('click', '.personDelete', function (event) {
         $(this).parents('.tableInfo').remove();
         var personId = $(this).parents('.tableInfo').data('id');
         companys.find('.person[data-id=' + personId + ']').toggleClass('notselected selected');
         calculatorFn(insuranceFlag);
     });
-    // 淇濋櫓閫夋嫨浜嬩欢
+    // 保险选择事件
     $('#insurance').on('click', function () {
         if ($(this).prop('checked')) {
             insuranceFlag = true;
@@ -41,7 +41,7 @@ $(function () {
 
         }
     });
-    // 淇濋櫓閫夋嫨浜嬩欢--鎵嬫満
+    // 保险选择事件--手机
     $('#mb_insurance').on('click', function () {
         if ($(this).prop('checked')) {
             insuranceFlag = true;
@@ -65,8 +65,8 @@ $(function () {
 
     /**
      *
-     * @param event  鐐瑰嚮浜嬩欢瀵硅薄
-     * @param self   浠ｇ悊鍏冪礌ele
+     * @param event  点击事件对象
+     * @param self   代理元素ele
      */
     function signUpClickFn(event, self) {
         var flag = false;
@@ -91,8 +91,8 @@ $(function () {
 
     /**
      *
-     * @param ele 浠ｇ悊鍏冪礌ele
-     * @returns {{}} 浠ｇ悊鍏冪礌鐨勪俊鎭璞″寘鎷琻ame,sex,phoneNumber,idCard
+     * @param ele 代理元素ele
+     * @returns {{}} 代理元素的信息对象包括name,sex,phoneNumber,idCard
      */
     function getPersonInfoFn(ele) {
         var obj = {};
@@ -108,7 +108,7 @@ $(function () {
             window.location.href=rootPath + '/user_partner/mb_addUI.shtml?event_id='+$("#eid").val()+"&comefrom=eventJoin"
         } else {
             this.pageii = layer.open({
-                title: "鏂板",
+                title: "新增",
                 type: 2,
                 zIndex: 20170215,
                 area: ["600px", "70%"],
@@ -121,8 +121,8 @@ $(function () {
 
     /**
      *
-     * @param self 鐐瑰嚮浜嬩欢瀵硅薄
-     * @param personInfo 鐐瑰嚮浜嬩欢瀵硅薄鐨勫熀鏈俊鎭璞�
+     * @param self 点击事件对象
+     * @param personInfo 点击事件对象的基本信息对象
      */
     function addCompanyFn(self, personInfo) {
         var meet_places = $("#meet_places").html().split(" ");
@@ -143,7 +143,7 @@ $(function () {
             '<td class="phoneNumber">' + CommnUtil.notEmpty(personInfo.phoneNumber) + '</td> ' +
             '<td>' + CommnUtil.notEmpty(personInfo.idcard_typ) + '</td> ' +
             '<td class="idCard">' + CommnUtil.notEmpty(personInfo.idCard) + '</td> ' +
-            '<td><a class="personDelete" >鍒犻櫎</a></td>' +
+            '<td><a class="personDelete" >删除</a></td>' +
             '</tr>';
         personContainer.find('table').append($(fragment));
         $(self).toggleClass('notselected selected');
@@ -162,7 +162,7 @@ $(function () {
         $('#signupNumber').text(personNumber);
         $("#countMoney").text(countMoney.toFixed(2));
         $("#allMoney").text(allMoney.toFixed(2));
-        // 鑾峰彇
+        // 获取
         var mb_price = $("#mb_price").text();
         var mb_insurancePrice = $('#mb_insurancePrice').text();
         var mb_allMoney, mb_countMoney;
@@ -191,11 +191,11 @@ function addNewPartner(data) {
         + '<div class="line line-dashed "></div>'
         + '<div class="otherInfo">'
         + '<dl class="clearfix">'
-        + '<dt>鎬у埆锛�</dt>'
+        + '<dt>性别：</dt>'
         + '<dd class="sex">' + CommnUtil.notEmpty(data.gender) + '</dd>'
         + '</dl>'
         + '<dl>'
-        + '<dt class="phone_title">鐢佃瘽鍙风爜锛�</dt>'
+        + '<dt class="phone_title">电话号码：</dt>'
         + '<dd class="phoneNumber">' + CommnUtil.notEmpty(data.phone_no) + '</dd>'
         + '</dl>'
         + '</div>'
@@ -224,7 +224,7 @@ function submitSignUp() {
         partnerIds += partnerId + ","
     });
     if (partnerIds == "") {
-        layer.alert("璇烽€夋嫨鍙備笌浜�.")
+        layer.alert("请选择参与人.")
         return;
     }
     var is_insurance = $("#insurance").is(':checked')
@@ -243,16 +243,16 @@ function submitSignUp() {
     if (result.status == "error") {
         layer.alert(result.msg)
     } else if (result.status == "success") {
-        layer.confirm('娆㈣繋鎮ㄦ姤鍚嶅弬鍔犳湰娆℃椿鍔�,姝ｅ湪鎵撳紑鏀粯椤甸潰',
+        layer.confirm('欢迎您报名参加本次活动,正在打开支付页面',
             {
-                btn: ['鎴愬姛浠樻', '鏀粯鍑虹幇闂'],
+                btn: ['成功付款', '支付出现问题'],
 
             }, function (index, layero) {
-                //鎸夐挳銆愭寜閽竴銆戠殑鍥炶皟
+                //按钮【按钮一】的回调
                 window.location.href = rootPath + "/event/eventOrderUI/" + result['eventOrderFormMap.order_id'] + ".shtml"
             }, function () {
-                //鍙充笂瑙掑叧闂洖璋�
-                alert("鍏抽棴")
+                //右上角关闭回调
+                alert("关闭")
             })
     }
 

@@ -42,10 +42,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception{
-        httpSecurity.formLogin().loginPage("/yoparty/login").loginProcessingUrl("/validate").successHandler(new UrlAuthenticationSuccessHandler())
+        httpSecurity.formLogin().loginPage("/login").loginProcessingUrl("/validate").successHandler(new UrlAuthenticationSuccessHandler())
                 .and()
                 .authorizeRequests()
-                .antMatchers("/login").authenticated()
                 .antMatchers("/home/**").hasAuthority("ROLE_USER")
                 .antMatchers("/data/**").authenticated()
                 .anyRequest().permitAll()

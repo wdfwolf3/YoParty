@@ -13,9 +13,9 @@ var scrolltotop = {
         scrollto : 0,
         scrollduration : 1000,
         fadeduration : [ 500, 100 ]
-    },// 璋冩暣鍥剧墖鏄剧ず浣嶇疆
+    },// 调整图片显示位置
     controlHTML : '<img src=' + rootPath + "/images/gotop.gif"
-    + ' style="width:31px; height:31px" />', // 鑷畾涔夊浘鐗囧拰瀹藉害澶у皬
+    + ' style="width:31px; height:31px" />', // 自定义图片和宽度大小
     controlattrs : {
         offsetx : 100,
         offsety : 100

@@ -7,7 +7,7 @@ $(function () {
         var uid = $("#loginUid").val()
         if(CommnUtil.notNull(uid)){//访问报名页面
             window.location.href=rootPath+"/event/eventJoin/"+$("#event_id").val()+".shtml"
-        }else{//登录成功后访问报名页�
+        }else{//登录成功后访问报名页面
             nextUrl=rootPath+"/event/eventJoin/"+$("#event_id").val()+".shtml"
             pageii = layer.open({
                 title : "请先登录",
@@ -24,7 +24,7 @@ $(function () {
         var uid = $("#loginUid").val()
         if(CommnUtil.notNull(uid)){//访问报名页面
             window.location.href=rootPath+"/event/eventJoin/"+$("#event_id").val()+".shtml"
-        }else{//登录成功后访问报名页�?
+        }else{//登录成功后访问报名页面
             nextUrl=rootPath+"/event/eventJoin/"+$("#event_id").val()+".shtml"
             pageii = layer.open({
                 title : "请先登录",
@@ -36,7 +36,7 @@ $(function () {
         }
     })
 
-    var intDiff = parseInt( $("#countTime").val()); //倒计时�?�秒数量
+    var intDiff = parseInt( $("#countTime").val()); //倒计时总秒数量
     timer(intDiff);
 });
 
@@ -44,7 +44,7 @@ function showLeaderQr(str){
     layer.open({
         type: 1,
         shadeClose: true,
-        title: false, //不显示标�
+        title: false, //不显示标题
         content: '<img id="wechat_url" src="'+str+'" width="250px" height="250px"/>'
     });
 
@@ -55,7 +55,7 @@ function tabSelect(key) {
 }
 
 function selectObj(key,pid,htmltype,id_prefix){
-    //将之前�?�择的元素取消�?�择
+    //将之前选择的元素取消选择
     $oldObj = $("#"+pid+" "+htmltype+".selected");
     selected_class = $oldObj.attr("class");
     selected_class = selected_class.replace("selected","")
@@ -72,7 +72,7 @@ function timer(intDiff) {
         var day = 0,
             hour = 0,
             minute = 0,
-            second = 0; //时间默认�?
+            second = 0; //时间默认值
         if (intDiff > 0) {
             day = Math.floor(intDiff / (60 * 60 * 24));
             hour = Math.floor(intDiff / (60 * 60)) - (day * 24);

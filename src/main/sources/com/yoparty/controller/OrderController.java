@@ -21,8 +21,8 @@ import java.util.List;
  * Created by wdfwolf3 on 2017/3/1.
  */
 @Controller
-@RequestMapping("home")
-public class HomeController {
+@RequestMapping("event_order")
+public class OrderController {
     @Autowired
     private UserMapper userMapper;
 
@@ -31,6 +31,11 @@ public class HomeController {
 
     @Autowired
     private ActivityMapper activityMapper;
+
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public String eventOrder(){
+        return "order";
+    }
 
     @RequestMapping(value = "/{name}", method = RequestMethod.GET)
     public String personalPage(@PathVariable("name") String name, Model model) {
