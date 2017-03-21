@@ -1,14 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<!DOCTYPE html>
 <head>
-
     <title>活动列表</title>
     <meta charset="utf-8">
     <link rel="shortcut icon" href="/yo-party-net/images/logo_ico.png" type="image/x-icon"/>
     <link href="/yo-party-net/css/style.css" rel="stylesheet" type="text/css">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
-    <!--[if IE 7]>
+    <!--[if IE 7]
     <link href="/yo-party-net/css/ie7.css" rel="stylesheet" type="text/css">
     <![endif]-->
     <script type="text/javascript">
@@ -18,7 +16,7 @@
     <script type="text/javascript" src="/yo-party-net/js/endless-scroll/jquery.min.js"></script>
     <script type="text/javascript" src="/yo-party-net/js/endless-scroll/jquery.endless-scroll.js"></script>
     <script type="text/javascript" src="/yo-party-net/js/layer-v1.9.2/layer/layer.js"></script>
-    <script type="text/javascript" src="/yo-party-net/common/common.js"></script>
+    <script type="text/javascript" src="/yo-party-net/js/common/common.js"></script>
     <script type="text/javascript" src="/yo-party-net/js/bussiness/event_info/list.js">
     </script>
 </head>
@@ -27,7 +25,7 @@
 
 <script src="/yo-party-net/js/jquery/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="/yo-party-net/js/layer-v1.9.2/layer/layer.js"></script>
-<script src="/yo-party-net/common/common.js"></script>
+<script src="/yo-party-net/js/common/common.js"></script>
 <script src="/yo-party-net/js/common/header.js"></script>
 <script>
     var rootPath = "/yo-party-net";
@@ -46,13 +44,13 @@
                 <a href="/yo-party-net/event/list.shtml">活动</a>
             </li>
             <li>
-                <a href="about.html">关于</a>
+                <a href="/yo-party-net/home.shtml">关于</a>
             </li>
         </ul>
 
 
 
-        <ul class="login hd-hidden">
+        <ul class="login ">
             <li>
                 <a href="/yo-party-net/login.shtml">登录</a>
             </li>
@@ -62,13 +60,13 @@
         </ul>
 
 
-        <ul class="info ">
-            <li><a id="loginUnmae" href="/yo-party-net/event_order/list.shtml">国王无双</a></li>
+        <ul class="info hd-hidden">
+            <li><a id="loginUnmae" href="/yo-party-net/event_order/list.shtml"></a></li>
             <li id="imleader"><a href="http://127.0.0.1:8080/yo-party/index.shtml" target="_blank">我是领队</a></li>
             <li><a href="javaScript:loginOut()">注销</a></li>
         </ul>
 
-        <input type="hidden" id="loginUid" value="17"/>
+        <input type="hidden" id="loginUid" value=""/>
     </div>
 </div>
 <div id="hdline"></div>

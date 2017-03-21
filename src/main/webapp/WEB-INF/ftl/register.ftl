@@ -1,12 +1,6 @@
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
-
-
-
-
     <title>友派</title>
     <link rel="shortcut icon" href="/yo-party-net/images/logo_ico.png" type="image/x-icon" />
     <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
@@ -38,8 +32,8 @@
     <script type="text/javascript" src="/yo-party-net/js/jquery/underscore.js"></script>
     <script type="text/javascript" src="/yo-party-net/js/common/lyGrid.js"></script>
     <!--[if lt IE 9] <script src="/yo-party-net/js/jquery/ie/html5shiv.js"></script> <script src="/yo-party-net/js/jquery/ie/respond.min.js"></script><![endif]-->
-    <link href="/yo-party-net/css/date/bootstrap.min.css" rel="stylesheet">
-    <link href="/yo-party-net/css/date/font-awesome.min.css" rel="stylesheet">
+    <link href="/yo-party-net/css/date/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="/yo-party-net/css/date/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
     <script type="text/javascript" src="/yo-party-net/js/My97DatePicker/WdatePicker.js"></script>
@@ -57,9 +51,7 @@
         .error{
             border: 3px solid #FFCCCC;
         }
-        .form-group{
-            padding-left: 15px
-        }
+
         .left{
             text-align: left;
             padding-left: 10px;
@@ -247,7 +239,7 @@
                 <a href="/yo-party-net/event/list.shtml">活动</a>
             </li>
             <li>
-                <a href="about.html">关于</a>
+                <a href="/yo-party-net/home.shtml">关于</a>
             </li>
         </ul>
 
@@ -258,7 +250,7 @@
                 <a href="/yo-party-net/login.shtml">登录</a>
             </li>
             <li>
-                <a href="/yo-party-net/register.shtml">注册</a>
+                <a href="/yo-party-net/register/register.shtml">注册</a>
             </li>
         </ul>
 

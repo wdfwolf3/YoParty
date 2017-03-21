@@ -45,7 +45,7 @@
                 <a href="/yo-party-net/login.shtml">登录</a>
             </li>
             <li>
-                <a href="/yo-party-net/register.shtml">注册</a>
+                <a href="/yo-party-net/register/register.shtml">注册</a>
             </li>
         </ul>
 

@@ -16,7 +16,7 @@ $(function () {
         }
         is_scroll = false
         //console.log($(document).height() - $(this).scrollTop() - $(this).height() )
-        // PC绔綋婊氬姩鍒版渶搴曢儴浠ヤ笂100鍍忕礌鏃讹紝 鍔犺浇鏂板唴瀹�
+        // PC端当滚动到最底部以上100像素时， 加载新内容
         var btmh = 50
         if (CommnUtil.isPhone()) {
             btmh = 300
@@ -32,11 +32,11 @@ $(function () {
             is_scroll = true
         }
     });
-    //棰嗛槦
+    //领队
     $hidenType = $('div#search-type div.fresult');
-    //娲诲姩
+    //活动
     $showType = $('div#search-type div.f');
-    //鏌ヨinput
+    //查询input
     $searchKeyword = $('input#searchKeyword');
 
     $('div#search-type b.arrow').click(function () {
@@ -46,20 +46,20 @@ $(function () {
     $hidenType.click(function () {
         var nextType = $hidenType.attr("type");
         if (nextType == 1) {
-            $showType.html('<span class="p" >鎸夐闃熸悳绱�</span>');
+            $showType.html('<span class="p" >按领队搜索</span>');
             $showType.attr("type", 1);
             $searchKeyword.val("");
-            $searchKeyword.attr('placeholder', '璇疯緭鍏ラ闃熷悕绉�');
+            $searchKeyword.attr('placeholder', '请输入领队名');
 
-            $hidenType.html('<p>鎸夋椿鍔ㄦ悳绱�</p>');
+            $hidenType.html('<p>按活动搜索</p>');
             $hidenType.attr("type", 0);
             $('input#searchType').val(1);
         } else {
-            $showType.html('<span class="p" >鎸夋椿鍔ㄦ悳绱�</span>');
+            $showType.html('<span class="p" >按活动搜索</span>');
             $showType.attr("type", 0);
             $searchKeyword.val("");
-            $searchKeyword.attr('placeholder', '璇疯緭鍏ョ洰鐨勫湴銆佹櫙鐐圭瓑鍏抽敭璇�');
-            $hidenType.html('<p>鎸夐闃熸悳绱�</p>');
+            $searchKeyword.attr('placeholder', '请输入目的地、景点等关键词');
+            $hidenType.html('<p>按领队搜索</p>');
             $hidenType.attr("type", 1);
             $('input#searchType').val(0);
         }
@@ -68,47 +68,46 @@ $(function () {
     $searchKeyword.focus(function () {
         $hidenType.css('display', 'none');
     });
-    //缁戝畾鎼滅储鎸夐挳鐐瑰嚮浜嬩欢  澶ф悳绱㈡
+    //绑定搜索按钮点击事件  大搜索框
     $('#submit-btn').click(function () {
-        // 灏嗙瓫閫夋潯浠�  閲嶇疆  鍏ㄩ儴
+        // 将筛选条�?  重置  全部
         $('.navmenu a').removeClass("selected");
         $("[href='#']").attr('class', "selected");
-        // 鑾峰彇鏌ヨ鏉′欢,娉ㄦ剰瀵筽ageNow璧嬪€间负1
+        // 获取查询条件,注意对pageNow赋�?�为1
         currPage = 1;
         var searchParams = serchParams();
         searchParams['pageNow'] = currPage;
-        //娓呯┖鍒楄〃
+        //清空列表
         $('ul#stage').html('<li></li>');
-        // 璋冪敤loadmore鏂规硶
+        // 调用loadmore方法
         loadMore(searchParams);
     });
-    //缁戝畾鐐瑰嚮浜嬩欢  鍗曢€�
+    //绑定点击事件  单选
     $('.navmenu a').click(function () {
-        //閫変腑鏍峰紡鏀瑰彉
+        //选中样式改变
         $(this).parent().parent().find('a.selected').removeClass('selected');
         $(this).addClass('selected');
-        // 鑾峰彇鏌ヨ鏉′欢,娉ㄦ剰瀵筽ageNow璧嬪€间负1
+        // 获取查询条件,注意对pageNow赋值为1
         currPage = 1;
         var searchParams = serchParams();
         searchParams['pageNow'] = currPage;
-        //娓呯┖鍒楄〃
+        //清空列表
         $('ul#stage').html('<li></li>');
-        // 璋冪敤loadmore鏂规硶
+        // 调用loadmore方法
         loadMore(searchParams);
     });
-
-    //缁戝畾鐐瑰嚮浜嬩欢  鎺掑簭
+    ///绑定点击事件  排序
     $('.orderHd a').click(function () {
-        //閫変腑鏍峰紡鏀瑰彉
+        //选中样式改变
         $(this).parent().find('a.selected').removeClass('selected');
         $(this).addClass('selected');
-        //鑾峰彇鏌ヨ鏉′欢,娉ㄦ剰瀵筽ageNow璧嬪€间负1
+        //获取查询条件,注意对pageNow赋值为1
         currPage = 1;
         var searchParams = serchParams();
         searchParams['pageNow'] = currPage;
-        //娓呯┖鍒楄〃
+        //清空列表
         $('ul#stage').html('<li></li>');
-        // 璋冪敤loadmore鏂规硶
+        // 调用loadmore方法
         loadMore(searchParams);
     });
     function loadMore(para) {
@@ -118,7 +117,7 @@ $(function () {
         data = CommnUtil.ajax(url, para, "json");
 
         if (CommnUtil.notNull(data) && CommnUtil.notNull(data.records) && data.records.length > 0) {
-            //璁剧疆鎬绘暟
+            //设置总数
             $('#total').html(data.rowCount);
             var oProduct, $row, iHeight, iTempHeight;
             records = data.records;
@@ -126,7 +125,7 @@ $(function () {
 
             for (var i = 0, l = records.length; i < l; i++) {
                 oProduct = records[i];
-                // 鎵惧嚭褰撳墠楂樺害鏈€灏忕殑鍒�, 鏂板唴瀹规坊鍔犲埌璇ュ垪
+                // 找出当前高度最小的列, 新内容添加到该列
                 iHeight = -1;
                 $('#stage li').each(function () {
                     iTempHeight = Number($(this).height());
@@ -150,24 +149,24 @@ $(function () {
                     '<div class="di clearfix fll">' +
                     '<ul class="di-l fll">' +
                     '<div class="row1 fll">' +
-                    '<li class="i">棰嗛槦:<span>' + CommnUtil.notEmpty(oProduct.leader_name) + '</span></li>' +
-                    '<li class="i pad">鍑哄彂鏃ユ湡:<span>' + CommnUtil.notEmpty(new Date(oProduct.start_time).format("yyyy骞碝M鏈坉d鏃�")) + '</span></li>' +
-                    '<li class="i pc ">缁撴潫鏃ユ湡:<span>' + CommnUtil.notEmpty(new Date(oProduct.end_time).format("yyyy骞碝M鏈坉d鏃�")) + '</span></li>' +
+                    '<li class="i">领队:<span>' + CommnUtil.notEmpty(oProduct.leader_name) + '</span></li>' +
+                    '<li class="i pad">出发日期:<span>' + CommnUtil.notEmpty(new Date(oProduct.start_time).format("yyyy年MM月dd日")) + '</span></li>' +
+                    '<li class="i pc ">结束日期:<span>' + CommnUtil.notEmpty(new Date(oProduct.end_time).format("yyyy年MM月dd日")) + '</span></li>' +
                     '</div>' +
                     '<div class="row2 fll">' +
-                    '<li class="i phone"><label class="sdt">鍑哄彂鏃ユ湡:</label><span>' + CommnUtil.notEmpty(new Date(oProduct.start_time).format("yyyy骞碝M鏈坉d鏃�")) + '</span></li>' +
+                    '<li class="i phone"><label class="sdt">出发日期:</label><span>' + CommnUtil.notEmpty(new Date(oProduct.start_time).format("yyyy年MM月dd日")) + '</span></li>' +
                     '<li class="i pad">' + CommnUtil.notEmpty(oProduct.type1name) + ':<span>' + CommnUtil.notEmpty(oProduct.type1) + '</span></li>' +
                     '<li class="i pad">' + CommnUtil.notEmpty(oProduct.type2name) + ':<span>' + CommnUtil.notEmpty(oProduct.type2) + '</span></li>' +
                     '<li class="i pc ">' + CommnUtil.notEmpty(oProduct.type3name) + ':<span>' + CommnUtil.notEmpty(oProduct.type3) + '</span></li>' +
                     '</div>' +
                     '<div class="row3 fll">' +
-                    '<li class="i pad">鍑哄彂鍦�:<span>' + CommnUtil.notEmpty(oProduct.start_city) + '</span></li>' +
-                    '<li class="i ect">鐩湴鐨�:<span>' + CommnUtil.notEmpty(oProduct.end_city) + '</span></li>' +
+                    '<li class="i pad">出发地:<span>' + CommnUtil.notEmpty(oProduct.start_city) + '</span></li>' +
+                    '<li class="i ect">目的地:<span>' + CommnUtil.notEmpty(oProduct.end_city) + '</span></li>' +
                     '</div>' +
                     '</ul>' +
                     '<div class="di-r flr">' +
-                    '<div class="p"><span>锟�</span>' + CommnUtil.notEmpty(oProduct.price) + '</div>' +
-                    '<div class="r">鐘舵€�:<span>' + CommnUtil.notEmpty(oProduct.event_status) + '</span>' +
+                    '<div class="p"><span>￥</span>' + CommnUtil.notEmpty(oProduct.price) + '</div>' +
+                    '<div class="r">状态:<span>' + CommnUtil.notEmpty(oProduct.event_status) + '</span>' +
                     '</div>' +
                     '</div>' +
                     '</div>' +
@@ -183,7 +182,7 @@ $(function () {
             $row.append(CommnUtil.loadingImg())
 
         } else {
-            //璁剧疆鎬绘暟
+            //设置总数
             $('#total').html(0);
             have_data = false;
         }
@@ -195,20 +194,20 @@ $(function () {
     }
 
 });
-//鏁寸悊浼犲叆鍙傛暟
+//整理传入参数
 function serchParams() {
-    //鎼滅储妗�
+    //搜索框
     var keyword = $('#searchKeyword').val();
     var searchType = $('#searchType').val();
     var searchParams = {"eventInfoFormMap.keyword": keyword, "eventInfoFormMap.searchType": searchType};
 
-    //鍗曢€夋寜閽�
+    //单选按钮
     $('.navmenu a.selected').each(function (i, node) {
         var eventType = $(node).attr("eventType");
         var eventKey = $(node).attr("eventKey");
         searchParams['eventInfoFormMap.type' + eventType] = eventKey;
     });
-    //鎺掑簭
+    //排序
     $('.orderHd a.selected').each(function (i, node) {
         var eventSort = $(node).attr("eventSort");
         searchParams['column'] = eventSort;

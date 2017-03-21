@@ -1,8 +1,4 @@
-
-
-<html lang="en"
-      class="app js no-touch no-android chrome no-firefox no-iemobile no-ie no-ie10 no-ie11 no-ios no-ios7 ipad">
-
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Google Chrome Frame也可以让IE用上Chrome的引擎: -->
@@ -14,15 +10,13 @@
     <link rel="shortcut icon" href="/yo-party-net/images/logo_ico.png" type="image/x-icon" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/yo-party-net/css/style.css" rel="stylesheet" type="text/css">
-    <!--[if lt IE 9]>
-    <![endif]-->
 </head>
 <body onload="javascript:to_top()">
 
 
 <script src="/yo-party-net/js/jquery/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="/yo-party-net/js/layer-v1.9.2/layer/layer.js"></script>
-<script src="/yo-party-net/common/common.js"></script>
+<script src="/yo-party-net/js/common/common.js"></script>
 <script src="/yo-party-net/js/common/header.js"></script>
 <script>
     var rootPath = "/yo-party-net";
@@ -41,7 +35,7 @@
                 <a href="/yo-party-net/event/list.shtml">活动</a>
             </li>
             <li>
-                <a href="about.html">关于</a>
+                <a href="/yo-party-net/home.shtml">关于</a>
             </li>
         </ul>
 

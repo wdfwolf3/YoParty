@@ -1,5 +1,5 @@
 /**
- * 宸ュ叿缁勪欢 瀵瑰師鏈夌殑宸ュ叿杩涜灏佽锛岃嚜瀹氫箟鏌愭柟娉曠粺涓€澶勭悊
+ * 工具组件 对原有的工具进行封装，自定义某方法统一处理
  *
  * @author yoparty 2014-12-12
  * @Email:
@@ -13,7 +13,7 @@
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 layer.open({
                     type: 1,
-                    title: "鍑洪敊鍟︼紒",
+                    title: "出错啦！",
                     area: ['95%', '95%'],
                     content: "<div id='layerError' style='color:red'>"
                     + XMLHttpRequest.responseText + "</div>"
@@ -23,12 +23,12 @@
         $.extend(pp, params);
         $.ajax(pp);
     });
-    ly.ajaxSubmit = (function (form, params) {// form 琛ㄥ崟ID. params ajax鍙傛暟
+    ly.ajaxSubmit = (function (form, params) {// form 表单ID. params ajax参数
         var pp = {
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 layer.open({
                     type: 1,
-                    title: "鍑洪敊鍟︼紒",
+                    title: "出错啦！",
                     area: ['95%', '95%'],
                     content: "<div id='layerError' style='color:red'>"
                     + XMLHttpRequest.responseText + "</div>"
@@ -40,7 +40,7 @@
     });
     CommnUtil = {
         /**
-         * ajax鍚屾璇锋眰 杩斿洖涓€涓猦tml鍐呭 dataType=html. 榛樿涓篽tml鏍煎紡 濡傛灉鎯宠繑鍥瀓son.
+         * ajax同步请求 返回一个html内容 dataType=html. 默认为html格式 如果想返回json.
          * CommnUtil.ajax(url, data,"json")
          *
          */
@@ -48,8 +48,8 @@
             if (!CommnUtil.notNull(dataType)) {
                 dataType = "html";
             }
-            var html = '娌℃湁缁撴灉!';
-            // 鎵€浠JAX閮藉繀椤讳娇鐢╨y.ajax..杩欓噷缁忚繃鍐嶆灏佽,缁熶竴澶勭悊..鍚屾椂缁ф壙ajax鎵€鏈夊睘鎬�
+            var html = '没有结果!';
+            // 所以AJAX都必须使用ly.ajax..这里经过再次封装,统一处理..同时继承ajax所有属性
             if (url.indexOf("?") > -1) {
                 url = url + "&_t=" + new Date();
             } else {
@@ -59,9 +59,9 @@
                 type: "post",
                 data: data,
                 url: url,
-                dataType: dataType,// 杩欓噷鐨刣ataType灏辨槸杩斿洖鍥炴潵鐨勬暟鎹牸寮忎簡html,xml,json
+                dataType: dataType,// 这里的dataType就是返回回来的数据格式了html,xml,json
                 async: false,
-                cache: false,// 璁剧疆鏄惁缂撳瓨锛岄粯璁よ缃垚涓簍rue锛屽綋闇€瑕佹瘡娆″埛鏂伴兘闇€瑕佹墽琛屾暟鎹簱鎿嶄綔鐨勮瘽锛岄渶瑕佽缃垚涓篺alse
+                cache: false,// 设置是否缓存，默认设置成为true，当需要每次刷新都需要执行数据库操作的话，需要设置成为false
                 success: function (data) {
                     html = data;
                 }
@@ -69,7 +69,7 @@
             return html;
         },
         /**
-         * 鍒ゆ柇鏌愬璞′笉涓虹┖..杩斿洖true 鍚﹀垯 false
+         * 判断某对象不为空..返回true 否则 false
          */
         notNull: function (obj) {
             if (obj === null) {
@@ -91,7 +91,7 @@
         },
 
         /**
-         * 鍒ゆ柇鏌愬璞′笉涓虹┖..杩斿洖obj 鍚﹀垯 ""
+         * 判断某对象不为空..返回obj 否则 ""
          */
         notEmpty: function (obj) {
             if (obj === null) {
@@ -114,14 +114,14 @@
         loadingImg: function () {
             var html = '<div class="alert alert-warning" >'
                 // + '<button type="button" class="close" data-dismiss="alert"><i class="ace-icon fa fa-times"></i></button>'
-                + '<div style="text-align:center;margin:5px;">鍔犺浇鏇村</div>'
+                + '<div style="text-align:center;margin:5px;">加载更多</div>'
                 + '<div style="text-align:center">'
                 + '<img src="' + rootPath + '/images/loading.gif"/><div>'
                 + '</div>';
             return html;
         },
         /**
-         * base64杞琱tml
+         * base64转html
          */
         base64tohtml: function (base64str) {
             var unicode = BASE64.decoder(base64str);
@@ -133,7 +133,7 @@
         }
         ,
         /**
-         * html鏍囩杞箟
+         * html标签转义
          */
         htmlspecialchars: function (str) {
             var s = "";
@@ -171,7 +171,7 @@
         }
         ,
         /**
-         * in_array鍒ゆ柇涓€涓€兼槸鍚﹀湪鏁扮粍涓�
+         * in_array判断一个值是否在数组中
          */
         in_array: function (array, string) {
             for (var s = 0; s < array.length; s++) {
@@ -184,12 +184,12 @@
         }
         ,
         /**
-         * 鐢熸垚鍦板尯閫夋嫨鍣�
+         * 生成地区选择器
          */
         area_gen: function (id) {
             arr = id.split(".")
             if (arr.length < 2) {
-                alert("CommnUtil.area_gen()鍦板尯閫夋嫨鍣ㄤ紶鍏ョ殑鍙傛暟:'" + id + "'鏈夐棶棰�,璇锋鏌�");
+                alert("CommnUtil.area_gen()地区选择器传入的参数:'" + id + "'有问题,请检查");
             } else {
                 nm = arr[1]
                 var proh = "";
@@ -203,15 +203,15 @@
                             + "</option>";
                     }
                 } else {
-                    layer.msg("鑾峰彇瀛楀吀淇℃伅閿欒锛岃鑱旂郴绠＄悊鍛橈紒");
+                    layer.msg("获取字典信息错误，请联系管理员！");
                 }
                 html = "<select id=\"" + nm + "_provice\" onchange=\"byCommonArea(2,this,'" + nm + "')\">" +
-                    "<option value='0'>--璇烽€夋嫨鐪佷唤--</option>" +
+                    "<option value='0'>--请选择省份--</option>" +
                     "" + proh + "</select>&nbsp;&nbsp; " +
                     "<select id=\"" + nm + "_city\" onchange=\"byCommonArea(3,this,'" + nm + "')\"> " +
-                    "  <option value='0'>--璇烽€夋嫨鍩庡競--</option> </select>&nbsp;&nbsp; " +
+                    "  <option value='0'>--请选择城市--</option> </select>&nbsp;&nbsp; " +
                     "<select id=\"" + nm + "_town\" onchange=\"byCommonArea(4,this,'" + nm + "')\">" +
-                    "   <option value='0'>--璇烽€夋嫨鍖哄幙锛堝彲涓嶉€夛級--</option> </select> " +
+                    "   <option value='0'>--请选择区县（可不选）--</option> </select> " +
                     "<input id=\"" + nm + "_zh\" name=\"" + id + "\" type=\"hidden\" /> " +
                     "<input id=\"" + nm + "_code\" name=\"" + id + "_code\" type=\"hidden\" />"
                 $("[id='" + id + "']").html(html)
@@ -257,7 +257,7 @@
         },
 
         /**
-         * 妫€鏌ユ枃浠跺ぇ灏�
+         * 检查文件大小
          * @param id
          * @returns
          */
@@ -266,7 +266,7 @@
             var extStart = filepath.lastIndexOf(".");
             var ext = filepath.substring(extStart, filepath.length).toUpperCase();
             if (ext != ".BMP" && ext != ".PNG" && ext != ".GIF" && ext != ".JPG" && ext != ".JPEG") {
-                alert("鍥剧墖闄愪簬bmp,png,gif,jpeg,jpg鏍煎紡");
+                alert("图片限于bmp,png,gif,jpeg,jpg格式");
                 return false;
             }
             var file_size = 0;
@@ -276,7 +276,7 @@
                 while (true) {
                     if (img.fileSize > 0) {
                         if (img.fileSize > 10 * 1024 * 1024) {
-                            alert("鍥剧墖涓嶅ぇ浜�10MB銆�");
+                            alert("图片不大于10MB。");
                         } else {
                             var num03 = img.fileSize / 1024;
                             num04 = num03.toFixed(2)
@@ -288,7 +288,7 @@
                 file_size = document.getElementById(id).files[0].size;
                 var size = file_size / 1024 / 1024;
                 if (size > 10) {
-                    alert("涓婁紶鐨勫浘鐗囧ぇ灏忎笉鑳借秴杩�10M锛�");
+                    alert("上传的图片大小不能超过10M！");
                 } else {
                     var num01 = file_size / 1024;
                     num02 = num01.toFixed(2);
@@ -306,20 +306,20 @@ function initCommonArea(id) {
         cd = code.split(",")
 
         $("#" + nm + "_provice").val(cd[0])
-        // 鐢熸垚鍩庡競浠ｇ爜
+        // 生成城市代码
         var url = rootPath + '/common/area_list.shtml';
         var data = CommnUtil.ajax(url, {
             'sysDictFormMap.dict_level': 2,
             'sysDictFormMap.parentId': cd[0]
         }, "json");
         h = genAreaOpt(data, cd[1])
-        $("#" + nm + "_city").html("<option value='0' >--璇烽€夋嫨鍩庡競--</option>" + h)
+        $("#" + nm + "_city").html("<option value='0' >--请选择城市--</option>" + h)
         data = CommnUtil.ajax(url, {
             'sysDictFormMap.dict_level': 3,
             'sysDictFormMap.parentId': cd[1]
         }, "json");
         h = genAreaOpt(data, cd[2])
-        $("#" + nm + "_town").html("<option value='0' >--璇烽€夋嫨鍖哄幙锛堝彲涓嶉€夛級--</option>" + h)
+        $("#" + nm + "_town").html("<option value='0' >--请选择区县（可不选）--</option>" + h)
     }
 }
 
@@ -352,30 +352,30 @@ function byCommonArea(opt, obj, id) {
                 h += "<option  value='" + data[i].id + "'>" + data[i].name
                     + "</option>";
             }
-            if (opt == 2) {// 鐪佷唤閫夋嫨浜嗕箣鍚庡仛鐨勬搷浣�
-                // 缁欏煄甯傛坊鍔犱笅鎷夋鏄剧ず鐨刼ption
-                h = "<option value='0' >--璇烽€夋嫨鍩庡競--</option>" + h
+            if (opt == 2) {// 省份选择了之后做的操作
+                // 给城市添加下拉框显示的option
+                h = "<option value='0' >--请选择城市--</option>" + h
                 $("#" + id + "_city").html(h);
-                // 缁欏尯鍘挎坊鍔犱笅鎷夋鏄剧ず鐨刼ption
-                townOpt = "<option value='0' >--璇烽€夋嫨鍖哄幙锛堝彲涓嶉€夛級--</option>"
+                // 给区县添加下拉框显示的option
+                townOpt = "<option value='0' >--请选择区县（可不选）--</option>"
                 $("#" + id + "_town").html(townOpt);
-            } else if (opt == 3) {// 鍩庡競閫夋嫨浜嗕箣鍚庡仛鐨勬搷浣�
-                // 缁欏尯鍘挎坊鍔犱笅鎷夋鏄剧ず鐨刼ption
-                h = "<option value='0' >--璇烽€夋嫨鍖哄幙锛堝彲涓嶉€夛級--</option>" + h
+            } else if (opt == 3) {// 城市选择了之后做的操作
+                // 给区县添加下拉框显示的option
+                h = "<option value='0' >--请选择区县（可不选）--</option>" + h
                 $("#" + id + "_town").html(h);
             }
         } else {
-            layer.msg("鑾峰彇鍦板煙淇℃伅閿欒锛岃鑱旂郴绠＄悊鍛橈紒");
+            layer.msg("获取地域信息错误，请联系管理员！");
         }
     }
     prod = $("#" + id + "_provice").find("option:selected")
     pron = prod.val() == 0 ? "" : prod.html()
     proc = prod.val()
-    // 鑾峰彇閫夋嫨鍩庡競鐨勫悕绉板拰code
+    // 获取选择城市的名称和code
     cityd = $("#" + id + "_city").find("option:selected")
     cityn = cityd.val() == 0 ? "" : " " + cityd.html()
     cityc = cityd.val()
-    // 鑾峰彇閫夋嫨鍖哄幙鐨勫悕绉板拰code
+    // 获取选择区县的名称和code
     townd = $("#" + id + "_town").find("option:selected")
     townn = townd.val() == 0 ? "" : " " + townd.html()
     townc = townd.val()
@@ -387,7 +387,7 @@ function byCommonArea(opt, obj, id) {
 }
 
 
-// 琛ㄥ崟json鏍煎紡鍖栨柟娉曗€︹€︿笉浣跨敤&鎷兼帴
+// 表单json格式化方法……不使用&拼接
 (function ($) {
     $.fn.serializeJson = function () {
         var serializeObj = {};

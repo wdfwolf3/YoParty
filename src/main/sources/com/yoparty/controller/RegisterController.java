@@ -1,47 +1,50 @@
 package com.yoparty.controller;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.context.ApplicationContext;
+import com.yoparty.util.AjaxResponseData;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 @Controller
+@RequestMapping("register")
 public class RegisterController {
-    private static ApplicationContext cxt;
-
-    @RequestMapping(value = "/register/register", method = RequestMethod.GET)
-    public String registerError(@RequestParam(value = "error", required = false) Integer error) throws IOException {
-        Logger logger = LogManager.getLogger(RegisterController.class.getName());
-        if (null != error) {
-            System.out.println(error);
-            return "register_" + error;
-        } else
-            return "register";
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String registerGet() {
+        return "register";
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String registerPost(HttpServletRequest request, HttpServletResponse resp) {
-        String username = request.getParameter("username");
+    @RequestMapping(value = "/addEntity", method = RequestMethod.POST)
+    public @ResponseBody
+    AjaxResponseData registerPost(HttpServletRequest request, HttpServletResponse resp) {
+        String username = request.getParameter("userFormMap.userName");
+        String accountName = request.getParameter("userFormMap.accountName");
+        String password = request.getParameter("userFormMap.password");
+        String rCode = request.getParameter("userFormMap.rCode");
+        String phone_no = request.getParameter("userFormMap.phone_no");
+
+        System.out.println(username+accountName+password+rCode+phone_no);
+        AjaxResponseData data = new AjaxResponseData();
+        data.setMsg("success");
+        data.setStatus("success");
         //查询用户名是否存在
-        boolean isExist = false;
-        if (isExist)
-            return "redirect:register?error=1001";
-        else {
-            //存数据库
-            String s = request.getParameter("form_username");
-            System.out.println(s);
-            System.out.println(username);
-        }
-        return "redirect:index";
+        return data;
     }
 
+    @RequestMapping(value = "/checkCodeUI", method = RequestMethod.GET)
+    public void getCheckCode(HttpServletResponse response) throws IOException {
+        response.setContentType("image/png");
+//        session.setAttribute("strCode", strCode);
+        BufferedImage image = null;
+        ImageIO.write(image, "jpg", response.getOutputStream());
+        response.getOutputStream().flush();
+    }
 
 //	@RequestMapping(value ="/register",method = RequestMethod.POST)
 //	public String registerPost(HttpServletRequest req, HttpServletResponse resp) {
