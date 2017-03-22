@@ -28,7 +28,7 @@ public class UrlAuthenticationSuccessHandler implements AuthenticationSuccessHan
             if("/login".equals(url)){
                 response.sendRedirect("/");
             }else{
-                response.sendRedirect(url);
+                response.sendRedirect("/yo-party-net/"+url);
             }
         }else{
             response.sendRedirect("/");

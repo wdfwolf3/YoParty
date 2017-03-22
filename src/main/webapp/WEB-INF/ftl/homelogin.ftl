@@ -51,12 +51,12 @@
 
 
         <ul class="info ">
-            <li><a id="loginUnmae" href="/yo-party-net/event_order/list.shtml">国王无双</a></li>
+            <li><a id="loginUnmae" href="/yo-party-net/event_order/list.shtml">${username}</a></li>
             <li id="imleader"><a href="http://127.0.0.1:8080/yo-party/index.shtml" target="_blank">我是领队</a></li>
             <li><a href="javaScript:loginOut()">注销</a></li>
         </ul>
 
-        <input type="hidden" id="loginUid" value="17"/>
+        <input type="hidden" id="loginUid" value="${loginUid}"/>
     </div>
 </div>
 <div id="hdline"></div>

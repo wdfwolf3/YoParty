@@ -50,10 +50,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .anyRequest().permitAll()
                 .and()
                 .logout().logoutSuccessUrl("/")
-                .and()
-                .rememberMe()
-                .tokenValiditySeconds(2419200)
-                .key("YoPartyKey")
+//                .and()
+//                .rememberMe()
+//                .tokenValiditySeconds(2419200)
+//                .key("YoPartyKey")
                 .and()
                 .csrf().disable();
     }
