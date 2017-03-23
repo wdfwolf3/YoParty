@@ -34,29 +34,41 @@
                 <a href="/yo-party-net/event/list.shtml">活动</a>
             </li>
             <li>
-                <a href="/yo-party-net/home.html">关于</a>
+                <a href="/yo-party-net/home.shtml">关于</a>
             </li>
         </ul>
 
 
+    <#if isLogin>
+    <ul class="login hd-hidden">
+    <#else >
+    <ul class="info ">
+    </#if>
+        <li>
+            <a href="/yo-party-net/login.shtml">登录</a>
+        </li>
+        <li>
+            <a href="/yo-party-net/register/register.shtml">注册</a>
+        </li>
+    </ul>
 
-        <ul class="login ">
-            <li>
-                <a href="/yo-party-net/login.shtml">登录</a>
-            </li>
-            <li>
-                <a href="/yo-party-net/register/register.shtml">注册</a>
-            </li>
+
+    <#if isLogin>
+        <ul class="info ">
+            <li><a id="loginUnmae" href="/yo-party-net/event_order/list.shtml">${username}</a></li>
+            <li id="imleader"><a href="http://127.0.0.1:8080/yo-party/index.shtml" target="_blank">我是领队</a></li>
+            <li><a href="javaScript:loginOut()">注销</a></li>
         </ul>
-
-
-        <ul class="info hd-hidden">
+        <input type="hidden" id="loginUid" value="${loginUid}"/>
+    <#else >
+        <ul class="login hd-hidden">
             <li><a id="loginUnmae" href="/yo-party-net/event_order/list.shtml"></a></li>
             <li id="imleader"><a href="http://127.0.0.1:8080/yo-party/index.shtml" target="_blank">我是领队</a></li>
             <li><a href="javaScript:loginOut()">注销</a></li>
         </ul>
-
         <input type="hidden" id="loginUid" value=""/>
+    </#if>
+
     </div>
 </div>
 <div id="hdline"></div>

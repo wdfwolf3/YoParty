@@ -5,13 +5,13 @@ import com.yoparty.bean.UserExample;
 import com.yoparty.mapper.UserMapper;
 import com.yoparty.util.AjaxResponseData;
 import com.yoparty.util.GenerateCheckCode;
+import com.yoparty.util.LoginStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
@@ -26,10 +26,14 @@ import java.util.List;
 //@SessionAttributes("checkCode")
 public class RegisterController {
     @Autowired
+    private LoginStatusService loginStatusService;
+
+    @Autowired
     private UserMapper userMapper;
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String registerGet() {
+    public String registerGet(Model model) {
+        loginStatusService.insertUserInformation(model);
         return "register";
     }
 

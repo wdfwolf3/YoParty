@@ -72,5 +72,7 @@
             </props>
         </property>
     </bean>
+
+    <!--<bean id="LoginStatusService" class="com.yoparty.util.LoginStatusService"-->
 </beans>
   	

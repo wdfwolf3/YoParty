@@ -49,7 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/data/**").authenticated()
                 .anyRequest().permitAll()
                 .and()
-                .logout().logoutSuccessUrl("/")
+                .logout().logoutUrl("/logOut")
 //                .and()
 //                .rememberMe()
 //                .tokenValiditySeconds(2419200)

@@ -1,9 +1,4 @@
-package com.yoparty.log;
-
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Pointcut;
+package com.yoparty.aop.log;
 
 /**
  * Created by wdfwolf3 on 2017/3/14.

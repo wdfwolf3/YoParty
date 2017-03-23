@@ -1,6 +1,5 @@
-package com.yoparty.log;
+package com.yoparty.aop.config;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
