@@ -7,7 +7,7 @@ $(function () {
 
 function loginOut(){
     layer.confirm("确定注销吗?",function () {
-        var rst = CommnUtil.ajax(rootPath + "/logout.shtml", {}, 'json');
+        var rst = CommnUtil.ajax(rootPath + "/loginOut.shtml", {}, 'json');
         if (rst == "success") {
             $("#header div ul.login").attr("class", "login")
             $("#header div ul.info").attr("class", "info hd-hidden")
