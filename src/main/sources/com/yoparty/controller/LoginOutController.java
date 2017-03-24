@@ -3,9 +3,11 @@ package com.yoparty.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Enumeration;
 
 /**
@@ -14,13 +16,14 @@ import java.util.Enumeration;
 @Controller
 public class LoginOutController {
     @RequestMapping(value = "loginOut", method = RequestMethod.POST)
-    public @ResponseBody
-    String logout(HttpServletRequest request){
+    public void logout(HttpServletRequest request, HttpServletResponse response) throws IOException {
         Enumeration<String> em = request.getSession().getAttributeNames();
         while(em.hasMoreElements()){
             request.getSession().removeAttribute(em.nextElement().toString());
         }
         request.getSession().invalidate();
-        return "success";
+        PrintWriter out = response.getWriter();
+        out.print("success");
+        out.close();
     }
 }
