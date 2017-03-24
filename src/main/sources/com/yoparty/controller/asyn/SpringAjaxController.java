@@ -17,7 +17,7 @@ public class SpringAjaxController {
         Activity activity = new Activity();
         activity.setStatus((byte) 'a');
         activity.setId(1);
-        activity.setName("saf");
+        activity.setTitle("saf");
         return activity;
     }
 
@@ -34,7 +34,7 @@ public class SpringAjaxController {
         }
         activity.setStatus((byte) 'a');
         activity.setId(1);
-        activity.setName("saf");
+        activity.setTitle("saf");
         return activity;
     }
 }

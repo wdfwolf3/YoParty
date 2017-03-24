@@ -6,17 +6,8 @@
     <link href="/yo-party-net/css/style.css" rel="stylesheet" type="text/css">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
-    <!--[if IE 7]
-    <link href="/yo-party-net/css/ie7.css" rel="stylesheet" type="text/css">
-    <![endif]-->
-    <script type="text/javascript">
-        var rootPath = "/yo-party-net";
-    </script>
-
     <script type="text/javascript" src="/yo-party-net/js/endless-scroll/jquery.min.js"></script>
     <script type="text/javascript" src="/yo-party-net/js/endless-scroll/jquery.endless-scroll.js"></script>
-    <script type="text/javascript" src="/yo-party-net/js/layer-v1.9.2/layer/layer.js"></script>
-    <script type="text/javascript" src="/yo-party-net/js/common/common.js"></script>
     <script type="text/javascript" src="/yo-party-net/js/bussiness/event_info/list.js">
     </script>
 </head>

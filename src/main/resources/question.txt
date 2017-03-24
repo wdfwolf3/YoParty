@@ -10,3 +10,33 @@
                                                from user
                                                where name = #{name}
                                            </select>
+    <!---->
+    <select id="select" parameterType="com.yoparty.service.ActivityListPageService" resultType="com.yoparty.service.ActivityAjax">
+        select
+        id,
+        title,
+        start_time as "start_time",
+        end_time as "end_time",
+        leader_name as "leader_name",
+        type1,
+        type2,
+        type3,
+        price,
+        origin as "start_city",
+        destination as "end_city",
+        status as "event_status"
+        FROM activity WHERE
+        ${searchType} like ${keyword}
+        <if test="type1 != 0">
+            and type1 = #{type1}
+        </if>
+        <if test="type2 != 0">
+            and type2 = #{type2}
+        </if>
+        <if test="type3 != 0">
+            and type3 = #{type3}
+        </if>
+        order by ${column} ${sort}
+        limit #{startIndex}, #{pageSize}
+    </select>
+  List<ActivityAjax> select(ActivityListPageService activityListPageService);

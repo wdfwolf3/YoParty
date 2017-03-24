@@ -5,15 +5,15 @@ import java.util.Date;
 public class Activity {
     private Integer id;
 
-    private String name;
+    private String title;
 
-    private Date departureDate;
+    private Date startTime;
 
-    private Date returnDate;
+    private Date endTime;
 
     private Date submitDate;
 
-    private Integer leaderId;
+    private String leaderName;
 
     private Short type1;
 
@@ -33,6 +33,8 @@ public class Activity {
 
     private Byte status;
 
+    private String image;
+
     private String gather;
 
     private Boolean completed;
@@ -47,28 +49,28 @@ public class Activity {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setTitle(String title) {
+        this.title = title == null ? null : title.trim();
     }
 
-    public Date getDepartureDate() {
-        return departureDate;
+    public Date getStartTime() {
+        return startTime;
     }
 
-    public void setDepartureDate(Date departureDate) {
-        this.departureDate = departureDate;
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
     }
 
-    public Date getReturnDate() {
-        return returnDate;
+    public Date getEndTime() {
+        return endTime;
     }
 
-    public void setReturnDate(Date returnDate) {
-        this.returnDate = returnDate;
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
     }
 
     public Date getSubmitDate() {
@@ -79,12 +81,12 @@ public class Activity {
         this.submitDate = submitDate;
     }
 
-    public Integer getLeaderId() {
-        return leaderId;
+    public String getLeaderName() {
+        return leaderName;
     }
 
-    public void setLeaderId(Integer leaderId) {
-        this.leaderId = leaderId;
+    public void setLeaderName(String leaderName) {
+        this.leaderName = leaderName == null ? null : leaderName.trim();
     }
 
     public Short getType1() {
@@ -157,6 +159,14 @@ public class Activity {
 
     public void setStatus(Byte status) {
         this.status = status;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image == null ? null : image.trim();
     }
 
     public String getGather() {

@@ -3,8 +3,11 @@ package com.yoparty.mapper;
 import com.yoparty.bean.Activity;
 import com.yoparty.bean.ActivityExample;
 import com.yoparty.bean.ActivityWithBLOBs;
-import java.util.List;
+import com.yoparty.service.ActivityAjax;
+import com.yoparty.service.ActivityListPageService;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface ActivityMapper {
     int countByExample(ActivityExample example);
@@ -34,4 +37,7 @@ public interface ActivityMapper {
     int updateByPrimaryKeyWithBLOBs(ActivityWithBLOBs record);
 
     int updateByPrimaryKey(Activity record);
+
+    //
+    List<ActivityAjax> select(ActivityListPageService activityListPageService);
 }
