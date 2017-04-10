@@ -374,4 +374,25 @@
       insurance = #{insurance,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+    <!---->
+  <select id="select" resultType="com.yoparty.service.OrderAjax" parameterType="com.yoparty.service.OrderListPageService">
+    SELECT
+    s.id,
+    s.order_no,
+    s.create_time,
+    s.people_num,
+    s.status,
+    s.final_total,
+    a.title,
+    a.leader_name,
+    a.price
+    FROM signup_user AS s
+    INNER JOIN activity AS a ON s.activity_id = a.id
+    WHERE
+    s.user_id = #{userId}
+    and s.status = #{status}
+    ORDER BY s.create_time DESC
+    limit #{startIndex}, #{pageSize}
+  </select>
 </mapper>

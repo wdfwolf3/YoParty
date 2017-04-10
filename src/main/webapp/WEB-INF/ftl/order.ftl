@@ -9,63 +9,15 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=no">
     <script type="text/javascript" src="/yo-party-net/js/jquery/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="/yo-party-net/common/common.js"></script>
+    <script type="text/javascript" src="/yo-party-net/js/common/common.js"></script>
 
     <script type="text/javascript" src="/yo-party-net/js/bussiness/order/list.js"></script>
     <link rel="stylesheet" href="/yo-party-net/css/cypager.min.css"/>
     <link href="/yo-party-net/css/style.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
-
-
-<script src="/yo-party-net/js/jquery/jquery-2.1.4.min.js"></script>
-<script type="text/javascript" src="/yo-party-net/js/layer-v1.9.2/layer/layer.js"></script>
-<script src="/yo-party-net/common/common.js"></script>
-<script src="/yo-party-net/js/common/header.js"></script>
-<script>
-    var rootPath = "/yo-party-net";
-</script>
-
-<div id="header">
-    <div>
-        <a id="logo_a" href="/yo-party-net/home.shtml"> <img class="logo" src="/yo-party-net/images/logo.png" width="55.62" height="55.62" alt="">
-            <p class="masthead-brand">友派</p></a>
-
-        <ul class="navigation">
-            <li>
-                <a href="/yo-party-net/home.shtml">首页</a>
-            </li>
-            <li>
-                <a href="/yo-party-net/event/list.shtml">活动</a>
-            </li>
-            <li>
-                <a href="about.html">关于</a>
-            </li>
-        </ul>
-
-
-
-        <ul class="login hd-hidden">
-            <li>
-                <a href="/yo-party-net/login.shtml">登录</a>
-            </li>
-            <li>
-                <a href="/yo-party-net/register/register.shtml">注册</a>
-            </li>
-        </ul>
-
-
-        <ul class="info ">
-            <li><a id="loginUnmae" href="/yo-party-net/event_order/list.shtml">国王无双</a></li>
-            <li id="imleader"><a href="http://127.0.0.1:8080/yo-party/index.shtml" target="_blank">我是领队</a></li>
-            <li><a href="javaScript:loginOut()">注销</a></li>
-        </ul>
-
-        <input type="hidden" id="loginUid" value="17"/>
-    </div>
-</div>
-<div id="hdline"></div>
-
+<#include "template/js.ftl"/>
+<#include "template/head.ftl"/>
 <div class="hfbody">
     <div class="hfItem">
         <dl>
@@ -85,7 +37,7 @@
                     <li>
                         <h5>
                             <a href="#">
-                                国王无双
+                              ${username}
                             </a>
                         </h5>
                     </li>
@@ -187,44 +139,7 @@
     </div>
 </div>
 
-
-<div id="footer">
-    <div>
-        <div class="section">
-            <div>
-                <div>
-                    <ul>
-                        <li class="first">
-                            <h2>关于我们</h2>
-                            <p>
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;友派是一个泛娱乐化的社交平台，力图创建一个以年轻人的兴趣、爱好为中心，以线上线下结合为立足点的文化社区。友派倡导勇于尝试、乐于参与、积极分享的社交理念，旨在提供一种健康有营养的生活方式，希望能给大家带来更加丰富和精彩的人生体验。
-                            </p>
-                        </li>
-                        <!-- <li>
-                            <h2>联系我们</h2>
-                            <ul class="connect">
-                                <li>
-                                    <a href="#go/facebook/" class="facebook">&nbsp;</a>
-                                </li>
-                                <li>
-                                    <a href="#go/twitter/" class="twitter">&nbsp;</a>
-                                </li>
-                                <li>
-                                    <a href="#misc/contact" class="googleplus">&nbsp;</a>
-                                </li>
-                            </ul>
-                        </li> -->
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footnote">
-            <p>
-                &copy; Copyright 2017. All rights reserved.&nbsp;
-            </p>
-        </div>
-    </div>
-</div>
+<#include "template/footer.ftl"/>
 </body>
 <script type="text/javascript" src="/yo-party-net/js/jquery/cypager.min.js"></script>
 <script>
@@ -332,7 +247,7 @@
         }
     });
     function discout() {
-        layer.alert("您暂时没有优惠信息,请积极关注友派的优惠活动.")
+//        layer.alert("您暂时没有优惠信息,请积极关注友派的优惠活动.")
     }
 
 

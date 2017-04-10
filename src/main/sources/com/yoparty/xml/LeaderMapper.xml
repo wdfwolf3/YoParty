@@ -382,4 +382,9 @@
       manage = #{manage,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
+    
+    <!---->
+  <select id="selectLeaderByActivityId" parameterType="Integer" resultMap="BaseResultMap">
+      SELECT leader.* from leader, leader_activity WHERE leader_activity.activity_id= #{id} and leader.id=leader_activity.leader_id
+  </select>
 </mapper>

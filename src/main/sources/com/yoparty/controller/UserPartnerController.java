@@ -1,6 +1,6 @@
 package com.yoparty.controller;
 
-import com.yoparty.service.OrderListPageService;
+import com.yoparty.service.PartnerListPageService;
 import com.yoparty.util.LoginStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,25 +10,28 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by wdfwolf3 on 2017/3/1.
+ * Created by wdfwolf3 on 2017/4/5.
  */
 @Controller
-@RequestMapping("event_order")
-public class OrderController {
+@RequestMapping("user_partner")
+public class UserPartnerController {
     @Autowired
     private LoginStatusService loginStatusService;
 
     @Autowired
-    private OrderListPageService orderListPageService;
+    private PartnerListPageService partnerListPageService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String eventOrderList(Model model){
+    public String getPartnerListPage(HttpServletResponse response, Model model){
         if(loginStatusService.insertUserInformation(model)){
-            return "order";
+            model.addAttribute("user", loginStatusService.getUser());
+            response.setHeader("X-Frame-Options", "SAMEORIGIN");
+            return "partner_list";
         }
         return "home";
     }
@@ -37,9 +40,6 @@ public class OrderController {
     public @ResponseBody
     Map<String, Object> getOrderList(HttpServletRequest request) {
         Map<String, Object> map = new HashMap<>();
-        map.put("records", orderListPageService.getActivityList(request, loginStatusService.getUser().getId()));
-        map.put("pageNow", orderListPageService.getPageNow());
-        map.put("rowCount", orderListPageService.getRowCount());
         return map;
     }
 }

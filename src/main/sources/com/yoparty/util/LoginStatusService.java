@@ -17,12 +17,14 @@ public class LoginStatusService {
     @Autowired
     private UserMapper userMapper;
 
+    User user = new User();
+
     public boolean insertUserInformation(Model model){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if(auth instanceof UsernamePasswordAuthenticationToken){
             if(auth.getPrincipal()!=null){
                 String username = ((org.springframework.security.core.userdetails.User)auth.getPrincipal()).getUsername();
-                User user = userMapper.selectByName(username);
+                user = userMapper.selectByName(username);
                 model.addAttribute("username", user.getPetname());
                 model.addAttribute("loginUid", user.getId());
                 model.addAttribute("isLogin", true);
@@ -31,5 +33,9 @@ public class LoginStatusService {
         }
         model.addAttribute("isLogin", false);
         return false;
+    }
+
+    public User getUser() {
+        return user;
     }
 }

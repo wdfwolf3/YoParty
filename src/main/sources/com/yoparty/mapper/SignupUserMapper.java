@@ -2,8 +2,11 @@ package com.yoparty.mapper;
 
 import com.yoparty.bean.SignupUser;
 import com.yoparty.bean.SignupUserExample;
-import java.util.List;
+import com.yoparty.service.OrderAjax;
+import com.yoparty.service.OrderListPageService;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface SignupUserMapper {
     int countByExample(SignupUserExample example);
@@ -33,4 +36,7 @@ public interface SignupUserMapper {
     int updateByPrimaryKeyWithBLOBs(SignupUser record);
 
     int updateByPrimaryKey(SignupUser record);
+
+    //
+    List<OrderAjax> select(OrderListPageService orderListPageService);
 }

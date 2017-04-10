@@ -1,111 +1,110 @@
+/**
+ * Created by user on 2017/2/15.
+ */
+/**
+ * 寮瑰眰鎺т欢閫夋嫨鎻掍欢
+ * by sunwenxiu 2016/6/28
+ */
+(function (w, f) {
+    'use strict';
+    if (typeof define === 'function') {
+        //  CMD
+        define('areaSelect/1.0.0/areaSelect', ['iscroll/2.0.0/iscroll-lite'], function (require) {
+            return f(w, require);
+        });
+    } else if (typeof exports === 'object') {
+        //  CommonJS
+        module.exports = f(w);
+    } else {
+        //  browser global
+        window.Pagination = f(w);
+    }
+})(window, function (w, require) {
+    'use strict';
+    var defaultInfoObj = {
+        container: $('.companysInfo-detail'),
+        content: $('.tableInfo'),
+        pageNumber: 3,
+        firstPageBtn : '.firstPageBtn',
+        lastPageBtn : '.lastPageBtn',
+        nextPageBtn : '.nextPageBtn',
+        prevPageBtn : '.prevPageBtn',
+        pageBtn: '.currentpage'
+    };
+    var fragement = '<ul class="buttonlist clearfix">'
+        + '<li class="firstPageBtn"><span>棣栭〉</span></li> '
+        + '<li class="prevPageBtn"><span>涓婁竴椤�</span></li>'
+        + ' <li class="currentpage"><span>1</span></li>'
+        + ' <li class="nextPageBtn"><span>涓嬩竴椤�</span></li> '
+        + '<li class="lastPageBtn"><span>灏鹃〉</span></li> '
+        + '</ul>';
+    function Pagination(infoObj) {
+        for(var pro in infoObj) {
+            defaultInfoObj[pro] = infoObj[pro];
+        }
+        this.infoObj = defaultInfoObj;
+        this.fragment = fragement;
+        this.infoObj.length = this.infoObj.content.length;
+        this.currentPage = 1;
+        this.countPage = Math.ceil(this.infoObj.length / this.infoObj.pageNumber);
+    }
+    Pagination.prototype.init = function () {
+        var self = this;
+        // 鎶婃枃娈典唬鐮佸姞杞藉埌container
+        self.infoObj.container.find('ul.buttonlist').remove();
+        self.infoObj.container.append($(this.fragment));
+        // 娣诲姞瀵瑰簲鎸夐挳鐨勭偣鍑讳簨浠�
+        $(self.infoObj.firstPageBtn).on('click',function () {
+            var $ele = self.infoObj.content.eq(self.infoObj.pageNumber - 1);
+            $ele.show();
+            $ele.nextAll('.tableInfo').hide();
+            $ele.prevAll('.tableInfo').show();
+            self.currentPage = 1;
+            $(self.infoObj.pageBtn).text(self.currentPage);
+        });
+        $(self.infoObj.lastPageBtn).on('click',function () {
+            var tail = self.infoObj.length % self.infoObj.pageNumber;
+            var $ele;
+            if(tail) {
+                $ele = self.infoObj.content.eq(self.infoObj.length - tail);
+            } else {
+                $ele = self.infoObj.content.eq(self.infoObj.length - self.infoObj.pageNumber);
+            }
+            $ele.show();
+            $ele.nextAll('.tableInfo').show();
+            $ele.prevAll('.tableInfo').hide();
+            self.currentPage = self.countPage;
+            $(self.infoObj.pageBtn).text(self.currentPage);
+        });
+        $(self.infoObj.nextPageBtn).on('click',function () {
+            self.currentPage ++;
+            if(self.currentPage > self.countPage) {
+                self.currentPage = 1;
+            }
+            $(self.infoObj.pageBtn).text(self.currentPage);
+            var temp = self.infoObj.pageNumber * self.currentPage;
+            self.infoObj.content.hide();
+            self.infoObj.content.each(function (index,ele) {
+                if(index >= temp - self.infoObj.pageNumber && index <= temp - 1) {
+                    $(this).show();
+                }
+            });
+        });
+        $(self.infoObj.prevPageBtn).on('click',function () {
+            self.currentPage --;
+            if(self.currentPage <= 0) {
+                self.currentPage = self.countPage;
+            }
+            $(self.infoObj.pageBtn).text(self.currentPage);
+            var temp = self.infoObj.pageNumber * self.currentPage;
+            self.infoObj.content.hide();
+            self.infoObj.content.each(function (index,ele) {
+                if(index >= temp - self.infoObj.pageNumber && index <= temp - 1) {
+                    $(this).show();
+                }
+            });
+        });
 
-
-
-
-
-<!DOCTYPE html>
-<html>
-<head>
-<title>友派</title>
-<link rel="shortcut icon" href="/yo-party-net/images/logo_ico.png" type="image/x-icon" />
-    <script type="text/javascript" charset="utf-8" src="/yo-party-net/ueditor/ueditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="/yo-party-net/ueditor/ueditor.all.min.js"></script>
-    <link href="/yo-party-net/css/style.css" rel="stylesheet" type="text/css">
-    <!--[if IE 7]>
-<link href="/yo-party-net/css/ie7.css" rel="stylesheet" type="text/css">
-    <![endif]-->
-    </head>
-    <body>
-
-
-    <script src="/yo-party-net/js/jquery/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="/yo-party-net/js/layer-v1.9.2/layer/layer.js"></script>
-    <script src="/yo-party-net/common/common.js"></script>
-    <script src="/yo-party-net/js/common/header.js"></script>
-    <script>
-var rootPath = "/yo-party-net";
-</script>
-
-<div id="header">
-    <div>
-    <a id="logo_a" href="/yo-party-net/home.shtml"> <img class="logo" src="/yo-party-net/images/logo.png" width="55.62" height="55.62" alt="">
-    <p class="masthead-brand">友派</p></a>
-
-    <ul class="navigation">
-    <li>
-    <a href="/yo-party-net/home.shtml">首页</a>
-    </li>
-    <li>
-    <a href="/yo-party-net/event/list.shtml">活动</a>
-    </li>
-    <li>
-    <a href="about.html">关于</a>
-    </li>
-    </ul>
-
-
-
-    <ul class="login ">
-    <li>
-    <a href="/yo-party-net/login.shtml">登录</a>
-    </li>
-    <li>
-    <a href="/yo-party-net/register/register.shtml">注册</a>
-    </li>
-    </ul>
-
-
-    <ul class="info hd-hidden">
-    <li><a id="loginUnmae" href="/yo-party-net/event_order/list.shtml"></a></li>
-    <li id="imleader"><a href="http://127.0.0.1:8080/yo-party/index.shtml" target="_blank">我是领队</a></li>
-    <li><a href="javaScript:loginOut()">注销</a></li>
-    </ul>
-
-    <input type="hidden" id="loginUid" value=""/>
-    </div>
-    </div>
-    <div id="hdline"></div>
-
-
-    <div id="body">
-    <img src="/yo-party-net/images/bg-img.jpg" width="100%">
-    </div>
-    <div id="footer">
-    <div>
-    <div class="section">
-    <div>
-    <div>
-    <ul>
-    <li class="first">
-    <h2>关于我们</h2>
-    <p>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;友派是一个泛娱乐化的社交平台，力图创建一个以年轻人的兴趣、爱好为中心，以线上线下结合为立足点的文化社区。友派倡导勇于尝试、乐于参与、积极分享的社交理念，旨在提供一种健康有营养的生活方式，希望能给大家带来更加丰富和精彩的人生体验。
-</p>
-</li>
-<!-- <li>
-<h2>联系我们</h2>
-<ul class="connect">
-    <li>
-    <a href="#go/facebook/" class="facebook">&nbsp;</a>
-</li>
-<li>
-<a href="#go/twitter/" class="twitter">&nbsp;</a>
-</li>
-<li>
-<a href="#misc/contact" class="googleplus">&nbsp;</a>
-</li>
-</ul>
-</li> -->
-</ul>
-</div>
-</div>
-</div>
-<div class="footnote">
-    <p>
-    &copy; Copyright 2017. All rights reserved.&nbsp;
-</p>
-</div>
-</div>
-</div>
-</body>
-</html>
+    };
+    return Pagination;
+});

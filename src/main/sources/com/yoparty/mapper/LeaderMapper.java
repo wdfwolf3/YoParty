@@ -2,8 +2,9 @@ package com.yoparty.mapper;
 
 import com.yoparty.bean.Leader;
 import com.yoparty.bean.LeaderExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface LeaderMapper {
     int countByExample(LeaderExample example);
@@ -27,4 +28,7 @@ public interface LeaderMapper {
     int updateByPrimaryKeySelective(Leader record);
 
     int updateByPrimaryKey(Leader record);
+
+    //
+    List<Leader> selectLeaderByActivityId(Integer id);
 }
