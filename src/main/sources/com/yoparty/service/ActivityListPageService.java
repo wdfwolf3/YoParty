@@ -26,6 +26,9 @@ public class ActivityListPageService {
     private int type3 = 0;
     private int startIndex;
     private int total;
+    private final String type1name = "活动性质";
+    private final String type2name = "活动强度";
+    private final String type3name = "持续时间";
 
     public List<ActivityAjax> getActivityList(HttpServletRequest request){
         initParameter(request);
@@ -148,5 +151,17 @@ public class ActivityListPageService {
 
     public void setTotal(int total) {
         this.total = total;
+    }
+
+    public String getType1name() {
+        return type1name;
+    }
+
+    public String getType2name() {
+        return type2name;
+    }
+
+    public String getType3name() {
+        return type3name;
     }
 }

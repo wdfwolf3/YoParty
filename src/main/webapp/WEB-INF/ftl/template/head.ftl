@@ -33,14 +33,16 @@
     <#if isLogin>
         <ul class="info ">
             <li><a id="loginUnmae" href="/yo-party-net/event_order/list.shtml">${username}</a></li>
-            <li id="imleader"><a href="http://127.0.0.1:8080/yo-party/index.shtml" target="_blank">我是领队</a></li>
-            <li><a href="/yo-party-net/logout">注销</a></li>
+            <#if ifLeader>
+                <li id="imleader"><a href="/yo-party/index.shtml" target="_blank">我是领队</a></li>
+            </#if>
+                <li><a href="/yo-party-net/logout">注销</a></li>
         </ul>
         <input type="hidden" id="loginUid" value="${loginUid}"/>
     <#else >
         <ul class="info hd-hidden">
             <li><a id="loginUnmae" href="/yo-party-net/event_order/list.shtml"></a></li>
-            <li id="imleader"><a href="http://127.0.0.1:8080/yo-party/index.shtml" target="_blank">我是领队</a></li>
+            <li id="imleader"><a href="/yo-party/index.shtml" target="_blank">我是领队</a></li>
             <li><a href="/yo-party-net/logout">注销</a></li>
         </ul>
         <input type="hidden" id="loginUid" value=""/>

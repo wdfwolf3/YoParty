@@ -13,16 +13,16 @@ div#header div {width:100%;height:90px;margin:0 auto;position:relative;}
 div#header div img.logo {float:left;position:absolute;top:17.19px;left:27.82px;}
 div#header div p.masthead-brand {font-size:30px;line-height:60px;color:#ecf5fc;position:absolute;left:100.63px;top:17px;font-family:Arial;}
 div#header div ul.navigation {margin:0 20px 0 0;padding:0;list-style-type:none;position:relative;right:220px;float:right;}
-div#header div ul.navigation li {float:left;height:90px;line-height:90px;}
-div#header div ul.navigation li a {text-decoration:none;display:block;font-family:SimSun;font-size:18px;text-transform:uppercase;line-height:90px;padding:0 25px;border-top:none;color:#ecf5fc;}
-div#header div ul.navigation li a:hover {font-size:22px;font-family:SimSun;border-bottom:3px solid #fff;}
+div#header div ul.navigation li {float:left;height:90px;line-height:90px;width: 100px;}
+div#header div ul.navigation li a {text-decoration:none;display:block;font-family:Arial;font-size:18px;text-transform:uppercase;line-height:90px;padding:0 25px;border-top:none;color:#ecf5fc;}
+div#header div ul.navigation li a:hover {font-size:22px;border-bottom:3px solid #fff;}
 div#header div ul.info {margin:0 20px 0 0;padding:0;list-style-type:none;right:10px;float:right;position:absolute;}
 div#header div ul.info li {float:left;height:90px;line-height:90px;color:#ecf5fc;font-family:Arial;font-size:12px;}
 div#header div ul.info li a {text-decoration:none;display:block;font-family:Arial;font-size:12px;text-transform:uppercase;line-height:90px;padding:0 5px;border-top:none;color:#ecf5fc;}
 div#header div ul.info li a:hover {font-size:14px;font-family:Arial;}
 .hd-hidden {display:none}
 div#header div ul.login {margin:0 20px 0 0;padding:0;list-style-type:none;/*position:fixed;*/    float:right;right:10px;position:absolute;}
-div#header div ul.login li {float:left;height:90px;line-height:90px;}
+div#header div ul.login li {float:left;height:90px;line-height:90px;width: 40px;}
 div#header div ul.login li a {text-decoration:none;display:block;font-family:Arial;font-size:12px;text-transform:uppercase;line-height:90px;padding:0 5px;border-top:none;color:#ecf5fc;}
 div#header div ul.login li a:hover {font-size:14px;font-family:Arial;}
 /*************End OF Header ****************/
@@ -166,7 +166,7 @@ input,textarea,select {font-family:inherit;font-size:inherit;font-weight:inherit
 .hdItem .di-r .p {height:70px;text-align:center;line-height:70px;font-size:48px;color:#ff0000;}
 .hdItem .di-r .p span {font-size:24px;color:#ff0000;}
 .hdItem .di-r .r {height:30px;font-size:18px;font-family:'simsun';overflow:hidden;white-space:normal;padding-left:30px;}
-/***************style of activityDetail*****************/ol,ul {list-style:none;}
+/***************活动详情*****************/ol,ul {list-style:none;}
 .clearfix:after {visibility:hidden;display:block;font-size:0;clear:both;height:0;}
 .fll {float:left;}
 .activityprofile {width:1200px;margin-top:20px;}
@@ -178,6 +178,7 @@ input,textarea,select {font-family:inherit;font-size:inherit;font-weight:inherit
 .ap-title h2 {font-family:'microsoft yahei';font-size:28px;color:#f97700;line-height:38px;}
 .ap-lintro {}
 .ap-lintro-banner {width:400px;height:auto;border:1px solid #dcdcdc;overflow:hidden;}
+
 
 
 .slides {position:relative;width:400px;height:300px;overflow:hidden;}
@@ -210,11 +211,11 @@ input,textarea,select {font-family:inherit;font-size:inherit;font-weight:inherit
 .leader .pic_info .i {float:left;width:105px;margin-left:18px;}
 .pic_info .c p {margin-top:5px;font-size:12px;color:#808080;font-family:'microsoft yahei';}
 p.na a {color:#f97700;}
-/****副领队***/
+/****副领??***/
 .vice_leader {padding:20px 40px;min-height:105px;overflow:hidden;}
 .vice_leader .c p {margin-top:5px;font-size:12px;color:#808080;font-family:'microsoft yahei';}
 .vice_leader .c p span {display:inline-block;margin-left:20px;}
-/****线*****/.ap-rside-box .lines {padding:0 40px;}
+.ap-rside-box .lines {padding:0 40px;}
 /**************/
 .mobile-rintro{display:none;}
 .hd-detail {margin-top:50px;}
@@ -227,7 +228,16 @@ p.na a {color:#f97700;}
 .hd-content {display:none}
 .mb_sign{display:none}
 
+.sc_tap{position: fixed;top:0;z-index: 100;
+    display: none;}
 
+.sc_tap ul {overflow:hidden;font-size:14px;line-height:47px;text-align:center;}
+.sc_tap ul li {display:block;color:#595757;font-size:16px;float:left;border-right:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;background-color:#fafafa;font-family:'Microsoft Yahei';cursor:pointer;}
+.sc_tap ul .last {border-right:none;}
+.sc_tap ul .selected {background-color:#f97700;color:#fff;}
+#scOpBtn{display:inline-block;width:150px;height:42px;line-height:42px;background-color:#f97700;color:#fff;font-size:19px;font-weight:bold;text-align:center;font-family:'microsoft yahei';border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;-o-border-radius:4px;letter-spacing:5px;cursor:pointer;border:none;}
+.title-bar-fix{position: fixed;
+    top:0;width: 100%}
 
 /******************************************************************************报名页面**************************************************/.signupPage {width:990px;margin:0px auto 20px auto;}
 .mainbox {overflow:hidden;}
@@ -250,7 +260,7 @@ p.na a {color:#f97700;}
 .hdDetail dt {color:red;display:inline-block;width:42%;text-align:right;}
 .hdDetail dd {display:inline-block;}
 .horiwrap span {display:inline-block;margin-right:20px;}
-/**********************新增小伙伴*******************************/.hdCompany .selected {background-image:url(../images/rectangle.png);}
+/**********************新增小伙??*******************************/.hdCompany .selected {background-image:url(../images/rectangle.png);}
 .hdCompany .notselected {
     background: url(../images/rectangle-alpha.png) no-repeat;background-size: 100%;
 }
@@ -295,7 +305,7 @@ p.na a {color:#f97700;}
 .attention {margin-top:20px;max-width:870px;text-align:left;font-size:14px;font-family:"Microsoft Yahei",Arial,sans-serif;}
 .attention dt {width:70px;}
 .attention dd {margin-left:72px;}
-/*********************提交按钮和总计**************************/.countMoney div {width:100%;}
+/*********************提交按钮和???计**************************/.countMoney div {width:100%;}
 .countMoney .sum dl {float:right;}
 .countMoney .submit {margin-top:20px;}
 .countMoney .submit button#prevStep {display:inline-block;float:left;}
@@ -314,9 +324,53 @@ p.na a {color:#f97700;}
 .login-box-wrap {position:absolute;top:85px;right:60px;width:350px;}
 .login-box-warp .login-box {background-color:rgba(255,255,255,.9);}
 .login-box {width:300px;padding:25px 25px 23px;color:#6c6c6c;background:#fff;position:relative;margin:0 auto;}
-.login-title {height:18px;line-height:18px;font-size:16px;color:#3c3c3c;margin-top:9px;padding-bottom:8px;font-weight:700;}
+.login-title {height:18px;line-height:18px;font-size:16px;color:#3c3c3c;margin-top:9px;padding-bottom:8px;}
+.login-title label{font-weight: normal;font-family: Arial;padding: 5px 15px;}
+.login-title label.selected{font-weight:700;font-family: Arial;border-bottom: 1px solid #3c3c3c}
+.login-title label:hover{border-bottom: 1px solid #3c3c3c}
 .login-form .field {margin-top:20px;position:relative;}
-.login-form .field label {display:block;width:80px;height:40px;font-size:18px;line-height:40px;color:#3c3c3c;background:#ddd;position:absolute;left:1px;top:1px;text-align:center;outline:0;}
+.login-form .tl-hidden{display: none;}
+.login-form #checkcode{width:106px;}
+.login-form #checkcode_btn{width: 109px;
+    height: 40px;
+    border: 0;
+    display: inline-block;
+    text-align: center;
+    overflow: hidden;
+    vertical-align: middle;
+    line-height: 40px;
+    font-size:14px;
+    /*color: #fff;*/
+    /*background: #5cb85c;*/
+    border-radius: 3px;
+    cursor: pointer;
+    zoom: 1;}
+
+.login-form a.btn {
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.login-form a.btn-success {
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
+
+.login-form a.btn-s-xs {
+    min-width: 90px;
+}
+
+.login-form a.btn-lock{background-color: #f4f4f4;border-color: #c3c3c3}
+.login-form .field > label {display:block;width:80px;height:40px;font-size:18px;line-height:40px;color:#3c3c3c;background:#ddd;position:absolute;left:1px;top:1px;text-align:center;outline:0;}
 .login-form .login-text {width:220px;margin:1px 0px 11px 80px;font-size:14px;line-height:18px;height:40px;padding:10px 10px;border:1px solid #ddd;}
 .login-box .submit button {width:300px;height:42px;border:0;display:inline-block;overflow:hidden;vertical-align:middle;line-height:42px;font-size:16px;font-weight:700;color:#fff;background:#f40;border-radius:3px;cursor:pointer;zoom:1;}
 .entries {margin-top:24px;font-size:14px;}
@@ -328,8 +382,8 @@ p.na a {color:#f97700;}
 .login-links a {margin-right:10px;}
 .login-links a:hover {color:red;}
 /*********************用户注册**************************/
-.register-main{width:800px;border-right: 1px solid black;padding: 20px;}
-.register-left{width:500px;margin:30px 20px 0px 120px}
+.register-main{width:800px;height:500px;border-right: 1px solid black;padding: 20px;}
+.register-left{width:500px;margin:65.5px 20px 0px 120px}
 /*.register-main {width:990px;margin:0 auto;border:2px solid #d7d7d7;background:#ffffff;padding:0 0 50px;}*/
 .register-list {width:925px;min-height:500px;height:auto!important;height:500px;margin:0 auto;}
 .register-list .register-title {font-size:48px;font-weight:bold;word-spacing:20px;margin-bottom:25px;}
@@ -342,9 +396,17 @@ p.na a {color:#f97700;}
 .register-list .formList .plus_c {width:210px;height:26px;line-height:26px;padding:0px 10px 0px 33px;color:#a8a8a8;margin-top:6px;}
 .formList .btnStyle {width:240px;height:44px;background:#c00;border:none;color:#fff;font-size:18px;cursor:pointer;font-family:MicroSoft YaHei;}
 .formList .yzmBtn {float:left;width:150px;height:36px;border:1px solid #cccccc;background:#f4f4f4;margin-left:10px;font-family:MicroSoft YaHei;cursor:pointer;}
+.register-left .btn-lock{background-color: #f4f4f4;color:#000000;border-color: #c3c3c3}
+/*********************修改密码*****************************/
+.chagePwd-main{width:800px;height:500px;border-right: 1px solid black;padding: 20px;}
+.chagePwd-left{width:500px;margin:40px 20px 0px 120px}
+.chagePwd-list {width:925px;min-height:500px;height:auto!important;height:500px;margin:0 auto;}
+.chagePwd-list .chagePwd-title {font-size:48px;font-weight:bold;word-spacing:20px;margin-bottom:25px;}
+.chagePwd-list .formList .plus_c {width:210px;height:26px;line-height:26px;padding:0px 10px 0px 33px;color:#a8a8a8;margin-top:6px;}
+.chagePwd-left .btn-lock{background-color: #f4f4f4;color:#000000;border-color: #c3c3c3}
 /*********************个人编辑页面**************************/.personal-edit-wrap {width:100%;background:#efefef;min-height:500px;font-size:14px;padding-top:60px;padding-bottom:60px;}
 .personal-edit {width:990px;border:2px solid #d7d7d7;background:#ffffff;text-align:left;margin:0 auto;}
-.personal-edit .edit-lside {float:left;width:140px;line-height:20px;border-right:2px solid #d7d7d7;min-height:600px;background:#efefef;}
+.personal-edit .edit-lside {float:left;width:140px;line-height:20px;border-right:2px solid #d7d7d7;min-height:605px;background:#efefef;}
 .lside-img {margin:10px 20px 30px 20px;}
 .lside-manager {position:relative;padding:0 10px;}
 .edit-lside .lside-icon {}
@@ -474,6 +536,8 @@ ul.di-l li.i.pad{display: block;}
     .leader{float:left;padding:20px 40px;width:450px}
     .lheader{padding:12px 20px;float:left}
     .lheader .linfo{padding:10px}
+    .vice_leader .linfo{margin-top: 15px;}
+
     div#footer div{width:80%}
     div#footer div div.section{width:100%}
     div#footer div div.section div{width:100%}
@@ -553,17 +617,21 @@ ul.di-l li.i.pad{display: block;}
     .login-form .login-text {width: 75%;margin: 1px 0 20px 25%;padding: 1px 5%;font-size: 1em;}
     .login-form .field label {display: block;width: 25%;font-size: 1em;}
     .login-box .submit button{width:100%}
-    .register-main{width:100%;padding: 2.5%;font-size: 10px}
+    /*注册页面*/
+    .register-main{width:100%;padding: 2.5%;font-size: 10px;border-right: 0px;}
     .register-left{width:100%;margin: 3.75% auto;}
     .col-img-3 {
         margin:1em 0 1em 1%!important;}
     .col-img-3 img{width:80% !important;height: 2.5em;!important; }
     .col-sm-3{margin:1em 0!important;padding-left: 0!important;padding-right:0!important; }
     .col-sm-3 label{font-size: 1em}
-    .col-sm-6{margin:1em 0!important;width:58.9%!important;}
+    .col-sm-6{margin:1em 0!important;}
+    .col-btn-3{margin:1em 15px 1em 0px!important;width:20%!important;}
     .col-sm-9{margin:1em 0!important;}
     .form-group{margin: 0!important;padding-left: 0!important;padding-right:0!important;}
     .form-control{font-size: 1.2em !important;}
+    #register_footer .btn.btn-success{margin:0 15px;}
+
     /**报名页面**/
 
     .mainbox .content{margin: 0 0 30px;}
@@ -646,6 +714,16 @@ ul.di-l li.i.pad{display: block;}
     .hdItem .di .di-l li{line-height: 12px;height: 12px;margin: 8px 0;}
     .hdItem .di{margin: 0}
     ul#stage li.loadImg{width: 100%;height: auto;}
+
+    /**活动详情**/
+    #scroll_tap{width: calc(100% - 2px) }
+    .sc-title-bar li{
+        width:19.7%!important;}
+
+    /**注册**/
+    html, body{
+        height: 100%;
+    }
 }
 
 @media screen and (max-width:700px){
@@ -655,6 +733,9 @@ ul.di-l li.i.pad{display: block;}
 @media screen and (max-width:600px){
     div#header div ul.navigation li:nth-child(3) {display:none}
     div#header div ul.navigation{right: 150px;}
+    /*注册页面*/
+    .col-sm-6{margin:1em 0!important;width:40%!important;}
+    .col-btn-3{margin:1em 15px 1em 0px!important;width:30%!important;}
 }
 
 @media screen and (max-width:450px){
@@ -676,7 +757,7 @@ ul.di-l li.i.pad{display: block;}
     .mb_sign #mbOpBtn{margin:5% auto;width:60%;height:60%;line-height:60%;background-color:#f97700;color:#fff;font-size:100%;font-weight:700;text-align:center;font-family:'microsoft yahei';border-radius:1%;-webkit-border-radius:4px;-moz-border-radius:4px;-o-border-radius:4px;letter-spacing:5px;cursor:pointer;border:none;z-index:101}
     /*div#footer{display: none}*/
     div#content_detail{margin-bottom: 10%;width: 100%;}
-    .register-left{width:100%;margin: 3.75% auto;}
+
     /**报名页面**/
     .signupPage{width:100%}
     .addBtn button{width:40%}
@@ -684,4 +765,12 @@ ul.di-l li.i.pad{display: block;}
     div.content.addBtn{
         width:99%;margin: 0 auto 30px auto;}
     .table-responsive{width: 98% !important;margin: 1%!important;}
+    div#footer{display: none;padding-bottom:0}
+    /*注册页面*/
+    .register-left{width:100%;margin: 20% auto;}
+    .col-sm-9{width:95%!important;}
+    .col-sm-6{margin:1em 0!important;width:50%!important;}
+    .col-btn-3{margin:1em 15px 1em 0px!important;width:38%!important;}
+    .register-main .col-sm-3{width: 5%!important;padding:1em 0!important;}
+    .register-main .col-sm-3 .control-label{display: none;}
 }
