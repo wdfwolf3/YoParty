@@ -16,7 +16,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.regex.Pattern;
 
 /**
  * Created by wdfwolf3 on 2017/3/24.
@@ -35,27 +34,27 @@ public class ActivityDetailController {
 
     @RequestMapping(value = "/eventDetail/{id}", method = RequestMethod.GET)
     public String getActivityDetail(@PathVariable int id, Model model){
-        if(loginStatusService.insertUserInformation(model)){
-            ActivityWithBLOBs activity = activityMapper.selectByPrimaryKey(id);
-            model.addAttribute("activity", activity);
-            List<Leader> leaderList = leaderMapper.selectLeaderByActivityId(id);
-            Leader mainLeader = leaderList.get(0);
-            leaderList.remove(0);
-            model.addAttribute("mainLeader", mainLeader);
-            model.addAttribute("assistLeaderList", leaderList);
-            String endTime = activity.getEndTime();
-            endTime.replaceAll("年", "-");
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-            try {
-                Date date = sdf.parse(endTime);
-                long countTime = date.getTime() - (new Date()).getTime();
-                model.addAttribute("countTime", countTime);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            return "detail";
+        loginStatusService.insertUserInformation(model);
+        ActivityWithBLOBs activity = activityMapper.selectByPrimaryKey(id);
+        String startTime = activity.getStartTime();
+        String endTime = activity.getEndTime();
+        activity.setStartTime(startTime.replaceFirst("-","年").replaceFirst("-","月")+"日");
+        activity.setEndTime(endTime.replaceFirst("-","年").replaceFirst("-","月")+"日");
+        model.addAttribute("activity", activity);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date date = sdf.parse(startTime);
+            long countTime = (date.getTime() - (new Date()).getTime())/1000;
+            model.addAttribute("countTime", countTime);
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
-        return "home";
+        List<Leader> leaderList = leaderMapper.selectLeaderByActivityId(id);
+        Leader mainLeader = leaderList.get(0);
+        leaderList.remove(0);
+        model.addAttribute("mainLeader", mainLeader);
+        model.addAttribute("assistLeaderList", leaderList);
+        return "detail";
     }
 
     @RequestMapping(value = "/eventJoin/{id}", method = RequestMethod.GET)

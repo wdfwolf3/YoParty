@@ -4,20 +4,11 @@
   <resultMap id="BaseResultMap" type="com.yoparty.bean.Leader" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="nickname" property="nickname" jdbcType="VARCHAR" />
-    <result column="sex" property="sex" jdbcType="BIT" />
-    <result column="location" property="location" jdbcType="VARCHAR" />
-    <result column="telephone" property="telephone" jdbcType="CHAR" />
     <result column="wechat" property="wechat" jdbcType="VARCHAR" />
     <result column="qrcode" property="qrcode" jdbcType="VARCHAR" />
-    <result column="grade" property="grade" jdbcType="INTEGER" />
-    <result column="activity_num" property="activityNum" jdbcType="SMALLINT" />
-    <result column="people_num" property="peopleNum" jdbcType="SMALLINT" />
-    <result column="feature" property="feature" jdbcType="VARCHAR" />
+    <result column="introduction" property="introduction" jdbcType="VARCHAR" />
     <result column="route" property="route" jdbcType="VARCHAR" />
     <result column="hobby" property="hobby" jdbcType="VARCHAR" />
-    <result column="publish" property="publish" jdbcType="BIT" />
-    <result column="manage" property="manage" jdbcType="BIT" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -78,8 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_id, nickname, sex, location, telephone, wechat, qrcode, grade, activity_num, 
-    people_num, feature, route, hobby, publish, manage
+    id, user_id, wechat, qrcode, introduction, route, hobby
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.bean.LeaderExample" >
     select
@@ -112,18 +102,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.yoparty.bean.Leader" >
-    insert into leader (id, user_id, nickname, 
-      sex, location, telephone, 
-      wechat, qrcode, grade, 
-      activity_num, people_num, feature, 
-      route, hobby, publish, 
-      manage)
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{nickname,jdbcType=VARCHAR}, 
-      #{sex,jdbcType=BIT}, #{location,jdbcType=VARCHAR}, #{telephone,jdbcType=CHAR}, 
-      #{wechat,jdbcType=VARCHAR}, #{qrcode,jdbcType=VARCHAR}, #{grade,jdbcType=INTEGER}, 
-      #{activityNum,jdbcType=SMALLINT}, #{peopleNum,jdbcType=SMALLINT}, #{feature,jdbcType=VARCHAR}, 
-      #{route,jdbcType=VARCHAR}, #{hobby,jdbcType=VARCHAR}, #{publish,jdbcType=BIT}, 
-      #{manage,jdbcType=BIT})
+    insert into leader (id, user_id, wechat, 
+      qrcode, introduction, route, 
+      hobby)
+    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{wechat,jdbcType=VARCHAR}, 
+      #{qrcode,jdbcType=VARCHAR}, #{introduction,jdbcType=VARCHAR}, #{route,jdbcType=VARCHAR}, 
+      #{hobby,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yoparty.bean.Leader" >
     insert into leader
@@ -134,47 +118,20 @@
       <if test="userId != null" >
         user_id,
       </if>
-      <if test="nickname != null" >
-        nickname,
-      </if>
-      <if test="sex != null" >
-        sex,
-      </if>
-      <if test="location != null" >
-        location,
-      </if>
-      <if test="telephone != null" >
-        telephone,
-      </if>
       <if test="wechat != null" >
         wechat,
       </if>
       <if test="qrcode != null" >
         qrcode,
       </if>
-      <if test="grade != null" >
-        grade,
-      </if>
-      <if test="activityNum != null" >
-        activity_num,
-      </if>
-      <if test="peopleNum != null" >
-        people_num,
-      </if>
-      <if test="feature != null" >
-        feature,
+      <if test="introduction != null" >
+        introduction,
       </if>
       <if test="route != null" >
         route,
       </if>
       <if test="hobby != null" >
         hobby,
-      </if>
-      <if test="publish != null" >
-        publish,
-      </if>
-      <if test="manage != null" >
-        manage,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -184,47 +141,20 @@
       <if test="userId != null" >
         #{userId,jdbcType=INTEGER},
       </if>
-      <if test="nickname != null" >
-        #{nickname,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null" >
-        #{sex,jdbcType=BIT},
-      </if>
-      <if test="location != null" >
-        #{location,jdbcType=VARCHAR},
-      </if>
-      <if test="telephone != null" >
-        #{telephone,jdbcType=CHAR},
-      </if>
       <if test="wechat != null" >
         #{wechat,jdbcType=VARCHAR},
       </if>
       <if test="qrcode != null" >
         #{qrcode,jdbcType=VARCHAR},
       </if>
-      <if test="grade != null" >
-        #{grade,jdbcType=INTEGER},
-      </if>
-      <if test="activityNum != null" >
-        #{activityNum,jdbcType=SMALLINT},
-      </if>
-      <if test="peopleNum != null" >
-        #{peopleNum,jdbcType=SMALLINT},
-      </if>
-      <if test="feature != null" >
-        #{feature,jdbcType=VARCHAR},
+      <if test="introduction != null" >
+        #{introduction,jdbcType=VARCHAR},
       </if>
       <if test="route != null" >
         #{route,jdbcType=VARCHAR},
       </if>
       <if test="hobby != null" >
         #{hobby,jdbcType=VARCHAR},
-      </if>
-      <if test="publish != null" >
-        #{publish,jdbcType=BIT},
-      </if>
-      <if test="manage != null" >
-        #{manage,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -243,47 +173,20 @@
       <if test="record.userId != null" >
         user_id = #{record.userId,jdbcType=INTEGER},
       </if>
-      <if test="record.nickname != null" >
-        nickname = #{record.nickname,jdbcType=VARCHAR},
-      </if>
-      <if test="record.sex != null" >
-        sex = #{record.sex,jdbcType=BIT},
-      </if>
-      <if test="record.location != null" >
-        location = #{record.location,jdbcType=VARCHAR},
-      </if>
-      <if test="record.telephone != null" >
-        telephone = #{record.telephone,jdbcType=CHAR},
-      </if>
       <if test="record.wechat != null" >
         wechat = #{record.wechat,jdbcType=VARCHAR},
       </if>
       <if test="record.qrcode != null" >
         qrcode = #{record.qrcode,jdbcType=VARCHAR},
       </if>
-      <if test="record.grade != null" >
-        grade = #{record.grade,jdbcType=INTEGER},
-      </if>
-      <if test="record.activityNum != null" >
-        activity_num = #{record.activityNum,jdbcType=SMALLINT},
-      </if>
-      <if test="record.peopleNum != null" >
-        people_num = #{record.peopleNum,jdbcType=SMALLINT},
-      </if>
-      <if test="record.feature != null" >
-        feature = #{record.feature,jdbcType=VARCHAR},
+      <if test="record.introduction != null" >
+        introduction = #{record.introduction,jdbcType=VARCHAR},
       </if>
       <if test="record.route != null" >
         route = #{record.route,jdbcType=VARCHAR},
       </if>
       <if test="record.hobby != null" >
         hobby = #{record.hobby,jdbcType=VARCHAR},
-      </if>
-      <if test="record.publish != null" >
-        publish = #{record.publish,jdbcType=BIT},
-      </if>
-      <if test="record.manage != null" >
-        manage = #{record.manage,jdbcType=BIT},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -294,20 +197,11 @@
     update leader
     set id = #{record.id,jdbcType=INTEGER},
       user_id = #{record.userId,jdbcType=INTEGER},
-      nickname = #{record.nickname,jdbcType=VARCHAR},
-      sex = #{record.sex,jdbcType=BIT},
-      location = #{record.location,jdbcType=VARCHAR},
-      telephone = #{record.telephone,jdbcType=CHAR},
       wechat = #{record.wechat,jdbcType=VARCHAR},
       qrcode = #{record.qrcode,jdbcType=VARCHAR},
-      grade = #{record.grade,jdbcType=INTEGER},
-      activity_num = #{record.activityNum,jdbcType=SMALLINT},
-      people_num = #{record.peopleNum,jdbcType=SMALLINT},
-      feature = #{record.feature,jdbcType=VARCHAR},
+      introduction = #{record.introduction,jdbcType=VARCHAR},
       route = #{record.route,jdbcType=VARCHAR},
-      hobby = #{record.hobby,jdbcType=VARCHAR},
-      publish = #{record.publish,jdbcType=BIT},
-      manage = #{record.manage,jdbcType=BIT}
+      hobby = #{record.hobby,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -318,35 +212,14 @@
       <if test="userId != null" >
         user_id = #{userId,jdbcType=INTEGER},
       </if>
-      <if test="nickname != null" >
-        nickname = #{nickname,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null" >
-        sex = #{sex,jdbcType=BIT},
-      </if>
-      <if test="location != null" >
-        location = #{location,jdbcType=VARCHAR},
-      </if>
-      <if test="telephone != null" >
-        telephone = #{telephone,jdbcType=CHAR},
-      </if>
       <if test="wechat != null" >
         wechat = #{wechat,jdbcType=VARCHAR},
       </if>
       <if test="qrcode != null" >
         qrcode = #{qrcode,jdbcType=VARCHAR},
       </if>
-      <if test="grade != null" >
-        grade = #{grade,jdbcType=INTEGER},
-      </if>
-      <if test="activityNum != null" >
-        activity_num = #{activityNum,jdbcType=SMALLINT},
-      </if>
-      <if test="peopleNum != null" >
-        people_num = #{peopleNum,jdbcType=SMALLINT},
-      </if>
-      <if test="feature != null" >
-        feature = #{feature,jdbcType=VARCHAR},
+      <if test="introduction != null" >
+        introduction = #{introduction,jdbcType=VARCHAR},
       </if>
       <if test="route != null" >
         route = #{route,jdbcType=VARCHAR},
@@ -354,37 +227,21 @@
       <if test="hobby != null" >
         hobby = #{hobby,jdbcType=VARCHAR},
       </if>
-      <if test="publish != null" >
-        publish = #{publish,jdbcType=BIT},
-      </if>
-      <if test="manage != null" >
-        manage = #{manage,jdbcType=BIT},
-      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.yoparty.bean.Leader" >
     update leader
     set user_id = #{userId,jdbcType=INTEGER},
-      nickname = #{nickname,jdbcType=VARCHAR},
-      sex = #{sex,jdbcType=BIT},
-      location = #{location,jdbcType=VARCHAR},
-      telephone = #{telephone,jdbcType=CHAR},
       wechat = #{wechat,jdbcType=VARCHAR},
       qrcode = #{qrcode,jdbcType=VARCHAR},
-      grade = #{grade,jdbcType=INTEGER},
-      activity_num = #{activityNum,jdbcType=SMALLINT},
-      people_num = #{peopleNum,jdbcType=SMALLINT},
-      feature = #{feature,jdbcType=VARCHAR},
+      introduction = #{introduction,jdbcType=VARCHAR},
       route = #{route,jdbcType=VARCHAR},
-      hobby = #{hobby,jdbcType=VARCHAR},
-      publish = #{publish,jdbcType=BIT},
-      manage = #{manage,jdbcType=BIT}
+      hobby = #{hobby,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-    
     <!---->
-  <select id="selectLeaderByActivityId" parameterType="Integer" resultMap="BaseResultMap">
-      SELECT leader.* from leader, leader_activity WHERE leader_activity.activity_id= #{id} and leader.id=leader_activity.leader_id
-  </select>
+    <select id="selectLeaderByActivityId" parameterType="Integer" resultMap="BaseResultMap">
+        SELECT leader.* from leader, leader_activity WHERE leader_activity.activity_id= #{id} and leader.id=leader_activity.leader_id
+    </select>
 </mapper>

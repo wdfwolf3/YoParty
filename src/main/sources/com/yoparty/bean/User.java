@@ -1,35 +1,33 @@
 package com.yoparty.bean;
 
-import java.util.Date;
-
 public class User {
     private Integer id;
 
-    private String name;
+    private String username;
 
     private String password;
 
-    private String phone;
+    private String telephone;
 
     private String realname;
 
-    private String petname;
+    private String nickname;
 
-    private Date birthday;
+    private String birthday;
 
     private Boolean sex;
 
-    private String locationPro;
+    private String residence;
 
-    private String locationCity;
-
-    private String hometownPro;
-
-    private String hometownCity;
+    private String hometown;
 
     private String email;
 
     private String avatar;
+
+    private String habit;
+
+    private String work;
 
     public Integer getId() {
         return id;
@@ -39,12 +37,12 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setUsername(String username) {
+        this.username = username == null ? null : username.trim();
     }
 
     public String getPassword() {
@@ -55,12 +53,12 @@ public class User {
         this.password = password == null ? null : password.trim();
     }
 
-    public String getPhone() {
-        return phone;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone == null ? null : phone.trim();
+    public void setTelephone(String telephone) {
+        this.telephone = telephone == null ? null : telephone.trim();
     }
 
     public String getRealname() {
@@ -71,20 +69,20 @@ public class User {
         this.realname = realname == null ? null : realname.trim();
     }
 
-    public String getPetname() {
-        return petname;
+    public String getNickname() {
+        return nickname;
     }
 
-    public void setPetname(String petname) {
-        this.petname = petname == null ? null : petname.trim();
+    public void setNickname(String nickname) {
+        this.nickname = nickname == null ? null : nickname.trim();
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday == null ? null : birthday.trim();
     }
 
     public Boolean getSex() {
@@ -95,36 +93,20 @@ public class User {
         this.sex = sex;
     }
 
-    public String getLocationPro() {
-        return locationPro;
+    public String getResidence() {
+        return residence;
     }
 
-    public void setLocationPro(String locationPro) {
-        this.locationPro = locationPro == null ? null : locationPro.trim();
+    public void setResidence(String residence) {
+        this.residence = residence == null ? null : residence.trim();
     }
 
-    public String getLocationCity() {
-        return locationCity;
+    public String getHometown() {
+        return hometown;
     }
 
-    public void setLocationCity(String locationCity) {
-        this.locationCity = locationCity == null ? null : locationCity.trim();
-    }
-
-    public String getHometownPro() {
-        return hometownPro;
-    }
-
-    public void setHometownPro(String hometownPro) {
-        this.hometownPro = hometownPro == null ? null : hometownPro.trim();
-    }
-
-    public String getHometownCity() {
-        return hometownCity;
-    }
-
-    public void setHometownCity(String hometownCity) {
-        this.hometownCity = hometownCity == null ? null : hometownCity.trim();
+    public void setHometown(String hometown) {
+        this.hometown = hometown == null ? null : hometown.trim();
     }
 
     public String getEmail() {
@@ -141,5 +123,21 @@ public class User {
 
     public void setAvatar(String avatar) {
         this.avatar = avatar == null ? null : avatar.trim();
+    }
+
+    public String getHabit() {
+        return habit;
+    }
+
+    public void setHabit(String habit) {
+        this.habit = habit == null ? null : habit.trim();
+    }
+
+    public String getWork() {
+        return work;
+    }
+
+    public void setWork(String work) {
+        this.work = work == null ? null : work.trim();
     }
 }

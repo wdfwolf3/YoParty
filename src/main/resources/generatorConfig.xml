@@ -50,10 +50,9 @@
         <!--<table tableName="signup_user"> </table>-->
         <!--<table tableName="role"> </table>-->
         <!--<table tableName="signup_user_partner"> </table>-->
-        <!--<table tableName="template"> </table>-->
         <!--<table tableName="user_role"> </table>-->
-        <table tableName="province"> </table>
-        <table tableName="city"> </table>
+        <!--<table tableName="province"> </table>-->
+        <!--<table tableName="city"> </table>-->
         <table tableName="area"> </table>
     </context>
 </generatorConfiguration>

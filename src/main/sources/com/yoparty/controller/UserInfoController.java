@@ -6,12 +6,17 @@ import com.yoparty.util.LoginStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  * Created by wdfwolf3 on 2017/3/8.
@@ -24,6 +29,8 @@ public class UserInfoController {
 
     @Autowired
     private UserMapper userMapper;
+
+    private final String PREFIX = "D:\\Intellji\\YoParty\\src\\main\\webapp\\WEB-INF\\images\\";
 
     @RequestMapping(value = "/personalEdit/companys", method = RequestMethod.GET)
     public String getInfoPartners(Model model){
@@ -70,6 +77,19 @@ public class UserInfoController {
 //        return ResponseEntity.status(200).build();
     }
 
+    @RequestMapping(value = "/avator/{filename}")
+    public void getAvator(@PathVariable("filename") String filename,  HttpServletResponse response) throws IOException {
+        File file = new File(PREFIX+filename+".jpg");
+        FileInputStream inputStream = new FileInputStream(file);
+        byte[] data = new byte[(int)file.length()];
+        int length = inputStream.read(data);
+        inputStream.close();
+        response.setContentType("image/jpg");
+        OutputStream stream = response.getOutputStream();
+        stream.write(data);
+        stream.flush();
+        stream.close();
+    }
 //    @RequestMapping(value = "/{name}/{type}", method = RequestMethod.GET)
 //    public String getData(@PathVariable("name") String name, @PathVariable("type") String type, Model model) {
 //        if ("basic".equals(type) || "security".equals(type)) {

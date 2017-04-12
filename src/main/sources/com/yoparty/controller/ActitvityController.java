@@ -1,5 +1,6 @@
 package com.yoparty.controller;
 
+import com.yoparty.service.ActivityAjax;
 import com.yoparty.service.ActivityListPageService;
 import com.yoparty.util.LoginStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -35,8 +37,9 @@ public class ActitvityController {
     public @ResponseBody
     Map<String, Object> getActivityList(HttpServletRequest request){
         Map<String, Object> map = new HashMap<>();
-        map.put("records", activityListPageService.getActivityList(request));
-        map.put("rowCount", activityListPageService.getTotal());
+        List<ActivityAjax> activityAjaxList = activityListPageService.getActivityList(request);
+        map.put("records", activityAjaxList);
+        map.put("rowCount", activityAjaxList.size()+activityListPageService.getStartIndex());
         return map;
     }
 //    @RequestMapping(value = "findEventList", method = RequestMethod.POST)

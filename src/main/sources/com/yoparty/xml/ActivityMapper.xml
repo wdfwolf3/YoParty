@@ -4,23 +4,25 @@
   <resultMap id="BaseResultMap" type="com.yoparty.bean.Activity" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="start_time" property="startTime" jdbcType="DATE" />
-    <result column="end_time" property="endTime" jdbcType="DATE" />
-    <result column="submit_date" property="submitDate" jdbcType="DATE" />
+    <result column="start_time" property="startTime" jdbcType="VARCHAR" />
+    <result column="end_time" property="endTime" jdbcType="VARCHAR" />
+    <result column="submit_date" property="submitDate" jdbcType="VARCHAR" />
     <result column="leader_name" property="leaderName" jdbcType="VARCHAR" />
-    <result column="type1" property="type1" jdbcType="SMALLINT" />
-    <result column="type2" property="type2" jdbcType="SMALLINT" />
-    <result column="type3" property="type3" jdbcType="SMALLINT" />
+    <result column="type1" property="type1" jdbcType="VARCHAR" />
+    <result column="type2" property="type2" jdbcType="VARCHAR" />
+    <result column="type3" property="type3" jdbcType="VARCHAR" />
     <result column="price" property="price" jdbcType="SMALLINT" />
     <result column="origin" property="origin" jdbcType="VARCHAR" />
     <result column="destination" property="destination" jdbcType="VARCHAR" />
     <result column="number" property="number" jdbcType="SMALLINT" />
     <result column="signup_number" property="signupNumber" jdbcType="SMALLINT" />
     <result column="status" property="status" jdbcType="TINYINT" />
-    <result column="image" property="image" jdbcType="VARCHAR" />
     <result column="gather" property="gather" jdbcType="VARCHAR" />
     <result column="completed" property="completed" jdbcType="BIT" />
     <result column="verify" property="verify" jdbcType="BIT" />
+    <result column="file_prefix" property="filePrefix" jdbcType="VARCHAR" />
+    <result column="pic_dir" property="picDir" jdbcType="VARCHAR" />
+    <result column="thumb" property="thumb" jdbcType="VARCHAR" />
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.yoparty.bean.ActivityWithBLOBs" extends="BaseResultMap" >
     <result column="introduce" property="introduce" jdbcType="LONGVARCHAR" />
@@ -88,7 +90,8 @@
   </sql>
   <sql id="Base_Column_List" >
     id, title, start_time, end_time, submit_date, leader_name, type1, type2, type3, price, 
-    origin, destination, number, signup_number, status, image, gather, completed, verify
+    origin, destination, number, signup_number, status, gather, completed, verify, file_prefix, 
+    pic_dir, thumb
   </sql>
   <sql id="Blob_Column_List" >
     introduce, trip, expenses, attention
@@ -147,17 +150,19 @@
       type1, type2, type3, 
       price, origin, destination, 
       number, signup_number, status, 
-      image, gather, completed, 
-      verify, introduce, trip, 
-      expenses, attention)
-    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{startTime,jdbcType=DATE}, 
-      #{endTime,jdbcType=DATE}, #{submitDate,jdbcType=DATE}, #{leaderName,jdbcType=VARCHAR}, 
-      #{type1,jdbcType=SMALLINT}, #{type2,jdbcType=SMALLINT}, #{type3,jdbcType=SMALLINT}, 
+      gather, completed, verify, 
+      file_prefix, pic_dir, thumb, 
+      introduce, trip, expenses, 
+      attention)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{startTime,jdbcType=VARCHAR}, 
+      #{endTime,jdbcType=VARCHAR}, #{submitDate,jdbcType=VARCHAR}, #{leaderName,jdbcType=VARCHAR}, 
+      #{type1,jdbcType=VARCHAR}, #{type2,jdbcType=VARCHAR}, #{type3,jdbcType=VARCHAR}, 
       #{price,jdbcType=SMALLINT}, #{origin,jdbcType=VARCHAR}, #{destination,jdbcType=VARCHAR}, 
       #{number,jdbcType=SMALLINT}, #{signupNumber,jdbcType=SMALLINT}, #{status,jdbcType=TINYINT}, 
-      #{image,jdbcType=VARCHAR}, #{gather,jdbcType=VARCHAR}, #{completed,jdbcType=BIT}, 
-      #{verify,jdbcType=BIT}, #{introduce,jdbcType=LONGVARCHAR}, #{trip,jdbcType=LONGVARCHAR}, 
-      #{expenses,jdbcType=LONGVARCHAR}, #{attention,jdbcType=LONGVARCHAR})
+      #{gather,jdbcType=VARCHAR}, #{completed,jdbcType=BIT}, #{verify,jdbcType=BIT}, 
+      #{filePrefix,jdbcType=VARCHAR}, #{picDir,jdbcType=VARCHAR}, #{thumb,jdbcType=VARCHAR}, 
+      #{introduce,jdbcType=LONGVARCHAR}, #{trip,jdbcType=LONGVARCHAR}, #{expenses,jdbcType=LONGVARCHAR}, 
+      #{attention,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.yoparty.bean.ActivityWithBLOBs" >
     insert into activity
@@ -207,9 +212,6 @@
       <if test="status != null" >
         status,
       </if>
-      <if test="image != null" >
-        image,
-      </if>
       <if test="gather != null" >
         gather,
       </if>
@@ -218,6 +220,15 @@
       </if>
       <if test="verify != null" >
         verify,
+      </if>
+      <if test="filePrefix != null" >
+        file_prefix,
+      </if>
+      <if test="picDir != null" >
+        pic_dir,
+      </if>
+      <if test="thumb != null" >
+        thumb,
       </if>
       <if test="introduce != null" >
         introduce,
@@ -240,25 +251,25 @@
         #{title,jdbcType=VARCHAR},
       </if>
       <if test="startTime != null" >
-        #{startTime,jdbcType=DATE},
+        #{startTime,jdbcType=VARCHAR},
       </if>
       <if test="endTime != null" >
-        #{endTime,jdbcType=DATE},
+        #{endTime,jdbcType=VARCHAR},
       </if>
       <if test="submitDate != null" >
-        #{submitDate,jdbcType=DATE},
+        #{submitDate,jdbcType=VARCHAR},
       </if>
       <if test="leaderName != null" >
         #{leaderName,jdbcType=VARCHAR},
       </if>
       <if test="type1 != null" >
-        #{type1,jdbcType=SMALLINT},
+        #{type1,jdbcType=VARCHAR},
       </if>
       <if test="type2 != null" >
-        #{type2,jdbcType=SMALLINT},
+        #{type2,jdbcType=VARCHAR},
       </if>
       <if test="type3 != null" >
-        #{type3,jdbcType=SMALLINT},
+        #{type3,jdbcType=VARCHAR},
       </if>
       <if test="price != null" >
         #{price,jdbcType=SMALLINT},
@@ -278,9 +289,6 @@
       <if test="status != null" >
         #{status,jdbcType=TINYINT},
       </if>
-      <if test="image != null" >
-        #{image,jdbcType=VARCHAR},
-      </if>
       <if test="gather != null" >
         #{gather,jdbcType=VARCHAR},
       </if>
@@ -289,6 +297,15 @@
       </if>
       <if test="verify != null" >
         #{verify,jdbcType=BIT},
+      </if>
+      <if test="filePrefix != null" >
+        #{filePrefix,jdbcType=VARCHAR},
+      </if>
+      <if test="picDir != null" >
+        #{picDir,jdbcType=VARCHAR},
+      </if>
+      <if test="thumb != null" >
+        #{thumb,jdbcType=VARCHAR},
       </if>
       <if test="introduce != null" >
         #{introduce,jdbcType=LONGVARCHAR},
@@ -320,25 +337,25 @@
         title = #{record.title,jdbcType=VARCHAR},
       </if>
       <if test="record.startTime != null" >
-        start_time = #{record.startTime,jdbcType=DATE},
+        start_time = #{record.startTime,jdbcType=VARCHAR},
       </if>
       <if test="record.endTime != null" >
-        end_time = #{record.endTime,jdbcType=DATE},
+        end_time = #{record.endTime,jdbcType=VARCHAR},
       </if>
       <if test="record.submitDate != null" >
-        submit_date = #{record.submitDate,jdbcType=DATE},
+        submit_date = #{record.submitDate,jdbcType=VARCHAR},
       </if>
       <if test="record.leaderName != null" >
         leader_name = #{record.leaderName,jdbcType=VARCHAR},
       </if>
       <if test="record.type1 != null" >
-        type1 = #{record.type1,jdbcType=SMALLINT},
+        type1 = #{record.type1,jdbcType=VARCHAR},
       </if>
       <if test="record.type2 != null" >
-        type2 = #{record.type2,jdbcType=SMALLINT},
+        type2 = #{record.type2,jdbcType=VARCHAR},
       </if>
       <if test="record.type3 != null" >
-        type3 = #{record.type3,jdbcType=SMALLINT},
+        type3 = #{record.type3,jdbcType=VARCHAR},
       </if>
       <if test="record.price != null" >
         price = #{record.price,jdbcType=SMALLINT},
@@ -358,9 +375,6 @@
       <if test="record.status != null" >
         status = #{record.status,jdbcType=TINYINT},
       </if>
-      <if test="record.image != null" >
-        image = #{record.image,jdbcType=VARCHAR},
-      </if>
       <if test="record.gather != null" >
         gather = #{record.gather,jdbcType=VARCHAR},
       </if>
@@ -369,6 +383,15 @@
       </if>
       <if test="record.verify != null" >
         verify = #{record.verify,jdbcType=BIT},
+      </if>
+      <if test="record.filePrefix != null" >
+        file_prefix = #{record.filePrefix,jdbcType=VARCHAR},
+      </if>
+      <if test="record.picDir != null" >
+        pic_dir = #{record.picDir,jdbcType=VARCHAR},
+      </if>
+      <if test="record.thumb != null" >
+        thumb = #{record.thumb,jdbcType=VARCHAR},
       </if>
       <if test="record.introduce != null" >
         introduce = #{record.introduce,jdbcType=LONGVARCHAR},
@@ -391,23 +414,25 @@
     update activity
     set id = #{record.id,jdbcType=INTEGER},
       title = #{record.title,jdbcType=VARCHAR},
-      start_time = #{record.startTime,jdbcType=DATE},
-      end_time = #{record.endTime,jdbcType=DATE},
-      submit_date = #{record.submitDate,jdbcType=DATE},
+      start_time = #{record.startTime,jdbcType=VARCHAR},
+      end_time = #{record.endTime,jdbcType=VARCHAR},
+      submit_date = #{record.submitDate,jdbcType=VARCHAR},
       leader_name = #{record.leaderName,jdbcType=VARCHAR},
-      type1 = #{record.type1,jdbcType=SMALLINT},
-      type2 = #{record.type2,jdbcType=SMALLINT},
-      type3 = #{record.type3,jdbcType=SMALLINT},
+      type1 = #{record.type1,jdbcType=VARCHAR},
+      type2 = #{record.type2,jdbcType=VARCHAR},
+      type3 = #{record.type3,jdbcType=VARCHAR},
       price = #{record.price,jdbcType=SMALLINT},
       origin = #{record.origin,jdbcType=VARCHAR},
       destination = #{record.destination,jdbcType=VARCHAR},
       number = #{record.number,jdbcType=SMALLINT},
       signup_number = #{record.signupNumber,jdbcType=SMALLINT},
       status = #{record.status,jdbcType=TINYINT},
-      image = #{record.image,jdbcType=VARCHAR},
       gather = #{record.gather,jdbcType=VARCHAR},
       completed = #{record.completed,jdbcType=BIT},
       verify = #{record.verify,jdbcType=BIT},
+      file_prefix = #{record.filePrefix,jdbcType=VARCHAR},
+      pic_dir = #{record.picDir,jdbcType=VARCHAR},
+      thumb = #{record.thumb,jdbcType=VARCHAR},
       introduce = #{record.introduce,jdbcType=LONGVARCHAR},
       trip = #{record.trip,jdbcType=LONGVARCHAR},
       expenses = #{record.expenses,jdbcType=LONGVARCHAR},
@@ -420,23 +445,25 @@
     update activity
     set id = #{record.id,jdbcType=INTEGER},
       title = #{record.title,jdbcType=VARCHAR},
-      start_time = #{record.startTime,jdbcType=DATE},
-      end_time = #{record.endTime,jdbcType=DATE},
-      submit_date = #{record.submitDate,jdbcType=DATE},
+      start_time = #{record.startTime,jdbcType=VARCHAR},
+      end_time = #{record.endTime,jdbcType=VARCHAR},
+      submit_date = #{record.submitDate,jdbcType=VARCHAR},
       leader_name = #{record.leaderName,jdbcType=VARCHAR},
-      type1 = #{record.type1,jdbcType=SMALLINT},
-      type2 = #{record.type2,jdbcType=SMALLINT},
-      type3 = #{record.type3,jdbcType=SMALLINT},
+      type1 = #{record.type1,jdbcType=VARCHAR},
+      type2 = #{record.type2,jdbcType=VARCHAR},
+      type3 = #{record.type3,jdbcType=VARCHAR},
       price = #{record.price,jdbcType=SMALLINT},
       origin = #{record.origin,jdbcType=VARCHAR},
       destination = #{record.destination,jdbcType=VARCHAR},
       number = #{record.number,jdbcType=SMALLINT},
       signup_number = #{record.signupNumber,jdbcType=SMALLINT},
       status = #{record.status,jdbcType=TINYINT},
-      image = #{record.image,jdbcType=VARCHAR},
       gather = #{record.gather,jdbcType=VARCHAR},
       completed = #{record.completed,jdbcType=BIT},
-      verify = #{record.verify,jdbcType=BIT}
+      verify = #{record.verify,jdbcType=BIT},
+      file_prefix = #{record.filePrefix,jdbcType=VARCHAR},
+      pic_dir = #{record.picDir,jdbcType=VARCHAR},
+      thumb = #{record.thumb,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -448,25 +475,25 @@
         title = #{title,jdbcType=VARCHAR},
       </if>
       <if test="startTime != null" >
-        start_time = #{startTime,jdbcType=DATE},
+        start_time = #{startTime,jdbcType=VARCHAR},
       </if>
       <if test="endTime != null" >
-        end_time = #{endTime,jdbcType=DATE},
+        end_time = #{endTime,jdbcType=VARCHAR},
       </if>
       <if test="submitDate != null" >
-        submit_date = #{submitDate,jdbcType=DATE},
+        submit_date = #{submitDate,jdbcType=VARCHAR},
       </if>
       <if test="leaderName != null" >
         leader_name = #{leaderName,jdbcType=VARCHAR},
       </if>
       <if test="type1 != null" >
-        type1 = #{type1,jdbcType=SMALLINT},
+        type1 = #{type1,jdbcType=VARCHAR},
       </if>
       <if test="type2 != null" >
-        type2 = #{type2,jdbcType=SMALLINT},
+        type2 = #{type2,jdbcType=VARCHAR},
       </if>
       <if test="type3 != null" >
-        type3 = #{type3,jdbcType=SMALLINT},
+        type3 = #{type3,jdbcType=VARCHAR},
       </if>
       <if test="price != null" >
         price = #{price,jdbcType=SMALLINT},
@@ -486,9 +513,6 @@
       <if test="status != null" >
         status = #{status,jdbcType=TINYINT},
       </if>
-      <if test="image != null" >
-        image = #{image,jdbcType=VARCHAR},
-      </if>
       <if test="gather != null" >
         gather = #{gather,jdbcType=VARCHAR},
       </if>
@@ -497,6 +521,15 @@
       </if>
       <if test="verify != null" >
         verify = #{verify,jdbcType=BIT},
+      </if>
+      <if test="filePrefix != null" >
+        file_prefix = #{filePrefix,jdbcType=VARCHAR},
+      </if>
+      <if test="picDir != null" >
+        pic_dir = #{picDir,jdbcType=VARCHAR},
+      </if>
+      <if test="thumb != null" >
+        thumb = #{thumb,jdbcType=VARCHAR},
       </if>
       <if test="introduce != null" >
         introduce = #{introduce,jdbcType=LONGVARCHAR},
@@ -516,23 +549,25 @@
   <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yoparty.bean.ActivityWithBLOBs" >
     update activity
     set title = #{title,jdbcType=VARCHAR},
-      start_time = #{startTime,jdbcType=DATE},
-      end_time = #{endTime,jdbcType=DATE},
-      submit_date = #{submitDate,jdbcType=DATE},
+      start_time = #{startTime,jdbcType=VARCHAR},
+      end_time = #{endTime,jdbcType=VARCHAR},
+      submit_date = #{submitDate,jdbcType=VARCHAR},
       leader_name = #{leaderName,jdbcType=VARCHAR},
-      type1 = #{type1,jdbcType=SMALLINT},
-      type2 = #{type2,jdbcType=SMALLINT},
-      type3 = #{type3,jdbcType=SMALLINT},
+      type1 = #{type1,jdbcType=VARCHAR},
+      type2 = #{type2,jdbcType=VARCHAR},
+      type3 = #{type3,jdbcType=VARCHAR},
       price = #{price,jdbcType=SMALLINT},
       origin = #{origin,jdbcType=VARCHAR},
       destination = #{destination,jdbcType=VARCHAR},
       number = #{number,jdbcType=SMALLINT},
       signup_number = #{signupNumber,jdbcType=SMALLINT},
       status = #{status,jdbcType=TINYINT},
-      image = #{image,jdbcType=VARCHAR},
       gather = #{gather,jdbcType=VARCHAR},
       completed = #{completed,jdbcType=BIT},
       verify = #{verify,jdbcType=BIT},
+      file_prefix = #{filePrefix,jdbcType=VARCHAR},
+      pic_dir = #{picDir,jdbcType=VARCHAR},
+      thumb = #{thumb,jdbcType=VARCHAR},
       introduce = #{introduce,jdbcType=LONGVARCHAR},
       trip = #{trip,jdbcType=LONGVARCHAR},
       expenses = #{expenses,jdbcType=LONGVARCHAR},
@@ -542,26 +577,27 @@
   <update id="updateByPrimaryKey" parameterType="com.yoparty.bean.Activity" >
     update activity
     set title = #{title,jdbcType=VARCHAR},
-      start_time = #{startTime,jdbcType=DATE},
-      end_time = #{endTime,jdbcType=DATE},
-      submit_date = #{submitDate,jdbcType=DATE},
+      start_time = #{startTime,jdbcType=VARCHAR},
+      end_time = #{endTime,jdbcType=VARCHAR},
+      submit_date = #{submitDate,jdbcType=VARCHAR},
       leader_name = #{leaderName,jdbcType=VARCHAR},
-      type1 = #{type1,jdbcType=SMALLINT},
-      type2 = #{type2,jdbcType=SMALLINT},
-      type3 = #{type3,jdbcType=SMALLINT},
+      type1 = #{type1,jdbcType=VARCHAR},
+      type2 = #{type2,jdbcType=VARCHAR},
+      type3 = #{type3,jdbcType=VARCHAR},
       price = #{price,jdbcType=SMALLINT},
       origin = #{origin,jdbcType=VARCHAR},
       destination = #{destination,jdbcType=VARCHAR},
       number = #{number,jdbcType=SMALLINT},
       signup_number = #{signupNumber,jdbcType=SMALLINT},
       status = #{status,jdbcType=TINYINT},
-      image = #{image,jdbcType=VARCHAR},
       gather = #{gather,jdbcType=VARCHAR},
       completed = #{completed,jdbcType=BIT},
-      verify = #{verify,jdbcType=BIT}
+      verify = #{verify,jdbcType=BIT},
+      file_prefix = #{filePrefix,jdbcType=VARCHAR},
+      pic_dir = #{picDir,jdbcType=VARCHAR},
+      thumb = #{thumb,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-
     <!---->
     <select id="select" parameterType="com.yoparty.service.ActivityListPageService" resultType="com.yoparty.service.ActivityAjax">
         select
@@ -582,14 +618,14 @@
         <if test="keyword != null">
             and ${searchType} like #{keyword}
         </if>
-        <if test="type1 != 0">
-            and type1 = #{type1}
+        <if test="type1 != null">
+            and type1 = #{type1,jdbcType=VARCHAR}
         </if>
-        <if test="type2 != 0">
-            and type2 = #{type2}
+        <if test="type2 != null">
+            and type2 = #{type2,jdbcType=VARCHAR}
         </if>
-        <if test="type3 != 0">
-            and type3 = #{type3}
+        <if test="type3 != null">
+            and type3 = #{type3,jdbcType=VARCHAR}
         </if>
         <if test="column != null">
             order by ${column} ${sort}

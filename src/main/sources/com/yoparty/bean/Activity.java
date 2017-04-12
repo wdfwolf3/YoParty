@@ -1,25 +1,23 @@
 package com.yoparty.bean;
 
-import java.util.Date;
-
 public class Activity {
     private Integer id;
 
     private String title;
 
-    private Date startTime;
+    private String startTime;
 
-    private Date endTime;
+    private String endTime;
 
-    private Date submitDate;
+    private String submitDate;
 
     private String leaderName;
 
-    private Short type1;
+    private String type1;
 
-    private Short type2;
+    private String type2;
 
-    private Short type3;
+    private String type3;
 
     private Short price;
 
@@ -33,13 +31,17 @@ public class Activity {
 
     private Byte status;
 
-    private String image;
-
     private String gather;
 
     private Boolean completed;
 
     private Boolean verify;
+
+    private String filePrefix;
+
+    private String picDir;
+
+    private String thumb;
 
     public Integer getId() {
         return id;
@@ -57,28 +59,28 @@ public class Activity {
         this.title = title == null ? null : title.trim();
     }
 
-    public Date getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
-        this.startTime = startTime;
+    public void setStartTime(String startTime) {
+        this.startTime = startTime == null ? null : startTime.trim();
     }
 
-    public Date getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
-        this.endTime = endTime;
+    public void setEndTime(String endTime) {
+        this.endTime = endTime == null ? null : endTime.trim();
     }
 
-    public Date getSubmitDate() {
+    public String getSubmitDate() {
         return submitDate;
     }
 
-    public void setSubmitDate(Date submitDate) {
-        this.submitDate = submitDate;
+    public void setSubmitDate(String submitDate) {
+        this.submitDate = submitDate == null ? null : submitDate.trim();
     }
 
     public String getLeaderName() {
@@ -89,28 +91,28 @@ public class Activity {
         this.leaderName = leaderName == null ? null : leaderName.trim();
     }
 
-    public Short getType1() {
+    public String getType1() {
         return type1;
     }
 
-    public void setType1(Short type1) {
-        this.type1 = type1;
+    public void setType1(String type1) {
+        this.type1 = type1 == null ? null : type1.trim();
     }
 
-    public Short getType2() {
+    public String getType2() {
         return type2;
     }
 
-    public void setType2(Short type2) {
-        this.type2 = type2;
+    public void setType2(String type2) {
+        this.type2 = type2 == null ? null : type2.trim();
     }
 
-    public Short getType3() {
+    public String getType3() {
         return type3;
     }
 
-    public void setType3(Short type3) {
-        this.type3 = type3;
+    public void setType3(String type3) {
+        this.type3 = type3 == null ? null : type3.trim();
     }
 
     public Short getPrice() {
@@ -161,14 +163,6 @@ public class Activity {
         this.status = status;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image == null ? null : image.trim();
-    }
-
     public String getGather() {
         return gather;
     }
@@ -191,5 +185,29 @@ public class Activity {
 
     public void setVerify(Boolean verify) {
         this.verify = verify;
+    }
+
+    public String getFilePrefix() {
+        return filePrefix;
+    }
+
+    public void setFilePrefix(String filePrefix) {
+        this.filePrefix = filePrefix == null ? null : filePrefix.trim();
+    }
+
+    public String getPicDir() {
+        return picDir;
+    }
+
+    public void setPicDir(String picDir) {
+        this.picDir = picDir == null ? null : picDir.trim();
+    }
+
+    public String getThumb() {
+        return thumb;
+    }
+
+    public void setThumb(String thumb) {
+        this.thumb = thumb == null ? null : thumb.trim();
     }
 }

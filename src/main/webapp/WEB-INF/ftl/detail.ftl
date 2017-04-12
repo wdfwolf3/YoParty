@@ -279,8 +279,9 @@
                         <h5>副领队</h5>
                     </div>
                     <div class="c fll clearfix linfo">
-df
-
+                        <#list assistLeaderList as ass>
+                            ${ass.nickname}
+                        </#list>
                     </div>
                 </div>
             </div>

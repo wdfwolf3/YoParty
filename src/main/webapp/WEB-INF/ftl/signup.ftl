@@ -18,7 +18,6 @@
 <#include "template/js.ftl"/>
 </head>
 
-<div id="header">
 <#include "template/head.ftl"/>
 
 <div class="signupPage">

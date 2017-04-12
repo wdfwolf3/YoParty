@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.yoparty.bean.Partner" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="real_name" property="realName" jdbcType="VARCHAR" />
-    <result column="pet_name" property="petName" jdbcType="VARCHAR" />
+    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
     <result column="identity_type" property="identityType" jdbcType="TINYINT" />
     <result column="identity_num" property="identityNum" jdbcType="VARCHAR" />
     <result column="sex" property="sex" jdbcType="BIT" />
@@ -69,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, real_name, pet_name, identity_type, identity_num, sex, telephone
+    id, real_name, nick_name, identity_type, identity_num, sex, telephone
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.bean.PartnerExample" >
     select
@@ -102,10 +102,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.yoparty.bean.Partner" >
-    insert into partner (id, real_name, pet_name, 
+    insert into partner (id, real_name, nick_name, 
       identity_type, identity_num, sex, 
       telephone)
-    values (#{id,jdbcType=INTEGER}, #{realName,jdbcType=VARCHAR}, #{petName,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{realName,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
       #{identityType,jdbcType=TINYINT}, #{identityNum,jdbcType=VARCHAR}, #{sex,jdbcType=BIT}, 
       #{telephone,jdbcType=CHAR})
   </insert>
@@ -118,8 +118,8 @@
       <if test="realName != null" >
         real_name,
       </if>
-      <if test="petName != null" >
-        pet_name,
+      <if test="nickName != null" >
+        nick_name,
       </if>
       <if test="identityType != null" >
         identity_type,
@@ -141,8 +141,8 @@
       <if test="realName != null" >
         #{realName,jdbcType=VARCHAR},
       </if>
-      <if test="petName != null" >
-        #{petName,jdbcType=VARCHAR},
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
       </if>
       <if test="identityType != null" >
         #{identityType,jdbcType=TINYINT},
@@ -173,8 +173,8 @@
       <if test="record.realName != null" >
         real_name = #{record.realName,jdbcType=VARCHAR},
       </if>
-      <if test="record.petName != null" >
-        pet_name = #{record.petName,jdbcType=VARCHAR},
+      <if test="record.nickName != null" >
+        nick_name = #{record.nickName,jdbcType=VARCHAR},
       </if>
       <if test="record.identityType != null" >
         identity_type = #{record.identityType,jdbcType=TINYINT},
@@ -197,7 +197,7 @@
     update partner
     set id = #{record.id,jdbcType=INTEGER},
       real_name = #{record.realName,jdbcType=VARCHAR},
-      pet_name = #{record.petName,jdbcType=VARCHAR},
+      nick_name = #{record.nickName,jdbcType=VARCHAR},
       identity_type = #{record.identityType,jdbcType=TINYINT},
       identity_num = #{record.identityNum,jdbcType=VARCHAR},
       sex = #{record.sex,jdbcType=BIT},
@@ -212,8 +212,8 @@
       <if test="realName != null" >
         real_name = #{realName,jdbcType=VARCHAR},
       </if>
-      <if test="petName != null" >
-        pet_name = #{petName,jdbcType=VARCHAR},
+      <if test="nickName != null" >
+        nick_name = #{nickName,jdbcType=VARCHAR},
       </if>
       <if test="identityType != null" >
         identity_type = #{identityType,jdbcType=TINYINT},
@@ -233,7 +233,7 @@
   <update id="updateByPrimaryKey" parameterType="com.yoparty.bean.Partner" >
     update partner
     set real_name = #{realName,jdbcType=VARCHAR},
-      pet_name = #{petName,jdbcType=VARCHAR},
+      nick_name = #{nickName,jdbcType=VARCHAR},
       identity_type = #{identityType,jdbcType=TINYINT},
       identity_num = #{identityNum,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=BIT},

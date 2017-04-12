@@ -21,14 +21,10 @@ public class ActivityListPageService {
     private String column;
     private String keyword;
     private String searchType;
-    private int type1 = 0;
-    private int type2 = 0;
-    private int type3 = 0;
+    private String type1;
+    private String type2;
+    private String type3;
     private int startIndex;
-    private int total;
-    private final String type1name = "活动性质";
-    private final String type2name = "活动强度";
-    private final String type3name = "持续时间";
 
     public List<ActivityAjax> getActivityList(HttpServletRequest request){
         initParameter(request);
@@ -39,25 +35,68 @@ public class ActivityListPageService {
         pageSize = Integer.parseInt(request.getParameter("pageSize"));
         pageNow = Integer.parseInt(request.getParameter("pageNow"));
         startIndex = (pageNow-1) * pageSize;
-        total = startIndex + pageSize;
         sort = request.getParameter("sort");
         if(!"prior_status".equals(request.getParameter("column"))){
             column = request.getParameter("column");
+        }else{
+            column = "id";
         }
-        keyword = "%" + request.getParameter("eventInfoFormMap.keyword") + "%";
+        if ("".equals(request.getParameter("eventInfoFormMap.keyword"))) {
+            keyword = null;
+        }else{
+            keyword = "%" + request.getParameter("eventInfoFormMap.keyword") + "%";
+        }
         if("0".equals(request.getParameter("eventInfoFormMap.searchType"))){
             searchType = "title";
         }else{
             searchType = "leader_name";
         }
         if(request.getParameter("eventInfoFormMap.type0")!=null){
-            type1 = Integer.parseInt(request.getParameter("eventInfoFormMap.type0"));
+            type1 = null;
+            type2 = null;
+            type3 = null;
         }
         if(request.getParameter("eventInfoFormMap.type1")!=null){
-            type2 = Integer.parseInt(request.getParameter("eventInfoFormMap.type1"));
+            switch (Integer.parseInt(request.getParameter("eventInfoFormMap.type1"))) {
+                case 1:
+                    type1 = "脱单";
+                    break;
+                case 2:
+                    type1 = "纯玩";
+                    break;
+            }
         }
         if(request.getParameter("eventInfoFormMap.type2")!=null){
-            type3 = Integer.parseInt(request.getParameter("eventInfoFormMap.type2"));
+            switch (Integer.parseInt(request.getParameter("eventInfoFormMap.type2"))) {
+                case 1:
+                    type2 = "休闲";
+                    break;
+                case 2:
+                    type2 = "轻量";
+                    break;
+                case 3:
+                    type2 = "专业";
+                    break;
+            }
+        }
+        if(request.getParameter("eventInfoFormMap.type3")!=null){
+            switch (Integer.parseInt(request.getParameter("eventInfoFormMap.type3"))) {
+                case 1:
+                    type3 = "1日活动";
+                    break;
+                case 2:
+                    type3 = "2日活动";
+                    break;
+                case 3:
+                    type3 = "3日活动";
+                    break;
+                case 5:
+                    type3 = "5日活动";
+                    break;
+                case 7:
+                    type3 = "7日活动";
+                    break;
+            }
         }
     }
 
@@ -105,36 +144,36 @@ public class ActivityListPageService {
         this.keyword = keyword;
     }
 
+    public String getType1() {
+        return type1;
+    }
+
+    public void setType1(String type1) {
+        this.type1 = type1;
+    }
+
+    public String getType2() {
+        return type2;
+    }
+
+    public void setType2(String type2) {
+        this.type2 = type2;
+    }
+
+    public String getType3() {
+        return type3;
+    }
+
+    public void setType3(String type3) {
+        this.type3 = type3;
+    }
+
     public String getSearchType() {
         return searchType;
     }
 
     public void setSearchType(String searchType) {
         this.searchType = searchType;
-    }
-
-    public int getType1() {
-        return type1;
-    }
-
-    public void setType1(int type1) {
-        this.type1 = type1;
-    }
-
-    public int getType2() {
-        return type2;
-    }
-
-    public void setType2(int type2) {
-        this.type2 = type2;
-    }
-
-    public int getType3() {
-        return type3;
-    }
-
-    public void setType3(int type3) {
-        this.type3 = type3;
     }
 
     public int getStartIndex() {
@@ -145,23 +184,4 @@ public class ActivityListPageService {
         this.startIndex = startIndex;
     }
 
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
-    }
-
-    public String getType1name() {
-        return type1name;
-    }
-
-    public String getType2name() {
-        return type2name;
-    }
-
-    public String getType3name() {
-        return type3name;
-    }
 }

@@ -5,9 +5,9 @@ import java.util.Date;
 public class SignupUser {
     private Integer id;
 
-    private String orderNumber;
+    private String orderNo;
 
-    private Date orderData;
+    private Date createTime;
 
     private Integer activityId;
 
@@ -15,11 +15,13 @@ public class SignupUser {
 
     private String location;
 
-    private Integer signupNumber;
+    private Integer peopleNum;
 
-    private Byte statue;
+    private Byte status;
 
     private Byte payType;
+
+    private Short finalTotal;
 
     private Byte fullcut;
 
@@ -35,20 +37,20 @@ public class SignupUser {
         this.id = id;
     }
 
-    public String getOrderNumber() {
-        return orderNumber;
+    public String getOrderNo() {
+        return orderNo;
     }
 
-    public void setOrderNumber(String orderNumber) {
-        this.orderNumber = orderNumber == null ? null : orderNumber.trim();
+    public void setOrderNo(String orderNo) {
+        this.orderNo = orderNo == null ? null : orderNo.trim();
     }
 
-    public Date getOrderData() {
-        return orderData;
+    public Date getCreateTime() {
+        return createTime;
     }
 
-    public void setOrderData(Date orderData) {
-        this.orderData = orderData;
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 
     public Integer getActivityId() {
@@ -75,20 +77,20 @@ public class SignupUser {
         this.location = location == null ? null : location.trim();
     }
 
-    public Integer getSignupNumber() {
-        return signupNumber;
+    public Integer getPeopleNum() {
+        return peopleNum;
     }
 
-    public void setSignupNumber(Integer signupNumber) {
-        this.signupNumber = signupNumber;
+    public void setPeopleNum(Integer peopleNum) {
+        this.peopleNum = peopleNum;
     }
 
-    public Byte getStatue() {
-        return statue;
+    public Byte getStatus() {
+        return status;
     }
 
-    public void setStatue(Byte statue) {
-        this.statue = statue;
+    public void setStatus(Byte status) {
+        this.status = status;
     }
 
     public Byte getPayType() {
@@ -97,6 +99,14 @@ public class SignupUser {
 
     public void setPayType(Byte payType) {
         this.payType = payType;
+    }
+
+    public Short getFinalTotal() {
+        return finalTotal;
+    }
+
+    public void setFinalTotal(Short finalTotal) {
+        this.finalTotal = finalTotal;
     }
 
     public Byte getFullcut() {

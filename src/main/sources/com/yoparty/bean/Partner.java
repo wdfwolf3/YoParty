@@ -5,7 +5,7 @@ public class Partner {
 
     private String realName;
 
-    private String petName;
+    private String nickName;
 
     private Byte identityType;
 
@@ -31,12 +31,12 @@ public class Partner {
         this.realName = realName == null ? null : realName.trim();
     }
 
-    public String getPetName() {
-        return petName;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setPetName(String petName) {
-        this.petName = petName == null ? null : petName.trim();
+    public void setNickName(String nickName) {
+        this.nickName = nickName == null ? null : nickName.trim();
     }
 
     public Byte getIdentityType() {

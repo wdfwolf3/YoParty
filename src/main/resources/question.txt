@@ -3,14 +3,53 @@
 2.服务器性能（内存，硬盘，cpu）
 4.订单号规则下单渠道1位+支付渠道1位+业务类型1位+时间信息4位+下单时间的Unix时间戳后8位（加上随机码随机后的数字）+用户user id后4位
 5.后台相关 //
-          User selectByName(String name);<!---->
-                                           <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String">
-                                               select
-                                               <include refid="Base_Column_List"/>
-                                               from user
-                                               where name = #{name}
-                                           </select>
-    <!---->
+User
+//
+    User selectByName(String name);
+<!---->
+    <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select
+        <include refid="Base_Column_List"/>
+        from user
+        where name = #{name,jdbcType=VARCHAR}
+    </select>
+
+SignupUser
+//
+    List<OrderAjax> select(OrderListPageService orderListPageService);
+<!---->
+  <select id="select" resultType="com.yoparty.service.OrderAjax" parameterType="com.yoparty.service.OrderListPageService">
+    SELECT
+    s.id,
+    s.order_no,
+    s.create_time,
+    s.people_num,
+    s.status,
+    s.final_total,
+    a.title,
+    a.leader_name,
+    a.price
+    FROM signup_user AS s
+    INNER JOIN activity AS a ON s.activity_id = a.id
+    WHERE
+    s.user_id = #{userId}
+    and s.status = #{status}
+    ORDER BY s.create_time DESC
+    limit #{startIndex}, #{pageSize}
+  </select>
+
+Leader
+//
+    List<Leader> selectLeaderByActivityId(Integer id);
+<!---->
+  <select id="selectLeaderByActivityId" parameterType="Integer" resultMap="BaseResultMap">
+      SELECT leader.* from leader, leader_activity WHERE leader_activity.activity_id= #{id} and leader.id=leader_activity.leader_id
+  </select>
+
+Activity
+//
+    List<ActivityAjax> select(ActivityListPageService activityListPageService);
+<!---->
     <select id="select" parameterType="com.yoparty.service.ActivityListPageService" resultType="com.yoparty.service.ActivityAjax">
         select
         id,
@@ -26,17 +65,21 @@
         destination as "end_city",
         status as "event_status"
         FROM activity WHERE
-        ${searchType} like ${keyword}
-        <if test="type1 != 0">
-            and type1 = #{type1}
+        id = id
+        <if test="keyword != null">
+            and ${searchType} like #{keyword}
         </if>
-        <if test="type2 != 0">
-            and type2 = #{type2}
+        <if test="type1 != null">
+            and type1 = #{type1,jdbcType=VARCHAR}
         </if>
-        <if test="type3 != 0">
-            and type3 = #{type3}
+        <if test="type2 != null">
+            and type2 = #{type2,jdbcType=VARCHAR}
         </if>
-        order by ${column} ${sort}
+        <if test="type3 != null">
+            and type3 = #{type3,jdbcType=VARCHAR}
+        </if>
+        <if test="column != null">
+            order by ${column} ${sort}
+        </if>
         limit #{startIndex}, #{pageSize}
     </select>
-  List<ActivityAjax> select(ActivityListPageService activityListPageService);
