@@ -22,14 +22,13 @@ import java.util.Map;
 @Controller
 @RequestMapping("common")
 public class CommonController {
+    private final String PREFIX = "D:\\Intellji\\YoParty\\src\\main\\webapp\\WEB-INF\\images\\";
     @Autowired
     private AreaListService areaListService;
 
-    private final String PREFIX = "D:\\Intellji\\YoParty\\src\\main\\webapp\\WEB-INF\\images\\";
-
     @RequestMapping(value = "/area_list", method = RequestMethod.POST)
     public @ResponseBody
-    List<Area> getArea(HttpServletRequest request){
+    List<Area> getArea(HttpServletRequest request) {
         return areaListService.getActivityList(request);
     }
 
@@ -42,8 +41,8 @@ public class CommonController {
         file.write(PREFIX + path);
         map.put("success", true);
         map.put("msg", "Upload Success!");
-        map.put("result", "avator/"+path);
-        map.put("ref_col","photoUrl");
+        map.put("result", "avator/" + path);
+        map.put("ref_col", "photoUrl");
         return map;
     }
 }

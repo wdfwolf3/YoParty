@@ -33,18 +33,18 @@ public class ActivityDetailController {
     private LeaderMapper leaderMapper;
 
     @RequestMapping(value = "/eventDetail/{id}", method = RequestMethod.GET)
-    public String getActivityDetail(@PathVariable int id, Model model){
+    public String getActivityDetail(@PathVariable int id, Model model) {
         loginStatusService.insertUserInformation(model);
         ActivityWithBLOBs activity = activityMapper.selectByPrimaryKey(id);
         String startTime = activity.getStartTime();
         String endTime = activity.getEndTime();
-        activity.setStartTime(startTime.replaceFirst("-","年").replaceFirst("-","月")+"日");
-        activity.setEndTime(endTime.replaceFirst("-","年").replaceFirst("-","月")+"日");
+        activity.setStartTime(startTime.replaceFirst("-", "年").replaceFirst("-", "月") + "日");
+        activity.setEndTime(endTime.replaceFirst("-", "年").replaceFirst("-", "月") + "日");
         model.addAttribute("activity", activity);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
             Date date = sdf.parse(startTime);
-            long countTime = (date.getTime() - (new Date()).getTime())/1000;
+            long countTime = (date.getTime() - (new Date()).getTime()) / 1000;
             model.addAttribute("countTime", countTime);
         } catch (ParseException e) {
             e.printStackTrace();
@@ -58,8 +58,8 @@ public class ActivityDetailController {
     }
 
     @RequestMapping(value = "/eventJoin/{id}", method = RequestMethod.GET)
-    public String signUp(@PathVariable int id, Model model){
-        if(loginStatusService.insertUserInformation(model)){
+    public String signUp(@PathVariable int id, Model model) {
+        if (loginStatusService.insertUserInformation(model)) {
             return "signup";
         }
         return "home";

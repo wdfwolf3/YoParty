@@ -2,8 +2,9 @@ package com.yoparty.mapper;
 
 import com.yoparty.bean.UserPartner;
 import com.yoparty.bean.UserPartnerExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface UserPartnerMapper {
     int countByExample(UserPartnerExample example);

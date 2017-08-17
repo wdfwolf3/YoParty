@@ -17,7 +17,7 @@
         <jdbcConnection connectionURL="jdbc:mysql://localhost:3306/yoparty"
                         driverClass="com.mysql.jdbc.Driver"
                         password="1234"
-                        userId="root" />
+                        userId="root"/>
 
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
@@ -39,7 +39,7 @@
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
-         <!--!!!! Table Configurations !!!! -->
+        <!--!!!! Table Configurations !!!! -->
         <!--<table tableName="activity"> </table>-->
         <!--<table tableName="user"> </table>-->
         <!--<table tableName="leader"> </table>-->
@@ -53,6 +53,6 @@
         <!--<table tableName="user_role"> </table>-->
         <!--<table tableName="province"> </table>-->
         <!--<table tableName="city"> </table>-->
-        <table tableName="area"> </table>
+        <table tableName="area"></table>
     </context>
 </generatorConfiguration>

@@ -20,8 +20,8 @@ public class GlobalHandler {
 
     @ExceptionHandler(UserNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Erro han(){
+    public Erro han() {
         System.out.println("dsf");
-        return new Erro(4,"adf");
+        return new Erro(4, "adf");
     }
- }
+}

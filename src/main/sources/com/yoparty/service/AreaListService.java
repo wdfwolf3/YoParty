@@ -21,12 +21,12 @@ public class AreaListService {
     private String parent_id;
 
     public List<Area> getActivityList(HttpServletRequest request) {
-        if(request.getParameter("sysDictFormMap.parentId")!=null){
+        if (request.getParameter("sysDictFormMap.parentId") != null) {
             parent_id = request.getParameter("sysDictFormMap.parentId");
-        }else{
+        } else {
             parent_id = "0";
         }
-        switch (Integer.parseInt(request.getParameter("sysDictFormMap.dict_level"))){
+        switch (Integer.parseInt(request.getParameter("sysDictFormMap.dict_level"))) {
             case 1:
                 table_name = "province";
                 break;

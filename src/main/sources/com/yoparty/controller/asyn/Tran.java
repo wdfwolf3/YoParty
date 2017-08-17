@@ -20,17 +20,17 @@ public class Tran {
         test();
     }
 
-    public static void test(){
+    public static void test() {
         String s = "2201年12月12日";
-        s.replaceAll("年","-");
-        System.out.println(s.replaceAll("[年月]","-").replaceAll("日",""));
+        s.replaceAll("年", "-");
+        System.out.println(s.replaceAll("[年月]", "-").replaceAll("日", ""));
     }
 
-    public static int yue(int m, int n){
-        while (m%n!=0){
+    public static int yue(int m, int n) {
+        while (m % n != 0) {
             int tmp = m;
             m = n;
-            n = tmp%n;
+            n = tmp % n;
         }
         return n;
     }

@@ -4,6 +4,9 @@ package com.yoparty.service;
  * Created by wdfwolf3 on 2017/3/24.
  */
 public class ActivityAjax {
+    private final String type1name = "活动性质";
+    private final String type2name = "活动强度";
+    private final String type3name = "持续时间";
     private Integer id;
     private String title;
     private String start_time;
@@ -16,9 +19,6 @@ public class ActivityAjax {
     private String start_city;
     private String end_city;
     private Byte event_status;
-    private final String type1name = "活动性质";
-    private final String type2name = "活动强度";
-    private final String type3name = "持续时间";
 //    private String gather;
 
     public Integer getId() {

@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class SpringAjaxController {
     @RequestMapping(value = "/json", method = RequestMethod.GET)
-    public Activity getJson(){
+    public Activity getJson() {
         Activity activity = new Activity();
         activity.setStatus((byte) 'a');
         activity.setId(1);
@@ -28,8 +28,8 @@ public class SpringAjaxController {
      * @return
      */
     @RequestMapping(value = "/json", method = RequestMethod.POST, produces = "application/json")
-    public Activity getJson1(@RequestBody Activity activity){
-        if(activity.getOrigin()==null){
+    public Activity getJson1(@RequestBody Activity activity) {
+        if (activity.getOrigin() == null) {
             throw new UserNotFoundException();
         }
         activity.setStatus((byte) 'a');

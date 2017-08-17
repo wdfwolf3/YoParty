@@ -6,6 +6,10 @@ public class Area {
     private String name;
 
     private String parentId;
+    private String parent_key = "0";
+    private String dict_key = "0";
+    private int dict_level;
+    private String root_key = "AREA";
 
     public String getId() {
         return id;
@@ -30,14 +34,6 @@ public class Area {
     public void setParentId(String parentId) {
         this.parentId = parentId == null ? null : parentId.trim();
     }
-
-    private String parent_key = "0";
-
-    private String dict_key = "0";
-
-    private int dict_level;
-
-    private String root_key = "AREA";
 
     public String getParent_key() {
         return parent_key;

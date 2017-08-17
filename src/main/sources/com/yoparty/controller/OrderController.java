@@ -26,8 +26,8 @@ public class OrderController {
     private OrderListPageService orderListPageService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String eventOrderList(Model model){
-        if(loginStatusService.insertUserInformation(model)){
+    public String eventOrderList(Model model) {
+        if (loginStatusService.insertUserInformation(model)) {
             return "order";
         }
         return "home";

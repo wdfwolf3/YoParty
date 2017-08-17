@@ -24,17 +24,15 @@ import java.io.OutputStream;
 @Controller
 @RequestMapping("user_info")
 public class UserInfoController {
+    private final String PREFIX = "D:\\Intellji\\YoParty\\src\\main\\webapp\\WEB-INF\\images\\";
     @Autowired
     private LoginStatusService loginStatusService;
-
     @Autowired
     private UserMapper userMapper;
 
-    private final String PREFIX = "D:\\Intellji\\YoParty\\src\\main\\webapp\\WEB-INF\\images\\";
-
     @RequestMapping(value = "/personalEdit/companys", method = RequestMethod.GET)
-    public String getInfoPartners(Model model){
-        if(loginStatusService.insertUserInformation(model)){
+    public String getInfoPartners(Model model) {
+        if (loginStatusService.insertUserInformation(model)) {
             model.addAttribute("infoType", "companys");
             return "user_info";
         }
@@ -42,8 +40,8 @@ public class UserInfoController {
     }
 
     @RequestMapping(value = "/personalEdit/basic", method = RequestMethod.GET)
-    public String getInfoBasic(Model model){
-        if(loginStatusService.insertUserInformation(model)){
+    public String getInfoBasic(Model model) {
+        if (loginStatusService.insertUserInformation(model)) {
             model.addAttribute("infoType", "basic");
             return "user_info";
         }
@@ -51,8 +49,8 @@ public class UserInfoController {
     }
 
     @RequestMapping(value = "/baseInfo", method = RequestMethod.GET)
-    public String getBaseInfo(HttpServletResponse response, Model model){
-        if(loginStatusService.insertUserInformation(model)){
+    public String getBaseInfo(HttpServletResponse response, Model model) {
+        if (loginStatusService.insertUserInformation(model)) {
             model.addAttribute("user", loginStatusService.getUser());
             response.setHeader("X-Frame-Options", "SAMEORIGIN");
             return "baseInfo";
@@ -61,7 +59,8 @@ public class UserInfoController {
     }
 
     @RequestMapping(value = "addEntity", method = RequestMethod.POST)
-    public @ResponseBody String addUserInfo(HttpServletRequest request, HttpServletResponse response){
+    public @ResponseBody
+    String addUserInfo(HttpServletRequest request, HttpServletResponse response) {
         request.getParameter("userInfoFormMap.birthday");
         request.getParameter("userInfoFormMap.gender");
         request.getParameter("userInfoFormMap.hometown");
@@ -78,10 +77,10 @@ public class UserInfoController {
     }
 
     @RequestMapping(value = "/avator/{filename}")
-    public void getAvator(@PathVariable("filename") String filename,  HttpServletResponse response) throws IOException {
-        File file = new File(PREFIX+filename+".jpg");
+    public void getAvator(@PathVariable("filename") String filename, HttpServletResponse response) throws IOException {
+        File file = new File(PREFIX + filename + ".jpg");
         FileInputStream inputStream = new FileInputStream(file);
-        byte[] data = new byte[(int)file.length()];
+        byte[] data = new byte[(int) file.length()];
         int length = inputStream.read(data);
         inputStream.close();
         response.setContentType("image/jpg");

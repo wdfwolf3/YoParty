@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * customized validate function
- *
+ * <p>
  * Created by wdfwolf3 on 2017/3/6.
  */
 @Service
@@ -30,9 +30,9 @@ public class UserSecurityService implements UserDetailsService {
     private UserRoleMapper userRoleMapper;
 
     @Override
-    public UserDetails loadUserByUsername(String username){
+    public UserDetails loadUserByUsername(String username) {
         User user = userMapper.selectByName(username);
-        if(user==null){
+        if (user == null) {
             throw new UsernameNotFoundException("用户名不存在");
         }
         //search roles of the user by userId
@@ -41,10 +41,10 @@ public class UserSecurityService implements UserDetailsService {
         List<UserRole> userRoles = userRoleMapper.selectByExample(userRoleExample);
         List<GrantedAuthority> grantedAuthorities = new ArrayList<GrantedAuthority>();
         //add roles to list
-        for(UserRole userRole : userRoles){
+        for (UserRole userRole : userRoles) {
             grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_" + userRole.getRoleName()));
         }
         //将正确的用户信息返回供spring验证与输入是否一致
-        return new org.springframework.security.core.userdetails.User(user.getName(),user.getPassword(),grantedAuthorities);
+        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(), grantedAuthorities);
     }
 }

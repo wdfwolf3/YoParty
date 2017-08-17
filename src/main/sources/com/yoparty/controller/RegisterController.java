@@ -47,23 +47,23 @@ public class RegisterController {
         String phone_no = request.getParameter("userFormMap.phone_no");
 //        String checkCode = (String) model.asMap().get("checkCode");
         String checkCode = (String) session.getAttribute("checkCode");
-        if(!rCode.equals(checkCode)){
+        if (!rCode.equals(checkCode)) {
             return new AjaxResponseData("error", "验证码错误");
         }
         User user = userMapper.selectByName(accountName);
-        if(user!=null){
+        if (user != null) {
             return new AjaxResponseData("error", "用户名已存在");
         }
         UserExample userExample = new UserExample();
-        userExample.createCriteria().andPhoneEqualTo(phone_no);
+        userExample.createCriteria().andTelephoneEqualTo(phone_no);
         List<User> users = userMapper.selectByExample(userExample);
-        if(users==null||users.size()==0){
+        if (users == null || users.size() == 0) {
             return new AjaxResponseData("error", "手机号码已注册");
         }
-        user.setName(accountName);
+        user.setUsername(accountName);
         user.setPassword(password);
-        user.setPetname(username);
-        user.setPhone(phone_no);
+        user.setNickname(username);
+        user.setTelephone(phone_no);
         userMapper.insert(user);
 //        System.out.println(username+accountName+password+rCode+phone_no+checkCode);
         return new AjaxResponseData("success", "");

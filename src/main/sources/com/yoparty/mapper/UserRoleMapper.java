@@ -2,8 +2,9 @@ package com.yoparty.mapper;
 
 import com.yoparty.bean.UserRole;
 import com.yoparty.bean.UserRoleExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface UserRoleMapper {
     int countByExample(UserRoleExample example);

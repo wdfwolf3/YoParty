@@ -17,12 +17,12 @@ public class LogoutSuccessHandlerImpl implements LogoutSuccessHandler {
     @Override
     public void onLogoutSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Authentication authentication) throws IOException, ServletException {
         Object savedRequestObject = httpServletRequest.getSession().getAttribute("SPRING_SECURITY_SAVED_REQUEST");
-        if(savedRequestObject!=null){
+        if (savedRequestObject != null) {
             //get the url before register
             String url = ((DefaultSavedRequest) savedRequestObject).getServletPath();
             //redirect to the page we want before register
-            httpServletResponse.sendRedirect("/yo-party-net/"+url);
-        }else{
+            httpServletResponse.sendRedirect("/yo-party-net/" + url);
+        } else {
             httpServletResponse.sendRedirect("/yo-party-net");
         }
     }

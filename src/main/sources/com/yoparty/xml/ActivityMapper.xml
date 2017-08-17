@@ -1,150 +1,153 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yoparty.mapper.ActivityMapper" >
-  <resultMap id="BaseResultMap" type="com.yoparty.bean.Activity" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="start_time" property="startTime" jdbcType="VARCHAR" />
-    <result column="end_time" property="endTime" jdbcType="VARCHAR" />
-    <result column="submit_date" property="submitDate" jdbcType="VARCHAR" />
-    <result column="leader_name" property="leaderName" jdbcType="VARCHAR" />
-    <result column="type1" property="type1" jdbcType="VARCHAR" />
-    <result column="type2" property="type2" jdbcType="VARCHAR" />
-    <result column="type3" property="type3" jdbcType="VARCHAR" />
-    <result column="price" property="price" jdbcType="SMALLINT" />
-    <result column="origin" property="origin" jdbcType="VARCHAR" />
-    <result column="destination" property="destination" jdbcType="VARCHAR" />
-    <result column="number" property="number" jdbcType="SMALLINT" />
-    <result column="signup_number" property="signupNumber" jdbcType="SMALLINT" />
-    <result column="status" property="status" jdbcType="TINYINT" />
-    <result column="gather" property="gather" jdbcType="VARCHAR" />
-    <result column="completed" property="completed" jdbcType="BIT" />
-    <result column="verify" property="verify" jdbcType="BIT" />
-    <result column="file_prefix" property="filePrefix" jdbcType="VARCHAR" />
-    <result column="pic_dir" property="picDir" jdbcType="VARCHAR" />
-    <result column="thumb" property="thumb" jdbcType="VARCHAR" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.yoparty.bean.ActivityWithBLOBs" extends="BaseResultMap" >
-    <result column="introduce" property="introduce" jdbcType="LONGVARCHAR" />
-    <result column="trip" property="trip" jdbcType="LONGVARCHAR" />
-    <result column="expenses" property="expenses" jdbcType="LONGVARCHAR" />
-    <result column="attention" property="attention" jdbcType="LONGVARCHAR" />
-  </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+<mapper namespace="com.yoparty.mapper.ActivityMapper">
+    <resultMap id="BaseResultMap" type="com.yoparty.bean.Activity">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="start_time" property="startTime" jdbcType="VARCHAR"/>
+        <result column="end_time" property="endTime" jdbcType="VARCHAR"/>
+        <result column="submit_date" property="submitDate" jdbcType="VARCHAR"/>
+        <result column="leader_name" property="leaderName" jdbcType="VARCHAR"/>
+        <result column="type1" property="type1" jdbcType="VARCHAR"/>
+        <result column="type2" property="type2" jdbcType="VARCHAR"/>
+        <result column="type3" property="type3" jdbcType="VARCHAR"/>
+        <result column="price" property="price" jdbcType="SMALLINT"/>
+        <result column="origin" property="origin" jdbcType="VARCHAR"/>
+        <result column="destination" property="destination" jdbcType="VARCHAR"/>
+        <result column="number" property="number" jdbcType="SMALLINT"/>
+        <result column="signup_number" property="signupNumber" jdbcType="SMALLINT"/>
+        <result column="status" property="status" jdbcType="TINYINT"/>
+        <result column="gather" property="gather" jdbcType="VARCHAR"/>
+        <result column="completed" property="completed" jdbcType="BIT"/>
+        <result column="verify" property="verify" jdbcType="BIT"/>
+        <result column="file_prefix" property="filePrefix" jdbcType="VARCHAR"/>
+        <result column="pic_dir" property="picDir" jdbcType="VARCHAR"/>
+        <result column="thumb" property="thumb" jdbcType="VARCHAR"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.yoparty.bean.ActivityWithBLOBs" extends="BaseResultMap">
+        <result column="introduce" property="introduce" jdbcType="LONGVARCHAR"/>
+        <result column="trip" property="trip" jdbcType="LONGVARCHAR"/>
+        <result column="expenses" property="expenses" jdbcType="LONGVARCHAR"/>
+        <result column="attention" property="attention" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List" >
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
     id, title, start_time, end_time, submit_date, leader_name, type1, type2, type3, price, 
     origin, destination, number, signup_number, status, gather, completed, verify, file_prefix, 
     pic_dir, thumb
   </sql>
-  <sql id="Blob_Column_List" >
+    <sql id="Blob_Column_List">
     introduce, trip, expenses, attention
   </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.yoparty.bean.ActivityExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from activity
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.bean.ActivityExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from activity
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from activity
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs"
+            parameterType="com.yoparty.bean.ActivityExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from activity
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.bean.ActivityExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from activity
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from activity
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from activity
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yoparty.bean.ActivityExample" >
-    delete from activity
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.yoparty.bean.ActivityWithBLOBs" >
+    <delete id="deleteByExample" parameterType="com.yoparty.bean.ActivityExample">
+        delete from activity
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.yoparty.bean.ActivityWithBLOBs">
     insert into activity (id, title, start_time, 
       end_time, submit_date, leader_name, 
       type1, type2, type3, 
@@ -164,389 +167,389 @@
       #{introduce,jdbcType=LONGVARCHAR}, #{trip,jdbcType=LONGVARCHAR}, #{expenses,jdbcType=LONGVARCHAR}, 
       #{attention,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yoparty.bean.ActivityWithBLOBs" >
-    insert into activity
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="title != null" >
-        title,
-      </if>
-      <if test="startTime != null" >
-        start_time,
-      </if>
-      <if test="endTime != null" >
-        end_time,
-      </if>
-      <if test="submitDate != null" >
-        submit_date,
-      </if>
-      <if test="leaderName != null" >
-        leader_name,
-      </if>
-      <if test="type1 != null" >
-        type1,
-      </if>
-      <if test="type2 != null" >
-        type2,
-      </if>
-      <if test="type3 != null" >
-        type3,
-      </if>
-      <if test="price != null" >
-        price,
-      </if>
-      <if test="origin != null" >
-        origin,
-      </if>
-      <if test="destination != null" >
-        destination,
-      </if>
-      <if test="number != null" >
-        number,
-      </if>
-      <if test="signupNumber != null" >
-        signup_number,
-      </if>
-      <if test="status != null" >
-        status,
-      </if>
-      <if test="gather != null" >
-        gather,
-      </if>
-      <if test="completed != null" >
-        completed,
-      </if>
-      <if test="verify != null" >
-        verify,
-      </if>
-      <if test="filePrefix != null" >
-        file_prefix,
-      </if>
-      <if test="picDir != null" >
-        pic_dir,
-      </if>
-      <if test="thumb != null" >
-        thumb,
-      </if>
-      <if test="introduce != null" >
-        introduce,
-      </if>
-      <if test="trip != null" >
-        trip,
-      </if>
-      <if test="expenses != null" >
-        expenses,
-      </if>
-      <if test="attention != null" >
-        attention,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="title != null" >
-        #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="startTime != null" >
-        #{startTime,jdbcType=VARCHAR},
-      </if>
-      <if test="endTime != null" >
-        #{endTime,jdbcType=VARCHAR},
-      </if>
-      <if test="submitDate != null" >
-        #{submitDate,jdbcType=VARCHAR},
-      </if>
-      <if test="leaderName != null" >
-        #{leaderName,jdbcType=VARCHAR},
-      </if>
-      <if test="type1 != null" >
-        #{type1,jdbcType=VARCHAR},
-      </if>
-      <if test="type2 != null" >
-        #{type2,jdbcType=VARCHAR},
-      </if>
-      <if test="type3 != null" >
-        #{type3,jdbcType=VARCHAR},
-      </if>
-      <if test="price != null" >
-        #{price,jdbcType=SMALLINT},
-      </if>
-      <if test="origin != null" >
-        #{origin,jdbcType=VARCHAR},
-      </if>
-      <if test="destination != null" >
-        #{destination,jdbcType=VARCHAR},
-      </if>
-      <if test="number != null" >
-        #{number,jdbcType=SMALLINT},
-      </if>
-      <if test="signupNumber != null" >
-        #{signupNumber,jdbcType=SMALLINT},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=TINYINT},
-      </if>
-      <if test="gather != null" >
-        #{gather,jdbcType=VARCHAR},
-      </if>
-      <if test="completed != null" >
-        #{completed,jdbcType=BIT},
-      </if>
-      <if test="verify != null" >
-        #{verify,jdbcType=BIT},
-      </if>
-      <if test="filePrefix != null" >
-        #{filePrefix,jdbcType=VARCHAR},
-      </if>
-      <if test="picDir != null" >
-        #{picDir,jdbcType=VARCHAR},
-      </if>
-      <if test="thumb != null" >
-        #{thumb,jdbcType=VARCHAR},
-      </if>
-      <if test="introduce != null" >
-        #{introduce,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="trip != null" >
-        #{trip,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="expenses != null" >
-        #{expenses,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="attention != null" >
-        #{attention,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.yoparty.bean.ActivityExample" resultType="java.lang.Integer" >
-    select count(*) from activity
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update activity
-    <set >
-      <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
-      <if test="record.title != null" >
+    <insert id="insertSelective" parameterType="com.yoparty.bean.ActivityWithBLOBs">
+        insert into activity
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="startTime != null">
+                start_time,
+            </if>
+            <if test="endTime != null">
+                end_time,
+            </if>
+            <if test="submitDate != null">
+                submit_date,
+            </if>
+            <if test="leaderName != null">
+                leader_name,
+            </if>
+            <if test="type1 != null">
+                type1,
+            </if>
+            <if test="type2 != null">
+                type2,
+            </if>
+            <if test="type3 != null">
+                type3,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+            <if test="origin != null">
+                origin,
+            </if>
+            <if test="destination != null">
+                destination,
+            </if>
+            <if test="number != null">
+                number,
+            </if>
+            <if test="signupNumber != null">
+                signup_number,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="gather != null">
+                gather,
+            </if>
+            <if test="completed != null">
+                completed,
+            </if>
+            <if test="verify != null">
+                verify,
+            </if>
+            <if test="filePrefix != null">
+                file_prefix,
+            </if>
+            <if test="picDir != null">
+                pic_dir,
+            </if>
+            <if test="thumb != null">
+                thumb,
+            </if>
+            <if test="introduce != null">
+                introduce,
+            </if>
+            <if test="trip != null">
+                trip,
+            </if>
+            <if test="expenses != null">
+                expenses,
+            </if>
+            <if test="attention != null">
+                attention,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="startTime != null">
+                #{startTime,jdbcType=VARCHAR},
+            </if>
+            <if test="endTime != null">
+                #{endTime,jdbcType=VARCHAR},
+            </if>
+            <if test="submitDate != null">
+                #{submitDate,jdbcType=VARCHAR},
+            </if>
+            <if test="leaderName != null">
+                #{leaderName,jdbcType=VARCHAR},
+            </if>
+            <if test="type1 != null">
+                #{type1,jdbcType=VARCHAR},
+            </if>
+            <if test="type2 != null">
+                #{type2,jdbcType=VARCHAR},
+            </if>
+            <if test="type3 != null">
+                #{type3,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                #{price,jdbcType=SMALLINT},
+            </if>
+            <if test="origin != null">
+                #{origin,jdbcType=VARCHAR},
+            </if>
+            <if test="destination != null">
+                #{destination,jdbcType=VARCHAR},
+            </if>
+            <if test="number != null">
+                #{number,jdbcType=SMALLINT},
+            </if>
+            <if test="signupNumber != null">
+                #{signupNumber,jdbcType=SMALLINT},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=TINYINT},
+            </if>
+            <if test="gather != null">
+                #{gather,jdbcType=VARCHAR},
+            </if>
+            <if test="completed != null">
+                #{completed,jdbcType=BIT},
+            </if>
+            <if test="verify != null">
+                #{verify,jdbcType=BIT},
+            </if>
+            <if test="filePrefix != null">
+                #{filePrefix,jdbcType=VARCHAR},
+            </if>
+            <if test="picDir != null">
+                #{picDir,jdbcType=VARCHAR},
+            </if>
+            <if test="thumb != null">
+                #{thumb,jdbcType=VARCHAR},
+            </if>
+            <if test="introduce != null">
+                #{introduce,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="trip != null">
+                #{trip,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="expenses != null">
+                #{expenses,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="attention != null">
+                #{attention,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.yoparty.bean.ActivityExample" resultType="java.lang.Integer">
+        select count(*) from activity
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update activity
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=INTEGER},
+            </if>
+            <if test="record.title != null">
+                title = #{record.title,jdbcType=VARCHAR},
+            </if>
+            <if test="record.startTime != null">
+                start_time = #{record.startTime,jdbcType=VARCHAR},
+            </if>
+            <if test="record.endTime != null">
+                end_time = #{record.endTime,jdbcType=VARCHAR},
+            </if>
+            <if test="record.submitDate != null">
+                submit_date = #{record.submitDate,jdbcType=VARCHAR},
+            </if>
+            <if test="record.leaderName != null">
+                leader_name = #{record.leaderName,jdbcType=VARCHAR},
+            </if>
+            <if test="record.type1 != null">
+                type1 = #{record.type1,jdbcType=VARCHAR},
+            </if>
+            <if test="record.type2 != null">
+                type2 = #{record.type2,jdbcType=VARCHAR},
+            </if>
+            <if test="record.type3 != null">
+                type3 = #{record.type3,jdbcType=VARCHAR},
+            </if>
+            <if test="record.price != null">
+                price = #{record.price,jdbcType=SMALLINT},
+            </if>
+            <if test="record.origin != null">
+                origin = #{record.origin,jdbcType=VARCHAR},
+            </if>
+            <if test="record.destination != null">
+                destination = #{record.destination,jdbcType=VARCHAR},
+            </if>
+            <if test="record.number != null">
+                number = #{record.number,jdbcType=SMALLINT},
+            </if>
+            <if test="record.signupNumber != null">
+                signup_number = #{record.signupNumber,jdbcType=SMALLINT},
+            </if>
+            <if test="record.status != null">
+                status = #{record.status,jdbcType=TINYINT},
+            </if>
+            <if test="record.gather != null">
+                gather = #{record.gather,jdbcType=VARCHAR},
+            </if>
+            <if test="record.completed != null">
+                completed = #{record.completed,jdbcType=BIT},
+            </if>
+            <if test="record.verify != null">
+                verify = #{record.verify,jdbcType=BIT},
+            </if>
+            <if test="record.filePrefix != null">
+                file_prefix = #{record.filePrefix,jdbcType=VARCHAR},
+            </if>
+            <if test="record.picDir != null">
+                pic_dir = #{record.picDir,jdbcType=VARCHAR},
+            </if>
+            <if test="record.thumb != null">
+                thumb = #{record.thumb,jdbcType=VARCHAR},
+            </if>
+            <if test="record.introduce != null">
+                introduce = #{record.introduce,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.trip != null">
+                trip = #{record.trip,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.expenses != null">
+                expenses = #{record.expenses,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="record.attention != null">
+                attention = #{record.attention,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExampleWithBLOBs" parameterType="map">
+        update activity
+        set id = #{record.id,jdbcType=INTEGER},
         title = #{record.title,jdbcType=VARCHAR},
-      </if>
-      <if test="record.startTime != null" >
         start_time = #{record.startTime,jdbcType=VARCHAR},
-      </if>
-      <if test="record.endTime != null" >
         end_time = #{record.endTime,jdbcType=VARCHAR},
-      </if>
-      <if test="record.submitDate != null" >
         submit_date = #{record.submitDate,jdbcType=VARCHAR},
-      </if>
-      <if test="record.leaderName != null" >
         leader_name = #{record.leaderName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.type1 != null" >
         type1 = #{record.type1,jdbcType=VARCHAR},
-      </if>
-      <if test="record.type2 != null" >
         type2 = #{record.type2,jdbcType=VARCHAR},
-      </if>
-      <if test="record.type3 != null" >
         type3 = #{record.type3,jdbcType=VARCHAR},
-      </if>
-      <if test="record.price != null" >
         price = #{record.price,jdbcType=SMALLINT},
-      </if>
-      <if test="record.origin != null" >
         origin = #{record.origin,jdbcType=VARCHAR},
-      </if>
-      <if test="record.destination != null" >
         destination = #{record.destination,jdbcType=VARCHAR},
-      </if>
-      <if test="record.number != null" >
         number = #{record.number,jdbcType=SMALLINT},
-      </if>
-      <if test="record.signupNumber != null" >
         signup_number = #{record.signupNumber,jdbcType=SMALLINT},
-      </if>
-      <if test="record.status != null" >
         status = #{record.status,jdbcType=TINYINT},
-      </if>
-      <if test="record.gather != null" >
         gather = #{record.gather,jdbcType=VARCHAR},
-      </if>
-      <if test="record.completed != null" >
         completed = #{record.completed,jdbcType=BIT},
-      </if>
-      <if test="record.verify != null" >
         verify = #{record.verify,jdbcType=BIT},
-      </if>
-      <if test="record.filePrefix != null" >
         file_prefix = #{record.filePrefix,jdbcType=VARCHAR},
-      </if>
-      <if test="record.picDir != null" >
         pic_dir = #{record.picDir,jdbcType=VARCHAR},
-      </if>
-      <if test="record.thumb != null" >
         thumb = #{record.thumb,jdbcType=VARCHAR},
-      </if>
-      <if test="record.introduce != null" >
         introduce = #{record.introduce,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="record.trip != null" >
         trip = #{record.trip,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="record.expenses != null" >
         expenses = #{record.expenses,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="record.attention != null" >
-        attention = #{record.attention,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map" >
-    update activity
-    set id = #{record.id,jdbcType=INTEGER},
-      title = #{record.title,jdbcType=VARCHAR},
-      start_time = #{record.startTime,jdbcType=VARCHAR},
-      end_time = #{record.endTime,jdbcType=VARCHAR},
-      submit_date = #{record.submitDate,jdbcType=VARCHAR},
-      leader_name = #{record.leaderName,jdbcType=VARCHAR},
-      type1 = #{record.type1,jdbcType=VARCHAR},
-      type2 = #{record.type2,jdbcType=VARCHAR},
-      type3 = #{record.type3,jdbcType=VARCHAR},
-      price = #{record.price,jdbcType=SMALLINT},
-      origin = #{record.origin,jdbcType=VARCHAR},
-      destination = #{record.destination,jdbcType=VARCHAR},
-      number = #{record.number,jdbcType=SMALLINT},
-      signup_number = #{record.signupNumber,jdbcType=SMALLINT},
-      status = #{record.status,jdbcType=TINYINT},
-      gather = #{record.gather,jdbcType=VARCHAR},
-      completed = #{record.completed,jdbcType=BIT},
-      verify = #{record.verify,jdbcType=BIT},
-      file_prefix = #{record.filePrefix,jdbcType=VARCHAR},
-      pic_dir = #{record.picDir,jdbcType=VARCHAR},
-      thumb = #{record.thumb,jdbcType=VARCHAR},
-      introduce = #{record.introduce,jdbcType=LONGVARCHAR},
-      trip = #{record.trip,jdbcType=LONGVARCHAR},
-      expenses = #{record.expenses,jdbcType=LONGVARCHAR},
-      attention = #{record.attention,jdbcType=LONGVARCHAR}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update activity
-    set id = #{record.id,jdbcType=INTEGER},
-      title = #{record.title,jdbcType=VARCHAR},
-      start_time = #{record.startTime,jdbcType=VARCHAR},
-      end_time = #{record.endTime,jdbcType=VARCHAR},
-      submit_date = #{record.submitDate,jdbcType=VARCHAR},
-      leader_name = #{record.leaderName,jdbcType=VARCHAR},
-      type1 = #{record.type1,jdbcType=VARCHAR},
-      type2 = #{record.type2,jdbcType=VARCHAR},
-      type3 = #{record.type3,jdbcType=VARCHAR},
-      price = #{record.price,jdbcType=SMALLINT},
-      origin = #{record.origin,jdbcType=VARCHAR},
-      destination = #{record.destination,jdbcType=VARCHAR},
-      number = #{record.number,jdbcType=SMALLINT},
-      signup_number = #{record.signupNumber,jdbcType=SMALLINT},
-      status = #{record.status,jdbcType=TINYINT},
-      gather = #{record.gather,jdbcType=VARCHAR},
-      completed = #{record.completed,jdbcType=BIT},
-      verify = #{record.verify,jdbcType=BIT},
-      file_prefix = #{record.filePrefix,jdbcType=VARCHAR},
-      pic_dir = #{record.picDir,jdbcType=VARCHAR},
-      thumb = #{record.thumb,jdbcType=VARCHAR}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yoparty.bean.ActivityWithBLOBs" >
-    update activity
-    <set >
-      <if test="title != null" >
-        title = #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="startTime != null" >
-        start_time = #{startTime,jdbcType=VARCHAR},
-      </if>
-      <if test="endTime != null" >
-        end_time = #{endTime,jdbcType=VARCHAR},
-      </if>
-      <if test="submitDate != null" >
-        submit_date = #{submitDate,jdbcType=VARCHAR},
-      </if>
-      <if test="leaderName != null" >
-        leader_name = #{leaderName,jdbcType=VARCHAR},
-      </if>
-      <if test="type1 != null" >
-        type1 = #{type1,jdbcType=VARCHAR},
-      </if>
-      <if test="type2 != null" >
-        type2 = #{type2,jdbcType=VARCHAR},
-      </if>
-      <if test="type3 != null" >
-        type3 = #{type3,jdbcType=VARCHAR},
-      </if>
-      <if test="price != null" >
-        price = #{price,jdbcType=SMALLINT},
-      </if>
-      <if test="origin != null" >
-        origin = #{origin,jdbcType=VARCHAR},
-      </if>
-      <if test="destination != null" >
-        destination = #{destination,jdbcType=VARCHAR},
-      </if>
-      <if test="number != null" >
-        number = #{number,jdbcType=SMALLINT},
-      </if>
-      <if test="signupNumber != null" >
-        signup_number = #{signupNumber,jdbcType=SMALLINT},
-      </if>
-      <if test="status != null" >
-        status = #{status,jdbcType=TINYINT},
-      </if>
-      <if test="gather != null" >
-        gather = #{gather,jdbcType=VARCHAR},
-      </if>
-      <if test="completed != null" >
-        completed = #{completed,jdbcType=BIT},
-      </if>
-      <if test="verify != null" >
-        verify = #{verify,jdbcType=BIT},
-      </if>
-      <if test="filePrefix != null" >
-        file_prefix = #{filePrefix,jdbcType=VARCHAR},
-      </if>
-      <if test="picDir != null" >
-        pic_dir = #{picDir,jdbcType=VARCHAR},
-      </if>
-      <if test="thumb != null" >
-        thumb = #{thumb,jdbcType=VARCHAR},
-      </if>
-      <if test="introduce != null" >
-        introduce = #{introduce,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="trip != null" >
-        trip = #{trip,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="expenses != null" >
-        expenses = #{expenses,jdbcType=LONGVARCHAR},
-      </if>
-      <if test="attention != null" >
-        attention = #{attention,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yoparty.bean.ActivityWithBLOBs" >
+        attention = #{record.attention,jdbcType=LONGVARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update activity
+        set id = #{record.id,jdbcType=INTEGER},
+        title = #{record.title,jdbcType=VARCHAR},
+        start_time = #{record.startTime,jdbcType=VARCHAR},
+        end_time = #{record.endTime,jdbcType=VARCHAR},
+        submit_date = #{record.submitDate,jdbcType=VARCHAR},
+        leader_name = #{record.leaderName,jdbcType=VARCHAR},
+        type1 = #{record.type1,jdbcType=VARCHAR},
+        type2 = #{record.type2,jdbcType=VARCHAR},
+        type3 = #{record.type3,jdbcType=VARCHAR},
+        price = #{record.price,jdbcType=SMALLINT},
+        origin = #{record.origin,jdbcType=VARCHAR},
+        destination = #{record.destination,jdbcType=VARCHAR},
+        number = #{record.number,jdbcType=SMALLINT},
+        signup_number = #{record.signupNumber,jdbcType=SMALLINT},
+        status = #{record.status,jdbcType=TINYINT},
+        gather = #{record.gather,jdbcType=VARCHAR},
+        completed = #{record.completed,jdbcType=BIT},
+        verify = #{record.verify,jdbcType=BIT},
+        file_prefix = #{record.filePrefix,jdbcType=VARCHAR},
+        pic_dir = #{record.picDir,jdbcType=VARCHAR},
+        thumb = #{record.thumb,jdbcType=VARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yoparty.bean.ActivityWithBLOBs">
+        update activity
+        <set>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="startTime != null">
+                start_time = #{startTime,jdbcType=VARCHAR},
+            </if>
+            <if test="endTime != null">
+                end_time = #{endTime,jdbcType=VARCHAR},
+            </if>
+            <if test="submitDate != null">
+                submit_date = #{submitDate,jdbcType=VARCHAR},
+            </if>
+            <if test="leaderName != null">
+                leader_name = #{leaderName,jdbcType=VARCHAR},
+            </if>
+            <if test="type1 != null">
+                type1 = #{type1,jdbcType=VARCHAR},
+            </if>
+            <if test="type2 != null">
+                type2 = #{type2,jdbcType=VARCHAR},
+            </if>
+            <if test="type3 != null">
+                type3 = #{type3,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=SMALLINT},
+            </if>
+            <if test="origin != null">
+                origin = #{origin,jdbcType=VARCHAR},
+            </if>
+            <if test="destination != null">
+                destination = #{destination,jdbcType=VARCHAR},
+            </if>
+            <if test="number != null">
+                number = #{number,jdbcType=SMALLINT},
+            </if>
+            <if test="signupNumber != null">
+                signup_number = #{signupNumber,jdbcType=SMALLINT},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=TINYINT},
+            </if>
+            <if test="gather != null">
+                gather = #{gather,jdbcType=VARCHAR},
+            </if>
+            <if test="completed != null">
+                completed = #{completed,jdbcType=BIT},
+            </if>
+            <if test="verify != null">
+                verify = #{verify,jdbcType=BIT},
+            </if>
+            <if test="filePrefix != null">
+                file_prefix = #{filePrefix,jdbcType=VARCHAR},
+            </if>
+            <if test="picDir != null">
+                pic_dir = #{picDir,jdbcType=VARCHAR},
+            </if>
+            <if test="thumb != null">
+                thumb = #{thumb,jdbcType=VARCHAR},
+            </if>
+            <if test="introduce != null">
+                introduce = #{introduce,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="trip != null">
+                trip = #{trip,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="expenses != null">
+                expenses = #{expenses,jdbcType=LONGVARCHAR},
+            </if>
+            <if test="attention != null">
+                attention = #{attention,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yoparty.bean.ActivityWithBLOBs">
     update activity
     set title = #{title,jdbcType=VARCHAR},
       start_time = #{startTime,jdbcType=VARCHAR},
@@ -574,7 +577,7 @@
       attention = #{attention,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yoparty.bean.Activity" >
+    <update id="updateByPrimaryKey" parameterType="com.yoparty.bean.Activity">
     update activity
     set title = #{title,jdbcType=VARCHAR},
       start_time = #{startTime,jdbcType=VARCHAR},
@@ -599,7 +602,8 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
     <!---->
-    <select id="select" parameterType="com.yoparty.service.ActivityListPageService" resultType="com.yoparty.service.ActivityAjax">
+    <select id="select" parameterType="com.yoparty.service.ActivityListPageService"
+            resultType="com.yoparty.service.ActivityAjax">
         select
         id,
         title,

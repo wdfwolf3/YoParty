@@ -18,7 +18,7 @@ import java.io.IOException;
 @Controller
 public class ImageController {
     @RequestMapping(value = "image", method = RequestMethod.GET)
-    public String saveImage0() throws IOException{
+    public String saveImage0() throws IOException {
         Logger logger = LogManager.getLogger(ImageController.class.getName());
         logger.info("ddad21321");
         logger.error("dd");
@@ -26,14 +26,14 @@ public class ImageController {
     }
 
     @RequestMapping(value = "image", method = RequestMethod.POST)
-    public String saveImage(@RequestPart("file")MultipartFile file ) throws IOException{
+    public String saveImage(@RequestPart("file") MultipartFile file) throws IOException {
         byte[] bytes = file.getBytes();
         file.transferTo(new File("D:\\temp\\" + file.getOriginalFilename()));
         return "home";
     }
 
     @RequestMapping(value = "image1", method = RequestMethod.POST)
-    public String saveImage1(@RequestPart("file") Part file ) throws IOException{
+    public String saveImage1(@RequestPart("file") Part file) throws IOException {
         file.write("D:\\temp\\" + file.getSubmittedFileName());
         return "main";
     }

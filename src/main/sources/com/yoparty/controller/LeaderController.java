@@ -1,6 +1,9 @@
 package com.yoparty.controller;
 
-import com.yoparty.bean.*;
+import com.yoparty.bean.ActivityExample;
+import com.yoparty.bean.ActivityWithBLOBs;
+import com.yoparty.bean.Leader;
+import com.yoparty.bean.User;
 import com.yoparty.mapper.ActivityMapper;
 import com.yoparty.mapper.LeaderMapper;
 import com.yoparty.mapper.UserMapper;
@@ -29,7 +32,7 @@ public class LeaderController {
     private ActivityMapper activityMapper;
 
     @RequestMapping(value = "leader/detail/{id}", method = RequestMethod.GET)
-    public String getLeader(@PathVariable("id") int id, Model model){
+    public String getLeader(@PathVariable("id") int id, Model model) {
         Leader leader = leaderMapper.selectByPrimaryKey(id);
         model.addAttribute("leader", leader);
         User user = userMapper.selectByPrimaryKey(leader.getUserId());
@@ -39,11 +42,11 @@ public class LeaderController {
         activityExample.createCriteria().andLeaderNameEqualTo(user.getNickname());
         List<ActivityWithBLOBs> activityList = activityMapper.selectByExampleWithBLOBs(activityExample);
         List<ActivityWithBLOBs> activityListOngoing = new ArrayList<ActivityWithBLOBs>();
-        List<ActivityWithBLOBs> activityListCompeleted =  new ArrayList<ActivityWithBLOBs>();
-        for(ActivityWithBLOBs activity : activityList){
-            if (activity.getStatus() == 1){
+        List<ActivityWithBLOBs> activityListCompeleted = new ArrayList<ActivityWithBLOBs>();
+        for (ActivityWithBLOBs activity : activityList) {
+            if (activity.getStatus() == 1) {
                 activityListOngoing.add(activity);
-            }else if (activity.getStatus() == 2){
+            } else if (activity.getStatus() == 2) {
                 activityListCompeleted.add(activity);
             }
         }

@@ -2,8 +2,9 @@ package com.yoparty.mapper;
 
 import com.yoparty.bean.LeaderActivity;
 import com.yoparty.bean.LeaderActivityExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface LeaderActivityMapper {
     int countByExample(LeaderActivityExample example);

@@ -2,8 +2,9 @@ package com.yoparty.mapper;
 
 import com.yoparty.bean.Fullcut;
 import com.yoparty.bean.FullcutExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface FullcutMapper {
     int countByExample(FullcutExample example);

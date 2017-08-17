@@ -1,6 +1,5 @@
 package com.yoparty.util;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -23,10 +22,10 @@ public class GenerateCheckCode {
         Graphics g = image.getGraphics();
         //Graphics类的样式
         g.setColor(getRandColor(200, 250));
-        g.setFont(new Font("Times New Roman",0,28));
+        g.setFont(new Font("Times New Roman", 0, 28));
         g.fillRect(0, 0, width, height);
         //绘制干扰线
-        for(int i=0;i<40;i++){
+        for (int i = 0; i < 40; i++) {
             g.setColor(getRandColor(130, 200));
             int x = random.nextInt(width);
             int y = random.nextInt(height);
@@ -36,11 +35,11 @@ public class GenerateCheckCode {
         }
 
         //绘制字符
-        for(int i=0;i<4;i++){
+        for (int i = 0; i < 4; i++) {
             String rand = String.valueOf(random.nextInt(10));
             checkCode = checkCode + rand;
-            g.setColor(new Color(20+random.nextInt(110),20+random.nextInt(110),20+random.nextInt(110)));
-            g.drawString(rand, 13*i+6, 20);
+            g.setColor(new Color(20 + random.nextInt(110), 20 + random.nextInt(110), 20 + random.nextInt(110)));
+            g.drawString(rand, 13 * i + 6, 20);
         }
         g.dispose();
 //        File file = new File("E:\\apache-tomcat-9.0.0.M11\\webapps\\YouPai\\images\\注册\\u21.png");
@@ -48,16 +47,16 @@ public class GenerateCheckCode {
         return image;
     }
 
-    private Color getRandColor(int fc, int bc){
+    private Color getRandColor(int fc, int bc) {
         Random random = new Random();
-        if(fc>255)
+        if (fc > 255)
             fc = 255;
-        if(bc>255)
+        if (bc > 255)
             bc = 255;
         int r = fc + random.nextInt(bc - fc);
         int g = fc + random.nextInt(bc - fc);
         int b = fc + random.nextInt(bc - fc);
-        return new Color(r,g,b);
+        return new Color(r, g, b);
     }
 
     public String getCheckCode() {

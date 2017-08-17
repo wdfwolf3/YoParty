@@ -6,11 +6,11 @@
       http://www.springframework.org/schema/webflow/spring-webflow-2.4.xsd"
       >
     <view-state id="viewCart" view="viewCart.jsp">
-        <transition on="submit" to="viewOrder">
+        <transition on="submit" to="viewOrder.jsp">
         </transition>
     </view-state>
     <view-state id="viewOrder">
-        <transition on="confirm" to="orderConfirmed">
+        <transition on="confirm" to="orderConfirmed.jsp">
         </transition>
     </view-state>
     <view-state id="orderConfirmed" view="orderConfirmed">

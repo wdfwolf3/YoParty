@@ -23,12 +23,12 @@ import java.util.Map;
 @RequestMapping("hello")
 public class AjaxController {
     @RequestMapping(value = "hello")
-    public String jaaj(){
+    public String jaaj() {
         return "ajax";
     }
 
     @RequestMapping(value = "json", method = RequestMethod.GET)
-    public String getJso(){
+    public String getJso() {
         return "json";
     }
 
@@ -46,23 +46,23 @@ public class AjaxController {
 
         String name = request.getParameter("name");
         String password = request.getParameter("password");
-        System.out.println(name+" : "+password);
+        System.out.println(name + " : " + password);
         PrintWriter out = response.getWriter();
 
-        List<Map<String,String>> list = new ArrayList<Map<String,String>>();
-        Map<String,String> m1 = new HashMap<String,String>();
+        List<Map<String, String>> list = new ArrayList<Map<String, String>>();
+        Map<String, String> m1 = new HashMap<String, String>();
         m1.put("activityId", "000001");
         m1.put("activityName", "阿斯蒂芬1");
-        Map<String,String> m2 = new HashMap<String,String>();
+        Map<String, String> m2 = new HashMap<String, String>();
         m2.put("activityId", "000002");
         m2.put("activityName", "阿斯蒂芬2");
-        Map<String,String> m3 = new HashMap<String,String>();
+        Map<String, String> m3 = new HashMap<String, String>();
         m3.put("activityId", "000003");
         m3.put("activityName", "阿斯蒂芬3");
-        Map<String,String> m4 = new HashMap<String,String>();
+        Map<String, String> m4 = new HashMap<String, String>();
         m4.put("activityId", "000004");
         m4.put("activityName", "阿斯蒂芬4");
-        Map<String,String> m5 = new HashMap<String,String>();
+        Map<String, String> m5 = new HashMap<String, String>();
         m5.put("activityId", "000005");
         m5.put("activityName", "阿斯蒂芬5");
         list.add(m1);

@@ -16,15 +16,15 @@ public class LoginController {
     private LoginStatusService loginStatusService;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginSecurity(Model model){
-        if(loginStatusService.insertUserInformation(model)){
+    public String loginSecurity(Model model) {
+        if (loginStatusService.insertUserInformation(model)) {
             return "home";
         }
         return "login";
     }
 
     @RequestMapping("findpassword")
-    public String findPasswordPage(){
+    public String findPasswordPage() {
         return "findpassword";
     }
 }

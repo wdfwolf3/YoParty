@@ -33,7 +33,7 @@ public class PageController {
             pageCount = totalCount / page.getPageSize() + 1;
         }
         page.setPageCount(pageCount);
-        if(request.getParameter("pageNumber")!=null)
+        if (request.getParameter("pageNumber") != null)
             page.setPageNumber(Integer.parseInt(request.getParameter("pageNumber")));
         model.addAttribute("param", page);
         model.addAttribute("list", userList);

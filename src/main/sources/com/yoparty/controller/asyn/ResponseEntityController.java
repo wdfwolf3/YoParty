@@ -12,17 +12,18 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
 
 /**
- * Created by wdfwolf3 on 2017/3/16. */
+ * Created by wdfwolf3 on 2017/3/16.
+ */
 @Controller
 public class ResponseEntityController {
     @RequestMapping(value = "/entity", method = RequestMethod.GET)
-    public ResponseEntity<User> getEntity(UriComponentsBuilder uriComponentsBuilder){
+    public ResponseEntity<User> getEntity(UriComponentsBuilder uriComponentsBuilder) {
         HttpHeaders headers = new HttpHeaders();
         URI url = uriComponentsBuilder.path("/dd").build().toUri();
         headers.setLocation(url);
         User user = new User();
         user.setId(1);
-        user.setName("ds");
+        user.setUsername("ds");
         user.setAvatar("sdf");
         return new ResponseEntity<User>(user, headers, HttpStatus.CREATED);
     }

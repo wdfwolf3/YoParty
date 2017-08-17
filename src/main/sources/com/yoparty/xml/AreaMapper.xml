@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yoparty.mapper.AreaMapper" >
-  <resultMap id="BaseResultMap" type="com.yoparty.bean.Area" >
-    <id column="id" property="id" jdbcType="VARCHAR" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="parent_id" property="parentId" jdbcType="VARCHAR" />
-      <result column="dict_level" property="dict_level" jdbcType="VARCHAR" />
-  </resultMap>
-  <select id="select" resultMap="BaseResultMap" parameterType="com.yoparty.service.AreaListService" >
+<mapper namespace="com.yoparty.mapper.AreaMapper">
+    <resultMap id="BaseResultMap" type="com.yoparty.bean.Area">
+        <id column="id" property="id" jdbcType="VARCHAR"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="parent_id" property="parentId" jdbcType="VARCHAR"/>
+        <result column="dict_level" property="dict_level" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="select" resultMap="BaseResultMap" parameterType="com.yoparty.service.AreaListService">
     select 
     *
     from ${table_name}

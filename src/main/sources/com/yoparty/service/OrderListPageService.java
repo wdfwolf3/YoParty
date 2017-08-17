@@ -22,26 +22,26 @@ public class OrderListPageService {
     private int startIndex = 0;
     private int rowCount = 0;
 
-    public List<OrderAjax> getActivityList(HttpServletRequest request, Integer userId){
+    public List<OrderAjax> getActivityList(HttpServletRequest request, Integer userId) {
         initParameter(request, userId);
         return select();
     }
 
-    public void initParameter(HttpServletRequest request, Integer userId){
+    public void initParameter(HttpServletRequest request, Integer userId) {
         pageSize = Integer.parseInt(request.getParameter("pageSize"));
         pageNow = Integer.parseInt(request.getParameter("pageNow"));
-        if(request.getParameter("eventOrderFormMap.status")!=null){
+        if (request.getParameter("eventOrderFormMap.status") != null) {
             status = Integer.parseInt(request.getParameter("eventOrderFormMap.status"));
         }
-        startIndex = (pageNow-1)*pageSize;
+        startIndex = (pageNow - 1) * pageSize;
         this.userId = userId;
     }
 
-    public List<OrderAjax> select(){
+    public List<OrderAjax> select() {
         List<OrderAjax> orderAjaxList = signupUserMapper.select(this);
-        if(orderAjaxList==null){
+        if (orderAjaxList == null) {
 
-        }else{
+        } else {
             rowCount = orderAjaxList.size();
         }
         return orderAjaxList;

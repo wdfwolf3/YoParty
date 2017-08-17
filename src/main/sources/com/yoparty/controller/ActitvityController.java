@@ -28,18 +28,18 @@ public class ActitvityController {
     private ActivityListPageService activityListPageService;
 
     @RequestMapping(value = "list", method = RequestMethod.GET)
-    public String getListPage(Model model){
+    public String getListPage(Model model) {
         loginStatusService.insertUserInformation(model);
         return "list";
     }
 
     @RequestMapping(value = "findEventList", method = RequestMethod.POST)
     public @ResponseBody
-    Map<String, Object> getActivityList(HttpServletRequest request){
+    Map<String, Object> getActivityList(HttpServletRequest request) {
         Map<String, Object> map = new HashMap<>();
         List<ActivityAjax> activityAjaxList = activityListPageService.getActivityList(request);
         map.put("records", activityAjaxList);
-        map.put("rowCount", activityAjaxList.size()+activityListPageService.getStartIndex());
+        map.put("rowCount", activityAjaxList.size() + activityListPageService.getStartIndex());
         return map;
     }
 //    @RequestMapping(value = "findEventList", method = RequestMethod.POST)

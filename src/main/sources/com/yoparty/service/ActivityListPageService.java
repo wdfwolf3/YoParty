@@ -26,37 +26,37 @@ public class ActivityListPageService {
     private String type3;
     private int startIndex;
 
-    public List<ActivityAjax> getActivityList(HttpServletRequest request){
+    public List<ActivityAjax> getActivityList(HttpServletRequest request) {
         initParameter(request);
         return select();
     }
 
-    public void initParameter(HttpServletRequest request){
+    public void initParameter(HttpServletRequest request) {
         pageSize = Integer.parseInt(request.getParameter("pageSize"));
         pageNow = Integer.parseInt(request.getParameter("pageNow"));
-        startIndex = (pageNow-1) * pageSize;
+        startIndex = (pageNow - 1) * pageSize;
         sort = request.getParameter("sort");
-        if(!"prior_status".equals(request.getParameter("column"))){
+        if (!"prior_status".equals(request.getParameter("column"))) {
             column = request.getParameter("column");
-        }else{
+        } else {
             column = "id";
         }
         if ("".equals(request.getParameter("eventInfoFormMap.keyword"))) {
             keyword = null;
-        }else{
+        } else {
             keyword = "%" + request.getParameter("eventInfoFormMap.keyword") + "%";
         }
-        if("0".equals(request.getParameter("eventInfoFormMap.searchType"))){
+        if ("0".equals(request.getParameter("eventInfoFormMap.searchType"))) {
             searchType = "title";
-        }else{
+        } else {
             searchType = "leader_name";
         }
-        if(request.getParameter("eventInfoFormMap.type0")!=null){
+        if (request.getParameter("eventInfoFormMap.type0") != null) {
             type1 = null;
             type2 = null;
             type3 = null;
         }
-        if(request.getParameter("eventInfoFormMap.type1")!=null){
+        if (request.getParameter("eventInfoFormMap.type1") != null) {
             switch (Integer.parseInt(request.getParameter("eventInfoFormMap.type1"))) {
                 case 1:
                     type1 = "脱单";
@@ -66,7 +66,7 @@ public class ActivityListPageService {
                     break;
             }
         }
-        if(request.getParameter("eventInfoFormMap.type2")!=null){
+        if (request.getParameter("eventInfoFormMap.type2") != null) {
             switch (Integer.parseInt(request.getParameter("eventInfoFormMap.type2"))) {
                 case 1:
                     type2 = "休闲";
@@ -79,7 +79,7 @@ public class ActivityListPageService {
                     break;
             }
         }
-        if(request.getParameter("eventInfoFormMap.type3")!=null){
+        if (request.getParameter("eventInfoFormMap.type3") != null) {
             switch (Integer.parseInt(request.getParameter("eventInfoFormMap.type3"))) {
                 case 1:
                     type3 = "1日活动";
@@ -100,7 +100,7 @@ public class ActivityListPageService {
         }
     }
 
-    public List<ActivityAjax> select(){
+    public List<ActivityAjax> select() {
         return activityMapper.select(this);
     }
 

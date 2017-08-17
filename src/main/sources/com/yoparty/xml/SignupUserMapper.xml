@@ -1,137 +1,140 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.yoparty.mapper.SignupUserMapper" >
-  <resultMap id="BaseResultMap" type="com.yoparty.bean.SignupUser" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="order_no" property="orderNo" jdbcType="CHAR" />
-    <result column="create_time" property="createTime" jdbcType="DATE" />
-    <result column="activity_id" property="activityId" jdbcType="INTEGER" />
-    <result column="user_id" property="userId" jdbcType="INTEGER" />
-    <result column="location" property="location" jdbcType="VARCHAR" />
-    <result column="people_num" property="peopleNum" jdbcType="INTEGER" />
-    <result column="status" property="status" jdbcType="TINYINT" />
-    <result column="pay_type" property="payType" jdbcType="TINYINT" />
-    <result column="final_total" property="finalTotal" jdbcType="SMALLINT" />
-    <result column="fullcut" property="fullcut" jdbcType="TINYINT" />
-    <result column="insurance" property="insurance" jdbcType="BIT" />
-  </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.yoparty.bean.SignupUser" extends="BaseResultMap" >
-    <result column="message" property="message" jdbcType="LONGVARCHAR" />
-  </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+<mapper namespace="com.yoparty.mapper.SignupUserMapper">
+    <resultMap id="BaseResultMap" type="com.yoparty.bean.SignupUser">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="order_no" property="orderNo" jdbcType="CHAR"/>
+        <result column="create_time" property="createTime" jdbcType="DATE"/>
+        <result column="activity_id" property="activityId" jdbcType="INTEGER"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER"/>
+        <result column="location" property="location" jdbcType="VARCHAR"/>
+        <result column="people_num" property="peopleNum" jdbcType="INTEGER"/>
+        <result column="status" property="status" jdbcType="TINYINT"/>
+        <result column="pay_type" property="payType" jdbcType="TINYINT"/>
+        <result column="final_total" property="finalTotal" jdbcType="SMALLINT"/>
+        <result column="fullcut" property="fullcut" jdbcType="TINYINT"/>
+        <result column="insurance" property="insurance" jdbcType="BIT"/>
+    </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.yoparty.bean.SignupUser" extends="BaseResultMap">
+        <result column="message" property="message" jdbcType="LONGVARCHAR"/>
+    </resultMap>
+    <sql id="Example_Where_Clause">
+        <where>
+            <foreach collection="oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
+        </where>
+    </sql>
+    <sql id="Update_By_Example_Where_Clause">
+        <where>
+            <foreach collection="example.oredCriteria" item="criteria" separator="or">
+                <if test="criteria.valid">
+                    <trim prefix="(" suffix=")" prefixOverrides="and">
+                        <foreach collection="criteria.criteria" item="criterion">
+                            <choose>
+                                <when test="criterion.noValue">
+                                    and ${criterion.condition}
+                                </when>
+                                <when test="criterion.singleValue">
+                                    and ${criterion.condition} #{criterion.value}
+                                </when>
+                                <when test="criterion.betweenValue">
+                                    and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                                </when>
+                                <when test="criterion.listValue">
+                                    and ${criterion.condition}
+                                    <foreach collection="criterion.value" item="listItem" open="(" close=")"
+                                             separator=",">
+                                        #{listItem}
+                                    </foreach>
+                                </when>
+                            </choose>
+                        </foreach>
+                    </trim>
+                </if>
             </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Base_Column_List" >
+        </where>
+    </sql>
+    <sql id="Base_Column_List">
     id, order_no, create_time, activity_id, user_id, location, people_num, status, pay_type, 
     final_total, fullcut, insurance
   </sql>
-  <sql id="Blob_Column_List" >
+    <sql id="Blob_Column_List">
     message
   </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.yoparty.bean.SignupUserExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from signup_user
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.bean.SignupUserExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from signup_user
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
-    from signup_user
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs"
+            parameterType="com.yoparty.bean.SignupUserExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from signup_user
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.bean.SignupUserExample">
+        select
+        <if test="distinct">
+            distinct
+        </if>
+        <include refid="Base_Column_List"/>
+        from signup_user
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+        <if test="orderByClause != null">
+            order by ${orderByClause}
+        </if>
+    </select>
+    <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        ,
+        <include refid="Blob_Column_List"/>
+        from signup_user
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from signup_user
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.yoparty.bean.SignupUserExample" >
-    delete from signup_user
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.yoparty.bean.SignupUser" >
+    <delete id="deleteByExample" parameterType="com.yoparty.bean.SignupUserExample">
+        delete from signup_user
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </delete>
+    <insert id="insert" parameterType="com.yoparty.bean.SignupUser">
     insert into signup_user (id, order_no, create_time, 
       activity_id, user_id, location, 
       people_num, status, pay_type, 
@@ -143,224 +146,224 @@
       #{finalTotal,jdbcType=SMALLINT}, #{fullcut,jdbcType=TINYINT}, #{insurance,jdbcType=BIT}, 
       #{message,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.yoparty.bean.SignupUser" >
-    insert into signup_user
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
-      </if>
-      <if test="orderNo != null" >
-        order_no,
-      </if>
-      <if test="createTime != null" >
-        create_time,
-      </if>
-      <if test="activityId != null" >
-        activity_id,
-      </if>
-      <if test="userId != null" >
-        user_id,
-      </if>
-      <if test="location != null" >
-        location,
-      </if>
-      <if test="peopleNum != null" >
-        people_num,
-      </if>
-      <if test="status != null" >
-        status,
-      </if>
-      <if test="payType != null" >
-        pay_type,
-      </if>
-      <if test="finalTotal != null" >
-        final_total,
-      </if>
-      <if test="fullcut != null" >
-        fullcut,
-      </if>
-      <if test="insurance != null" >
-        insurance,
-      </if>
-      <if test="message != null" >
-        message,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="orderNo != null" >
-        #{orderNo,jdbcType=CHAR},
-      </if>
-      <if test="createTime != null" >
-        #{createTime,jdbcType=DATE},
-      </if>
-      <if test="activityId != null" >
-        #{activityId,jdbcType=INTEGER},
-      </if>
-      <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="location != null" >
-        #{location,jdbcType=VARCHAR},
-      </if>
-      <if test="peopleNum != null" >
-        #{peopleNum,jdbcType=INTEGER},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=TINYINT},
-      </if>
-      <if test="payType != null" >
-        #{payType,jdbcType=TINYINT},
-      </if>
-      <if test="finalTotal != null" >
-        #{finalTotal,jdbcType=SMALLINT},
-      </if>
-      <if test="fullcut != null" >
-        #{fullcut,jdbcType=TINYINT},
-      </if>
-      <if test="insurance != null" >
-        #{insurance,jdbcType=BIT},
-      </if>
-      <if test="message != null" >
-        #{message,jdbcType=LONGVARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <select id="countByExample" parameterType="com.yoparty.bean.SignupUserExample" resultType="java.lang.Integer" >
-    select count(*) from signup_user
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update signup_user
-    <set >
-      <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
-      <if test="record.orderNo != null" >
+    <insert id="insertSelective" parameterType="com.yoparty.bean.SignupUser">
+        insert into signup_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="orderNo != null">
+                order_no,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="activityId != null">
+                activity_id,
+            </if>
+            <if test="userId != null">
+                user_id,
+            </if>
+            <if test="location != null">
+                location,
+            </if>
+            <if test="peopleNum != null">
+                people_num,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="payType != null">
+                pay_type,
+            </if>
+            <if test="finalTotal != null">
+                final_total,
+            </if>
+            <if test="fullcut != null">
+                fullcut,
+            </if>
+            <if test="insurance != null">
+                insurance,
+            </if>
+            <if test="message != null">
+                message,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="orderNo != null">
+                #{orderNo,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=DATE},
+            </if>
+            <if test="activityId != null">
+                #{activityId,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="location != null">
+                #{location,jdbcType=VARCHAR},
+            </if>
+            <if test="peopleNum != null">
+                #{peopleNum,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=TINYINT},
+            </if>
+            <if test="payType != null">
+                #{payType,jdbcType=TINYINT},
+            </if>
+            <if test="finalTotal != null">
+                #{finalTotal,jdbcType=SMALLINT},
+            </if>
+            <if test="fullcut != null">
+                #{fullcut,jdbcType=TINYINT},
+            </if>
+            <if test="insurance != null">
+                #{insurance,jdbcType=BIT},
+            </if>
+            <if test="message != null">
+                #{message,jdbcType=LONGVARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <select id="countByExample" parameterType="com.yoparty.bean.SignupUserExample" resultType="java.lang.Integer">
+        select count(*) from signup_user
+        <if test="_parameter != null">
+            <include refid="Example_Where_Clause"/>
+        </if>
+    </select>
+    <update id="updateByExampleSelective" parameterType="map">
+        update signup_user
+        <set>
+            <if test="record.id != null">
+                id = #{record.id,jdbcType=INTEGER},
+            </if>
+            <if test="record.orderNo != null">
+                order_no = #{record.orderNo,jdbcType=CHAR},
+            </if>
+            <if test="record.createTime != null">
+                create_time = #{record.createTime,jdbcType=DATE},
+            </if>
+            <if test="record.activityId != null">
+                activity_id = #{record.activityId,jdbcType=INTEGER},
+            </if>
+            <if test="record.userId != null">
+                user_id = #{record.userId,jdbcType=INTEGER},
+            </if>
+            <if test="record.location != null">
+                location = #{record.location,jdbcType=VARCHAR},
+            </if>
+            <if test="record.peopleNum != null">
+                people_num = #{record.peopleNum,jdbcType=INTEGER},
+            </if>
+            <if test="record.status != null">
+                status = #{record.status,jdbcType=TINYINT},
+            </if>
+            <if test="record.payType != null">
+                pay_type = #{record.payType,jdbcType=TINYINT},
+            </if>
+            <if test="record.finalTotal != null">
+                final_total = #{record.finalTotal,jdbcType=SMALLINT},
+            </if>
+            <if test="record.fullcut != null">
+                fullcut = #{record.fullcut,jdbcType=TINYINT},
+            </if>
+            <if test="record.insurance != null">
+                insurance = #{record.insurance,jdbcType=BIT},
+            </if>
+            <if test="record.message != null">
+                message = #{record.message,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExampleWithBLOBs" parameterType="map">
+        update signup_user
+        set id = #{record.id,jdbcType=INTEGER},
         order_no = #{record.orderNo,jdbcType=CHAR},
-      </if>
-      <if test="record.createTime != null" >
         create_time = #{record.createTime,jdbcType=DATE},
-      </if>
-      <if test="record.activityId != null" >
         activity_id = #{record.activityId,jdbcType=INTEGER},
-      </if>
-      <if test="record.userId != null" >
         user_id = #{record.userId,jdbcType=INTEGER},
-      </if>
-      <if test="record.location != null" >
         location = #{record.location,jdbcType=VARCHAR},
-      </if>
-      <if test="record.peopleNum != null" >
         people_num = #{record.peopleNum,jdbcType=INTEGER},
-      </if>
-      <if test="record.status != null" >
         status = #{record.status,jdbcType=TINYINT},
-      </if>
-      <if test="record.payType != null" >
         pay_type = #{record.payType,jdbcType=TINYINT},
-      </if>
-      <if test="record.finalTotal != null" >
         final_total = #{record.finalTotal,jdbcType=SMALLINT},
-      </if>
-      <if test="record.fullcut != null" >
         fullcut = #{record.fullcut,jdbcType=TINYINT},
-      </if>
-      <if test="record.insurance != null" >
         insurance = #{record.insurance,jdbcType=BIT},
-      </if>
-      <if test="record.message != null" >
-        message = #{record.message,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map" >
-    update signup_user
-    set id = #{record.id,jdbcType=INTEGER},
-      order_no = #{record.orderNo,jdbcType=CHAR},
-      create_time = #{record.createTime,jdbcType=DATE},
-      activity_id = #{record.activityId,jdbcType=INTEGER},
-      user_id = #{record.userId,jdbcType=INTEGER},
-      location = #{record.location,jdbcType=VARCHAR},
-      people_num = #{record.peopleNum,jdbcType=INTEGER},
-      status = #{record.status,jdbcType=TINYINT},
-      pay_type = #{record.payType,jdbcType=TINYINT},
-      final_total = #{record.finalTotal,jdbcType=SMALLINT},
-      fullcut = #{record.fullcut,jdbcType=TINYINT},
-      insurance = #{record.insurance,jdbcType=BIT},
-      message = #{record.message,jdbcType=LONGVARCHAR}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update signup_user
-    set id = #{record.id,jdbcType=INTEGER},
-      order_no = #{record.orderNo,jdbcType=CHAR},
-      create_time = #{record.createTime,jdbcType=DATE},
-      activity_id = #{record.activityId,jdbcType=INTEGER},
-      user_id = #{record.userId,jdbcType=INTEGER},
-      location = #{record.location,jdbcType=VARCHAR},
-      people_num = #{record.peopleNum,jdbcType=INTEGER},
-      status = #{record.status,jdbcType=TINYINT},
-      pay_type = #{record.payType,jdbcType=TINYINT},
-      final_total = #{record.finalTotal,jdbcType=SMALLINT},
-      fullcut = #{record.fullcut,jdbcType=TINYINT},
-      insurance = #{record.insurance,jdbcType=BIT}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.yoparty.bean.SignupUser" >
-    update signup_user
-    <set >
-      <if test="orderNo != null" >
-        order_no = #{orderNo,jdbcType=CHAR},
-      </if>
-      <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=DATE},
-      </if>
-      <if test="activityId != null" >
-        activity_id = #{activityId,jdbcType=INTEGER},
-      </if>
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=INTEGER},
-      </if>
-      <if test="location != null" >
-        location = #{location,jdbcType=VARCHAR},
-      </if>
-      <if test="peopleNum != null" >
-        people_num = #{peopleNum,jdbcType=INTEGER},
-      </if>
-      <if test="status != null" >
-        status = #{status,jdbcType=TINYINT},
-      </if>
-      <if test="payType != null" >
-        pay_type = #{payType,jdbcType=TINYINT},
-      </if>
-      <if test="finalTotal != null" >
-        final_total = #{finalTotal,jdbcType=SMALLINT},
-      </if>
-      <if test="fullcut != null" >
-        fullcut = #{fullcut,jdbcType=TINYINT},
-      </if>
-      <if test="insurance != null" >
-        insurance = #{insurance,jdbcType=BIT},
-      </if>
-      <if test="message != null" >
-        message = #{message,jdbcType=LONGVARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yoparty.bean.SignupUser" >
+        message = #{record.message,jdbcType=LONGVARCHAR}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByExample" parameterType="map">
+        update signup_user
+        set id = #{record.id,jdbcType=INTEGER},
+        order_no = #{record.orderNo,jdbcType=CHAR},
+        create_time = #{record.createTime,jdbcType=DATE},
+        activity_id = #{record.activityId,jdbcType=INTEGER},
+        user_id = #{record.userId,jdbcType=INTEGER},
+        location = #{record.location,jdbcType=VARCHAR},
+        people_num = #{record.peopleNum,jdbcType=INTEGER},
+        status = #{record.status,jdbcType=TINYINT},
+        pay_type = #{record.payType,jdbcType=TINYINT},
+        final_total = #{record.finalTotal,jdbcType=SMALLINT},
+        fullcut = #{record.fullcut,jdbcType=TINYINT},
+        insurance = #{record.insurance,jdbcType=BIT}
+        <if test="_parameter != null">
+            <include refid="Update_By_Example_Where_Clause"/>
+        </if>
+    </update>
+    <update id="updateByPrimaryKeySelective" parameterType="com.yoparty.bean.SignupUser">
+        update signup_user
+        <set>
+            <if test="orderNo != null">
+                order_no = #{orderNo,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=DATE},
+            </if>
+            <if test="activityId != null">
+                activity_id = #{activityId,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=INTEGER},
+            </if>
+            <if test="location != null">
+                location = #{location,jdbcType=VARCHAR},
+            </if>
+            <if test="peopleNum != null">
+                people_num = #{peopleNum,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=TINYINT},
+            </if>
+            <if test="payType != null">
+                pay_type = #{payType,jdbcType=TINYINT},
+            </if>
+            <if test="finalTotal != null">
+                final_total = #{finalTotal,jdbcType=SMALLINT},
+            </if>
+            <if test="fullcut != null">
+                fullcut = #{fullcut,jdbcType=TINYINT},
+            </if>
+            <if test="insurance != null">
+                insurance = #{insurance,jdbcType=BIT},
+            </if>
+            <if test="message != null">
+                message = #{message,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yoparty.bean.SignupUser">
     update signup_user
     set order_no = #{orderNo,jdbcType=CHAR},
       create_time = #{createTime,jdbcType=DATE},
@@ -376,7 +379,7 @@
       message = #{message,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.yoparty.bean.SignupUser" >
+    <update id="updateByPrimaryKey" parameterType="com.yoparty.bean.SignupUser">
     update signup_user
     set order_no = #{orderNo,jdbcType=CHAR},
       create_time = #{createTime,jdbcType=DATE},
@@ -392,7 +395,8 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
     <!---->
-    <select id="select" resultType="com.yoparty.service.OrderAjax" parameterType="com.yoparty.service.OrderListPageService">
+    <select id="select" resultType="com.yoparty.service.OrderAjax"
+            parameterType="com.yoparty.service.OrderListPageService">
         SELECT
         s.id,
         s.order_no,

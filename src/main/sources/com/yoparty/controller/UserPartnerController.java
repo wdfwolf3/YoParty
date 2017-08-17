@@ -27,8 +27,8 @@ public class UserPartnerController {
     private PartnerListPageService partnerListPageService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String getPartnerListPage(HttpServletResponse response, Model model){
-        if(loginStatusService.insertUserInformation(model)){
+    public String getPartnerListPage(HttpServletResponse response, Model model) {
+        if (loginStatusService.insertUserInformation(model)) {
             model.addAttribute("user", loginStatusService.getUser());
             response.setHeader("X-Frame-Options", "SAMEORIGIN");
             return "partner_list";
