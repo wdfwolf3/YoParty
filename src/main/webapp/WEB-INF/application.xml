@@ -13,16 +13,19 @@
 
     <!--<bean class="com.yoparty.security.SecurityConfig"/>-->
     <!--<import resource="classpath:xxx.xml" />-->
-    <context:component-scan base-package="com.yoparty"/>
+    <context:component-scan base-package="com.yoparty">
+        <context:exclude-filter type="regex" expression="com.yoparty.controller.*"/>
+        <context:exclude-filter type="annotation" expression="com.yoparty.aop.config.LogConfig"/>
+    </context:component-scan>
 
-    <flow:flow-executor id="flowExecutor" />
+    <flow:flow-executor id="flowExecutor"/>
     <!--方法1：此时id为base-path和value中间的部分。如果流程文件*-flow.xml路径为/WEB-INF/flows/test/wdfwolf3-flow.xml,
         那么id为/test,访问的url即为/test-->
     <flow:flow-registry id="flowRegistry" base-path="WEB-INF/flows/">
-        <flow:flow-location-pattern value="/**/*-flow.xml" />
+        <flow:flow-location-pattern value="/**/*-flow.xml"/>
     </flow:flow-registry>
-    <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping" >
-        <property name="flowRegistry" ref="flowRegistry" />
+    <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerMapping">
+        <property name="flowRegistry" ref="flowRegistry"/>
     </bean>
     <bean class="org.springframework.webflow.mvc.servlet.FlowHandlerAdapter">
         <property name="flowExecutor" ref="flowExecutor"/>
@@ -30,21 +33,22 @@
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/yoparty?serverTimezone=GMT%2B8&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8"/>
+        <property name="url"
+                  value="jdbc:mysql://localhost:3306/yoparty?serverTimezone=GMT%2B8&amp;useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf8"/>
         <property name="username" value="root"/>
         <property name="password" value="1234"/>
     </bean>
 
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="dataSource"/>
         <property name="mapperLocations" value="classpath:com/yoparty/xml/*.xml"/>
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <!-- 扫描me.gacl.dao这个包以及它的子包下的所有映射接口类 -->
-        <property name="basePackage" value="com.yoparty.mapper" />
+        <property name="basePackage" value="com.yoparty.mapper"/>
         <!-- 当使用1个以上的datasource时需要具体指定factory -->
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 
     <!--手动声明每一个bean-->
@@ -55,7 +59,7 @@
 
     <bean id="freemarkerConfig"
           class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
-        <property name="templateLoaderPath" value="/WEB-INF/ftl/" />
+        <property name="templateLoaderPath" value="/WEB-INF/ftl/"/>
         <property name="freemarkerSettings">
             <props>
                 <prop key="template_update_delay">0</prop><!--刷新模板的周期，单位为秒 -->

@@ -20,7 +20,7 @@
 <s:url value="/data/{name}" var="url">
     <s:param name="name" value="${name}"/>
 </s:url>
-<p >${name}</p>
+<p>${name}</p>
 <a id="home" href="${url}">个人主页</a>
 <a id="login" href="/login">登录</a>
 <a id="register" href="/register">注册</a>

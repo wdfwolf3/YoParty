@@ -8,30 +8,30 @@ var scrolltotop = {
     // scrolled before showing control
     // scrollto: Keyword (Integer, or "Scroll_to_Element_ID"). How far to scroll
     // document up when control is clicked on (0=top).
-    setting : {
-        startline : 100,
-        scrollto : 0,
-        scrollduration : 1000,
-        fadeduration : [ 500, 100 ]
+    setting: {
+        startline: 100,
+        scrollto: 0,
+        scrollduration: 1000,
+        fadeduration: [500, 100]
     },// 调整图片显示位置
-    controlHTML : '<img src=' + rootPath + "/images/gotop.gif"
+    controlHTML: '<img src=' + rootPath + "/images/gotop.gif"
     + ' style="width:31px; height:31px" />', // 自定义图片和宽度大小
-    controlattrs : {
-        offsetx : 100,
-        offsety : 100
+    controlattrs: {
+        offsetx: 100,
+        offsety: 100
     }, // offset of control relative to right/ bottom of window corner
-    anchorkeyword : '#top', // Enter href value of HTML anchors on the page that
-                            // should also act as "Scroll Up" links
+    anchorkeyword: '#top', // Enter href value of HTML anchors on the page that
+                           // should also act as "Scroll Up" links
 
-    state : {
-        isvisible : false,
-        shouldvisible : false
+    state: {
+        isvisible: false,
+        shouldvisible: false
     },
 
-    scrollup : function() {
+    scrollup: function () {
         if (!this.cssfixedsupport) // if control is positioned using JavaScript
             this.$control.css({
-                opacity : 0
+                opacity: 0
             }); // hide control immediately after clicking it
         var dest = isNaN(this.setting.scrollto) ? this.setting.scrollto
             : parseInt(this.setting.scrollto);
@@ -45,21 +45,21 @@ var scrolltotop = {
         else
             dest = 0;
         this.$body.animate({
-            scrollTop : dest
+            scrollTop: dest
         }, this.setting.scrollduration);
     },
-    keepfixed : function() {
+    keepfixed: function () {
         var $window = jQuery(window);
         var controlx = $window.scrollLeft() + $window.width()
             - this.$control.width() - this.controlattrs.offsetx;
         var controly = $window.scrollTop() + $window.height()
             - this.$control.height() - this.controlattrs.offsety;
         this.$control.css({
-            left : controlx + 'px',
-            top : controly + 'px'
+            left: controlx + 'px',
+            top: controly + 'px'
         });
     },
-    togglecontrol : function() {
+    togglecontrol: function () {
         var scrolltop = jQuery(window).scrollTop();
         if (!this.cssfixedsupport)
             this.keepfixed();
@@ -67,20 +67,20 @@ var scrolltotop = {
             : false;
         if (this.state.shouldvisible && !this.state.isvisible) {
             this.$control.stop().animate({
-                opacity : 1
+                opacity: 1
             }, this.setting.fadeduration[0]);
             this.state.isvisible = true;
         } else if (this.state.shouldvisible == false && this.state.isvisible) {
             this.$control.stop().animate({
-                opacity : 0
+                opacity: 0
             }, this.setting.fadeduration[1]);
             this.state.isvisible = false;
         }
     },
-    init : function() {
+    init: function () {
         jQuery(document)
             .ready(
-                function($) {
+                function ($) {
                     var mainobj = scrolltotop;
                     var iebrws = document.all;
                     mainobj.cssfixedsupport = !iebrws || iebrws
@@ -90,22 +90,22 @@ var scrolltotop = {
                     // in standards
                     // mode
                     mainobj.$body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html')
-                            : $('body'))
+                        : $('body'))
                         : $('html,body');
                     mainobj.$control = $(
                         '<div id="topcontrol">'
                         + mainobj.controlHTML + '</div>')
                         .css(
                             {
-                                position : mainobj.cssfixedsupport ? 'fixed'
+                                position: mainobj.cssfixedsupport ? 'fixed'
                                     : 'absolute',
-                                bottom : mainobj.controlattrs.offsety,
-                                right : mainobj.controlattrs.offsetx,
-                                opacity : 0,
-                                cursor : 'pointer'
+                                bottom: mainobj.controlattrs.offsety,
+                                right: mainobj.controlattrs.offsetx,
+                                opacity: 0,
+                                cursor: 'pointer'
                             }).attr({
-                            title : 'Scroll Back to Top'
-                        }).click(function() {
+                            title: 'Scroll Back to Top'
+                        }).click(function () {
                             mainobj.scrollup();
                             return false
                         }).appendTo('body');
@@ -123,16 +123,16 @@ var scrolltotop = {
                     // any
                     // text
                         mainobj.$control.css({
-                            width : mainobj.$control.width()
+                            width: mainobj.$control.width()
                         }); // IE6- seems to require an explicit width
                             // on a DIV containing text
                     mainobj.togglecontrol();
                     $('a[href="' + mainobj.anchorkeyword + '"]').click(
-                        function() {
+                        function () {
                             mainobj.scrollup();
                             return false;
                         })
-                    $(window).bind('scroll resize', function(e) {
+                    $(window).bind('scroll resize', function (e) {
                         mainobj.togglecontrol();
                     })
                 })

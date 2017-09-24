@@ -1,6 +1,6 @@
-(function(factory) {
+(function (factory) {
     if (typeof define === 'function' && define.amd) {
-        define([ 'jquery' ], factory);
+        define(['jquery'], factory);
     } else if (typeof exports === 'object') {
         // Node / CommonJS
         factory(require('jquery'));
@@ -8,12 +8,12 @@
         factory(jQuery);
     }
 })
-(function($) {
+(function ($) {
 
     'use strict';
 
     var console = window.console || {
-            log : function() {
+            log: function () {
             }
         };
 
@@ -40,14 +40,14 @@
     }
 
     CropAvatar.prototype = {
-        constructor : CropAvatar,
-        support : {
-            fileList : !!$('<input type="file">').prop('files'),
-            blobURLs : !!window.URL && URL.createObjectURL,
-            formData : !!window.FormData
+        constructor: CropAvatar,
+        support: {
+            fileList: !!$('<input type="file">').prop('files'),
+            blobURLs: !!window.URL && URL.createObjectURL,
+            formData: !!window.FormData
         },
 
-        init : function() {
+        init: function () {
             this.support.datauri = this.support.fileList
                 && this.support.blobURLs;
 
@@ -60,43 +60,43 @@
             this.addListener();
         },
 
-        addListener : function() {
+        addListener: function () {
             this.$avatarView.on('click', $.proxy(this.click, this));
             this.$avatarInput.on('change', $.proxy(this.change, this));
             this.$avatarForm.on('submit', $.proxy(this.submit, this));
             this.$avatarBtns.on('click', $.proxy(this.rotate, this));
         },
 
-        initTooltip : function() {
+        initTooltip: function () {
             this.$avatarView.tooltip({
-                placement : 'bottom'
+                placement: 'bottom'
             });
         },
 
-        initModal : function() {
+        initModal: function () {
             this.$avatarModal.modal({
-                show : false
+                show: false
             });
         },
 
-        initPreview : function() {
+        initPreview: function () {
             var url = this.$avatar.attr('src');
 
             this.$avatarPreview.empty().html('<img src="' + url + '">');
         },
 
-        initIframe : function() {
+        initIframe: function () {
             var target = 'upload-iframe-' + (new Date()).getTime(), $iframe = $(
                 '<iframe>').attr({
-                name : target,
-                src : ''
+                name: target,
+                src: ''
             }), _this = this;
 
             // Ready ifrmae
-            $iframe.one('load', function() {
+            $iframe.one('load', function () {
 
                 // respond response
-                $iframe.on('load', function() {
+                $iframe.on('load', function () {
                     var data;
 
                     try {
@@ -127,12 +127,12 @@
                 $iframe.hide());
         },
 
-        click : function() {
+        click: function () {
             this.$avatarModal.modal('show');
             this.initPreview();
         },
 
-        change : function() {
+        change: function () {
             var files, file;
 
             if (this.support.datauri) {
@@ -161,7 +161,7 @@
             }
         },
 
-        submit : function() {
+        submit: function () {
             if (!this.$avatarSrc.val() && !this.$avatarInput.val()) {
                 return false;
             }
@@ -172,7 +172,7 @@
             }
         },
 
-        rotate : function(e) {
+        rotate: function (e) {
             var data;
 
             if (this.active) {
@@ -184,7 +184,7 @@
             }
         },
 
-        isImageFile : function(file) {
+        isImageFile: function (file) {
             if (file.type) {
                 return /^image\/\w+$/.test(file.type);
             } else {
@@ -192,7 +192,7 @@
             }
         },
 
-        startCropper : function() {
+        startCropper: function () {
             var _this = this;
 
             if (this.active) {
@@ -201,14 +201,14 @@
                 this.$img = $('<img src="' + this.url + '">');
                 this.$avatarWrapper.empty().html(this.$img);
                 this.$img.cropper({
-                    aspectRatio : 1,
-                    preview : this.$avatarPreview.selector,
-                    strict : false,
-                    crop : function(data) {
-                        var json = [ '{"x":' + data.x, '"y":' + data.y,
+                    aspectRatio: 1,
+                    preview: this.$avatarPreview.selector,
+                    strict: false,
+                    crop: function (data) {
+                        var json = ['{"x":' + data.x, '"y":' + data.y,
                             '"height":' + data.height,
                             '"width":' + data.width,
-                            '"rotate":' + data.rotate + '}' ]
+                            '"rotate":' + data.rotate + '}']
                             .join();
 
                         _this.$avatarData.val(json);
@@ -219,7 +219,7 @@
             }
         },
 
-        stopCropper : function() {
+        stopCropper: function () {
             if (this.active) {
                 this.$img.cropper('destroy');
                 this.$img.remove();
@@ -227,49 +227,49 @@
             }
         },
 
-        ajaxUpload : function() {
-            var avatar_data= $("#avatar_data").val();
-            avatar_data=avatar_data.substring(1,avatar_data.length-1)
-            var url = this.$avatarForm.attr('action')+"&avatar_data="+avatar_data;
+        ajaxUpload: function () {
+            var avatar_data = $("#avatar_data").val();
+            avatar_data = avatar_data.substring(1, avatar_data.length - 1)
+            var url = this.$avatarForm.attr('action') + "&avatar_data=" + avatar_data;
             var data = new FormData(this.$avatarForm[0]), _this = this;
             $.ajax(url, {
                 // headers: {'X-XSRF-TOKEN':
                 // $('meta[name="csrf-token"]').attr('content')},
-                type : 'post',
-                data : data,
-                dataType : 'json',
-                processData : false,
-                contentType : false,
+                type: 'post',
+                data: data,
+                dataType: 'json',
+                processData: false,
+                contentType: false,
 
-                beforeSend : function() {
+                beforeSend: function () {
                     _this.submitStart();
                 },
 
-                success : function(data) {
+                success: function (data) {
                     _this.submitDone(data);
                 },
 
-                error : function(XMLHttpRequest, textStatus,
+                error: function (XMLHttpRequest, textStatus,
                                  errorThrown) {
                     _this.submitFail(textStatus || errorThrown);
 
                 },
 
-                complete : function() {
+                complete: function () {
                     _this.submitEnd();
                 }
             });
         },
 
-        syncUpload : function() {
+        syncUpload: function () {
             this.$avatarSave.click();
         },
 
-        submitStart : function() {
+        submitStart: function () {
             this.$loading.fadeIn();
         },
 
-        submitDone : function(data) {
+        submitDone: function (data) {
             if ($.isPlainObject(data)) {
                 if (data.result) {
                     this.url = data.result;
@@ -291,33 +291,33 @@
             }
         },
 
-        submitFail : function(msg) {
+        submitFail: function (msg) {
             this.alert(msg);
         },
 
-        submitEnd : function() {
+        submitEnd: function () {
             this.$loading.fadeOut();
         },
 
-        cropDone : function() {
+        cropDone: function () {
             this.$avatarForm.get(0).reset();
             this.$avatar.attr('src', this.url);
             this.stopCropper();
             this.$avatarModal.modal('hide');
         },
 
-        alert : function(msg) {
+        alert: function (msg) {
             var $alert = [
                 '<div class="alert alert-danger avater-alert">',
                 '<button type="button" class="close" data-dismiss="alert">&times;</button>',
-                msg, '</div>' ].join('');
+                msg, '</div>'].join('');
 
             this.$avatarUpload.after($alert);
         }
     };
 
-    $(function() {
-        $("#frame_1").load(function(){
+    $(function () {
+        $("#frame_1").load(function () {
             return new CropAvatar($("#frame_1").contents().find('#crop-avatar'));
         });
     });

@@ -13,7 +13,8 @@
 
     <mvc:annotation-driven/>
 
-    <context:component-scan base-package="com.yoparty.controller, com.yoparty.exception.handler" />
+    <context:component-scan
+            base-package="com.yoparty.controller, com.yoparty.exception.handler,com.yoparty.aop.config"/>
 
     <!--会在Spring MVC上下文中定义一个org.springframework.web.servlet.resource.DefaultServletHttpRequestHandler，
     它会像一个检查员，对进入DispatcherServlet的URL进行筛查，如果发现是静态资源的请求，就将该请求转由Web应用服务器默认的Servlet处理，
@@ -27,24 +28,24 @@
 
     <!--&lt;!&ndash;Ordinary view resolver. This is for jsp.&ndash;&gt;-->
     <!--<bean id="viewResolver"-->
-          <!--class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
-        <!--<property name="prefix" value="/WEB-INF/jsp/"/>-->
-        <!--<property name="suffix" value=".jsp"/>-->
-        <!--<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />-->
+    <!--class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+    <!--<property name="prefix" value="/WEB-INF/jsp/"/>-->
+    <!--<property name="suffix" value=".jsp"/>-->
+    <!--<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />-->
     <!--</bean>-->
 
 
-     <!--针对freemarker的视图配置-->
+    <!--针对freemarker的视图配置-->
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
-        <property name="cache" value="true" />
-        <property name="prefix" value="" />
-        <property name="suffix" value=".ftl" />
+        <property name="cache" value="true"/>
+        <property name="prefix" value=""/>
+        <property name="suffix" value=".ftl"/>
         <property name="contentType" value="text/html;charset=UTF-8"/>
-        <property name="requestContextAttribute" value="request" />
-        <property name="exposeSpringMacroHelpers" value="true" />
-        <property name="exposeRequestAttributes" value="true" />
-        <property name="exposeSessionAttributes" value="true" />
+        <property name="requestContextAttribute" value="request"/>
+        <property name="exposeSpringMacroHelpers" value="true"/>
+        <property name="exposeRequestAttributes" value="true"/>
+        <property name="exposeSessionAttributes" value="true"/>
     </bean>
 
     <!-- View resolvers can also be configured with ResourceBundles or XML files.

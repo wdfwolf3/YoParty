@@ -91,13 +91,13 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, title, start_time, end_time, submit_date, leader_name, type1, type2, type3, price, 
-    origin, destination, number, signup_number, status, gather, completed, verify, file_prefix, 
-    pic_dir, thumb
-  </sql>
+        id, title, start_time, end_time, submit_date, leader_name, type1, type2, type3, price,
+        origin, destination, number, signup_number, status, gather, completed, verify, file_prefix,
+        pic_dir, thumb
+    </sql>
     <sql id="Blob_Column_List">
-    introduce, trip, expenses, attention
-  </sql>
+        introduce, trip, expenses, attention
+    </sql>
     <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs"
             parameterType="com.yoparty.bean.ActivityExample">
         select
@@ -138,9 +138,9 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from activity
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
+        delete from activity
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
     <delete id="deleteByExample" parameterType="com.yoparty.bean.ActivityExample">
         delete from activity
         <if test="_parameter != null">
@@ -148,25 +148,25 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.yoparty.bean.ActivityWithBLOBs">
-    insert into activity (id, title, start_time, 
-      end_time, submit_date, leader_name, 
-      type1, type2, type3, 
-      price, origin, destination, 
-      number, signup_number, status, 
-      gather, completed, verify, 
-      file_prefix, pic_dir, thumb, 
-      introduce, trip, expenses, 
-      attention)
-    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{startTime,jdbcType=VARCHAR}, 
-      #{endTime,jdbcType=VARCHAR}, #{submitDate,jdbcType=VARCHAR}, #{leaderName,jdbcType=VARCHAR}, 
-      #{type1,jdbcType=VARCHAR}, #{type2,jdbcType=VARCHAR}, #{type3,jdbcType=VARCHAR}, 
-      #{price,jdbcType=SMALLINT}, #{origin,jdbcType=VARCHAR}, #{destination,jdbcType=VARCHAR}, 
-      #{number,jdbcType=SMALLINT}, #{signupNumber,jdbcType=SMALLINT}, #{status,jdbcType=TINYINT}, 
-      #{gather,jdbcType=VARCHAR}, #{completed,jdbcType=BIT}, #{verify,jdbcType=BIT}, 
-      #{filePrefix,jdbcType=VARCHAR}, #{picDir,jdbcType=VARCHAR}, #{thumb,jdbcType=VARCHAR}, 
-      #{introduce,jdbcType=LONGVARCHAR}, #{trip,jdbcType=LONGVARCHAR}, #{expenses,jdbcType=LONGVARCHAR}, 
-      #{attention,jdbcType=LONGVARCHAR})
-  </insert>
+        insert into activity (id, title, start_time,
+        end_time, submit_date, leader_name,
+        type1, type2, type3,
+        price, origin, destination,
+        number, signup_number, status,
+        gather, completed, verify,
+        file_prefix, pic_dir, thumb,
+        introduce, trip, expenses,
+        attention)
+        values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{startTime,jdbcType=VARCHAR},
+        #{endTime,jdbcType=VARCHAR}, #{submitDate,jdbcType=VARCHAR}, #{leaderName,jdbcType=VARCHAR},
+        #{type1,jdbcType=VARCHAR}, #{type2,jdbcType=VARCHAR}, #{type3,jdbcType=VARCHAR},
+        #{price,jdbcType=SMALLINT}, #{origin,jdbcType=VARCHAR}, #{destination,jdbcType=VARCHAR},
+        #{number,jdbcType=SMALLINT}, #{signupNumber,jdbcType=SMALLINT}, #{status,jdbcType=TINYINT},
+        #{gather,jdbcType=VARCHAR}, #{completed,jdbcType=BIT}, #{verify,jdbcType=BIT},
+        #{filePrefix,jdbcType=VARCHAR}, #{picDir,jdbcType=VARCHAR}, #{thumb,jdbcType=VARCHAR},
+        #{introduce,jdbcType=LONGVARCHAR}, #{trip,jdbcType=LONGVARCHAR}, #{expenses,jdbcType=LONGVARCHAR},
+        #{attention,jdbcType=LONGVARCHAR})
+    </insert>
     <insert id="insertSelective" parameterType="com.yoparty.bean.ActivityWithBLOBs">
         insert into activity
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -550,57 +550,57 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yoparty.bean.ActivityWithBLOBs">
-    update activity
-    set title = #{title,jdbcType=VARCHAR},
-      start_time = #{startTime,jdbcType=VARCHAR},
-      end_time = #{endTime,jdbcType=VARCHAR},
-      submit_date = #{submitDate,jdbcType=VARCHAR},
-      leader_name = #{leaderName,jdbcType=VARCHAR},
-      type1 = #{type1,jdbcType=VARCHAR},
-      type2 = #{type2,jdbcType=VARCHAR},
-      type3 = #{type3,jdbcType=VARCHAR},
-      price = #{price,jdbcType=SMALLINT},
-      origin = #{origin,jdbcType=VARCHAR},
-      destination = #{destination,jdbcType=VARCHAR},
-      number = #{number,jdbcType=SMALLINT},
-      signup_number = #{signupNumber,jdbcType=SMALLINT},
-      status = #{status,jdbcType=TINYINT},
-      gather = #{gather,jdbcType=VARCHAR},
-      completed = #{completed,jdbcType=BIT},
-      verify = #{verify,jdbcType=BIT},
-      file_prefix = #{filePrefix,jdbcType=VARCHAR},
-      pic_dir = #{picDir,jdbcType=VARCHAR},
-      thumb = #{thumb,jdbcType=VARCHAR},
-      introduce = #{introduce,jdbcType=LONGVARCHAR},
-      trip = #{trip,jdbcType=LONGVARCHAR},
-      expenses = #{expenses,jdbcType=LONGVARCHAR},
-      attention = #{attention,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        update activity
+        set title = #{title,jdbcType=VARCHAR},
+        start_time = #{startTime,jdbcType=VARCHAR},
+        end_time = #{endTime,jdbcType=VARCHAR},
+        submit_date = #{submitDate,jdbcType=VARCHAR},
+        leader_name = #{leaderName,jdbcType=VARCHAR},
+        type1 = #{type1,jdbcType=VARCHAR},
+        type2 = #{type2,jdbcType=VARCHAR},
+        type3 = #{type3,jdbcType=VARCHAR},
+        price = #{price,jdbcType=SMALLINT},
+        origin = #{origin,jdbcType=VARCHAR},
+        destination = #{destination,jdbcType=VARCHAR},
+        number = #{number,jdbcType=SMALLINT},
+        signup_number = #{signupNumber,jdbcType=SMALLINT},
+        status = #{status,jdbcType=TINYINT},
+        gather = #{gather,jdbcType=VARCHAR},
+        completed = #{completed,jdbcType=BIT},
+        verify = #{verify,jdbcType=BIT},
+        file_prefix = #{filePrefix,jdbcType=VARCHAR},
+        pic_dir = #{picDir,jdbcType=VARCHAR},
+        thumb = #{thumb,jdbcType=VARCHAR},
+        introduce = #{introduce,jdbcType=LONGVARCHAR},
+        trip = #{trip,jdbcType=LONGVARCHAR},
+        expenses = #{expenses,jdbcType=LONGVARCHAR},
+        attention = #{attention,jdbcType=LONGVARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
     <update id="updateByPrimaryKey" parameterType="com.yoparty.bean.Activity">
-    update activity
-    set title = #{title,jdbcType=VARCHAR},
-      start_time = #{startTime,jdbcType=VARCHAR},
-      end_time = #{endTime,jdbcType=VARCHAR},
-      submit_date = #{submitDate,jdbcType=VARCHAR},
-      leader_name = #{leaderName,jdbcType=VARCHAR},
-      type1 = #{type1,jdbcType=VARCHAR},
-      type2 = #{type2,jdbcType=VARCHAR},
-      type3 = #{type3,jdbcType=VARCHAR},
-      price = #{price,jdbcType=SMALLINT},
-      origin = #{origin,jdbcType=VARCHAR},
-      destination = #{destination,jdbcType=VARCHAR},
-      number = #{number,jdbcType=SMALLINT},
-      signup_number = #{signupNumber,jdbcType=SMALLINT},
-      status = #{status,jdbcType=TINYINT},
-      gather = #{gather,jdbcType=VARCHAR},
-      completed = #{completed,jdbcType=BIT},
-      verify = #{verify,jdbcType=BIT},
-      file_prefix = #{filePrefix,jdbcType=VARCHAR},
-      pic_dir = #{picDir,jdbcType=VARCHAR},
-      thumb = #{thumb,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        update activity
+        set title = #{title,jdbcType=VARCHAR},
+        start_time = #{startTime,jdbcType=VARCHAR},
+        end_time = #{endTime,jdbcType=VARCHAR},
+        submit_date = #{submitDate,jdbcType=VARCHAR},
+        leader_name = #{leaderName,jdbcType=VARCHAR},
+        type1 = #{type1,jdbcType=VARCHAR},
+        type2 = #{type2,jdbcType=VARCHAR},
+        type3 = #{type3,jdbcType=VARCHAR},
+        price = #{price,jdbcType=SMALLINT},
+        origin = #{origin,jdbcType=VARCHAR},
+        destination = #{destination,jdbcType=VARCHAR},
+        number = #{number,jdbcType=SMALLINT},
+        signup_number = #{signupNumber,jdbcType=SMALLINT},
+        status = #{status,jdbcType=TINYINT},
+        gather = #{gather,jdbcType=VARCHAR},
+        completed = #{completed,jdbcType=BIT},
+        verify = #{verify,jdbcType=BIT},
+        file_prefix = #{filePrefix,jdbcType=VARCHAR},
+        pic_dir = #{picDir,jdbcType=VARCHAR},
+        thumb = #{thumb,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
     <!---->
     <select id="select" parameterType="com.yoparty.service.ActivityListPageService"
             resultType="com.yoparty.service.ActivityAjax">

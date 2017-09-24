@@ -78,9 +78,9 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, username, password, telephone, realname, nickname, birthday, sex, residence, 
-    hometown, email, avatar, habit, work
-  </sql>
+        id, username, password, telephone, realname, nickname, birthday, sex, residence,
+        hometown, email, avatar, habit, work
+    </sql>
     <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.bean.UserExample">
         select
         <if test="distinct">
@@ -102,9 +102,9 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from user
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
+        delete from user
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
     <delete id="deleteByExample" parameterType="com.yoparty.bean.UserExample">
         delete from user
         <if test="_parameter != null">
@@ -112,17 +112,17 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.yoparty.bean.User">
-    insert into user (id, username, password, 
-      telephone, realname, nickname, 
-      birthday, sex, residence, 
-      hometown, email, avatar, 
-      habit, work)
-    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{telephone,jdbcType=CHAR}, #{realname,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, 
-      #{birthday,jdbcType=CHAR}, #{sex,jdbcType=BIT}, #{residence,jdbcType=VARCHAR}, 
-      #{hometown,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, 
-      #{habit,jdbcType=VARCHAR}, #{work,jdbcType=VARCHAR})
-  </insert>
+        insert into user (id, username, password,
+        telephone, realname, nickname,
+        birthday, sex, residence,
+        hometown, email, avatar,
+        habit, work)
+        values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+        #{telephone,jdbcType=CHAR}, #{realname,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR},
+        #{birthday,jdbcType=CHAR}, #{sex,jdbcType=BIT}, #{residence,jdbcType=VARCHAR},
+        #{hometown,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR},
+        #{habit,jdbcType=VARCHAR}, #{work,jdbcType=VARCHAR})
+    </insert>
     <insert id="insertSelective" parameterType="com.yoparty.bean.User">
         insert into user
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -336,22 +336,22 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.yoparty.bean.User">
-    update user
-    set username = #{username,jdbcType=VARCHAR},
-      password = #{password,jdbcType=VARCHAR},
-      telephone = #{telephone,jdbcType=CHAR},
-      realname = #{realname,jdbcType=VARCHAR},
-      nickname = #{nickname,jdbcType=VARCHAR},
-      birthday = #{birthday,jdbcType=CHAR},
-      sex = #{sex,jdbcType=BIT},
-      residence = #{residence,jdbcType=VARCHAR},
-      hometown = #{hometown,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
-      avatar = #{avatar,jdbcType=VARCHAR},
-      habit = #{habit,jdbcType=VARCHAR},
-      work = #{work,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        update user
+        set username = #{username,jdbcType=VARCHAR},
+        password = #{password,jdbcType=VARCHAR},
+        telephone = #{telephone,jdbcType=CHAR},
+        realname = #{realname,jdbcType=VARCHAR},
+        nickname = #{nickname,jdbcType=VARCHAR},
+        birthday = #{birthday,jdbcType=CHAR},
+        sex = #{sex,jdbcType=BIT},
+        residence = #{residence,jdbcType=VARCHAR},
+        hometown = #{hometown,jdbcType=VARCHAR},
+        email = #{email,jdbcType=VARCHAR},
+        avatar = #{avatar,jdbcType=VARCHAR},
+        habit = #{habit,jdbcType=VARCHAR},
+        work = #{work,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
 
     <!---->
     <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String">

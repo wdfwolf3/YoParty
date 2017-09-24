@@ -8,7 +8,7 @@
 <form method="post" enctype="multipart/form-data" action="/image1">
     <label> file </label><br>
     <input type="file" name="file" accept="image/jpeg, image/jpg" value="上传"/>
-    <input type="submit" value="Submit" />
+    <input type="submit" value="Submit"/>
 </form>
 </body>
 </html>

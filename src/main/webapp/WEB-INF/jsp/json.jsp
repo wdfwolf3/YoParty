@@ -15,28 +15,28 @@
 <table>
     <tr>
         <td>id</td>
-        <td><input id="id" value="100" /></td>
+        <td><input id="id" value="100"/></td>
     </tr>
     <tr>
         <td>name</td>
-        <td><input id="name" value="snowolf" /></td>
+        <td><input id="name" value="snowolf"/></td>
     </tr>
     <tr>
         <td>status</td>
-        <td><input id="status" value="true" /></td>
+        <td><input id="status" value="true"/></td>
     </tr>
     <tr>
-        <td><input type="button" id="profile" value="Profile——GET" /></td>
-        <td><input type="button" id="login" value="Login——POST" /></td>
+        <td><input type="button" id="profile" value="Profile——GET"/></td>
+        <td><input type="button" id="login" value="Login——POST"/></td>
     </tr>
 </table>
 </body>
 <script type='text/javascript'>
-    $(document).ready(function() {
-        $("#profile").click(function() {
+    $(document).ready(function () {
+        $("#profile").click(function () {
             profile();
         });
-        $("#login").click(function() {
+        $("#login").click(function () {
             login();
         });
     });
@@ -46,7 +46,7 @@
             + $('#status').val();
         url += query;
         alert(url);
-        $.get('http://localhost:8080/entity', function(data) {
+        $.get('http://localhost:8080/entity', function (data) {
             alert("id: " + data.id + "\nname: " + data.name + "\nstatus: "
                 + data.avatar);
         });
@@ -67,7 +67,7 @@
                     + data.status);
             },
             error: function (data) {
-                alert("Err:" + "id: " + data.id + "\nname: " + data.name );
+                alert("Err:" + "id: " + data.id + "\nname: " + data.name);
             }
         });
     }

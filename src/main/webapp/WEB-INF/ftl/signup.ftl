@@ -9,7 +9,7 @@
     <script type="text/javascript" src="/yo-party-net/js/common/common.js"></script>
     <script src="/yo-party-net/js/jquery/jquery-2.1.4.min.js"></script>
     <script src="/yo-party-net/js/bussiness/event_info/join.js"></script>
-    <meta content="telephone=no" name="format-detection" />
+    <meta content="telephone=no" name="format-detection"/>
 </head>
 <body>
 
@@ -54,7 +54,7 @@
                             <li class="col100">
                                 <dl>
                                     <dt>目的城市：</dt>
-                                    <dd>天津市  天津市  河西区</dd>
+                                    <dd>天津市 天津市 河西区</dd>
                                 </dl>
                             </li>
                         </ul>
@@ -65,7 +65,7 @@
 
                             <li class="col100">
                                 <dl>
-                                    <dt >集合地点：</dt>
+                                    <dt>集合地点：</dt>
                                     <dd class="horiwrap" id="meet_places">asdf</dd>
                                 </dl>
                             </li>
@@ -90,13 +90,13 @@
                             <li class="col25">
                                 <dl>
                                     <dt>出发城市：</dt>
-                                    <dd>北京市  北京市  西城区</dd>
+                                    <dd>北京市 北京市 西城区</dd>
                                 </dl>
                             </li>
                             <li class="col25">
                                 <dl>
                                     <dt>目的城市：</dt>
-                                    <dd>天津市  天津市  河西区</dd>
+                                    <dd>天津市 天津市 河西区</dd>
                                 </dl>
                             </li>
                         </ul>
@@ -136,7 +136,7 @@
                             <li class="col75">
                                 <dl>
                                     <dt style="width:14%">集合地点：</dt>
-                                    <dd class="horiwrap" >asdf</dd>
+                                    <dd class="horiwrap">asdf</dd>
                                 </dl>
                             </li>
                         </ul>
@@ -250,8 +250,6 @@
             <h5>订单详情</h5>
             <div class="orderDetail">
                 <table>
-
-
 
 
                     <tr class="tableInfo">

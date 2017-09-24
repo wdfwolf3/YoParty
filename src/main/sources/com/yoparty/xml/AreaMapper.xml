@@ -8,14 +8,14 @@
         <result column="dict_level" property="dict_level" jdbcType="VARCHAR"/>
     </resultMap>
     <select id="select" resultMap="BaseResultMap" parameterType="com.yoparty.service.AreaListService">
-    select 
-    *
-    from ${table_name}
-    where parent_id = #{parent_id}
-  </select>
+        select
+        *
+        from ${table_name}
+        where parent_id = #{parent_id}
+    </select>
     <select id="selectProvince" resultMap="BaseResultMap">
-      select
-      *
-      from province
+        select
+        *
+        from province
     </select>
 </mapper>

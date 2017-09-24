@@ -1,6 +1,7 @@
 <div id="header">
     <div>
-        <a id="logo_a" href="/yo-party-net/home.shtml"> <img class="logo" src="/yo-party-net/images/logo.png" width="55.62" height="55.62" alt="">
+        <a id="logo_a" href="/yo-party-net/home.shtml"> <img class="logo" src="/yo-party-net/images/logo.png"
+                                                             width="55.62" height="55.62" alt="">
             <p class="masthead-brand">友派</p></a>
 
         <ul class="navigation">
@@ -36,7 +37,7 @@
             <#if ifLeader>
                 <li id="imleader"><a href="/yo-party/index.shtml" target="_blank">我是领队</a></li>
             </#if>
-                <li><a href="/yo-party-net/logout">注销</a></li>
+            <li><a href="/yo-party-net/logout">注销</a></li>
         </ul>
         <input type="hidden" id="loginUid" value="${loginUid}"/>
     <#else >

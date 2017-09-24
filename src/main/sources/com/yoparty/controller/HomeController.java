@@ -19,8 +19,9 @@ public class HomeController {
     private LoginStatusService loginStatusService;
 
     @RequestMapping(value = {"/home", "/"}, method = RequestMethod.GET)
-    public String getMain(Model model) {
+    public String getMain(Model model) throws Exception {
         loginStatusService.insertUserInformation(model);
-        return "home";
+        throw new Exception("err");
+//        return "home";
     }
 }

@@ -69,8 +69,8 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, user_id, partner_id, activity_id, location
-  </sql>
+        id, user_id, partner_id, activity_id, location
+    </sql>
     <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.bean.SignupUserPartnerExample">
         select
         <if test="distinct">

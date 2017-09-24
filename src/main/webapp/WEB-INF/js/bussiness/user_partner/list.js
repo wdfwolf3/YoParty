@@ -62,9 +62,9 @@ $(function () {
 });
 
 function addPartner() {
-    if (CommnUtil.isPhone()){
-        window.location.href=rootPath + '/user_partner/mb_addUI.shtml?comefrom=u_list"'
-    }else{
+    if (CommnUtil.isPhone()) {
+        window.location.href = rootPath + '/user_partner/mb_addUI.shtml?comefrom=u_list"'
+    } else {
         parent.pageii = parent.layer.open({
             title: "新增",
             type: 2,
@@ -81,9 +81,9 @@ function editPartner() {
         layer.msg("只能选中�?�?");
         return;
     }
-    if (CommnUtil.isPhone()){
-        window.location.href=rootPath + '/user_partner/mb_editUI/' + cbox + '.shtml'
-    }else{
+    if (CommnUtil.isPhone()) {
+        window.location.href = rootPath + '/user_partner/mb_editUI/' + cbox + '.shtml'
+    } else {
         parent.pageii = parent.layer.open({
             title: "修改",
             type: 2,

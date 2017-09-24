@@ -105,7 +105,7 @@ $(function () {
 
     function addPersonClickFn() {
         if (CommnUtil.isPhone()) {
-            window.location.href=rootPath + '/user_partner/mb_addUI.shtml?event_id='+$("#eid").val()+"&comefrom=eventJoin"
+            window.location.href = rootPath + '/user_partner/mb_addUI.shtml?event_id=' + $("#eid").val() + "&comefrom=eventJoin"
         } else {
             this.pageii = layer.open({
                 title: "新增",
@@ -206,9 +206,9 @@ function addNewPartner(data) {
 }
 
 function managePersonClickFn() {
-    if(CommnUtil.isPhone()){
-        window.open(rootPath+"/user_partner/list.shtml")
-    }else{
+    if (CommnUtil.isPhone()) {
+        window.open(rootPath + "/user_partner/list.shtml")
+    } else {
         window.open(rootPath + '/user_info/personalEdit/companys.shtml')
     }
 }

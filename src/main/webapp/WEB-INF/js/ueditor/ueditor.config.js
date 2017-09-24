@@ -9,7 +9,7 @@
  * 鎻愮ず*************************
  ******************************************************************************/
 
-(function() {
+(function () {
 
     /**
      * 缂栬緫鍣ㄨ祫婧愭枃浠舵牴璺緞銆傚畠鎵€琛ㄧず鐨勫惈涔夋槸锛氫互缂栬緫鍣ㄥ疄渚嬪寲椤甸潰涓哄綋鍓嶈矾寰勶紝鎸囧悜缂栬緫鍣ㄨ祫婧愭枃浠讹紙鍗砫ialog绛夋枃浠跺す锛夌殑璺緞銆�
@@ -27,11 +27,11 @@
     window.UEDITOR_CONFIG = {
 
         // 涓虹紪杈戝櫒瀹炰緥娣诲姞涓€涓矾寰勶紝杩欎釜涓嶈兘琚敞閲�
-        UEDITOR_HOME_URL : URL
+        UEDITOR_HOME_URL: URL
 
         // 鏈嶅姟鍣ㄧ粺涓€璇锋眰鎺ュ彛璺緞
         ,
-        serverUrl : URL + "jsp/controller.jsp"
+        serverUrl: URL + "jsp/controller.jsp"
 
         //  'source','gmap','emotion', 'scrawl', 'insertvideo', 'music','insertframe', 'insertcode',
         //'webapp','spechars','background','print', 'preview','help'
@@ -39,7 +39,7 @@
 
         // 宸ュ叿鏍忎笂鐨勬墍鏈夌殑鍔熻兘鎸夐挳鍜屼笅鎷夋锛屽彲浠ュ湪new缂栬緫鍣ㄧ殑瀹炰緥鏃堕€夋嫨鑷繁闇€瑕佺殑閲嶆柊瀹氫箟
         ,
-        toolbars : [ [ 'fullscreen','undo', 'redo', '|', 'bold', 'italic', 'underline',
+        toolbars: [['fullscreen', 'undo', 'redo', '|', 'bold', 'italic', 'underline',
             'fontborder', 'strikethrough', 'superscript', 'subscript',
             'removeformat', 'formatmatch', 'autotypeset', 'blockquote',
             'pasteplain', '|', 'forecolor', 'backcolor',
@@ -54,12 +54,12 @@
             'insertimage',
             'attachment',
             'pagebreak', 'template', '|',
-            'horizontal', 'date', 'time',  'snapscreen',
+            'horizontal', 'date', 'time', 'snapscreen',
             'wordimage', '|', 'inserttable', 'deletetable',
             'insertparagraphbeforetable', 'insertrow', 'deleterow',
             'insertcol', 'deletecol', 'mergecells', 'mergeright',
             'mergedown', 'splittocells', 'splittorows', 'splittocols',
-            'charts', '|',  'searchreplace', 'drafts' ] ]
+            'charts', '|', 'searchreplace', 'drafts']]
         // 褰撻紶鏍囨斁鍦ㄥ伐鍏锋爮涓婃椂鏄剧ず鐨則ooltip鎻愮ず,鐣欑┖鏀寔鑷姩澶氳瑷€閰嶇疆锛屽惁鍒欎互閰嶇疆鍊间负鍑�
         // ,labelMap:{
         // 'anchor':'', 'undo':''
@@ -276,7 +276,7 @@
         // elementPathEnabled
         // 鏄惁鍚敤鍏冪礌璺緞锛岄粯璁ゆ槸鏄剧ず
         ,
-        elementPathEnabled : false
+        elementPathEnabled: false
 
         // wordCount
         // ,wordCount:true //鏄惁寮€鍚瓧鏁扮粺璁�
@@ -391,85 +391,85 @@
 
         // xss 杩囨护鏄惁寮€鍚�,inserthtml绛夋搷浣�
         ,
-        xssFilterRules : true
+        xssFilterRules: true
         // input xss杩囨护
         ,
-        inputXssFilter : true
+        inputXssFilter: true
         // output xss杩囨护
         ,
-        outputXssFilter : true
+        outputXssFilter: true
         // xss杩囨护鐧藉悕鍗� 鍚嶅崟鏉ユ簮:
         // https://raw.githubusercontent.com/leizongmin/js-xss/master/lib/default.js
         ,
-        whitList : {
-            a : [ 'target', 'href', 'title', 'class', 'style' ],
-            abbr : [ 'title', 'class', 'style' ],
-            address : [ 'class', 'style' ],
-            area : [ 'shape', 'coords', 'href', 'alt' ],
-            article : [],
-            aside : [],
-            audio : [ 'autoplay', 'controls', 'loop', 'preload', 'src',
-                'class', 'style' ],
-            b : [ 'class', 'style' ],
-            bdi : [ 'dir' ],
-            bdo : [ 'dir' ],
-            big : [],
-            blockquote : [ 'cite', 'class', 'style' ],
-            br : [],
-            caption : [ 'class', 'style' ],
-            center : [],
-            cite : [],
-            code : [ 'class', 'style' ],
-            col : [ 'align', 'valign', 'span', 'width', 'class', 'style' ],
-            colgroup : [ 'align', 'valign', 'span', 'width', 'class', 'style' ],
-            dd : [ 'class', 'style' ],
-            del : [ 'datetime' ],
-            details : [ 'open' ],
-            div : [ 'class', 'style' ],
-            dl : [ 'class', 'style' ],
-            dt : [ 'class', 'style' ],
-            em : [ 'class', 'style' ],
-            font : [ 'color', 'size', 'face' ],
-            footer : [],
-            h1 : [ 'class', 'style' ],
-            h2 : [ 'class', 'style' ],
-            h3 : [ 'class', 'style' ],
-            h4 : [ 'class', 'style' ],
-            h5 : [ 'class', 'style' ],
-            h6 : [ 'class', 'style' ],
-            header : [],
-            hr : [],
-            i : [ 'class', 'style' ],
-            img : [ 'src', 'alt', 'title', 'width', 'height', 'id', '_src',
-                'loadingclass', 'class', 'data-latex' ],
-            ins : [ 'datetime' ],
-            li : [ 'class', 'style' ],
-            mark : [],
-            nav : [],
-            ol : [ 'class', 'style' ],
-            p : [ 'class', 'style' ],
-            pre : [ 'class', 'style' ],
-            s : [],
-            section : [],
-            small : [],
-            span : [ 'class', 'style' ],
-            sub : [ 'class', 'style' ],
-            sup : [ 'class', 'style' ],
-            strong : [ 'class', 'style' ],
-            table : [ 'width', 'border', 'align', 'valign', 'class', 'style' ],
-            tbody : [ 'align', 'valign', 'class', 'style' ],
-            td : [ 'width', 'rowspan', 'colspan', 'align', 'valign', 'class',
-                'style' ],
-            tfoot : [ 'align', 'valign', 'class', 'style' ],
-            th : [ 'width', 'rowspan', 'colspan', 'align', 'valign', 'class',
-                'style' ],
-            thead : [ 'align', 'valign', 'class', 'style' ],
-            tr : [ 'rowspan', 'align', 'valign', 'class', 'style' ],
-            tt : [],
-            u : [],
-            ul : [ 'class', 'style' ],
-            video : [ 'autoplay', 'controls', 'loop', 'preload', 'src',
-                'height', 'width', 'class', 'style' ]
+        whitList: {
+            a: ['target', 'href', 'title', 'class', 'style'],
+            abbr: ['title', 'class', 'style'],
+            address: ['class', 'style'],
+            area: ['shape', 'coords', 'href', 'alt'],
+            article: [],
+            aside: [],
+            audio: ['autoplay', 'controls', 'loop', 'preload', 'src',
+                'class', 'style'],
+            b: ['class', 'style'],
+            bdi: ['dir'],
+            bdo: ['dir'],
+            big: [],
+            blockquote: ['cite', 'class', 'style'],
+            br: [],
+            caption: ['class', 'style'],
+            center: [],
+            cite: [],
+            code: ['class', 'style'],
+            col: ['align', 'valign', 'span', 'width', 'class', 'style'],
+            colgroup: ['align', 'valign', 'span', 'width', 'class', 'style'],
+            dd: ['class', 'style'],
+            del: ['datetime'],
+            details: ['open'],
+            div: ['class', 'style'],
+            dl: ['class', 'style'],
+            dt: ['class', 'style'],
+            em: ['class', 'style'],
+            font: ['color', 'size', 'face'],
+            footer: [],
+            h1: ['class', 'style'],
+            h2: ['class', 'style'],
+            h3: ['class', 'style'],
+            h4: ['class', 'style'],
+            h5: ['class', 'style'],
+            h6: ['class', 'style'],
+            header: [],
+            hr: [],
+            i: ['class', 'style'],
+            img: ['src', 'alt', 'title', 'width', 'height', 'id', '_src',
+                'loadingclass', 'class', 'data-latex'],
+            ins: ['datetime'],
+            li: ['class', 'style'],
+            mark: [],
+            nav: [],
+            ol: ['class', 'style'],
+            p: ['class', 'style'],
+            pre: ['class', 'style'],
+            s: [],
+            section: [],
+            small: [],
+            span: ['class', 'style'],
+            sub: ['class', 'style'],
+            sup: ['class', 'style'],
+            strong: ['class', 'style'],
+            table: ['width', 'border', 'align', 'valign', 'class', 'style'],
+            tbody: ['align', 'valign', 'class', 'style'],
+            td: ['width', 'rowspan', 'colspan', 'align', 'valign', 'class',
+                'style'],
+            tfoot: ['align', 'valign', 'class', 'style'],
+            th: ['width', 'rowspan', 'colspan', 'align', 'valign', 'class',
+                'style'],
+            thead: ['align', 'valign', 'class', 'style'],
+            tr: ['rowspan', 'align', 'valign', 'class', 'style'],
+            tt: [],
+            u: [],
+            ul: ['class', 'style'],
+            video: ['autoplay', 'controls', 'loop', 'preload', 'src',
+                'height', 'width', 'class', 'style']
         }
     };
 
@@ -535,7 +535,7 @@
     }
 
     window.UE = {
-        getUEBasePath : getUEBasePath
+        getUEBasePath: getUEBasePath
     };
 
 })();

@@ -213,7 +213,7 @@
 
                                     </dd>
                                 </dl>
-                            <div class=""><p class="price">￥${activity.price}</p></div>
+                                <div class=""><p class="price">￥${activity.price}</p></div>
                             </div>
                             <!--距离报名结束时间和我要报名啊你牛-->
                             <div class="time bytwo clearfix" id="timer">
@@ -279,7 +279,7 @@
                         <h5>副领队</h5>
                     </div>
                     <div class="c fll clearfix linfo">
-                        <#list assistLeaderList as ass>
+                    <#list assistLeaderList as ass>
                             ${ass.nickname}
                         </#list>
                     </div>

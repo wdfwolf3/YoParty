@@ -2,16 +2,16 @@
 <html>
 <head>
     <title>友派</title>
-    <link rel="shortcut icon" href="/yo-party-net/images/logo_ico.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="/yo-party-net/images/logo_ico.png" type="image/x-icon"/>
     <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
     <META HTTP-EQUIV="Cache-Control" CONTENT="no-cache">
     <META HTTP-EQUIV="Expires" CONTENT="0">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
     <!-- name="viewport" 的详细用法  http://www.php100.com/html/webkaifa/HTML5/2012/0831/10979.html -->
     <meta name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="shortcut icon" href="/yo-party-net/images/logo_ico.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="/yo-party-net/images/logo_ico.png" type="image/x-icon"/>
     <!--
     width - viewport的宽度 height - viewport的高度
     initial-scale - 初始的缩放比例
@@ -40,7 +40,7 @@
     <script type="text/javascript" src="/yo-party-net/js/system/user/updatePassword.js"></script>
 
     <style type="text/css">
-        .l_err{
+        .l_err {
             background: none repeat scroll 0 0 #FFFCC7;
             border: 1px solid #FFC340;
             font-size: 12px;
@@ -48,37 +48,43 @@
             width: 200px;
             display: none;
         }
-        .error{
+
+        .error {
             border: 3px solid #FFCCCC;
         }
 
-        .left{
+        .left {
             text-align: left;
             padding-left: 10px;
         }
-        .right{
+
+        .right {
             text-align: right;
         }
-        .hidden-xs{
+
+        .hidden-xs {
             display: inherit;
         }
-        .dmycol-menu{
+
+        .dmycol-menu {
             position: absolute;
             background-color: white;
             font-size: 14px;
             text-align: left;
             list-style: none;
-            border: 1px solid rgba(0,0,0,.15);
+            border: 1px solid rgba(0, 0, 0, .15);
             z-index: 1000;
             margin-top: 8px;
             width: 120px;
             left: auto;
             right: 0;
         }
-        .dmycol-menu >li{
+
+        .dmycol-menu > li {
             margin-left: -30px;
         }
-        .span_checkbox{
+
+        .span_checkbox {
             display: inline-block;
             vertical-align: middle;
             margin: 0;
@@ -90,25 +96,27 @@
             cursor: pointer;
             top: -2px;
         }
+
         .span_checkbox.checked {
             background-position: -20px 0;
         }
+
         .span_checkbox {
             background-position: 0 0;
         }
     </style>
     <!-- base end -->
     <script type="text/javascript">
-        function onloadurl(){
+        function onloadurl() {
             $("[data-url]").each(function () {
                 var tb = $(this);
                 tb.html(CommnUtil.loadingImg());
-                tb.load(rootPath+tb.attr("data-url"));
+                tb.load(rootPath + tb.attr("data-url"));
             });
         }
         layer.config({
             extend: ['skin/style.css'], //加载新皮肤
-            fix : false,// 用于设定层是否不随滚动条而滚动，固定在可视区域。
+            fix: false,// 用于设定层是否不随滚动条而滚动，固定在可视区域。
             skin: 'layer-ext-myskin' //一旦设定，所有弹层风格都采用此主题。
         });
         var rootPath = "/yo-party-net";
@@ -121,34 +129,34 @@
          * data : 查询条件{}
          * value ：默认值
          */
-        function getSelectEx(byId,options){
-            if(byId && options){
-                if(options.url && options.textFiled
-                        && options.valueFiled && options.name){
+        function getSelectEx(byId, options) {
+            if (byId && options) {
+                if (options.url && options.textFiled
+                        && options.valueFiled && options.name) {
                     $.ajax({
-                        type : "post", //使用get方法访问后台
-                        dataType : "json", //json格式的数据
-                        async : true, //同步   不写的情况下 默认为true
-                        url : rootPath + options.url,
-                        data : options.data,
-                        success : function(data){
-                            for(var i = 0; i < data.length;i++){
-                                var selectObj = $("#"+byId).find("ul");
-                                if(selectObj){
-                                    if(options.value == "" && i == 0){
-                                        $("#"+byId).append("<button data-toggle='dropdown' class='btn btn-sm btn-default dropdown-toggle'> "+
-                                                "<span class='dropdown-label'>"+data[i][options.textFiled]+"</span> <span class='caret'></span></button>");
-                                        $("#"+byId).find("ul").append("<li class='active'><a href='#'><input type='radio' name="+options.name+
-                                                " value="+data[i][options.valueFiled]+" checked='checked'>"+data[i][options.textFiled]+"</a></li>");
-                                    }else{
-                                        if(options.value == data[i][options.valueFiled]){
-                                            $("#"+byId).append("<button data-toggle='dropdown' class='btn btn-sm btn-default dropdown-toggle'> "+
-                                                    "<span class='dropdown-label'>"+data[i][options.textFiled]+"</span> <span class='caret'></span></button>");
-                                            $("#"+byId).find("ul").append("<li class='active'><a href='#'><input type='radio' name="+options.name+
-                                                    " value="+data[i][options.valueFiled]+" checked='checked'>"+data[i][options.textFiled]+"</a></li>");
-                                        }else{
-                                            $("#"+byId).find("ul").append("<li class=''><a href='#'><input type='radio' name="+options.name+
-                                                    " value="+data[i][options.valueFiled]+" >"+data[i][options.textFiled]+"</a></li>");
+                        type: "post", //使用get方法访问后台
+                        dataType: "json", //json格式的数据
+                        async: true, //同步   不写的情况下 默认为true
+                        url: rootPath + options.url,
+                        data: options.data,
+                        success: function (data) {
+                            for (var i = 0; i < data.length; i++) {
+                                var selectObj = $("#" + byId).find("ul");
+                                if (selectObj) {
+                                    if (options.value == "" && i == 0) {
+                                        $("#" + byId).append("<button data-toggle='dropdown' class='btn btn-sm btn-default dropdown-toggle'> " +
+                                                "<span class='dropdown-label'>" + data[i][options.textFiled] + "</span> <span class='caret'></span></button>");
+                                        $("#" + byId).find("ul").append("<li class='active'><a href='#'><input type='radio' name=" + options.name +
+                                                " value=" + data[i][options.valueFiled] + " checked='checked'>" + data[i][options.textFiled] + "</a></li>");
+                                    } else {
+                                        if (options.value == data[i][options.valueFiled]) {
+                                            $("#" + byId).append("<button data-toggle='dropdown' class='btn btn-sm btn-default dropdown-toggle'> " +
+                                                    "<span class='dropdown-label'>" + data[i][options.textFiled] + "</span> <span class='caret'></span></button>");
+                                            $("#" + byId).find("ul").append("<li class='active'><a href='#'><input type='radio' name=" + options.name +
+                                                    " value=" + data[i][options.valueFiled] + " checked='checked'>" + data[i][options.textFiled] + "</a></li>");
+                                        } else {
+                                            $("#" + byId).find("ul").append("<li class=''><a href='#'><input type='radio' name=" + options.name +
+                                                    " value=" + data[i][options.valueFiled] + " >" + data[i][options.textFiled] + "</a></li>");
                                         }
                                     }
                                 }
@@ -219,9 +227,9 @@
 
 <#include "template/js.ftl"/>
 <#include "template/head.ftl"/>
-<div class="register-main" >
-    <div class="register-left" >
-        <form id="form" name="form" class="form-horizontal" method="post" >
+<div class="register-main">
+    <div class="register-left">
+        <form id="form" name="form" class="form-horizontal" method="post">
             <section class="panel panel-default">
                 <div class="panel-body">
                     <div class="form-group">

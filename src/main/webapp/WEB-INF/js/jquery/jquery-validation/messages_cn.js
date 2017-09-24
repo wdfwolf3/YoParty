@@ -21,5 +21,5 @@ jQuery.extend(jQuery.validator.messages, {
     max: jQuery.validator.format("璇疯緭鍏ヤ竴涓渶澶т负 {0} 鐨勫€�"),
     min: jQuery.validator.format("璇疯緭鍏ヤ竴涓渶灏忎负 {0} 鐨勫€�"),
 
-    notnull:"涓嶈兘涓虹┖"
+    notnull: "涓嶈兘涓虹┖"
 });

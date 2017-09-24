@@ -27,12 +27,8 @@
                 <div class="lp-lintro fll">
 
 
-
                     <img src="/images/uploadFile/photo/2017041214/201704121435302579.jpg"
                          width="250" height="250">
-
-
-
 
 
                 </div>

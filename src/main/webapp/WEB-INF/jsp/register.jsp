@@ -69,33 +69,38 @@
         }
     </style>
     <script type="text/javascript">
-    function checkUser(e){
-    var result = document.getElementById("error-panel").value;
-    var password = document.getElementById("dd").value;
-    if(result == ""  ){
-    var n = e.elements.firstname;
-    displayError(n,"请输入密码")
-    return false;
-    }
-    if(password == ""  ){
-    alert("密码不能为空");
-    return false;
-    }else{
-    return true;
-    }
-    function displayError(e,r)
-    {var t=document.getElementById(e.name+"_err");
-    t||(t=document.createElement("span"),t.id=e.name+"_err",t.className="error-tip",e.parentNode.appendChild(t)),t.style.display="inline",t.innerHTML=r}
-    }
-    function validateForm(e)
-    {var r=0,t=e.elements["captcha-solution"],l=e.elements.form_email,n=e.elements.form_password,a=document.getElementById("item-error");
-    if(a&&(a.style.display="none"),t)
-    {var o=trim(t.value);
-    ""===o?(displayError(t,"请输入验证码"),r=1):o.length<4?(displayError(t,"请输入正确的验证码"),r=1):clearError(t)}
-    if(l)
-    {var i=trim(l.value);
-    ""===i||"邮箱/手机号/用户名"===i?(displayError(l,"请输入正确的邮箱/手机号/用户名"),r=1):clearError(l)}
-    return n&&(""===n.value?(displayError(n,"请输入密码"),r=1):n&&clearError(n)),!r}
+        function checkUser(e) {
+            var result = document.getElementById("error-panel").value;
+            var password = document.getElementById("dd").value;
+            if (result == "") {
+                var n = e.elements.firstname;
+                displayError(n, "请输入密码")
+                return false;
+            }
+            if (password == "") {
+                alert("密码不能为空");
+                return false;
+            } else {
+                return true;
+            }
+            function displayError(e, r) {
+                var t = document.getElementById(e.name + "_err");
+                t || (t = document.createElement("span"), t.id = e.name + "_err", t.className = "error-tip", e.parentNode.appendChild(t)), t.style.display = "inline", t.innerHTML = r
+            }
+        }
+        function validateForm(e) {
+            var r = 0, t = e.elements["captcha-solution"], l = e.elements.form_email, n = e.elements.form_password,
+                a = document.getElementById("item-error");
+            if (a && (a.style.display = "none"), t) {
+                var o = trim(t.value);
+                "" === o ? (displayError(t, "请输入验证码"), r = 1) : o.length < 4 ? (displayError(t, "请输入正确的验证码"), r = 1) : clearError(t)
+            }
+            if (l) {
+                var i = trim(l.value);
+                "" === i || "邮箱/手机号/用户名" === i ? (displayError(l, "请输入正确的邮箱/手机号/用户名"), r = 1) : clearError(l)
+            }
+            return n && ("" === n.value ? (displayError(n, "请输入密码"), r = 1) : n && clearError(n)), !r
+        }
 
 
     </script>

@@ -7,7 +7,7 @@
     <link href="/favicon.ico" type="image/x-icon" rel="shortcut icon">
     <meta name="renderer" content="webkit">
     <title>登录－友派</title>
-    <link rel="shortcut icon" href="/yo-party-net/images/logo_ico.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="/yo-party-net/images/logo_ico.png" type="image/x-icon"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/yo-party-net/css/style.css" rel="stylesheet" type="text/css">
 </head>
@@ -40,19 +40,6 @@
                 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
                 <div class="login-links">
                     <a href="/yo-party-net/findpassword" class="forget-pwd" target="_blank">忘记密码</a>
                     <a href="/yo-party-net/register/register.shtml" class="register" target="_blank">免费注册</a>
@@ -70,23 +57,23 @@
     }
     ;
 
-    $(function(){
-        $("#formSubmit").click(function(){
+    $(function () {
+        $("#formSubmit").click(function () {
             checkUserForm()
         })
     })
     function checkUserForm() {
         var username = $("#username").val();
-        if(username == ""){
+        if (username == "") {
             alert("请填写用户名!")
             return;
         }
         var password = $("#password").val();
-        if(password == ""){
+        if (password == "") {
             alert("请填写密码!")
             return;
         }
-        $("#loginForm").attr("action","/yo-party-net/validate")
+        $("#loginForm").attr("action", "/yo-party-net/validate")
         $("#loginForm").submit();
     }
     function to_top() {

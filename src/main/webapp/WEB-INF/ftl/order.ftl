@@ -25,7 +25,6 @@
                 <a href="" target="_blank">
 
 
-
                     <img src="/yo-party-net/images/pic_sun.jpg"
                          style="width: 80px; height: 80px;">
 
@@ -37,7 +36,7 @@
                     <li>
                         <h5>
                             <a href="#">
-                              ${username}
+                            ${username}
                             </a>
                         </h5>
                     </li>
@@ -74,30 +73,13 @@
                     <li class="selected">所有订单</li>
 
 
-
                     <li value="1">待付款</li>
-
-
-
-
-
-
 
 
                     <li value="2">待参与</li>
 
 
-
-
-
-
-
-
                     <li value="3">已完成</li>
-
-
-
-
 
 
                     <li class="last" value="">退款/售后</li>
@@ -197,20 +179,20 @@
 
                         + '</tr>'
                         + '<tr>'
-                        + '<td colspan="3">'+oProduct.title+'</td>'
+                        + '<td colspan="3">' + oProduct.title + '</td>'
                         + '</tr>'
                         + '<tr>'
-                        + '<td>领队:'+oProduct.leader_name+'</td>'
-                        + '<td colspan="2">'+CommnUtil.notEmpty(new Date(oProduct.create_time).format("yyyy-MM-dd hh:mm:ss"))+'</td>'
+                        + '<td>领队:' + oProduct.leader_name + '</td>'
+                        + '<td colspan="2">' + CommnUtil.notEmpty(new Date(oProduct.create_time).format("yyyy-MM-dd hh:mm:ss")) + '</td>'
                         + '</tr>'
                         + '<tr>'
-                        + '<td>单价:'+oProduct.price+' </td>'
-                        + '<td colspan="2">实付'+oProduct.final_total+'(共'+oProduct.people_num+'人)</td>'
+                        + '<td>单价:' + oProduct.price + ' </td>'
+                        + '<td colspan="2">实付' + oProduct.final_total + '(共' + oProduct.people_num + '人)</td>'
                         + '</tr>'
                         + '</table>')
                     } else {
                         html += ('<table class="tableInfo" ><tr>'
-                        + '<td colspan="6" class="billNo">订单号：<a href="'+rootPath+'/event/eventOrderUI/'+oProduct.id+'.shtml" class="billDetail_a" >' + CommnUtil.notEmpty(oProduct.order_no) + '</a></td>'
+                        + '<td colspan="6" class="billNo">订单号：<a href="' + rootPath + '/event/eventOrderUI/' + oProduct.id + '.shtml" class="billDetail_a" >' + CommnUtil.notEmpty(oProduct.order_no) + '</a></td>'
                         + '<td >' + CommnUtil.notEmpty(new Date(oProduct.create_time).format("yyyy-MM-dd hh:mm:ss")) + '</td>'
                         + '</tr>'
                         + '<tr >'

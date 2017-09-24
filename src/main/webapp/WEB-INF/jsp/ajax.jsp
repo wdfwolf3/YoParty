@@ -11,30 +11,30 @@
     <title>helloworld</title>
     <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
     <script type="text/javascript">
-    $(function(){
-        $("#testButton").click(function(){
-            var $a = $(this);
-            $.ajax({
-                url:"http://localhost:8080/hello/ajax",
-                type:'post',
-                data:'name=admin&password=123456',
-                dataType:'html',
-                success:function(data,status){
-                    if(status == "success"){
-                        var objs = jQuery.parseJSON(data);
-                        var str = "";
-                        for(var i=0;i<objs.length;i++){
-                            str = str + objs[i].activityName+" ";
+        $(function () {
+            $("#testButton").click(function () {
+                var $a = $(this);
+                $.ajax({
+                    url: "http://localhost:8080/hello/ajax",
+                    type: 'post',
+                    data: 'name=admin&password=123456',
+                    dataType: 'html',
+                    success: function (data, status) {
+                        if (status == "success") {
+                            var objs = jQuery.parseJSON(data);
+                            var str = "";
+                            for (var i = 0; i < objs.length; i++) {
+                                str = str + objs[i].activityName + " ";
+                            }
+                            $("#content").html(str);
                         }
-                        $("#content").html(str);
+                    },
+                    error: function (xhr, textStatus, errorThrown) {
                     }
-                },
-                error:function(xhr,textStatus,errorThrown){
-                }
+                });
             });
         });
-    });
-</script>
+    </script>
 </head>
 <body>
 <button id="testButton">异步传输</button>

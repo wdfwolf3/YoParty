@@ -68,8 +68,8 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, leader_id, activity_id, isMasterLeader
-  </sql>
+        id, leader_id, activity_id, isMasterLeader
+    </sql>
     <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.bean.LeaderActivityExample">
         select
         <if test="distinct">

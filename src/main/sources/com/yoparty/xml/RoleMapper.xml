@@ -66,8 +66,8 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, name
-  </sql>
+        id, name
+    </sql>
     <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.bean.RoleExample">
         select
         <if test="distinct">
@@ -89,9 +89,9 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from role
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
+        delete from role
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
     <delete id="deleteByExample" parameterType="com.yoparty.bean.RoleExample">
         delete from role
         <if test="_parameter != null">
@@ -99,9 +99,9 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.yoparty.bean.Role">
-    insert into role (id, name)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
-  </insert>
+        insert into role (id, name)
+        values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
+    </insert>
     <insert id="insertSelective" parameterType="com.yoparty.bean.Role">
         insert into role
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -159,8 +159,8 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.yoparty.bean.Role">
-    update role
-    set name = #{name,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        update role
+        set name = #{name,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
 </mapper>

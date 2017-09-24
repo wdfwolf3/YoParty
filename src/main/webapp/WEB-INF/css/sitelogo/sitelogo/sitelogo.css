@@ -4,7 +4,7 @@
     height: 82px;
     border: 3px solid #fff;
     border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0,0,0,.15);
+    box-shadow: 0 0 5px rgba(0, 0, 0, .15);
     cursor: pointer;
     overflow: hidden;
 }
@@ -43,7 +43,7 @@
     height: 364px;
     width: 100%;
     margin-top: 15px;
-    box-shadow: inset 0 0 5px rgba(0,0,0,.25);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, .25);
     background-color: #fcfcfc;
     overflow: hidden;
 }
@@ -66,7 +66,7 @@
 
 .avatar-preview:hover {
     border-color: #ccf;
-    box-shadow: 0 0 5px rgba(0,0,0,.15);
+    box-shadow: 0 0 5px rgba(0, 0, 0, .15);
 }
 
 .avatar-preview img {

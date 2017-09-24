@@ -79,12 +79,12 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, order_no, create_time, activity_id, user_id, location, people_num, status, pay_type, 
-    final_total, fullcut, insurance
-  </sql>
+        id, order_no, create_time, activity_id, user_id, location, people_num, status, pay_type,
+        final_total, fullcut, insurance
+    </sql>
     <sql id="Blob_Column_List">
-    message
-  </sql>
+        message
+    </sql>
     <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs"
             parameterType="com.yoparty.bean.SignupUserExample">
         select
@@ -125,9 +125,9 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from signup_user
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
+        delete from signup_user
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
     <delete id="deleteByExample" parameterType="com.yoparty.bean.SignupUserExample">
         delete from signup_user
         <if test="_parameter != null">
@@ -135,17 +135,17 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.yoparty.bean.SignupUser">
-    insert into signup_user (id, order_no, create_time, 
-      activity_id, user_id, location, 
-      people_num, status, pay_type, 
-      final_total, fullcut, insurance, 
-      message)
-    values (#{id,jdbcType=INTEGER}, #{orderNo,jdbcType=CHAR}, #{createTime,jdbcType=DATE}, 
-      #{activityId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{location,jdbcType=VARCHAR}, 
-      #{peopleNum,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, #{payType,jdbcType=TINYINT}, 
-      #{finalTotal,jdbcType=SMALLINT}, #{fullcut,jdbcType=TINYINT}, #{insurance,jdbcType=BIT}, 
-      #{message,jdbcType=LONGVARCHAR})
-  </insert>
+        insert into signup_user (id, order_no, create_time,
+        activity_id, user_id, location,
+        people_num, status, pay_type,
+        final_total, fullcut, insurance,
+        message)
+        values (#{id,jdbcType=INTEGER}, #{orderNo,jdbcType=CHAR}, #{createTime,jdbcType=DATE},
+        #{activityId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{location,jdbcType=VARCHAR},
+        #{peopleNum,jdbcType=INTEGER}, #{status,jdbcType=TINYINT}, #{payType,jdbcType=TINYINT},
+        #{finalTotal,jdbcType=SMALLINT}, #{fullcut,jdbcType=TINYINT}, #{insurance,jdbcType=BIT},
+        #{message,jdbcType=LONGVARCHAR})
+    </insert>
     <insert id="insertSelective" parameterType="com.yoparty.bean.SignupUser">
         insert into signup_user
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -364,36 +364,36 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.yoparty.bean.SignupUser">
-    update signup_user
-    set order_no = #{orderNo,jdbcType=CHAR},
-      create_time = #{createTime,jdbcType=DATE},
-      activity_id = #{activityId,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=INTEGER},
-      location = #{location,jdbcType=VARCHAR},
-      people_num = #{peopleNum,jdbcType=INTEGER},
-      status = #{status,jdbcType=TINYINT},
-      pay_type = #{payType,jdbcType=TINYINT},
-      final_total = #{finalTotal,jdbcType=SMALLINT},
-      fullcut = #{fullcut,jdbcType=TINYINT},
-      insurance = #{insurance,jdbcType=BIT},
-      message = #{message,jdbcType=LONGVARCHAR}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        update signup_user
+        set order_no = #{orderNo,jdbcType=CHAR},
+        create_time = #{createTime,jdbcType=DATE},
+        activity_id = #{activityId,jdbcType=INTEGER},
+        user_id = #{userId,jdbcType=INTEGER},
+        location = #{location,jdbcType=VARCHAR},
+        people_num = #{peopleNum,jdbcType=INTEGER},
+        status = #{status,jdbcType=TINYINT},
+        pay_type = #{payType,jdbcType=TINYINT},
+        final_total = #{finalTotal,jdbcType=SMALLINT},
+        fullcut = #{fullcut,jdbcType=TINYINT},
+        insurance = #{insurance,jdbcType=BIT},
+        message = #{message,jdbcType=LONGVARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
     <update id="updateByPrimaryKey" parameterType="com.yoparty.bean.SignupUser">
-    update signup_user
-    set order_no = #{orderNo,jdbcType=CHAR},
-      create_time = #{createTime,jdbcType=DATE},
-      activity_id = #{activityId,jdbcType=INTEGER},
-      user_id = #{userId,jdbcType=INTEGER},
-      location = #{location,jdbcType=VARCHAR},
-      people_num = #{peopleNum,jdbcType=INTEGER},
-      status = #{status,jdbcType=TINYINT},
-      pay_type = #{payType,jdbcType=TINYINT},
-      final_total = #{finalTotal,jdbcType=SMALLINT},
-      fullcut = #{fullcut,jdbcType=TINYINT},
-      insurance = #{insurance,jdbcType=BIT}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        update signup_user
+        set order_no = #{orderNo,jdbcType=CHAR},
+        create_time = #{createTime,jdbcType=DATE},
+        activity_id = #{activityId,jdbcType=INTEGER},
+        user_id = #{userId,jdbcType=INTEGER},
+        location = #{location,jdbcType=VARCHAR},
+        people_num = #{peopleNum,jdbcType=INTEGER},
+        status = #{status,jdbcType=TINYINT},
+        pay_type = #{payType,jdbcType=TINYINT},
+        final_total = #{finalTotal,jdbcType=SMALLINT},
+        fullcut = #{fullcut,jdbcType=TINYINT},
+        insurance = #{insurance,jdbcType=BIT}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
     <!---->
     <select id="select" resultType="com.yoparty.service.OrderAjax"
             parameterType="com.yoparty.service.OrderListPageService">

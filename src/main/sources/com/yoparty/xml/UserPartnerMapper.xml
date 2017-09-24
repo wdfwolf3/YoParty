@@ -67,8 +67,8 @@
         </where>
     </sql>
     <sql id="Base_Column_List">
-    id, user_id, partner_id
-  </sql>
+        id, user_id, partner_id
+    </sql>
     <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.yoparty.bean.UserPartnerExample">
         select
         <if test="distinct">
@@ -90,9 +90,9 @@
         where id = #{id,jdbcType=INTEGER}
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from user_partner
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
+        delete from user_partner
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
     <delete id="deleteByExample" parameterType="com.yoparty.bean.UserPartnerExample">
         delete from user_partner
         <if test="_parameter != null">
@@ -100,11 +100,11 @@
         </if>
     </delete>
     <insert id="insert" parameterType="com.yoparty.bean.UserPartner">
-    insert into user_partner (id, user_id, partner_id
-      )
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{partnerId,jdbcType=INTEGER}
-      )
-  </insert>
+        insert into user_partner (id, user_id, partner_id
+        )
+        values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{partnerId,jdbcType=INTEGER}
+        )
+    </insert>
     <insert id="insertSelective" parameterType="com.yoparty.bean.UserPartner">
         insert into user_partner
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -175,9 +175,9 @@
         where id = #{id,jdbcType=INTEGER}
     </update>
     <update id="updateByPrimaryKey" parameterType="com.yoparty.bean.UserPartner">
-    update user_partner
-    set user_id = #{userId,jdbcType=INTEGER},
-      partner_id = #{partnerId,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
+        update user_partner
+        set user_id = #{userId,jdbcType=INTEGER},
+        partner_id = #{partnerId,jdbcType=INTEGER}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
 </mapper>

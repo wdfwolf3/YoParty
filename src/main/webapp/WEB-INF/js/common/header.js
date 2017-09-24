@@ -1,12 +1,12 @@
 $(function () {
-    if(CommnUtil.isPhone()){
-        $("#logo_a").attr("href",rootPath+"/event/list.shtml")
+    if (CommnUtil.isPhone()) {
+        $("#logo_a").attr("href", rootPath + "/event/list.shtml")
     }
 
 })
 
-function loginOut(){
-    layer.confirm("确定注销吗?",function () {
+function loginOut() {
+    layer.confirm("确定注销吗?", function () {
         var rst = CommnUtil.ajax(rootPath + "/loginOut.shtml", {}, 'json');
         if (rst == "success") {
             $("#header div ul.login").attr("class", "login")

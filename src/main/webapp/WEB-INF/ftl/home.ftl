@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>友派</title>
-    <link rel="shortcut icon" href="/yo-party-net/images/logo_ico.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="/yo-party-net/images/logo_ico.png" type="image/x-icon"/>
     <script type="text/javascript" charset="utf-8" src="/yo-party-net/js/ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="/yo-party-net/js/ueditor/ueditor.all.min.js"></script>
     <link href="/yo-party-net/css/style.css" rel="stylesheet" type="text/css">
